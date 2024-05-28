@@ -5,7 +5,7 @@ import { ManagerComponent } from './manager.component';
 const routes: Routes = [
   { path: '', component: ManagerComponent, children: [
     {path: '' , redirectTo: 'home' , pathMatch: 'full'},
-    { path: 'home',  loadChildren: () => import('../Manager/components/home/home.component').then(m => m.HomeComponent)},
+    { path: 'home',  loadComponent: () => import('../Manager/components/home/home.component').then(m => m.HomeComponent)},
   ] },
   { path: 'rooms', loadChildren: () => import('./modules/rooms/rooms.module').then(m => m.RoomsModule) },
   { path: 'ads', loadChildren: () => import('./modules/ads/ads.module').then(m => m.AdsModule) },
