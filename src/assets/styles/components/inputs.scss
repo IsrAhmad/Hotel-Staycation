@@ -1,0 +1,25 @@
+
+.input-group{
+    background-color:  #F5F6F8;   
+    i{
+        color: #ABABAB
+    }; 
+}
+
+input{
+    background-color:  #F5F6F8;
+    padding: 14px 10px;
+    border: none;
+
+    &:focus{
+        outline: none !important;
+        box-shadow: none !important;
+        background-color: transparent;
+    }
+
+    &::placeholder{
+        color: #D3D6DC ;
+
+    }
+    
+}
