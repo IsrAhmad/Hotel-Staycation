@@ -1,0 +1,78 @@
+@import '../abstracts/variables.scss';
+
+.auth{
+    h1{
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 39px;
+    }
+    h2{
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 45px;
+        color: black;
+        margin-bottom: 30px
+    }
+    .text-p{
+        font-size: 16px;
+        line-height: 24px;
+        color: black;
+        span{
+            font-weight: 600;
+            color: $secondary-color
+ 
+        }
+
+    }
+
+    label{
+        color: $secondary-color;
+        font-size: 16px;
+        line-height: 27.5px;
+        margin-bottom: 5px;
+    }
+    .photo{
+        position: relative;
+        img{
+            border-radius: 15px;
+        }
+
+        .layer{
+            position: absolute;
+            bottom: 15%;
+            left: 15%;
+
+            h2{
+                font-weight: 600;
+                font-size: 40px;
+                line-height: 60px;
+                margin-bottom: 10px;
+                color: #FDFFFC;
+
+            }
+            p{
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 30px;
+                color: #FDFFFC;
+
+            }
+        }
+    
+    }
+    }
+
+    @media screen and (max-width:1200px) {
+
+        .layer{
+            left: 5% !important;
+
+    
+            h2{
+                font-weight: 500 !important;
+                font-size: 40px  !important;
+                line-height: 60px !important;
+    
+            }
+        }
+    }

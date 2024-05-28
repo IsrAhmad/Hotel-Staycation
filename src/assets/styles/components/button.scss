@@ -3,6 +3,9 @@
 button {
     border: none;
     padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25.5px;
     transition: all 0.25s;
     &.primary {
       border-radius: 4px;

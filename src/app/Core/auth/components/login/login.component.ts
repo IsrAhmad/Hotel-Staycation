@@ -4,7 +4,7 @@ import {  FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angul
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { ILogIn } from '../../model/I-log-in';
+import { ILogIn } from '../../model/ILogin';
 
 
 @Component({
