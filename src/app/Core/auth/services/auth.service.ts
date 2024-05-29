@@ -1,3 +1,4 @@
+import { IResetRequest, IResetResponse } from './../model/reset-password';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -21,6 +22,12 @@ export class AuthService {
     return this._HttpClient.post<ILogIn>('portal/users/login',userData)
   }
 
+
+  resetPassword(data:IResetRequest):Observable<IResetResponse>{
+    return this._HttpClient.post<IResetResponse>('portal/users/reset-password' ,data)
+  }
+
+
   forgetPass(mail:FormGroup):Observable<IForgot>{
     return this._HttpClient.post<IForgot>('portal/users/forgot-password',mail)
 
@@ -31,4 +38,3 @@ export class AuthService {
   }
 
   }
-
