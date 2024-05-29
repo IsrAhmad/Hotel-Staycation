@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IForgot } from '../../model/IForgot';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgot-password',
@@ -20,7 +21,9 @@ export class ForgotPasswordComponent {
     data:null
   }
 
-  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService){}
+  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService,
+    private _Router: Router, private toastr: ToastrService
+  ){}
   fogetForm:FormGroup = this._FormBuilder.group({
     email:['',[Validators.email,Validators.required]]
   })
@@ -35,6 +38,8 @@ export class ForgotPasswordComponent {
         console.log(err);
         
       },complete:()=>{
+        this.toastr.success('Please check your email')
+        this._Router.navigate(['/auth/reset']);
  
       }
     })
