@@ -25,24 +25,21 @@
                             <!--image-->
                             <div class="row ">
                                 <div class="col-md-12 ">
-                                    <div class="w-50 profileImg  m-auto ">
-                                        <ngx-dropzone class="m-auto"
-                                            (change)="onSelect($event)">
-                                            <ngx-dropzone-label> <i
-                                                    class="fa fa-upload"
-                                                    aria-hidden="true"></i>
-                                                Profile</ngx-dropzone-label>
-                                            <ngx-dropzone-image-preview
-                                                [removable]="true"
-                                                (removed)="onRemove(f)"
-                                                ngProjectAs="ngx-dropzone-preview"
-                                                *ngFor="let f of files"
-                                                [file]="f">
-
-                                            </ngx-dropzone-image-preview>
-                                        </ngx-dropzone>
+                                    <div class="w-25 profileImg  m-auto ">
+                                        <ngx-file-drop dropZoneLabel="Drop files here" 
+                                        (onFileDrop)="dropped($event)" 
+                                        [multiple]= "false"
+                                        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                                            <ng-template
+                                             ngx-file-drop-content-tmp 
+                                             let-openFileSelector="openFileSelector">
+                                             <button type="button" (click)="openFileSelector()">
+                                               <i class="fa fa-upload" aria-hidden="true"></i> Upload</button>
+                                            </ng-template>
+                                        </ngx-file-drop>
+                                          
                                     </div>
-
+<img [src]="imgUrl">
                                 </div>
                             </div>
 
