@@ -11,7 +11,7 @@
         font-size: 30px;
         line-height: 45px;
         color: black;
-        margin-bottom: 30px
+        //margin-bottom: 30px
     }
     .text-p{
         font-size: 16px;
@@ -19,8 +19,8 @@
         color: black;
         span{
             font-weight: 600;
-            color: $secondary-color
- 
+           // color: $secondary-color;
+           
         }
 
     }
@@ -29,7 +29,7 @@
         color: $secondary-color;
         font-size: 16px;
         line-height: 27.5px;
-        margin-bottom: 5px;
+       // margin-bottom: 5px;
     }
     .photo{
         position: relative;
