@@ -31,7 +31,7 @@
               <div class="row">
                 <div class="col-md-12">
 
-         
+
 
 
 
@@ -62,7 +62,7 @@
                         </ngx-file-drop>
                       </div>
                     </ng-container>
-          
+
                     <ngx-file-drop
                       dropZoneClassName="drop-zone"
                       *ngIf="!isImageUploade"
@@ -88,7 +88,7 @@
                         </div>
                       </ng-template>
                     </ngx-file-drop>
-          
+
                     <div *ngIf="isImageUploade" class="drop-zone">
                       <img
                         [src]="imgUrl"
@@ -357,7 +357,7 @@
                       </span>
                     </div>
                   </div>
-                  <div
+                  <!-- <div
                     class="text-danger ms-4"
                     *ngIf="registerForm.errors?.['mismatch']"
                   >
@@ -369,6 +369,15 @@
                       class="mx-2"
                     />
                     *Password not Match
+                  </div> -->
+
+                  <div class="text-danger ms-4"
+                        *ngIf="registerForm.get('confirmPassword')?.getError('compare')">
+                        <img
+                            src="./assets/images/invalid.png"
+                            width="22"
+                            height="22" alt class="mx-2">
+                        *Passwords must match
                   </div>
                 </div>
               </div>
