@@ -24,12 +24,11 @@ export class AuthService {
   forgetPass(mail:FormGroup):Observable<IForgot>{
     return this._HttpClient.post<IForgot>('portal/users/forgot-password',mail)
 
+  }
 
-  
   register(userData:FormData):Observable<IRegister>{
     return this._HttpClient.post<IRegister>('portal/users',userData)
   }
 
   }
 
-}
