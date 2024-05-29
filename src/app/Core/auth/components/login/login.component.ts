@@ -10,7 +10,7 @@ import { ILogIn } from '../../model/ILogin';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule, RouterLink ],
+  imports: [CommonModule,ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -64,9 +64,9 @@ export class LoginComponent {
     })
   }
   }
-
-
   showError(mes:string) {
     this.toastr.error( mes);
   }
+
+
 }

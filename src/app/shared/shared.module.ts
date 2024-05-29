@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
+import { DeleteComponent } from './components/delete/delete.component';
 
 
 @NgModule({
   declarations: [
-    SharedComponent
+    SharedComponent,
+    DeleteComponent
   ],
   imports: [
     CommonModule,
