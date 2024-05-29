@@ -27,11 +27,12 @@ export class ResetPasswordComponent {
     data: ''
   }
   hide: boolean = true;
+  show:boolean=true;
   resetPassForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/)]),
     confirmPassword: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/)]),// the password contains at least 1 digit, 1 lowercase letter, 1 uppercase letter, 1 special character, and is at least 6 characters long.
-    seed: new FormControl(null, [Validators.required ])
+    seed: new FormControl(null, [Validators.required , Validators.pattern(/^[a-zA-Z0-9]{4}$/) ])
   })
 
   constructor(private _AuthService: AuthService, private _Router: Router, private toastr: ToastrService) { }
