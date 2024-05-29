@@ -50,7 +50,7 @@ export class ResetPasswordComponent {
       },
       error:(err:HttpErrorResponse)=>{
         console.log(err);
-        this.showError(err.message);
+        this.showError(err.error.message)
       },complete:()=>{
         this.showSuccess(this.response.message);
         this._Router.navigate(['/auth/login']);

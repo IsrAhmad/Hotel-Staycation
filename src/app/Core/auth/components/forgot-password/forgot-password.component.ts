@@ -27,7 +27,7 @@ export class ForgotPasswordComponent {
   fogetForm:FormGroup = this._FormBuilder.group({
     email:['',[Validators.email,Validators.required]]
   })
-  
+
   handleForget(){
     this._AuthService.forgetPass(this.fogetForm.value).subscribe({
       next:res=>{
@@ -35,13 +35,17 @@ export class ForgotPasswordComponent {
         this.forgetRespnse=res
       },
       error:err=>{
-        console.log(err);
-        
+        this.showError(err.error.message)
+
       },complete:()=>{
         this.toastr.success('Please check your email')
         this._Router.navigate(['/auth/reset']);
- 
+
       }
     })
+  }
+
+  showError(mes:string) {
+    this.toastr.error( mes);
   }
 }
