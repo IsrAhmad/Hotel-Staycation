@@ -13,6 +13,7 @@ interface IMenu {
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  toggle:boolean = false;
    // then use role in menu conditions 
    menu:IMenu[] = [
     {

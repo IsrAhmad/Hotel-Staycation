@@ -1,14 +1,19 @@
-<section class="sidebar  vh-100 ">
+<section class="sidebar  vh-100 " [style.width]="toggle ?'80px':'250px'" >
     <div class="container">
          <div class="row">
+            <div class="text-end text-light toggle" (click)="toggle = !toggle">
+                <i class="fa fa-bars " aria-hidden="true"></i>
+            </div>
+       
             <div class="col-md-12  mt-5">
+            
                 <ul class="p-1 ">
                     <!--we made ng container as we can't add ng for and ngif at the same element-->
                     <ng-container  *ngFor="let item of menu">
                         <li class=" mb-2  p-2"  routerLinkActive="active">
                             <a [routerLink]="item.link" class="mb-2" >
                                 <span> <i [class]="item.icon" aria-hidden="true"></i></span>
-                                <span>{{item.text}}</span>
+                                <span *ngIf="!toggle">{{item.text}}</span>
                             </a>
                           
                         </li>
