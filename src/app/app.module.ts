@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { GlobalInterceptor } from './Core/interceptors/global.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { GlobalInterceptor } from './Core/interceptors/global.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(), // ToastrModule added
+    MatSnackBarModule,
 
   ],
   providers: [
