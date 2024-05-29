@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, Validators  ,ReactiveFormsModule} from '@angular/forms';
-
+import { FormControl, FormGroup, Validators  ,ReactiveFormsModule, AbstractControl} from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
@@ -10,14 +10,15 @@ import { IRegister } from '../../model/IRegister.model';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule , ReactiveFormsModule ,RouterLink],
+  imports: [CommonModule , ReactiveFormsModule ,RouterLink , NgxDropzoneModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   registeredUser! :IRegister;
-   
-    userProfileImg ="http://res.cloudinary.com/dpa4yqvdv/image/upload/v1716937854/users/profile.jpeg";
+  files: File[] = [];
+
+    userProfileImg :any;
     userRole="user"
   
     hidePassword:boolean=true;
@@ -34,9 +35,16 @@ export class RegisterComponent {
       country: new FormControl('',[Validators.required]),
       profileImage:new FormControl(''),
       role:new FormControl(''),
-    })
+    },
   
-    constructor(private _AuthService:AuthService,private _Router:Router,private toastr:ToastrService){}
+  {
+    validators:this.passwordMatchValidator,
+  }
+  )
+  
+    constructor(private _AuthService:AuthService,
+      private _Router:Router,
+      private toastr:ToastrService){}
   
   
     register(userData:FormGroup):void{
@@ -59,16 +67,33 @@ export class RegisterComponent {
          
         },
         error:(err)=>{
-          console.log(err)
-        
+          
+          this.toastr.error(err)
         },
         complete:()=>{
-  
+     this.toastr.success('Register completed sucessfully ');
+     this._Router.navigate(['/auth/login'])
         }
       })
     }
     }
   
-  
+   
+
+    onSelect(event:any) {
+      console.log(event);
+      this.files.push(...event.addedFiles);
+      this.userProfileImg = this.files[0];
+    }
+    
+    onRemove(event:any) {
+      console.log(event);
+      this.files.splice(this.files.indexOf(event), 1);
+    }  
+
+    passwordMatchValidator(control:AbstractControl){
+      return control.get('password')?.value === control.get('confirmPassword')?.value ? null :
+      {mismatch:true};
+        }
     
 }
