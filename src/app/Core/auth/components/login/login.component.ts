@@ -42,15 +42,15 @@ export class LoginComponent {
   login(data:FormGroup):void{
 
     if(data.valid ==true){
-      
+
     this._AuthService.login(data.value).subscribe({
       next:(response)=>{
       this.userLogged=response
-       
+
       },
       error:(err)=>{
-        
-        this.showError(err.message)
+
+        this.showError(err.error.message)
       },
       complete:()=>{
 
