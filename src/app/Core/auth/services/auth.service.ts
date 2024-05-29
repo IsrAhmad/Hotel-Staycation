@@ -19,22 +19,22 @@ export class AuthService {
 
 
   login(userData:FormGroup):Observable<ILogIn>{
-    return this._HttpClient.post<ILogIn>('portal/users/login',userData)
+    return this._HttpClient.post<ILogIn>('admin/users/login',userData)
   }
 
 
   resetPassword(data:IResetRequest):Observable<IResetResponse>{
-    return this._HttpClient.post<IResetResponse>('portal/users/reset-password' ,data)
+    return this._HttpClient.post<IResetResponse>('admin/users/reset-password' ,data)
   }
 
 
   forgetPass(mail:FormGroup):Observable<IForgot>{
-    return this._HttpClient.post<IForgot>('portal/users/forgot-password',mail)
+    return this._HttpClient.post<IForgot>('admin/users/forgot-password',mail)
 
   }
 
   register(userData:FormData):Observable<IRegister>{
-    return this._HttpClient.post<IRegister>('portal/users',userData)
+    return this._HttpClient.post<IRegister>('admin/users',userData)
   }
 
   }
