@@ -18,7 +18,7 @@ export class GlobalInterceptor implements HttpInterceptor {
     let x = request.clone({
       url:baseUrl+request.url,
       setHeaders: {
-        'Authorization':`${token}`
+        'Authorization':`Bearer ${token}`
       }
     })
     return next.handle(x);
