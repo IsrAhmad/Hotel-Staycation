@@ -69,6 +69,35 @@
        
         
     }
+    .drop-zone{
+        width: 12.75rem;
+        height: 12.75rem;
+        margin: auto;
+        overflow: hidden;
+        border-radius: 50%;
+        border: .5px dashed gray;
+        background-color:  #F7F7F7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .profile-image{
+            position: relative;
+            }
+            .to-change-image{
+            position: absolute;
+            top: -3.125rem;
+            right: 30%;
+            border-radius: 5px;
+            color: white;
+            
+            button{
+                background-color:  #F7F7F7;
+                padding: 15px 10px;
+                border-radius: 15px;
+            }
+            }
     
     }
 

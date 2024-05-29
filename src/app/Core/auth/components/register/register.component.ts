@@ -20,6 +20,7 @@ export class RegisterComponent {
 
     userProfileImg! :File;
     imgUrl:string='';
+    isImageUploade:boolean=false
 
     userRole="user"
   
@@ -97,6 +98,7 @@ export class RegisterComponent {
                 console.log(droppedFile.relativePath, file);
                 this.imgUrl= URL.createObjectURL(file)
                 this.userProfileImg= file;
+                this.isImageUploade=true
       
               });
             }
