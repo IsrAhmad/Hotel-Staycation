@@ -4,15 +4,16 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
-
-
+import { DeleteComponent } from './components/delete/delete.component';
 
 
 
 @NgModule({
   declarations: [
     SharedComponent,
- SidebarComponent
+    SidebarComponent,
+    DeleteComponent,
+
   ],
   imports: [
     CommonModule,
