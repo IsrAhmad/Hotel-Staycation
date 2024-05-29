@@ -1,0 +1,23 @@
+.sidebar{
+    background-color: rgba(32, 63, 199, 1);
+    a{
+        color:  rgba(255, 255, 255, 1);
+        text-decoration: none;
+    }
+    span{
+        margin-right: 10px;
+    }
+    ul{
+        list-style-type: none;
+    }
+   .active{
+  
+        border-left: 2px solid hsl(219, 70%, 11%);
+        background-color: rgba(26, 27, 30, 0.17);
+     
+    
+       
+        
+    }
+    
+}
