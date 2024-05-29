@@ -13,3 +13,15 @@ h1,h2,h3,h4,h5,h6{
 
 }
 
+.drop-zone{
+    width: 12.75rem;
+    height: 12.75rem;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: .5px dashed gray;
+    background-color:  #F7F7F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
