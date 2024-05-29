@@ -30,7 +30,7 @@ export class SidebarComponent {
     },
     {
       text:'Rooms',
-      icon:"fa fa-object-group" ,
+      icon:"fa-solid fa-table-cells-large",
       link:'/manager/rooms',
      
     },
