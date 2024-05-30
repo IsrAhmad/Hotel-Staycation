@@ -8,5 +8,5 @@ import { Component, Inject } from '@angular/core';
 })
 export class DeleteComponent {
 
-  constructor (public _DialogRef:DialogRef,@Inject(DIALOG_DATA) public data: {comp:string,id:number}){}
+  constructor (public _DialogRef:DialogRef,@Inject(DIALOG_DATA) public data: {comp:string,id:number,name:string}){}
 }

@@ -10,7 +10,7 @@ import { DeleteComponent } from 'src/app/shared/components/delete/delete.compone
 
 @Component({
   selector: 'app-facilities',
-  templateUrl: './facilities.component.html',
+  templateUrl:'./facilities.component.html',
   styleUrls: ['./facilities.component.scss']
 })
 export class FacilitiesComponent implements OnInit {
@@ -63,27 +63,30 @@ export class FacilitiesComponent implements OnInit {
   willBeEdited(event: number) {
    //nvigate to edit component
   }
-  willBeDeleted(event: number) {
+  willBeDeleted(event: any) {
     console.log(event);
-    this.openDeleteDialog('700ms','350ms',event)
+    this.openDeleteDialog('700ms','350ms',event.id,event.name)
   }
 
   willBeViewed(event: number) {
     //nvigate to view component
   }
   // DELETE_DIALOG
-  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number): void {
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string): void {
     const dialo =this.dialog.open(DeleteComponent, {
       width: '500px',
       enterAnimationDuration,
       exitAnimationDuration,
       data:{
         comp:'fac',
-        id:id
+        id:id,
+        name:itname
       }
     });
     dialo.afterClosed().subscribe(res=>{
-      this.deleteFacility(res)
+      if(res!=null){
+        this.deleteFacility(res)
+      }
     })
   }
   // DELETE_FUNCTION 

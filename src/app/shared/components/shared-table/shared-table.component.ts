@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { IFacilitiesResponse } from 'src/app/Features/Manager/modules/facilities/models/facilities';
 
+interface deleteEvent {
+  id:number,
+  name:string
+}
 @Component({
   selector: 'app-shared-table',
   templateUrl: './shared-table.component.html',
@@ -13,7 +17,7 @@ export class SharedTableComponent  implements OnInit{
 
   @Output() edit: EventEmitter<number> = new EventEmitter<number>();
   @Output() view: EventEmitter<number> = new EventEmitter<number>();
-  @Output() delete: EventEmitter<number> = new EventEmitter<number>();
+  @Output() delete: EventEmitter<deleteEvent> = new EventEmitter<deleteEvent>();
 
 
   ngOnInit(): void {
@@ -37,9 +41,8 @@ export class SharedTableComponent  implements OnInit{
     console.log('shared'+rowId);
   }
 
-  deleteItem(rowId: number) {
-    this.delete.emit(rowId);
-    console.log(rowId);
+  deleteItem(id: number,name :string) {
+    this.delete.emit({id,name});
   }
   
 
