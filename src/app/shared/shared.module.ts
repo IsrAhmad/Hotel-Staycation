@@ -11,6 +11,9 @@ import { SharedHeaderComponent } from './components/shared-header/shared-header.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
+import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
+import { FormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -22,6 +25,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
    
     SidebarComponent,
     DeleteComponent,
+    AddEditeViewFacilitiesComponent,
 
   ],
   imports: [
@@ -32,17 +36,25 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonModule,
     MatTableModule,
     RouterModule,
+    FormsModule,
+    MatDialogModule
+
     MatPaginatorModule
     
    
   ],
-  exports:[MatMenuModule,
+  exports:[
+    MatMenuModule,
     MatIconModule,
     MatButtonModule,
     MatTableModule,
     SharedHeaderComponent,
     SharedTableComponent,
      RouterModule ,
+     SidebarComponent,  
+     AddEditeViewFacilitiesComponent,
+
+
      SidebarComponent,
      MatPaginatorModule
   

@@ -28,12 +28,12 @@ export class AuthService {
 
 
   resetPassword(data:IResetRequest):Observable<IResetResponse>{
-    return this._HttpClient.post<IResetResponse>('admin/users/reset-password' ,data)
+    return this._HttpClient.post<IResetResponse>('portal/users/reset-password' ,data)
   }
 
 
   forgetPass(mail:FormGroup):Observable<IForgot>{
-    return this._HttpClient.post<IForgot>('admin/users/forgot-password',mail)
+    return this._HttpClient.post<IForgot>('portal/users/forgot-password',mail)
 
   }
 

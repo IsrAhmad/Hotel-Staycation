@@ -4,7 +4,7 @@
         <p class="m-0 p-0">{{headerPargraph}}</p>
       </div>
       <div class="w-25 text-end">
-        <button class="primary w-75" [routerLink]="headerBtnLink">{{headerBtnText}}</button>
+        <button class="primary w-75" (click)="onAddClick()" >{{headerBtnText}}</button>
       </div>
     </div>
   
