@@ -91,10 +91,11 @@ export class FacilitiesComponent implements OnInit {
     this._FacilitiesService.deleteFacility(id).subscribe({
       next:res=>{
         console.log(res);
+        this.toastr.success('item Deleted succssfully')
       },
       error:err=>{
         console.log(err);
-        
+        this.toastr.error('there is a problem')
       },
       complete:()=>{
         this.getAllFaclities()
