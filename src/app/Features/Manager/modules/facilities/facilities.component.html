@@ -1,1 +1,16 @@
-<p>facilities works!</p>
+<div class="container">
+  <div class="row">
+    <app-shared-header [headerBtnText]="'Add New Facility'" [headerMainText]="'Facilities Table Details'"
+      [headerPargraph]="'You can check all details'" [headerBtnLink]="'add'"></app-shared-header>
+
+    <app-shared-table
+     [tableHeaders]="tableHeaders"
+      [tableDefinitionText]="'facilities'"
+      [tableBodyContent]="data" 
+      (edit)="willBeEdited($event)"
+      (view)="willBeViewed($event)"
+      (delete)="willBeDeleted($event)"
+      ></app-shared-table>
+  </div>
+
+</div>
