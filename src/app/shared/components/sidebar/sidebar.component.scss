@@ -1,10 +1,11 @@
 .sidebar {
-    width: 250px; // Default width
+    width: 100% ;// Default width
     transition: width 0.4s ease; // Smooth transition for width
     background-color: rgba(23, 47, 155, 0.982);
 
     &.collapsed {
-        width: 80px; // Width when collapsed
+        width:100%; // Width when collapsed
+        transition: width 0.4s ease;
     }
 
     .toggle {
