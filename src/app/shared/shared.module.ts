@@ -8,19 +8,28 @@ import { SharedComponent } from './shared.component';
 import {MatTableModule} from '@angular/material/table';
 import { SharedTableComponent } from './components/shared-table/shared-table.component';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
+=======
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
+import { DeleteComponent } from './components/delete/delete.component';
+
 
 
 @NgModule({
   declarations: [
     SharedComponent,
+ shared-table-header
     SharedTableComponent,
     SharedHeaderComponent,
    
+    SidebarComponent,
+    DeleteComponent,
+
   ],
   imports: [
     CommonModule,
     SharedRoutingModule,
-    MatMenuModule,
+   shared-table-header
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
@@ -29,11 +38,12 @@ import { SharedHeaderComponent } from './components/shared-header/shared-header.
   ],
   exports:[MatMenuModule,
     MatIconModule,
-    MatMenuModule,
     MatButtonModule,
     MatTableModule,
     SharedHeaderComponent,
-    SharedTableComponent
+    SharedTableComponent,
+     RouterModule ,
+     SidebarComponent
   
 
   ]

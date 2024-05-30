@@ -1,0 +1,22 @@
+<section class="sidebar vh-100" [ngClass]="{'collapsed': toggle || isSmallScreen, 'expanded': !toggle && !isSmallScreen}">
+    <div class="container">
+        <div class="row">
+            <div class="text-light toggle" [ngClass]="{'text-center': toggle || isSmallScreen, 'text-end': !toggle && !isSmallScreen}" (click)="toggleSidebar()">
+                <i *ngIf="toggle || isSmallScreen" class="fa fa-bars" aria-hidden="true"></i>
+                <i *ngIf="!toggle && !isSmallScreen" class="fa fa-xmark" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-12 mt-5">
+                <ul class="p-1">
+                    <ng-container *ngFor="let item of menu">
+                        <li class="mb-2 p-2" routerLinkActive="active">
+                            <a [routerLink]="item.link" class="mb-2">
+                                <span><i [class]="item.icon" aria-hidden="true"></i></span>
+                                <span class="text">{{item.text}}</span>
+                            </a>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

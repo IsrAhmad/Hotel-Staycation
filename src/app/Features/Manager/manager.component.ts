@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./manager.component.scss']
 })
 export class ManagerComponent {
-
+toggle:boolean =false
 }
