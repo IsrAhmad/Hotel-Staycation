@@ -11,7 +11,7 @@ import { SharedHeaderComponent } from './components/shared-header/shared-header.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
-
+import { MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -31,7 +31,9 @@ import { DeleteComponent } from './components/delete/delete.component';
     MatMenuModule,
     MatButtonModule,
     MatTableModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    
    
   ],
   exports:[MatMenuModule,
@@ -41,7 +43,8 @@ import { DeleteComponent } from './components/delete/delete.component';
     SharedHeaderComponent,
     SharedTableComponent,
      RouterModule ,
-     SidebarComponent
+     SidebarComponent,
+     MatDialogModule
   
 
   ]

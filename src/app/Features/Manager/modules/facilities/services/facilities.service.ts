@@ -13,4 +13,8 @@ export class FacilitiesService {
   getAllFacilities():Observable<IFacilitiesResponse>{
     return this._HttpClient.get<IFacilitiesResponse>(`admin/room-facilities`)
   }
+
+  deleteFacility(id:number):Observable<any>{
+    return this._HttpClient.delete(`admin/room-facilities/${id}`)
+  }
 }

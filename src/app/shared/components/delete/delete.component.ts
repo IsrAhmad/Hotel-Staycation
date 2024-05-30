@@ -1,5 +1,5 @@
-import { DialogRef } from '@angular/cdk/dialog';
-import { Component } from '@angular/core';
+import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-delete',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class DeleteComponent {
 
-  constructor (public _DialogRef:DialogRef){}
+  constructor (public _DialogRef:DialogRef,@Inject(DIALOG_DATA) public data: {comp:string,id:number}){}
 }

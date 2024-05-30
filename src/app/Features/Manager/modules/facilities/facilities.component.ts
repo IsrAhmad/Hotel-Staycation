@@ -4,6 +4,9 @@ import { FacilitiesService } from './services/facilities.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+
 
 @Component({
   selector: 'app-facilities',
@@ -38,7 +41,7 @@ export class FacilitiesComponent implements OnInit {
   ];
 
   data: any;
-  constructor(private _FacilitiesService: FacilitiesService, private toastr: ToastrService ,private _Router:Router) { }
+  constructor(private _FacilitiesService: FacilitiesService, private toastr: ToastrService ,private _Router:Router,public dialog: MatDialog) { }
   ngOnInit(): void {
     this.getAllFaclities();
   }
@@ -61,11 +64,41 @@ export class FacilitiesComponent implements OnInit {
    //nvigate to edit component
   }
   willBeDeleted(event: number) {
-  //nvigate to delete component
+    console.log(event);
+    this.openDeleteDialog('700ms','350ms',event)
   }
 
   willBeViewed(event: number) {
     //nvigate to view component
   }
-
+  // DELETE_DIALOG
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number): void {
+    const dialo =this.dialog.open(DeleteComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data:{
+        comp:'fac',
+        id:id
+      }
+    });
+    dialo.afterClosed().subscribe(res=>{
+      this.deleteFacility(res)
+    })
+  }
+  // DELETE_FUNCTION 
+  deleteFacility(id:number){
+    this._FacilitiesService.deleteFacility(id).subscribe({
+      next:res=>{
+        console.log(res);
+      },
+      error:err=>{
+        console.log(err);
+        
+      },
+      complete:()=>{
+        this.getAllFaclities()
+      }
+    })
+  }
 }
