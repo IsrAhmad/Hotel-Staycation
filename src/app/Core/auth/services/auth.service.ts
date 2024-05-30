@@ -17,7 +17,9 @@ export class AuthService {
   role: string | null = null;
 
   constructor(private _HttpClient:HttpClient) {
-    this.getRole();
+    if (localStorage.getItem('token') !== null) {
+      this.getRole();
+    }
   }
 
   login(userData:FormGroup):Observable<ILogIn>{
