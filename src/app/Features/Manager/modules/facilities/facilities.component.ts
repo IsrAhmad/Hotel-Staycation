@@ -67,6 +67,11 @@ export class FacilitiesComponent implements OnInit {
   constructor(private _FacilitiesService: FacilitiesService,
      private toastr: ToastrService ,
      private _Router:Router,
+
+
+
+
+
      private dialog: MatDialog) { }
   ngOnInit(): void {
     this.getAllFaclities();
