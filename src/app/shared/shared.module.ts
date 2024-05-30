@@ -15,7 +15,7 @@ import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-fac
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatDialogModule
 
+    MatPaginatorModule
+    
    
   ],
   exports:[
@@ -53,6 +55,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
      AddEditeViewFacilitiesComponent,
 
 
+     SidebarComponent,
+     MatPaginatorModule
   
 
   ]
