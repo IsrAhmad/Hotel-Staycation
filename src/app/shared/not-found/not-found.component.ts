@@ -14,9 +14,8 @@ export class NotFoundComponent {
   constructor(private _Router:Router) {}
 
   goHome() {
-
-    this._Router.navigate(['manager/home']);
-    console.log('Dashboard - Home');
+    this._Router.navigate(['/manager/home']);
+    console.log('Home');
   }
 
 }
