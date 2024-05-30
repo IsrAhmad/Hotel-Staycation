@@ -1,9 +1,11 @@
-<section class="sidebar vh-100" [ngClass]="{'collapsed': toggle || isSmallScreen, 'expanded': !toggle && !isSmallScreen}">
+<section class="sidebar vh-100 "
+ [ngClass]="{'collapsed': isToggle || isSmallScreen, 'expanded': !isToggle && !isSmallScreen}">
     <div class="container">
         <div class="row">
-            <div class="text-light toggle" [ngClass]="{'text-center': toggle || isSmallScreen, 'text-end': !toggle && !isSmallScreen}" (click)="toggleSidebar()">
-                <i *ngIf="toggle || isSmallScreen" class="fa fa-bars" aria-hidden="true"></i>
-                <i *ngIf="!toggle && !isSmallScreen" class="fa fa-xmark" aria-hidden="true"></i>
+            <div class="text-light toggle" [ngClass]="{'text-center': isToggle || isSmallScreen, 
+            'text-end': !isToggle && !isSmallScreen}" (click)="toggleSidebar()">
+                <i *ngIf="isToggle || isSmallScreen" class="fa fa-bars" aria-hidden="true"></i>
+                <i *ngIf="!isToggle && !isSmallScreen" class="fa fa-xmark" aria-hidden="true"></i>
             </div>
             <div class="col-md-12 mt-5">
                 <ul class="p-1">
