@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from './services/rooms.service';
 import { IRoom, IRoomData } from './models/IRoom.model';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-rooms',
@@ -24,22 +25,33 @@ export class RoomsComponent  implements OnInit{
   ngOnInit(): void {
      this.getAllRooms();
   }
-
+  pageSize = 10;
+  pageIndex = 0;
+  totalCount!:number;
 
   ////
-  getAllRooms(){
-    let params= {
-      page :1 ,
-      size:10
+  params= {
+    page :this.pageIndex,
+    size:this.pageSize
 
-    }
-    this._RoomsService.getAllRooms(params).subscribe({
+  }
+  getAllRooms(){
+  
+    this._RoomsService.getAllRooms(this.params).subscribe({
      next:(res )=>{
       console.log(res);
-      this.roomData= res.data.rooms
+      this.roomData= res.data.rooms;
+      this.totalCount =res.data.totalCount
       console.log(this.roomData);
 
      }      
     })
+
+  }
+     //for paginaton 
+  changePage(e: PageEvent) {
+    this.params.page = e.pageIndex + 1;
+    this.params.size = e.pageSize;
+    this.getAllRooms();
   }
 }

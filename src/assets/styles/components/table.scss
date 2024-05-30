@@ -41,3 +41,19 @@ table {
         color:$table-span-color !important
     }
 }
+::ng-deep .mat-mdc-paginator{
+    background-color: $white-color !important;
+    color: $table-header-color !important;
+}
+::ng-deep .mat-mdc-paginator{
+    color: $table-header-color !important;
+  
+    
+}
+::ng-deep .mat-mdc-paginator-range-actions{
+    color: $table-header-color !important;
+}
+::ng-deep .mat-mdc-paginator-page-size-select{
+    color: $table-header-color !important;
+    border-radius:2px solid red !important;
+}
