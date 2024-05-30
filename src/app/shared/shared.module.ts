@@ -13,15 +13,17 @@ import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     SharedComponent,
     SharedTableComponent,
     SharedHeaderComponent,
-   
+
     SidebarComponent,
     DeleteComponent,
+    NavbarComponent,
 
   ],
   imports: [
@@ -33,8 +35,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     RouterModule,
     MatPaginatorModule
-    
-   
+
+
   ],
   exports:[MatMenuModule,
     MatIconModule,
@@ -44,8 +46,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     SharedTableComponent,
      RouterModule ,
      SidebarComponent,
-     MatPaginatorModule
-  
+     MatPaginatorModule,
+     NavbarComponent
+
 
   ]
 })

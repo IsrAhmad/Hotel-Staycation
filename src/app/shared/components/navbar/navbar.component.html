@@ -1,0 +1,53 @@
+<section class="container navbar">
+  <div class="row d-flex justify-content-between w-100 pt-3 ">
+    <div class="col-10 justify-content-center ">
+      <div class="input-group mb-3">
+        <span class="input-group-text border-0" id="basic-addon1"
+          ><i class="fa-solid fa-magnifying-glass"></i
+        ></span>
+        <input
+          type="text"
+          class="form-control border-0"
+          placeholder="Search"
+          aria-label="search"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+    </div>
+    <div class="col-md-2 ">
+      <div class="d-flex flex-row gap-3 ">
+        <img
+          class="avatar"
+          src="../.././../../assets/images/profile-user.png"
+        />
+        <!-- [src]="listData.imagePath   ? imgUrl + listData.imagePath : emptyImg" -->
+        <!-- <span>{{userName}}</span> -->
+        <div class="">
+          <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>expand_more</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon><span class="material-icons">
+                  person
+                  </span></mat-icon>
+                <span>Profile</span>
+              </button>
+              <button mat-menu-item [routerLink]="['/dashboard/admin/change-password']">
+                <mat-icon>edit_square</mat-icon>
+                <span>Change Password</span>
+              </button>
+              <button  mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+              </button>
+            </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
