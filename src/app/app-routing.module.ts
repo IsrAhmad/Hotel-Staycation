@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./Features/Manager/manager.module').then((m) => m.ManagerModule),
   },
+  {path: '**', component:NotFoundComponent, title: 'Eror 404!'},
 ];
 
 @NgModule({
