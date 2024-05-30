@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 interface IMenu {
   text:string ,
@@ -14,6 +14,8 @@ interface IMenu {
 })
 export class SidebarComponent {
   toggle:boolean = false;
+  isSmallScreen: boolean = window.innerWidth <= 1100;
+
    // then use role in menu conditions 
    menu:IMenu[] = [
     {
@@ -41,13 +43,33 @@ export class SidebarComponent {
      
     },
     {
-      text:'Bookings Facilities',
+      text:'Facilities',
+      icon:'fa-solid fa-user-group' ,
+      link:'/manager/facilities',
+     
+    },
+    {
+      text:'Bookings',
       icon:'fa-solid fa-user-group' ,
       link:'/manager/facilities',
      
     },
     
-   
-
+  
    ]
+
+
+   @HostListener('window:resize', ['$event'])
+   onResize(event: Event) {
+     this.isSmallScreen = window.innerWidth <= 1100;
+     if (this.isSmallScreen) {
+       this.toggle = false; // Ensure sidebar is collapsed on small screens
+     }
+   }
+ 
+   toggleSidebar() {
+     if (!this.isSmallScreen) {
+       this.toggle = !this.toggle;
+     }
+   }
 }
