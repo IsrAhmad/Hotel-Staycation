@@ -51,7 +51,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-   ReactiveFormsModule
+   ReactiveFormsModule,
 
     MatListModule,
     MatSortModule
@@ -79,7 +79,7 @@ import {MatSortModule} from '@angular/material/sort';
   MatInputModule,
   MatSelectModule,
   NoDataComponent,
-  ReactiveFormsModule
+  ReactiveFormsModule,
      MatListModule,
      SidebarComponent,
      MatPaginatorModule,

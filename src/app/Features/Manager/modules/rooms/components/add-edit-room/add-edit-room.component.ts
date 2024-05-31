@@ -137,7 +137,7 @@ addRoomApi(data:FormData):void{
 }
 
 getAllFaclities() {
-  this._FacilitiesService.getAllFacilities().subscribe({
+  this._FacilitiesService.getAllFacilities({page:1,size:100}).subscribe({
     next: (res) => {
       console.log(res);
       this.faciliyRes = res;
