@@ -16,6 +16,7 @@ import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-fac
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
@@ -30,6 +31,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 
     SidebarComponent,
     DeleteComponent,
+    NavbarComponent,
     NoDataComponent,
     AddEditeViewFacilitiesComponent,
 
@@ -50,7 +52,6 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatDialogModule,
 
 
-
   ],
   exports:[
     MatMenuModule,
@@ -61,6 +62,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedTableComponent,
      RouterModule ,
      SidebarComponent,
+     MatPaginatorModule,
+     NavbarComponent,
      AddEditeViewFacilitiesComponent,
 
 
