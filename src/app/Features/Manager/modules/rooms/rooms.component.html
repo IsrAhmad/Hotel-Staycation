@@ -100,15 +100,6 @@
           <!-- Capacity Column -->
           <ng-container matColumnDef="Capacity">
             <th mat-header-cell *matHeaderCellDef> Capacity
-
-              <span>
-                <i class="fa fa-arrow-down" aria-hidden="true"
-                  (click)="sortCapacityDesc()"></i>
-                <i class="fa fa-arrow-up" aria-hidden="true"
-                  (click)="sortCapacityAsc()"></i>
-
-              </span>
-
             </th>
             <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
           </ng-container>

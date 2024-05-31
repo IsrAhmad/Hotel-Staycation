@@ -69,18 +69,6 @@ export class RoomsComponent  implements OnInit{
     this. search= '';
     this.getAllRooms();
   }
-  sortCapacityDesc(){
-    console.log('desc')
-  this.roomData = this.roomData.sort((a,b)=> a.discount -b.discount) ;
-  console.log(this.roomData)
-  }
-  sortCapacityAsc(){
-    console.log('as')
-    
-    this.roomData = this.roomData.sort((a,b)=> b.discount -a.discount) ;
-    console.log(this.roomData)
-
-  }
   filtetByRoomNumber(searchValue :HTMLInputElement){
     if (searchValue) {
       this.roomData = this.roomData.filter(p => p.roomNumber === searchValue.value);
