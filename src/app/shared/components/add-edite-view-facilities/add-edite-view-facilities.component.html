@@ -1,0 +1,24 @@
+<section class="p-3 rounded-2 bg-white">
+    <div class="w-100 text-end pe-2">
+    <span (click)="onNoClick()" class=" cursor-pointer "><i class="fa-solid fa-close text-danger fs-4"></i></span>
+    </div>
+    <h1 mat-dialog-title class="text-dark-black fs-4 mt-2" >{{(data.id)? (data.edit==true)?'Edit this Facility':'View this Facility' :"Add Facility"}} </h1>
+    <div mat-dialog-content class=" ">
+    
+        <div class="input-group  mt-4 mb-5">
+            <input [disabled]="!data.edit&&data.id" [(ngModel)]="data.name" type="email" class="form-control w-100 p-2" placeholder="Name" id="name" >
+
+        </div>
+
+        <hr class="text-muted">
+
+        <div  class="d-flex align-items-center  justify-content-between mt-5">
+            <button *ngIf="!(data.edit==false&&data.id)" (click)="onNoClick()" class=" cancel py-2">Cancel</button>
+            <button [disabled]="data.name.length==0"  [mat-dialog-close]="data.name"  class=" py-2 ms-auto" [class]="(data.edit==false&&data.id)? 'cancel':'primary'" >{{(data.id)? (data.edit==true)?'Edit this Facility':'Delete this Facility' :"Add Facility"}}</button>
+
+        </div>
+
+    
+    </div>
+   
+    </section>

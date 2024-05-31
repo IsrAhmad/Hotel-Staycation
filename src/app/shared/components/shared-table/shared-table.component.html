@@ -2,7 +2,7 @@
     <table class="table table-striped  text-center">
         <thead class=" table-secondary" style="border-radius: 20px;">
             <tr style="border-radius: 20px;" *ngIf="tableDefinitionText === 'facilities'">
-                <th class="p-4" *ngFor="let header of tableHeaders">
+                <th class="p-3" *ngFor="let header of tableHeaders">
 
                     {{ header }}
 
@@ -23,11 +23,11 @@
                             <mat-icon class="text-black">more_horiz</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu" class="matMenu">
-                            <button class="btn-hover" mat-menu-item type="button" (click)="viewItem(tableBody._id)">
+                            <button class="btn-hover" mat-menu-item type="button" (click)="viewItem(tableBody._id,tableBody.name)">
                                 <mat-icon class="text-primary-color">visibility</mat-icon>
                                 <span class="text-black">View</span>
                             </button>
-                            <button class="btn-hover" mat-menu-item (click)="isEdited(tableBody._id)">
+                            <button class="btn-hover" mat-menu-item (click)="isEdited(tableBody._id,tableBody.name)">
                                 <mat-icon class="text-primary-color  ">edit_square</mat-icon>
                                 <span class="text-black ">Edit</span>
                             </button>

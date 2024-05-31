@@ -11,7 +11,16 @@ import { SharedHeaderComponent } from './components/shared-header/shared-header.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
-import { MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import { NoDataComponent } from './components/no-data/no-data.component';
 
 
 @NgModule({
@@ -19,9 +28,12 @@ import { MatDialogRef, MatDialogModule} from '@angular/material/dialog';
     SharedComponent,
     SharedTableComponent,
     SharedHeaderComponent,
-   
+
     SidebarComponent,
     DeleteComponent,
+    NavbarComponent,
+    NoDataComponent,
+    AddEditeViewFacilitiesComponent,
 
   ],
   imports: [
@@ -32,11 +44,17 @@ import { MatDialogRef, MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatTableModule,
     RouterModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule,
     MatDialogModule,
-    
-   
+
+
   ],
-  exports:[MatMenuModule,
+  exports:[
+    MatMenuModule,
     MatIconModule,
     MatButtonModule,
     MatTableModule,
@@ -44,8 +62,17 @@ import { MatDialogRef, MatDialogModule} from '@angular/material/dialog';
     SharedTableComponent,
      RouterModule ,
      SidebarComponent,
-     MatDialogModule
-  
+     MatDialogModule,
+     MatPaginatorModule,
+     NavbarComponent,
+     AddEditeViewFacilitiesComponent,
+     SidebarComponent,
+     MatPaginatorModule,
+     MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule,
+    NoDataComponent,
 
   ]
 })

@@ -4,3 +4,13 @@
         overflow-y: auto;
         height: 100vh;
     }
+    .opened > div{
+        transition: all .3s ease-in-out;
+      }
+
+      @media screen and (max-width: 768px) {
+        .sidebar {
+            display: none;; 
+        }
+    
+    }

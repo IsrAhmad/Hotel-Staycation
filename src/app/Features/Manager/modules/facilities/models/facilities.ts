@@ -23,3 +23,16 @@ export interface IFacilitiesResponse {
     userName: string
   }
   
+
+  export interface IAddAndEditFacRes {
+    success: boolean
+    message: string
+    data: Data
+  }
+  
+  export interface Data {
+    facility: IFacility
+  }
+  
+
+  
