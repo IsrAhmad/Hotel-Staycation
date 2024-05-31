@@ -16,6 +16,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { NoDataComponent } from './components/no-data/no-data.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {MatSelectModule} from '@angular/material/select';
    
     SidebarComponent,
     DeleteComponent,
+    NoDataComponent,
 
   ],
   imports: [
@@ -55,7 +57,8 @@ import {MatSelectModule} from '@angular/material/select';
      MatFormFieldModule,
   FormsModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  NoDataComponent
 
   ]
 })
