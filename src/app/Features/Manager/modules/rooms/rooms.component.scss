@@ -3,3 +3,8 @@
 .fa{
     cursor: pointer;
 }
+
+::ng-deep .mat-sort-header-arrow {
+   
+    opacity: unset !important;
+}

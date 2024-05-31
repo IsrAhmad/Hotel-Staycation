@@ -21,7 +21,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
-
+import {MatListModule} from '@angular/material/list';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-
+    MatListModule,
+    MatSortModule
 
   ],
   exports:[
@@ -66,13 +68,16 @@ import { NoDataComponent } from './components/no-data/no-data.component';
      MatPaginatorModule,
      NavbarComponent,
      AddEditeViewFacilitiesComponent,
+     MatListModule,
      SidebarComponent,
      MatPaginatorModule,
      MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatSelectModule,
-    NoDataComponent,
+      FormsModule,
+      MatInputModule,
+      MatSelectModule,
+      NoDataComponent ,
+      MatSortModule,
+
 
   ]
 })

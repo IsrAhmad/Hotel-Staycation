@@ -12,7 +12,7 @@
         <tbody>
 
             <ng-container *ngIf="isFacilities(tableBodyContent)">
-                <tr *ngFor="let tableBody of tableBodyContent.facilities">
+                <tr *ngFor="let tableBody of tableBodyContent">
                     <td>{{ tableBody.name }}</td>
                     <td>{{ tableBody.createdBy.userName }}</td>
                     <td>{{ tableBody.createdAt | date: 'short' }}</td>

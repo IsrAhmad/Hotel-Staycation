@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import {  IRoomResponse } from '../models/IRoom.model';
+import { IFacilitiesResponse } from '../../facilities/models/facilities';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class RoomsService {
   getAllRooms(parmasData:any):Observable<IRoomResponse>{
     return this._HttpClient.get<IRoomResponse>('admin/rooms' , {params:parmasData})
   }
+
   
   
 }
