@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoomsService } from './services/rooms.service';
 import { IRoom, IRoomData } from './models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
@@ -31,7 +32,7 @@ export class RoomsComponent  implements OnInit{
     size:this.pageSize
 
   }
-  constructor(private _RoomsService:RoomsService){}
+  constructor(private _RoomsService:RoomsService,private _Router:Router){}
 
   ngOnInit(): void {
      this.getAllRooms();
@@ -74,5 +75,11 @@ export class RoomsComponent  implements OnInit{
       this.roomData = this.roomData.filter(p => p.roomNumber === searchValue.value);
       this.totalCount =this.roomData.length
     }
+  }
+
+
+  addRoom():void{
+    this._Router.navigate(['/manager/rooms/addRoom']);
+
   }
 }
