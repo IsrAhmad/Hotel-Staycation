@@ -11,9 +11,17 @@ import { SharedHeaderComponent } from './components/shared-header/shared-header.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
+import {MatInputModule} from '@angular/material/input';
+import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import { NoDataComponent } from './components/no-data/no-data.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +32,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SidebarComponent,
     DeleteComponent,
     NavbarComponent,
+    NoDataComponent,
+    AddEditeViewFacilitiesComponent,
 
   ],
   imports: [
@@ -34,11 +44,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatButtonModule,
     MatTableModule,
     RouterModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
 
 
   ],
-  exports:[MatMenuModule,
+  exports:[
+    MatMenuModule,
     MatIconModule,
     MatButtonModule,
     MatTableModule,
@@ -47,8 +63,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
      RouterModule ,
      SidebarComponent,
      MatPaginatorModule,
-     NavbarComponent
+     NavbarComponent,
+     AddEditeViewFacilitiesComponent,
 
+
+     SidebarComponent,
+     MatPaginatorModule,
+     MatFormFieldModule,
+  FormsModule,
+  MatInputModule,
+  MatSelectModule,
+  NoDataComponent
 
   ]
 })

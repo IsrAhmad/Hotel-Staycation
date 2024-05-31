@@ -2,16 +2,18 @@
 
 button {
     border: none;
-   padding: 0.5rem 1rem;
+    padding: 10px 20px;
+    border-radius: 4px;
     font-weight: 500;
     font-size: 17px;
     line-height: 25.5px;
     transition: all 0.25s;
     &.primary {
-      border-radius: 4px;
       border: 1px solid $primary-color;
       background-color: $primary-color;
       color: white;
+      transition: 0.4s !important;
+
     
     &:disabled{
         background-color: $disabled-primary-color;
@@ -40,4 +42,19 @@ button {
         background-color: $primary-color;
       }
     }
+
+    &.cancel {
+      border-radius: 4px;
+      border: 1px solid $red-color;
+      color: $red-color;
+      background-color: white !important;
+
+      transition: 0.4s !important;
+
+      &:hover {
+        border: 1px solid $red-color;
+       background-color: $red-color !important;
+        color: white;
+      }
+     }
    }
