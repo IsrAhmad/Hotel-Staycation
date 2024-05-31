@@ -4,6 +4,8 @@ import { IRoom, IRoomData } from './models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
 import { FacilitiesService } from '../facilities/services/facilities.service';
 import { IFacility } from '../facilities/models/facilities';
+import { Sort } from '@angular/material/sort';
+
 
 @Component({
   selector: 'app-rooms',
@@ -20,28 +22,59 @@ export class RoomsComponent  implements OnInit{
   facilityChanaged:string ='';
   //
   listOfFacilities :any;
- 
-  displayedColumns: string[] = ['Room number','Images' ,'Discount' 
-  ,'Capacity', 'Created at' ,'Facilities' , 'Actions'];
+
+  displayedColumns: string[] = ['Room number','Images'  
+  ,'Capacity','Discount', 'Price' ,'Facilities' , 'Actions'];
 
   roomData:IRoom[]=[]
  search!:string;
   pageSize = 10;
   pageIndex = 0;
   totalCount!:number;
+ 
    ////
    params= {
     page :this.pageIndex,
     size:this.pageSize
 
   }
-  constructor(private _RoomsService:RoomsService ,private _FacilitiesService:FacilitiesService){}
+
+  sortedRooms:IRoom[] =[];
+  constructor(private _RoomsService:RoomsService ){
+    
+  }
 
   ngOnInit(): void {
-     this.getAllRooms();
-     this.getAllFacilites();
+    this.getAllRooms();
+   
+    
+   
+   
   }
-  
+  sortData(sort: Sort) {
+    const data = this.roomData.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedRooms = data;
+      return;
+    }
+    this.sortedRooms = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'price':
+          return this.compare(a.price, b.price, isAsc);
+        case 'capacity':
+          return this.compare(a.capacity, b.capacity, isAsc);
+        case 'discount':
+          return this.compare(a.discount, b.discount, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+   compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
 
  
   getAllRooms(){
@@ -50,7 +83,11 @@ export class RoomsComponent  implements OnInit{
      next:(res )=>{
    
       this.roomData= res.data.rooms;
-      this.totalCount =res.data.totalCount
+      this.sortedRooms= this.roomData.slice();
+      console.log(this.sortedRooms);
+      this.totalCount =res.data.totalCount;
+    
+
       
 //handel toaster
      }  ,
@@ -76,25 +113,12 @@ export class RoomsComponent  implements OnInit{
   }
   filtetByRoomNumber(searchValue :HTMLInputElement){
     if (searchValue) {
-      this.roomData = this.roomData.filter(p => p.roomNumber === searchValue.value);
-      this.totalCount =this.roomData.length
+      this.sortedRooms = this.sortedRooms.filter(p => p.roomNumber === searchValue.value);
+      this.totalCount =this.sortedRooms.length
     }
   }
-  getAllFacilites(){
-    let params ={
-      page:1 ,
-      size:1000
-    }
-   this._RoomsService.getAllFacilities(params).subscribe({
-    next:(res)=>{
-  this.listOfFacilities = res.data.facilities;
-  console.log(this.listOfFacilities);
-  console.log(res.data.totalCount)
-    }
-   })
-  }
-  filterByFacilityName(facility:string){
-  // this.roomData = this.roomData.filter(facility => facility.facilities === facility)
-  }
+  
+
+
 
 }

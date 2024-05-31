@@ -8,7 +8,7 @@
     <!--search and filter-->
     <div class="col-md-12">
 
-      <mat-form-field appearance="outline" class="w-50">
+      <mat-form-field appearance="outline" class="w-75">
         <button mat-icon-button matPrefix>
           <mat-icon>search</mat-icon>
         </button>
@@ -31,14 +31,8 @@
         </button>
       </mat-form-field>
 
-        <!--filter-->
-        <mat-form-field appearance="outline" class="w-25">
-          <mat-label>Facilities</mat-label>
-
-          <mat-select [(ngModel)]="facilityChanaged" (selectionChange)="filterByFacilityName(facilityChanaged)">
-              <mat-option  *ngFor="let facility of listOfFacilities" value="facility.name">{{facility.name}}</mat-option>
-          </mat-select>
-      </mat-form-field>
+      
+       
 
     </div>
     <!--table headers -->
@@ -67,8 +61,8 @@
         </ng-container>
 
         <!-- Created at Column -->
-        <ng-container matColumnDef="Created at">
-          <th mat-header-cell *matHeaderCellDef> Created at </th>
+        <ng-container matColumnDef="Price">
+          <th mat-header-cell *matHeaderCellDef> Price</th>
 
         </ng-container>
         <!--Created by Column -->
@@ -88,8 +82,8 @@
       <app-no-data></app-no-data>
     </ng-container>
     <div class="col-md-12">
-      <ng-container *ngIf=" roomData.length >0">
-        <table mat-table [dataSource]="roomData" class="table table-striped">
+      <ng-container *ngIf=" sortedRooms.length >0">
+        <table mat-table matSort (matSortChange)="sortData($event)" [dataSource]="sortedRooms" class="table table-striped">
 
           <!-- Room Number Column -->
           <ng-container matColumnDef="Room number">
@@ -108,21 +102,23 @@
 
           <!-- Capacity Column -->
           <ng-container matColumnDef="Capacity">
-            <th mat-header-cell *matHeaderCellDef> Capacity
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header="capacity"> Capacity
             </th>
             <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
           </ng-container>
 
           <!-- Discount Column -->
           <ng-container matColumnDef="Discount">
-            <th mat-header-cell *matHeaderCellDef> Discount </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header="discount"> Discount 
+
+            </th>
             <td mat-cell *matCellDef="let element"> {{element.discount}} </td>
           </ng-container>
 
           <!-- Created at Column -->
-          <ng-container matColumnDef="Created at">
-            <th mat-header-cell *matHeaderCellDef> Created at </th>
-            <td mat-cell *matCellDef="let element"> {{element.createdAt |date}}
+          <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header="price">Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}}
 
 
             </td>

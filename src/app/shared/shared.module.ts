@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import {MatListModule} from '@angular/material/list';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatListModule} from '@angular/material/list';
     MatSelectModule,
     MatDialogModule,
     MatListModule,
+    MatSortModule
 
 
   ],
@@ -70,7 +72,8 @@ import {MatListModule} from '@angular/material/list';
   FormsModule,
   MatInputModule,
   MatSelectModule,
-  NoDataComponent
+  NoDataComponent ,
+  MatSortModule
 
   ]
 })
