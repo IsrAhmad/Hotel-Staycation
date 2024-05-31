@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import {  IRoomRes, IRoomResponse } from '../models/IRoom.model';
+import { IFacilitiesResponse } from '../../facilities/models/facilities';
 
 @Injectable({
   providedIn: 'root'

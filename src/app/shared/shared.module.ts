@@ -13,14 +13,16 @@ import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 import {MatInputModule} from '@angular/material/input';
 import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
-
+import {MatListModule} from '@angular/material/list';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 
     SidebarComponent,
     DeleteComponent,
+    NavbarComponent,
     NoDataComponent,
     AddEditeViewFacilitiesComponent,
 
@@ -50,6 +53,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatDialogModule,
    ReactiveFormsModule
 
+    MatListModule,
+    MatSortModule
 
   ],
   exports:[
@@ -61,6 +66,9 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedTableComponent,
      RouterModule ,
      SidebarComponent,
+     MatDialogModule,
+     MatPaginatorModule,
+     NavbarComponent,
      AddEditeViewFacilitiesComponent,
       
 
@@ -72,6 +80,16 @@ import { NoDataComponent } from './components/no-data/no-data.component';
   MatSelectModule,
   NoDataComponent,
   ReactiveFormsModule
+     MatListModule,
+     SidebarComponent,
+     MatPaginatorModule,
+     MatFormFieldModule,
+      FormsModule,
+      MatInputModule,
+      MatSelectModule,
+      NoDataComponent ,
+      MatSortModule,
+
 
   ]
 })
