@@ -18,10 +18,13 @@
       <div class="d-flex flex-row gap-3 ">
         <img
           class="avatar"
-          src="../.././../../assets/images/profile-user.png"
+          [src]="currentUser?.profileImage ? currentUser?.profileImage : defaultImg"
         />
-        <!-- [src]="listData.imagePath   ? imgUrl + listData.imagePath : emptyImg" -->
-        <!-- <span>{{userName}}</span> -->
+
+        <div class="">
+          <h6 class="nav-link mb-0">{{currentUser?.userName}}</h6>
+          <span class="text-muted">{{currentUser?.email}}</span>
+        </div>
         <div class="">
           <button
               mat-icon-button

@@ -7,15 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class NavbarService {
 
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) { }
 
-  // getUserName(userName:string, name: string, imagePath:string, imgSrc:string,): Observable<any> {
-  //   return this._HttpClient.get('Users/currentUser', {
-  //     params: { userName: userName, name:name, imagePath: imagePath, imgSrc: imgSrc},
-  //   });
-  // }
-  currentUser(): Observable<any> {
-    return this._HttpClient.get('admin/users?page=1&size=10');
+  currentUser(userName: string, email: string, profileImage: string, _id: string): Observable<any> {
+    return this._HttpClient.get(`admin/users/${_id}`
+    , {params: { userName: userName, email:email, profileImage: profileImage, _id: _id},}
+  );
   }
 
 }

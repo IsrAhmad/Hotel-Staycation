@@ -8,6 +8,7 @@ import { ILogIn } from '../model/ILogin';
 import { IForgot } from '../model/IForgot';
 
 import { IRegister } from '../model/IRegister.model';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ import { IRegister } from '../model/IRegister.model';
 export class AuthService {
   role: string | null = null;
 
-  constructor(private _HttpClient:HttpClient) {
+  constructor(private _HttpClient:HttpClient, private _Router:Router) {
     if (localStorage.getItem('token') !== null) {
       this.getRole();
     }
@@ -53,6 +54,7 @@ export class AuthService {
   logout(): void {
     localStorage.clear();
     sessionStorage.clear();
+    this._Router.navigate(['/auth']);
   }
 
   }

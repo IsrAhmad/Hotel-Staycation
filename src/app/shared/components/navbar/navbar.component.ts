@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/auth/services/auth.service';
 import { NavbarService } from '../../services/navbar.service';
-// import { IApiResponse, IUser } from '../../models/iUser';
+import { IUserResponse, IUser } from '../../models/iUser';
 
 @Component({
   selector: 'app-navbar',
@@ -11,45 +10,38 @@ import { NavbarService } from '../../services/navbar.service';
 })
 export class NavbarComponent {
 
-  imagePath: string = '';
-  imgSrc: string = '../../../../assets/images/profile-user.png';
-  // imgUrl: string = 'https://upskilling-egypt.com:3000/';
-  // imgUrl: string = 'https://154.41.228.234:3000/';
-  // emptyImg: string = '../../../../assets/images/profile-user.png';
-
+  currentUser: IUser | undefined;
+  defaultImg: string = '../../../../assets/images/default-user.png';
   userName: string = '';
-  name: string = '';
-  listData: any;
-  currentUser: any | undefined;
+  email: string = '';
+  profileImage: string = '';
+  _id: string = '';
 
   constructor(
-    private _AuthService:AuthService,
-    private _Router: Router,
+    private _AuthService: AuthService,
     private _NavbarService: NavbarService
-  ) { }
+  ) {
+    const storedId = localStorage.getItem('id');
+    if (storedId !== null) {
+      this._id = storedId;
+    }
+  }
 
   ngOnInit() {
     this.getUserName();
-    // this.getCurrentUsersData();
   }
 
   getUserName() {
-    this._NavbarService.currentUser().subscribe({
-      next: (res: any) => {
-        console.log('Full Response:', res); // Log the entire response
-
-        // if (res && res.data && res.data.users) {
-        //   this.currentUser = res.data.users;
-        //   console.log('User:', this.currentUser); // Log the currentUser object
-        // } else {
-        //   console.error('User data is undefined:', res);
-        // }
+    this._NavbarService.currentUser(this.userName, this.email, this.profileImage, this._id).subscribe({
+      next: (res: IUserResponse) => {
+        this.currentUser = res.data.user;
+        console.log('Full Response:', res);
       },
-      error: (err: any) => {
-        console.error('Error fetching user data:', err); // Log the error if any
+      error: (err: IUserResponse) => {
+        console.error('Error fetching user data:', err);
       },
       complete: () => {
-        console.log('User data fetch complete'); // Log when the request is complete
+        console.log('User data fetch complete');
       },
     });
   }
