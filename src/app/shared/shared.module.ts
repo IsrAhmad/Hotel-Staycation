@@ -27,7 +27,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedComponent,
     SharedTableComponent,
     SharedHeaderComponent,
-   
+
     SidebarComponent,
     DeleteComponent,
     NoDataComponent,
@@ -46,11 +46,11 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
     MatDialogModule,
 
-    
-   
+
+
   ],
   exports:[
     MatMenuModule,
@@ -60,7 +60,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedHeaderComponent,
     SharedTableComponent,
      RouterModule ,
-     SidebarComponent,  
+     SidebarComponent,
      AddEditeViewFacilitiesComponent,
 
 
