@@ -20,7 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
-
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-
+    MatListModule,
 
 
   ],
@@ -62,7 +62,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
      RouterModule ,
      SidebarComponent,
      AddEditeViewFacilitiesComponent,
-
+     MatListModule,
 
      SidebarComponent,
      MatPaginatorModule,

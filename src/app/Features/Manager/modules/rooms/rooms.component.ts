@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RoomsService } from './services/rooms.service';
 import { IRoom, IRoomData } from './models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
+import { FacilitiesService } from '../facilities/services/facilities.service';
+import { IFacility } from '../facilities/models/facilities';
 
 @Component({
   selector: 'app-rooms',
@@ -15,10 +17,12 @@ export class RoomsComponent  implements OnInit{
   headerText:string ='Rooms Table Details' ;
   headerPargraph:string ='You can check all details';
   addRoomLink:string =''
-
+  facilityChanaged:string ='';
+  //
+  listOfFacilities :any;
  
   displayedColumns: string[] = ['Room number','Images' ,'Discount' 
-  ,'Capacity', 'Created at' ,'Created by' , 'Actions'];
+  ,'Capacity', 'Created at' ,'Facilities' , 'Actions'];
 
   roomData:IRoom[]=[]
  search!:string;
@@ -31,10 +35,11 @@ export class RoomsComponent  implements OnInit{
     size:this.pageSize
 
   }
-  constructor(private _RoomsService:RoomsService){}
+  constructor(private _RoomsService:RoomsService ,private _FacilitiesService:FacilitiesService){}
 
   ngOnInit(): void {
      this.getAllRooms();
+     this.getAllFacilites();
   }
   
 
@@ -75,4 +80,21 @@ export class RoomsComponent  implements OnInit{
       this.totalCount =this.roomData.length
     }
   }
+  getAllFacilites(){
+    let params ={
+      page:1 ,
+      size:1000
+    }
+   this._RoomsService.getAllFacilities(params).subscribe({
+    next:(res)=>{
+  this.listOfFacilities = res.data.facilities;
+  console.log(this.listOfFacilities);
+  console.log(res.data.totalCount)
+    }
+   })
+  }
+  filterByFacilityName(facility:string){
+  // this.roomData = this.roomData.filter(facility => facility.facilities === facility)
+  }
+
 }
