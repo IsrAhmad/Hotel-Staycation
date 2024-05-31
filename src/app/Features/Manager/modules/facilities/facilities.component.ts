@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 import { AddEditeViewFacilitiesComponent } from 'src/app/shared/components/add-edite-view-facilities/add-edite-view-facilities.component';
 
 interface EditEvent {
@@ -13,7 +14,7 @@ interface EditEvent {
 }
 @Component({
   selector: 'app-facilities',
-  templateUrl: './facilities.component.html',
+  templateUrl:'./facilities.component.html',
   styleUrls: ['./facilities.component.scss']
 })
 export class FacilitiesComponent implements OnInit {
@@ -44,6 +45,7 @@ export class FacilitiesComponent implements OnInit {
   ];
 
   data: any;
+  constructor(private _FacilitiesService: FacilitiesService, private toastr: ToastrService ,private _Router:Router,public dialog: MatDialog) { }
 
   editAddFacRes:IAddAndEditFacRes={
     success:false,
@@ -64,9 +66,9 @@ export class FacilitiesComponent implements OnInit {
     }
   }
 
-  constructor(private _FacilitiesService: FacilitiesService,
-     private toastr: ToastrService ,
-     private _Router:Router,
+//   constructor(private _FacilitiesService: FacilitiesService,
+//      private toastr: ToastrService ,
+//      private _Router:Router,
 
 
 
@@ -115,8 +117,9 @@ export class FacilitiesComponent implements OnInit {
 
 
   }
-  willBeDeleted(event: number) {
-  //nvigate to delete component
+  willBeDeleted(event: any) {
+    console.log(event);
+    this.openDeleteDialog('700ms','350ms',event.id,event.name)
   }
 
 
@@ -140,6 +143,40 @@ export class FacilitiesComponent implements OnInit {
       }
       });
 
+  }
+  // DELETE_DIALOG
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string): void {
+    const dialo =this.dialog.open(DeleteComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data:{
+        comp:'fac',
+        id:id,
+        name:itname
+      }
+    });
+    dialo.afterClosed().subscribe(res=>{
+      if(res!=null){
+        this.deleteFacility(res)
+      }
+    })
+  }
+  // DELETE_FUNCTION 
+  deleteFacility(id:number){
+    this._FacilitiesService.deleteFacility(id).subscribe({
+      next:res=>{
+        console.log(res);
+        this.toastr.success('item Deleted succssfully')
+      },
+      error:err=>{
+        console.log(err);
+        this.toastr.error('there is a problem')
+      },
+      complete:()=>{
+        this.getAllFaclities()
+      }
+    })
   }
 
   /*

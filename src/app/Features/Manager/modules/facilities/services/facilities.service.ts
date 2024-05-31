@@ -14,13 +14,15 @@ export class FacilitiesService {
     return this._HttpClient.get<IFacilitiesResponse>(`admin/room-facilities`)
   }
 
+  deleteFacility(id:number):Observable<any>{
+    return this._HttpClient.delete(`admin/room-facilities/${id}`)
+  }
+
   addFacility(name:string):Observable<IAddAndEditFacRes>{
     return this._HttpClient.post<IAddAndEditFacRes>(`admin/room-facilities`,{name})
   }
   editFacility(id:string,name:string):Observable<IAddAndEditFacRes>{
     return this._HttpClient.put<IAddAndEditFacRes>(`admin/room-facilities/${id}`,{name})
   }
-
-
 
 }

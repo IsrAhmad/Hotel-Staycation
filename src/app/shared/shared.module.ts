@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 import {MatInputModule} from '@angular/material/input';
 import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -62,18 +62,17 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedTableComponent,
      RouterModule ,
      SidebarComponent,
+     MatDialogModule,
      MatPaginatorModule,
      NavbarComponent,
      AddEditeViewFacilitiesComponent,
-
-
      SidebarComponent,
      MatPaginatorModule,
      MatFormFieldModule,
-  FormsModule,
-  MatInputModule,
-  MatSelectModule,
-  NoDataComponent
+    FormsModule,
+    MatInputModule,
+    MatSelectModule,
+    NoDataComponent,
 
   ]
 })
