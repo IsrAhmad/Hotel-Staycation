@@ -21,30 +21,40 @@ export class RoomsComponent  implements OnInit{
   ,'Capacity', 'Created at' ,'Created by' , 'Actions'];
 
   roomData:IRoom[]=[]
-  constructor(private _RoomsService:RoomsService){}
-  ngOnInit(): void {
-     this.getAllRooms();
-  }
+ search!:string;
   pageSize = 10;
   pageIndex = 0;
   totalCount!:number;
-
-  ////
-  params= {
+   ////
+   params= {
     page :this.pageIndex,
     size:this.pageSize
 
   }
+  constructor(private _RoomsService:RoomsService){}
+
+  ngOnInit(): void {
+     this.getAllRooms();
+  }
+  
+
+ 
   getAllRooms(){
   
     this._RoomsService.getAllRooms(this.params).subscribe({
      next:(res )=>{
-      console.log(res);
+   
       this.roomData= res.data.rooms;
       this.totalCount =res.data.totalCount
-      console.log(this.roomData);
+      
+//handel toaster
+     }  ,
+     error:(err)=>{
+       
+     },
+     complete:()=>{
 
-     }      
+     }    
     })
 
   }
@@ -53,5 +63,16 @@ export class RoomsComponent  implements OnInit{
     this.params.page = e.pageIndex + 1;
     this.params.size = e.pageSize;
     this.getAllRooms();
+  }
+
+  resetSearcgInput() {
+    this. search= '';
+    this.getAllRooms();
+  }
+  filtetByRoomNumber(searchValue :HTMLInputElement){
+    if (searchValue) {
+      this.roomData = this.roomData.filter(p => p.roomNumber === searchValue.value);
+      this.totalCount =this.roomData.length
+    }
   }
 }

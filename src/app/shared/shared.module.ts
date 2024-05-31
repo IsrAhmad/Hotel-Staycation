@@ -11,11 +11,16 @@ import { SharedHeaderComponent } from './components/shared-header/shared-header.
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
+import {MatInputModule} from '@angular/material/input';
 import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
-import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import { NoDataComponent } from './components/no-data/no-data.component';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +30,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
    
     SidebarComponent,
     DeleteComponent,
+    NoDataComponent,
     AddEditeViewFacilitiesComponent,
 
   ],
@@ -36,10 +42,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonModule,
     MatTableModule,
     RouterModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
     FormsModule,
+    MatInputModule,
+    MatSelectModule
     MatDialogModule,
 
-    MatPaginatorModule
     
    
   ],
@@ -56,8 +65,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
      SidebarComponent,
-     MatPaginatorModule
-  
+     MatPaginatorModule,
+     MatFormFieldModule,
+  FormsModule,
+  MatInputModule,
+  MatSelectModule,
+  NoDataComponent
 
   ]
 })
