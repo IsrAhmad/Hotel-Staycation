@@ -25,7 +25,7 @@ export class SharedTableComponent  implements OnInit{
 
 
   isFacilities(content: any){
-    return content && Array.isArray(content.facilities) && content.facilities.length > 0 ;
+    return content && Array.isArray(content) && content.length > 0 ;
   }
 
 

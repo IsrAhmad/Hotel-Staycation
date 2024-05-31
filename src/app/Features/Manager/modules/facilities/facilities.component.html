@@ -6,11 +6,20 @@
     <app-shared-table
      [tableHeaders]="tableHeaders"
       [tableDefinitionText]="'facilities'"
-      [tableBodyContent]="data" 
+      [tableBodyContent]="facilitiesData" 
       (edit)="editOrView($event,true)"
       (view)="editOrView($event,false)"
       (delete)="willBeDeleted($event)"
       ></app-shared-table>
+        <!--pagination-->
+        <mat-paginator
+          [length]="totalCount"
+          [pageSize]="pageSize"
+          [pageIndex]="pageIndex"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          (page)="changePage($event)"
+          aria-label="Select page">
+        </mat-paginator>
   </div>
 
 </div>

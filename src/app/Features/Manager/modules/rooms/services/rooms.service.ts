@@ -17,10 +17,7 @@ export class RoomsService {
   getAllRooms(parmasData:any):Observable<IRoomResponse>{
     return this._HttpClient.get<IRoomResponse>('admin/rooms' , {params:parmasData})
   }
-  //will be edited after editing facility serve 
-  getAllFacilities(parmasData:any):Observable<IFacilitiesResponse>{
-    return this._HttpClient.get<IFacilitiesResponse>('admin/room-facilities' , {params:parmasData})
-  }
+
   
   
 }

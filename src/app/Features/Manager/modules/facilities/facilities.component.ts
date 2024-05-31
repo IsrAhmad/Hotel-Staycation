@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditeViewFacilitiesComponent } from 'src/app/shared/components/add-edite-view-facilities/add-edite-view-facilities.component';
+import { IParams } from '../rooms/models/IRoom.model';
+import { PageEvent } from '@angular/material/paginator';
 
 interface EditEvent {
   id: string;
@@ -42,8 +44,15 @@ export class FacilitiesComponent implements OnInit {
     'Updated At',
     'Actions',
   ];
+  totalCount!:number;
+  pageSize = 10;
+  pageIndex = 0;
+  params:IParams= {
+    page :this.pageIndex,
+    size:this.pageSize
 
-  data: any;
+  }
+  facilitiesData: any;
 
   editAddFacRes:IAddAndEditFacRes={
     success:false,
@@ -78,10 +87,13 @@ export class FacilitiesComponent implements OnInit {
   }
 
   getAllFaclities() {
-    this._FacilitiesService.getAllFacilities().subscribe({
+    this._FacilitiesService.getAllFacilities(this.params).subscribe({
       next: (res: IFacilitiesResponse) => {
-        console.log(res);
-        this.data = res.data;
+     console.log(res)
+        this.facilitiesData = res.data.facilities;
+        console.log(this.facilitiesData);
+        this.totalCount = res.data.totalCount;
+        console.log(this.totalCount)
       }, error: (err: HttpErrorResponse) => {
         console.log(err)
 
@@ -90,6 +102,12 @@ export class FacilitiesComponent implements OnInit {
       }
     })
   }
+      //for paginaton 
+      changePage(e: PageEvent) {
+        this.params.page = e.pageIndex + 1;
+        this.params.size = e.pageSize;
+        this.getAllFaclities();
+      }
 
   editOrView(event: EditEvent,editOrNotType:boolean) {
    console.log(event)

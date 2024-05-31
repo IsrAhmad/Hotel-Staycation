@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from './services/rooms.service';
-import { IRoom, IRoomData } from './models/IRoom.model';
+import { IParams, IRoom, IRoomData } from './models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
 import { FacilitiesService } from '../facilities/services/facilities.service';
 import { IFacility } from '../facilities/models/facilities';
@@ -33,7 +33,7 @@ export class RoomsComponent  implements OnInit{
   totalCount!:number;
  
    ////
-   params= {
+   params:IParams= {
     page :this.pageIndex,
     size:this.pageSize
 

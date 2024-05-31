@@ -26,6 +26,10 @@ export interface IRoom {
     _id: string
     name: string
   }
+  export  interface IParams {
+    page :number,
+    size:number
+  }
   
   export interface ICreatedBy {
     _id: string
