@@ -5,6 +5,8 @@ import { RoomsRoutingModule } from './rooms-routing.module';
 import { RoomsComponent } from './rooms.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddEditRoomComponent } from './components/add-edit-room/add-edit-room.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { AddEditRoomComponent } from './components/add-edit-room/add-edit-room.c
   imports: [
     CommonModule,
     RoomsRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxFileDropModule,
+    NgxDropzoneModule
   ]
 })
 export class RoomsModule { }

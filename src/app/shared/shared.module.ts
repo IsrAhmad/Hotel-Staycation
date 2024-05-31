@@ -17,7 +17,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
 
@@ -48,7 +48,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-
+   ReactiveFormsModule
 
 
   ],
@@ -62,7 +62,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
      RouterModule ,
      SidebarComponent,
      AddEditeViewFacilitiesComponent,
-
+      
 
      SidebarComponent,
      MatPaginatorModule,
@@ -70,7 +70,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
   FormsModule,
   MatInputModule,
   MatSelectModule,
-  NoDataComponent
+  NoDataComponent,
+  ReactiveFormsModule
 
   ]
 })
