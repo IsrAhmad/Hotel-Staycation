@@ -23,11 +23,11 @@
                             <mat-icon class="text-black">more_horiz</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu" class="matMenu">
-                            <button class="btn-hover" mat-menu-item type="button" (click)="viewItem(tableBody._id)">
+                            <button class="btn-hover" mat-menu-item type="button" (click)="viewItem(tableBody._id,tableBody.name)">
                                 <mat-icon class="text-primary-color">visibility</mat-icon>
                                 <span class="text-black">View</span>
                             </button>
-                            <button class="btn-hover" mat-menu-item (click)="isEdited(tableBody._id)">
+                            <button class="btn-hover" mat-menu-item (click)="isEdited(tableBody._id,tableBody.name)">
                                 <mat-icon class="text-primary-color  ">edit_square</mat-icon>
                                 <span class="text-black ">Edit</span>
                             </button>

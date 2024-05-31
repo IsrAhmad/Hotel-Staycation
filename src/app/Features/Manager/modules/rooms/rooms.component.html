@@ -114,6 +114,31 @@
           <ng-container matColumnDef="Created at">
             <th mat-header-cell *matHeaderCellDef> Created at </th>
             <td mat-cell *matCellDef="let element"> {{element.createdAt |date}}
+
+<!--     <div class="row">
+        <!--header-->
+      <app-shared-header [headerBtnText]="btnText" [headerMainText]="headerText"
+        [headerPargraph]="headerPargraph" ></app-shared-header>
+
+        <!--search and filter-->
+
+        <!--table-->
+        <table mat-table  [dataSource]="roomData" class="table table-striped">
+
+           
+              <!-- Room Number Column -->
+              <ng-container matColumnDef="Room number">
+                <th mat-header-cell *matHeaderCellDef> Room number</th>
+                <td mat-cell *matCellDef="let element"> {{element.roomNumber}} </td>
+              </ng-container>
+
+            <!-- Images Column -->
+            <ng-container matColumnDef="Images">
+              <th mat-header-cell *matHeaderCellDef> Images</th>
+              <td mat-cell *matCellDef="let element">
+                
+                
+             <img [src]="element.images[0]" alt=""> -->
             </td>
           </ng-container>
           <!--Created by Column -->
