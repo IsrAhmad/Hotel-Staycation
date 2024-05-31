@@ -57,6 +57,7 @@ export class LoginComponent {
 
         localStorage.setItem('token',this.userLogged.data.token)
         localStorage.setItem('role',this.userLogged.data.user.role)
+        localStorage.setItem('id',this.userLogged.data.user._id)
 
         this._Router.navigate(['/guest/home'])
 

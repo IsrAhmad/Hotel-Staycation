@@ -13,9 +13,10 @@ import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 import {MatInputModule} from '@angular/material/input';
 import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
@@ -31,6 +32,7 @@ import {MatSortModule} from '@angular/material/sort';
 
     SidebarComponent,
     DeleteComponent,
+    NavbarComponent,
     NoDataComponent,
     AddEditeViewFacilitiesComponent,
 
@@ -52,7 +54,6 @@ import {MatSortModule} from '@angular/material/sort';
     MatListModule,
     MatSortModule
 
-
   ],
   exports:[
     MatMenuModule,
@@ -63,17 +64,20 @@ import {MatSortModule} from '@angular/material/sort';
     SharedTableComponent,
      RouterModule ,
      SidebarComponent,
+     MatDialogModule,
+     MatPaginatorModule,
+     NavbarComponent,
      AddEditeViewFacilitiesComponent,
      MatListModule,
-
      SidebarComponent,
      MatPaginatorModule,
      MatFormFieldModule,
-  FormsModule,
-  MatInputModule,
-  MatSelectModule,
-  NoDataComponent ,
-  MatSortModule
+      FormsModule,
+      MatInputModule,
+      MatSelectModule,
+      NoDataComponent ,
+      MatSortModule,
+
 
   ]
 })

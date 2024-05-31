@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { IFacilitiesResponse } from 'src/app/Features/Manager/modules/facilities/models/facilities';
+
+interface deleteEvent {
+  id:string,
+  name:string
+}
 interface EditOrViewEvent {
   id: string;
   name: string;
@@ -14,9 +19,12 @@ export class SharedTableComponent  implements OnInit{
   @Input() tableDefinitionText: string = '';
   @Input() tableBodyContent!: any ;
 
+  // @Output() edit: EventEmitter<number> = new EventEmitter<number>();
+  // @Output() view: EventEmitter<number> = new EventEmitter<number>();
+  @Output() delete: EventEmitter<deleteEvent> = new EventEmitter<deleteEvent>();
   @Output() edit: EventEmitter<EditOrViewEvent> = new EventEmitter<EditOrViewEvent>();
   @Output() view: EventEmitter<EditOrViewEvent> = new EventEmitter<EditOrViewEvent>();
-  @Output() delete: EventEmitter<number> = new EventEmitter<number>();
+  // @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 
 
   ngOnInit(): void {
@@ -39,10 +47,9 @@ export class SharedTableComponent  implements OnInit{
     this.view.emit({id,name});
   }
 
-  deleteItem(rowId: number) {
-    this.delete.emit(rowId);
-    console.log(rowId);
+  deleteItem(id: string,name :string) {
+    this.delete.emit({id,name});
   }
-  
+
 
 }

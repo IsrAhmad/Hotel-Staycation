@@ -5,7 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { FacilitiesService } from '../facilities/services/facilities.service';
 import { IFacility } from '../facilities/models/facilities';
 import { Sort } from '@angular/material/sort';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
@@ -40,9 +40,8 @@ export class RoomsComponent  implements OnInit{
   }
 
   sortedRooms:IRoom[] =[];
-  constructor(private _RoomsService:RoomsService ){
-    
-  }
+
+  constructor(private _RoomsService:RoomsService,private _Router:Router){}
 
   ngOnInit(): void {
     this.getAllRooms();
@@ -117,8 +116,10 @@ export class RoomsComponent  implements OnInit{
       this.totalCount =this.sortedRooms.length
     }
   }
-  
 
 
+  addRoom():void{
+    this._Router.navigate(['/manager/rooms/addRoom']);
 
+  }
 }

@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 import { AddEditeViewFacilitiesComponent } from 'src/app/shared/components/add-edite-view-facilities/add-edite-view-facilities.component';
 import { IParams } from '../rooms/models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
@@ -15,11 +16,11 @@ interface EditEvent {
 }
 @Component({
   selector: 'app-facilities',
-  templateUrl: './facilities.component.html',
+  templateUrl:'./facilities.component.html',
   styleUrls: ['./facilities.component.scss']
 })
 export class FacilitiesComponent implements OnInit {
-  
+
   createdBy: ICreatedBy = {
     _id: '',
     userName: ''
@@ -53,6 +54,8 @@ export class FacilitiesComponent implements OnInit {
 
   }
   facilitiesData: any;
+  data: any;
+  constructor(private _FacilitiesService: FacilitiesService, private toastr: ToastrService ,private _Router:Router,public dialog: MatDialog) { }
 
   editAddFacRes:IAddAndEditFacRes={
     success:false,
@@ -73,15 +76,12 @@ export class FacilitiesComponent implements OnInit {
     }
   }
 
-  constructor(private _FacilitiesService: FacilitiesService,
-     private toastr: ToastrService ,
-     private _Router:Router,
+//   constructor(private _FacilitiesService: FacilitiesService,
+//      private toastr: ToastrService ,
+//      private _Router:Router,
 
+// private dialog: MatDialog) { }
 
-
-
-
-     private dialog: MatDialog) { }
   ngOnInit(): void {
     this.getAllFaclities();
   }
@@ -114,10 +114,10 @@ export class FacilitiesComponent implements OnInit {
 
    const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
     data: {id:event.id, edit:editOrNotType,name:event.name},
-     width: '25%' 
-    
+     width: '25%'
+
     });
-    
+
     dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
     console.log( result);
@@ -133,8 +133,9 @@ export class FacilitiesComponent implements OnInit {
 
 
   }
-  willBeDeleted(event: number) {
-  //nvigate to delete component
+  willBeDeleted(event: any) {
+    console.log(event);
+    this.openDeleteDialog('700ms','350ms',event.id,event.name)
   }
 
 
@@ -142,10 +143,10 @@ export class FacilitiesComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
       data:{name:''},
-       width: '25%' 
-      
+       width: '25%'
+
       });
-      
+
       dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log( result);
@@ -154,10 +155,44 @@ export class FacilitiesComponent implements OnInit {
       console.log('add api')
       console.log( result.name);
       this.addFaility(result)
-      
+
       }
       });
 
+  }
+  // DELETE_DIALOG
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string): void {
+    const dialo =this.dialog.open(DeleteComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data:{
+        comp:'fac',
+        id:id,
+        name:itname
+      }
+    });
+    dialo.afterClosed().subscribe(res=>{
+      if(res!=null){
+        this.deleteFacility(res)
+      }
+    })
+  }
+  // DELETE_FUNCTION
+  deleteFacility(id:number){
+    this._FacilitiesService.deleteFacility(id).subscribe({
+      next:res=>{
+        console.log(res);
+        this.toastr.success('item Deleted succssfully')
+      },
+      error:err=>{
+        console.log(err);
+        this.toastr.error('there is a problem')
+      },
+      complete:()=>{
+        this.getAllFaclities()
+      }
+    })
   }
 
   /*
@@ -165,13 +200,13 @@ export class FacilitiesComponent implements OnInit {
     if(facilityId){
     //edit or view
     console.log('editttOrView')
-    
+
     const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
     data: {id:facilityId, edit:editOrNotType,name:''},
     // width: '25%' // width here
-    
+
     });
-    
+
     dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
     console.log( result);
@@ -187,22 +222,22 @@ export class FacilitiesComponent implements OnInit {
     const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
     data:{name:''},
     // width: '25%' // width here
-    
+
     });
-    
+
     dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
     console.log( result);
     if(result){
     //add api
     console.log('add api')
-    
+
     }
     });}
-    
+
     }*/
-    
-    
+
+
     editFaility(id:string,name:string):void{
 
       this._FacilitiesService.editFacility(id,name).subscribe({
@@ -216,7 +251,7 @@ export class FacilitiesComponent implements OnInit {
         }, complete: () => {
           this.getAllFaclities()
           this.toastr.success(this.editAddFacRes.message)
-  
+
         }
       })
     }
@@ -231,7 +266,7 @@ export class FacilitiesComponent implements OnInit {
           console.log(err)
           this.toastr.error(err.error.message)
 
-  
+
         }, complete: () => {
           this.getAllFaclities()
 
