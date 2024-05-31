@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import {  IRoomResponse } from '../models/IRoom.model';
+import {  IRoomRes, IRoomResponse } from '../models/IRoom.model';
 import { IFacilitiesResponse } from '../../facilities/models/facilities';
 
 @Injectable({
@@ -18,6 +18,13 @@ export class RoomsService {
     return this._HttpClient.get<IRoomResponse>('admin/rooms' , {params:parmasData})
   }
 
+  addRoom(data:FormData):Observable<IRoomRes>{
+    return this._HttpClient.post<IRoomRes>('admin/rooms' , data)
+  }
+
+ /* editRoom(id:string,data:FormData):Observable<IRoomRes>{
+    return this._HttpClient.post<IRoomRes>(`admin/rooms/${id}` , data)
+  }*/
   
   
 }

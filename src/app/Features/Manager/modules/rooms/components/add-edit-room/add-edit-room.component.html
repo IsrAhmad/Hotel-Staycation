@@ -1,1 +1,196 @@
-<p>add-edit-room works!</p>
+<section class="py-4  ">
+    <div class="container">
+
+        <h2 class="mt-5 text-secondary-color">Add new room</h2>
+        <form
+        [formGroup]="addEditRoomForm"
+        (ngSubmit)="addEditRoom()"
+        class="mt-1"
+      >
+        <div class="row g-4  mt-5">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input
+                      formControlName="roomNumber"
+                      type="text"
+                      class="form-control w-100"
+                      placeholder="Room Number"
+                      id="roomNumber"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+
+                  <div
+                  *ngIf="
+                    addEditRoomForm.get('roomNumber')?.errors &&
+                    addEditRoomForm.get('roomNumber')?.touched
+                  "
+                  class="d-flex align-items-center mt-1"
+                >
+                  <img
+                    src="./assets/images/invalid.png"
+                    width="22"
+                    height="22"
+                    alt
+                    class="mx-2"
+                  />
+                  <p
+                    class="m-0 text-danger"
+                  >
+                  Room number is required
+                  </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input
+                      formControlName="price"
+                      type="number"
+                      class="form-control w-100"
+                      placeholder="Price"
+                      id="price"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+
+                  <div
+                  *ngIf="
+                    addEditRoomForm.get('price')?.errors &&
+                    addEditRoomForm.get('price')?.touched
+                  "
+                  class="d-flex align-items-center mt-1"
+                >
+                  <img
+                    src="./assets/images/invalid.png"
+                    width="22"
+                    height="22"
+                    alt
+                    class="mx-2"
+                  />
+                  <p
+                    class="m-0 text-danger"
+                  >
+                  Price is required
+                  </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input
+                      formControlName="capacity"
+                      type="number"
+                      class="form-control w-100"
+                      placeholder="Capacity"
+                      id="capacity"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+                  <div
+                  *ngIf="
+                    addEditRoomForm.get('capacity')?.errors &&
+                    addEditRoomForm.get('capacity')?.touched
+                  "
+                  class="d-flex align-items-center mt-1"
+                >
+                  <img
+                    src="./assets/images/invalid.png"
+                    width="22"
+                    height="22"
+                    alt
+                    class="mx-2"
+                  />
+                  <p
+                    class="m-0 text-danger"
+                  >
+                  Capacity is required
+                  </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input
+                      formControlName="discount"
+                      type="number"
+                      class="form-control w-100"
+                      placeholder="Discount"
+                      id="discount"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+                  <div
+                  *ngIf="
+                    addEditRoomForm.get('discount')?.errors &&
+                    addEditRoomForm.get('discount')?.touched
+                  "
+                  class="d-flex align-items-center mt-1"
+                >
+                  <img
+                    src="./assets/images/invalid.png"
+                    width="22"
+                    height="22"
+                    alt
+                    class="mx-2"
+                  />
+                  <p
+                    class="m-0 text-danger"
+                  >
+                  Discount is required
+                  </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <mat-form-field class="w-100  ">
+                    <mat-label>Facilities</mat-label>
+                    <mat-select  multiple formControlName="facilities" >
+                     
+                      <ng-container >
+                        <mat-option *ngFor="let item of faciliyRes.data.facilities" [value]="item._id">{{item.name}}</mat-option>
+
+
+        
+                      </ng-container>
+                    
+                    </mat-select>
+        
+                  </mat-form-field>
+
+
+            </div>
+
+            
+            <div class="col-md-12">
+
+
+<ngx-dropzone (change)="onSelect($event)">
+	<ngx-dropzone-label>Drop room photos</ngx-dropzone-label>
+	<ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview"  [removable]="true" (removed)="onRemove(f)" *ngFor="let f of files" [file]="f">
+  </ngx-dropzone-image-preview>
+</ngx-dropzone>
+
+
+            </div>
+
+       
+
+
+
+        </div>
+
+        <div class="btns  mt-5  text-end">
+          <button class="cancel mx-4 " type="button">Cancel</button>
+          <button class="primary " [disabled]="addEditRoomForm.invalid || files.length==0">Save</button>
+        </div>
+
+        </form>
+
+    </div>
+</section>

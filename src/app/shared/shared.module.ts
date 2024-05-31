@@ -18,7 +18,7 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import {MatListModule} from '@angular/material/list';
@@ -51,6 +51,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
+   ReactiveFormsModule
+
     MatListModule,
     MatSortModule
 
@@ -68,6 +70,16 @@ import {MatSortModule} from '@angular/material/sort';
      MatPaginatorModule,
      NavbarComponent,
      AddEditeViewFacilitiesComponent,
+      
+
+     SidebarComponent,
+     MatPaginatorModule,
+     MatFormFieldModule,
+  FormsModule,
+  MatInputModule,
+  MatSelectModule,
+  NoDataComponent,
+  ReactiveFormsModule
      MatListModule,
      SidebarComponent,
      MatPaginatorModule,

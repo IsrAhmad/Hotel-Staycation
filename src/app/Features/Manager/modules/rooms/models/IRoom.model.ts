@@ -35,3 +35,15 @@ export interface IRoom {
     _id: string
     userName: string
   }
+
+
+  export interface IRoomRes {
+    success: boolean
+    message: string
+    data: Data
+  }
+  
+  export interface Data {
+    room: IRoom
+  }
+  
