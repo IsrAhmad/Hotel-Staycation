@@ -1,25 +1,33 @@
 <div class="container">
   <div class="row">
-    <app-shared-header [headerBtnText]="'Add New Facility'" [headerMainText]="'Facilities Table Details'"
-      [headerPargraph]="'You can check all details'" (addClicked)="addFacility()"></app-shared-header>
+    <app-shared-header [headerBtnText]="'Add New Facility'"
+      [headerMainText]="'Facilities Table Details'"
+      [headerPargraph]="'You can check all details'"
+      (addClicked)="addFacility()"></app-shared-header>
 
-    <app-shared-table
-     [tableHeaders]="tableHeaders"
-      [tableDefinitionText]="'facilities'"
-      [tableBodyContent]="facilitiesData" 
-      (edit)="editOrView($event,true)"
-      (view)="editOrView($event,false)"
-      (delete)="willBeDeleted($event)"
-      ></app-shared-table>
-        <!--pagination-->
-        <mat-paginator
-          [length]="totalCount"
-          [pageSize]="pageSize"
-          [pageIndex]="pageIndex"
-          [pageSizeOptions]="[5, 10, 25, 100]"
-          (page)="changePage($event)"
-          aria-label="Select page">
-        </mat-paginator>
+    <ng-container *ngIf=" totalCount == 0">
+   <app-no-data></app-no-data>
+    </ng-container>
+    <ng-container *ngIf="totalCount > 0">
+      <app-shared-table
+        [tableHeaders]="tableHeaders"
+        [tableDefinitionText]="'facilities'"
+        [tableBodyContent]="facilitiesData"
+        (edit)="editOrView($event,true)"
+        (view)="editOrView($event,false)"
+        (delete)="willBeDeleted($event)"></app-shared-table>
+      <!--pagination-->
+      <mat-paginator
+        [length]="totalCount"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="changePage($event)"
+        aria-label="Select page">
+      </mat-paginator>
+    </ng-container>
+
   </div>
 
 </div>
+
