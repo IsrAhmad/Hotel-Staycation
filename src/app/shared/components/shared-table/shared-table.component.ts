@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { IFacilitiesResponse } from 'src/app/Features/Manager/modules/facilities/models/facilities';
 
 interface deleteEvent {
-  id:number,
+  id:string,
   name:string
 }
 interface EditOrViewEvent {
@@ -19,12 +19,12 @@ export class SharedTableComponent  implements OnInit{
   @Input() tableDefinitionText: string = '';
   @Input() tableBodyContent!: any ;
 
-  @Output() edit: EventEmitter<number> = new EventEmitter<number>();
-  @Output() view: EventEmitter<number> = new EventEmitter<number>();
+  // @Output() edit: EventEmitter<number> = new EventEmitter<number>();
+  // @Output() view: EventEmitter<number> = new EventEmitter<number>();
   @Output() delete: EventEmitter<deleteEvent> = new EventEmitter<deleteEvent>();
-//   @Output() edit: EventEmitter<EditOrViewEvent> = new EventEmitter<EditOrViewEvent>();
-//   @Output() view: EventEmitter<EditOrViewEvent> = new EventEmitter<EditOrViewEvent>();
-//   @Output() delete: EventEmitter<number> = new EventEmitter<number>();
+  @Output() edit: EventEmitter<EditOrViewEvent> = new EventEmitter<EditOrViewEvent>();
+  @Output() view: EventEmitter<EditOrViewEvent> = new EventEmitter<EditOrViewEvent>();
+  // @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 
 
   ngOnInit(): void {
@@ -47,9 +47,9 @@ export class SharedTableComponent  implements OnInit{
     this.view.emit({id,name});
   }
 
-  deleteItem(id: number,name :string) {
+  deleteItem(id: string,name :string) {
     this.delete.emit({id,name});
   }
-  
+
 
 }
