@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid mt-4">
   <div class="row">
     <!--header-->
     <app-shared-header [headerBtnText]="btnText" [headerMainText]="headerText"
@@ -156,7 +156,7 @@
                 <mat-icon>more_horiz</mat-icon>
               </button>
               <mat-menu #menu="matMenu" class>
-                <button class="btn-hover" mat-menu-item type="button">
+                <button [routerLink]="['/manager/rooms/viewRoom',element._id,'view']" class="btn-hover" mat-menu-item type="button">
                   <mat-icon class="text-primary-color">visibility</mat-icon>
                   <span>View</span>
                 </button>
@@ -164,7 +164,7 @@
                   <mat-icon class="text-primary-color  ">edit_square</mat-icon>
                   <span>Edit</span>
                 </button>
-                <button mat-menu-item class="btn-hover" type="button">
+                <button (click)="deleteThisItem(element._id,element.roomNumber)" mat-menu-item class="btn-hover" type="button">
                   <mat-icon class="text-primary-color  ">delete</mat-icon>
                   <span>Delete</span>
                 </button>

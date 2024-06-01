@@ -6,6 +6,9 @@ import { FacilitiesService } from '../facilities/services/facilities.service';
 import { IFacility } from '../facilities/models/facilities';
 import { Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rooms',
@@ -41,7 +44,7 @@ export class RoomsComponent  implements OnInit{
 
   sortedRooms:IRoom[] =[];
 
-  constructor(private _RoomsService:RoomsService,private _Router:Router){}
+  constructor(private _RoomsService:RoomsService,private _Router:Router,public dialog: MatDialog, private toastr: ToastrService){}
 
   ngOnInit(): void {
     this.getAllRooms();
@@ -122,4 +125,45 @@ export class RoomsComponent  implements OnInit{
     this._Router.navigate(['/manager/rooms/addRoom']);
 
   }
+
+  deleteThisItem(id:number,name:string):void{
+    this.openDeleteDialog('700ms','350ms',id,name,'Room')
+
+  }
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string,componentName:string): void {
+    const dialo =this.dialog.open(DeleteComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data:{
+        comp:componentName,
+        id:id,
+        name:itname
+      }
+    });
+    dialo.afterClosed().subscribe(res=>{
+      if(res!=null){
+        this.deleteRoom(res)
+      }
+    })
+  }
+
+  deleteRoom(id:number):void{
+
+    this._RoomsService.deleteRoom(id).subscribe({
+      next:res=>{
+        console.log(res);
+        this.toastr.success(res.message)
+      },
+      error:err=>{
+        console.log(err);
+        this.toastr.error(err.error.message)
+      },
+      complete:()=>{
+        this.getAllRooms()
+      }
+    })
+
+  }
+
 }

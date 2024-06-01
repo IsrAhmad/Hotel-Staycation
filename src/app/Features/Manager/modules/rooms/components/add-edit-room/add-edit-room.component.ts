@@ -7,7 +7,8 @@ import { IRoomRes } from '../../models/IRoom.model';
 import { FacilitiesService } from '../../../facilities/services/facilities.service';
 import { IFacilitiesResponse } from '../../../facilities/models/facilities';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-add-edit-room',
@@ -16,12 +17,15 @@ import { Router } from '@angular/router';
 })
 export class AddEditRoomComponent implements OnInit{
 
+  headerName:string='Add new room'
+
   constructor(private _RoomsService:RoomsService,private _FacilitiesService:FacilitiesService,
     private _ToastrService:ToastrService,
-    private _Router:Router
+    private _Router:Router,
+    private _ActivatedRoute: ActivatedRoute,
   ){}
 
-  roomAddedRes:IRoomRes={
+  roomRes:IRoomRes={
     success:false,
     message:'',
     data:{
@@ -60,9 +64,75 @@ export class AddEditRoomComponent implements OnInit{
   },
 )
 
-ngOnInit(): void {
-  this.getAllFaclities()
+roomID:number=0;
+modePram:string=''
+viewMode:boolean=false;
+
+sliderOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: false,
+  dots: true,
+  navSpeed: 700,
+  navText: ['', ''],
+  responsive: {
+    0: {
+      items: 1
+    },
+    400: {
+      items: 1
+    },
+    740: {
+      items: 2
+    },
+    940: {
+      items: 3
+    }
+  },
+  nav: false
 }
+
+ngOnInit(): void {
+  this.roomID = this._ActivatedRoute.snapshot.params['id'];
+  this.modePram = this._ActivatedRoute.snapshot.params['mode'];
+  if(this.roomID){
+    this.getRoomById(this.roomID)
+  }
+  if (this.modePram == 'view') {
+    this.headerName='View this room'
+    this.viewMode=true
+    this.addEditRoomForm.disable();
+    
+  }else{
+
+  
+  this.getAllFaclities()
+  }
+}
+
+getRoomById(id: number) {
+  this._RoomsService.getRoomById(id).subscribe({
+    next: (res) => {
+      this.roomRes = res
+      console.log(this.roomRes.data.room.images);
+    },
+    error(err) { },
+    complete: () => {
+      this.addEditRoomForm.patchValue({
+        roomNumber: this.roomRes.data.room.roomNumber,
+        price: this.roomRes.data.room.price,
+        capacity: this.roomRes.data.room.capacity,
+        discount: this.roomRes.data.room.discount,
+        facilities: this.roomRes.data.room.facilities.map(f => f._id),  // Map to facility IDs
+
+      })
+
+    },
+  })
+}
+
+
 files: File[] = [];
 
 onSelect(event:any) {
@@ -122,7 +192,7 @@ addRoomApi(data:FormData):void{
 
   this._RoomsService.addRoom(data).subscribe({
     next:(response)=>{
-      this.roomAddedRes=response
+      this.roomRes=response
       
     },error:(err)=>{
       console.log(err)
@@ -130,7 +200,7 @@ addRoomApi(data:FormData):void{
 
     },complete:()=>{
 
-      this._ToastrService.success(this.roomAddedRes.message)
+      this._ToastrService.success(this.roomRes.message)
       this._Router.navigate(['/manager/rooms'])
     }
   })
