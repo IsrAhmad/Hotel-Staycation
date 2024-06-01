@@ -160,7 +160,7 @@
                   <mat-icon class="text-primary-color">visibility</mat-icon>
                   <span>View</span>
                 </button>
-                <button class="btn-hover" mat-menu-item>
+                <button [routerLink]="['/manager/rooms/editRoom',element._id]"class="btn-hover" mat-menu-item>
                   <mat-icon class="text-primary-color  ">edit_square</mat-icon>
                   <span>Edit</span>
                 </button>
