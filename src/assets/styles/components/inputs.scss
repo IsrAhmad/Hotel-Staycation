@@ -1,6 +1,6 @@
-
+@import '../abstracts/variables.scss';
 .input-group{
-    background-color:  #F7F7F7;
+    background-color:  $light-white-color;
     padding: 5px 0px;
 
  
@@ -10,7 +10,7 @@
 }
 
 input{
-    background-color:  #F7F7F7;
+    background-color:  $light-white-color;
     //padding: 14px 10px;
     
     border: none;

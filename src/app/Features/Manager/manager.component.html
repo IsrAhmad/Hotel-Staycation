@@ -5,8 +5,14 @@
         <div  class=" px-0 sidebar " [class]="sidebar?.isToggle?'col-md-1':'col-md-2'">
             <app-sidebar></app-sidebar>
         </div>
-        <div  class="px-0 smooth" [class]="sidebar?.isToggle?'col-md-11':'col-md-10'">
-            <app-navbar></app-navbar>
+        <div  class="px-4 smooth" [class]="sidebar?.isToggle?'col-md-11':'col-md-10'">
+
+          
+            <div class=" ">
+                <app-navbar></app-navbar>
+
+            </div>
+
 
             <router-outlet ></router-outlet>
         </div>

@@ -43,17 +43,32 @@ button {
       }
     }
 
-    &.cancel {
+    &.delete {
       border-radius: 4px;
       border: 1px solid $red-color;
-      color: $red-color;
-      background-color: white !important;
+      color: white;
+      background-color: $red-color !important;
 
       transition: 0.4s !important;
 
       &:hover {
         border: 1px solid $red-color;
-       background-color: $red-color !important;
+       background-color: white !important;
+        color: $red-color !important;
+      }
+     }
+
+    &.cancel {
+      border-radius: 4px;
+      border: 1px solid $light-gray-color;
+      color: $light-gray-color;
+      background-color: white !important;
+
+      transition: 0.4s !important;
+
+      &:hover {
+        border: 1px solid $light-gray-color;
+       background-color: $light-gray-color !important;
         color: white;
       }
      }
