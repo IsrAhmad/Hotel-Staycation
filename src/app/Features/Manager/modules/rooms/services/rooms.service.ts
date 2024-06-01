@@ -25,6 +25,15 @@ export class RoomsService {
  /* editRoom(id:string,data:FormData):Observable<IRoomRes>{
     return this._HttpClient.post<IRoomRes>(`admin/rooms/${id}` , data)
   }*/
+
+  getRoomById(id:number):Observable<IRoomRes>{
+    return this._HttpClient.get<IRoomRes>(`admin/rooms/${id}`);
+
+  }
+
+  deleteRoom(id:number):Observable<any>{
+    return this._HttpClient.delete(`admin/rooms/${id}`)
+  }
   
   
 }

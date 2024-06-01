@@ -135,7 +135,7 @@ export class FacilitiesComponent implements OnInit {
   }
   willBeDeleted(event: any) {
     console.log(event);
-    this.openDeleteDialog('700ms','350ms',event.id,event.name)
+    this.openDeleteDialog('700ms','350ms',event.id,event.name,'Facility')
   }
 
 
@@ -161,13 +161,13 @@ export class FacilitiesComponent implements OnInit {
 
   }
   // DELETE_DIALOG
-  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string): void {
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string,componentName:string): void {
     const dialo =this.dialog.open(DeleteComponent, {
       width: '500px',
       enterAnimationDuration,
       exitAnimationDuration,
       data:{
-        comp:'fac',
+        comp:componentName,
         id:id,
         name:itname
       }
@@ -183,11 +183,11 @@ export class FacilitiesComponent implements OnInit {
     this._FacilitiesService.deleteFacility(id).subscribe({
       next:res=>{
         console.log(res);
-        this.toastr.success('item Deleted succssfully')
+        this.toastr.success(res.message)
       },
       error:err=>{
         console.log(err);
-        this.toastr.error('there is a problem')
+        this.toastr.error(err.error.message)
       },
       complete:()=>{
         this.getAllFaclities()

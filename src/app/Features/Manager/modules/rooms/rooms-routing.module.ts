@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: '', component: RoomsComponent },
   {path:'addRoom',component:AddEditRoomComponent},
   {path:'editRoom/:id',component:AddEditRoomComponent},
+  {path:'viewRoom/:id/:mode',component:AddEditRoomComponent},
+
 
 ];
 

@@ -1,13 +1,26 @@
 <section class="py-4  ">
     <div class="container">
 
-        <h2 class="mt-5 text-secondary-color">Add new room</h2>
+        <h2 class=" text-secondary-color">{{headerName}}</h2>
         <form
         [formGroup]="addEditRoomForm"
         (ngSubmit)="addEditRoom()"
         class="mt-1"
       >
-        <div class="row g-4  mt-5">
+        <div class="row g-4  ">
+          <div class="col-md-12"  *ngIf="viewMode">
+
+            <owl-carousel-o [options]="sliderOptions">
+
+              <ng-container *ngFor="let item of roomRes.data.room.images">
+                <ng-template carouselSlide [id]="roomRes.data.room._id">
+                  <img height="300" [src]="item" alt="room photos">
+                </ng-template>
+              </ng-container>
+          
+            </owl-carousel-o>
+
+          </div>
             <div class="col-md-12">
                 <div class="input-group">
                     <input
@@ -149,11 +162,18 @@
             <div class="col-md-6">
 
                 <mat-form-field class="w-100  ">
-                    <mat-label>Facilities</mat-label>
+                    <mat-label>{{ (roomID && roomRes.data.room.facilities.length==0)?'No facilities':'Facilities'}}</mat-label>
+
                     <mat-select  multiple formControlName="facilities" >
                      
                       <ng-container >
                         <mat-option *ngFor="let item of faciliyRes.data.facilities" [value]="item._id">{{item.name}}</mat-option>
+                        <ng-container *ngIf="roomID" >
+                        <mat-option *ngFor="let item of roomRes.data.room.facilities" [value]="item._id">{{item.name}}</mat-option>
+                        <mat-option *ngIf="roomRes.data.room.facilities">No facilities</mat-option>
+                       
+                        </ng-container>
+                        
 
 
         
@@ -167,7 +187,7 @@
             </div>
 
             
-            <div class="col-md-12">
+            <div class="col-md-12" *ngIf="!viewMode">
 
 
 <ngx-dropzone (change)="onSelect($event)">
@@ -185,9 +205,9 @@
 
         </div>
 
-        <div class="btns  mt-5  text-end">
-          <button class="cancel mx-4 " type="button">Cancel</button>
-          <button class="primary " [disabled]="addEditRoomForm.invalid || files.length==0">Save</button>
+        <div class="btns  mt-4  text-end">
+          <button routerLink="/manager/rooms/" class="cancel mx-4 " type="button">Cancel</button>
+          <button *ngIf="!viewMode" class="primary " [disabled]="addEditRoomForm.invalid || files.length==0">Save</button>
         </div>
 
         </form>

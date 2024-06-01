@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AddEditRoomComponent } from './components/add-edit-room/add-edit-room.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     RoomsRoutingModule,
     SharedModule,
     NgxFileDropModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    CarouselModule
   ]
 })
 export class RoomsModule { }
