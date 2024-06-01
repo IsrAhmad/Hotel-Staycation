@@ -5,9 +5,10 @@ import { AdsRoutingModule } from './ads-routing.module';
 import { AdsComponent } from './ads.component';
 
 
+
 @NgModule({
   declarations: [
-    AdsComponent
+    AdsComponent,
   ],
   imports: [
     CommonModule,
