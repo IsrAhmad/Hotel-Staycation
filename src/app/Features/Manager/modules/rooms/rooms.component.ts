@@ -3,62 +3,81 @@ import { RoomsService } from './services/rooms.service';
 import { IRoom, IRoomData } from './models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
 
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { VeiwRoomComponent } from './components/veiw-room/veiw-room.component';
+
+
+
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss']
 })
-export class RoomsComponent  implements OnInit{
- 
+export class RoomsComponent implements OnInit {
+
+
+  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  //   this.dialog.open(VeiwRoomComponent, {
+  //     width: '250px',
+  //     enterAnimationDuration,
+  //     exitAnimationDuration,
+      
+  //   });
+  // }
+
   //for header
-  btnText :string = 'Add new room' ;
-  headerText:string ='Rooms Table Details' ;
-  headerPargraph:string ='You can check all details';
-  addRoomLink:string =''
+  btnText: string = 'Add new room';
+  headerText: string = 'Rooms Table Details';
+  headerPargraph: string = 'You can check all details';
+  addRoomLink: string = ''
 
- 
-  displayedColumns: string[] = ['Room number','Images' ,'Discount' 
-  ,'Capacity', 'Created at' ,'Created by' , 'Actions'];
 
-  roomData:IRoom[]=[]
- search!:string;
+  displayedColumns: string[] = ['Room number', 'Images', 'Discount'
+    , 'Capacity', 'Created at', 'Created by', 'Actions'];
+
+  roomData: IRoom[] = []
+  search!: string;
   pageSize = 10;
   pageIndex = 0;
-  totalCount!:number;
-   ////
-   params= {
-    page :this.pageIndex,
-    size:this.pageSize
+  totalCount!: number;
+  ////
+  params = {
+    page: this.pageIndex,
+    size: this.pageSize
 
   }
-  constructor(private _RoomsService:RoomsService){}
+
+  constructor(private _RoomsService: RoomsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-     this.getAllRooms();
+    this.getAllRooms();
   }
-  
 
- 
-  getAllRooms(){
-  
+
+
+  getAllRooms() {
+
     this._RoomsService.getAllRooms(this.params).subscribe({
-     next:(res )=>{
-   
-      this.roomData= res.data.rooms;
-      this.totalCount =res.data.totalCount
-      
-//handel toaster
-     }  ,
-     error:(err)=>{
-       
-     },
-     complete:()=>{
+      next: (res) => {
 
-     }    
+        this.roomData = res.data.rooms;
+        this.totalCount = res.data.totalCount
+
+        //handel toaster
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+
+      }
     })
 
   }
-     //for paginaton 
+
+
+  //for paginaton 
   changePage(e: PageEvent) {
     this.params.page = e.pageIndex + 1;
     this.params.size = e.pageSize;
@@ -66,13 +85,13 @@ export class RoomsComponent  implements OnInit{
   }
 
   resetSearcgInput() {
-    this. search= '';
+    this.search = '';
     this.getAllRooms();
   }
-  filtetByRoomNumber(searchValue :HTMLInputElement){
+  filtetByRoomNumber(searchValue: HTMLInputElement) {
     if (searchValue) {
       this.roomData = this.roomData.filter(p => p.roomNumber === searchValue.value);
-      this.totalCount =this.roomData.length
+      this.totalCount = this.roomData.length
     }
   }
 }

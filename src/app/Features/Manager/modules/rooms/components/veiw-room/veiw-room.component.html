@@ -1,0 +1,83 @@
+<div class="container min-vh-100   p-sm-2  d-flex justify-content-center align-items-center ">
+    <div class="row p-lg-4 p-sm-0 ">
+        <div class="col-md-7 col-sm-12  my-auto ">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12  my-sm-2">
+                    <h3 class="mb-0">Room Number</h3>
+                    <div class="card mt-0 ">
+                        <ng-container *ngIf="roomData.room.roomNumber">
+                            <p class="px-3 py-2 my-auto">{{roomData.room.roomNumber}}</p>
+                        </ng-container>
+                        <p *ngIf="!roomData.room.roomNumber" class="px-3 py-2 my-auto">No Room Number</p>
+                    </div>
+                </div>
+                <div class="col-lg-6  my-sm-2">
+                    <h3 class="mb-0">Price</h3>
+                    <div class="card mt-0 ">
+                        <ng-container *ngIf="roomData.room.price">
+                            <p class="px-3 py-2 my-auto">{{roomData.room.price}}$</p>
+                        </ng-container>
+                        <p *ngIf="!roomData.room.price" class="px-3 py-2 my-auto">No Price</p>
+                    </div>
+                </div>
+                <div class="col-lg-6  my-sm-2">
+                    <h3 class="mb-0">Capicity</h3>
+                    <div class="card mt-0 ">
+                        <ng-container *ngIf="roomData.room.capacity">
+                            <p class="px-3 py-2 my-auto">{{roomData.room.capacity}}</p>
+                        </ng-container>
+                        <p *ngIf="!roomData.room.capacity" class="px-3 py-2 my-auto">No Capicity</p>
+                    </div>
+                </div>
+                <div class="col-lg-6  my-sm-2">
+                    <h3 class="mb-0">Discount</h3>
+                    <div class="card mt-0 ">
+                        <ng-container *ngIf="roomData.room.discount">
+                            <p class="px-3 py-2 my-auto">{{roomData.room.discount}}%</p>
+                        </ng-container>
+                        <p *ngIf="!roomData.room.discount" class="px-3 py-2 my-auto">No Discount</p>
+                    </div>
+                </div>
+                <div class="col-md-12 my-sm-3 my-sm-1 ">
+                    <h3 class="mb-0">Facilities</h3>
+                    <div class="card mt-0 py-2 ps-2">
+                        <ng-container *ngIf="roomData.room.facilities">
+                            <p class="ps-3 my-2  my-auto" *ngFor="let item of roomData.room.facilities">{{item.name}}
+                            </p>
+                        </ng-container>
+                        <p *ngIf="roomData.room.facilities.length==0" class="px-3 py-2 my-auto">No Facilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-12 my-sm-2 my-auto">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner ">
+                    <div *ngIf="images">
+                        <div *ngFor="let image of images ;let i = index" [class.active]="i === 0"
+                            class="carousel-item w-100">
+                            <img [src]="image" class="d-block w-100" alt="...room image">
+                        </div>
+                    </div>
+                    <p *ngIf="!images" class="px-3 py-2 my-auto">No Images</p>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="my-sm-2 w-25 ms-auto mt-md-5 mt-sm-2" routerLink="../../">
+            <button type="button" class="btn btn-outline-danger w-100">Close</button>
+        </div>
+
+    </div>
+
+</div>

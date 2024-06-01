@@ -134,7 +134,8 @@
                 <mat-icon>more_horiz</mat-icon>
               </button>
               <mat-menu #menu="matMenu" class>
-                <button class="btn-hover" mat-menu-item type="button">
+                <!-- <button mat-raised-button (click)="openDialog('3000ms', '1500ms')"> -->
+                <button [routerLink]="['veiw/' , element._id]" class="btn-hover" mat-menu-item type="button">
                   <mat-icon class="text-primary-color">visibility</mat-icon>
                   <span>View</span>
                 </button>
