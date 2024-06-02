@@ -1,6 +1,6 @@
 <p>ads works!</p>
 
-<button class="btn " routerLink="/manager/ads/addNewAd">Add</button>
+<button class="btn " (click)="openAddDialog()">Add</button>
 <button  class="btn">Edit</button>
 <button  class="btn ">view</button>
 
@@ -10,20 +10,8 @@
     <div class="container">
         <div class="row justify-content-between align-items-center">
             <div class="col-md-8">
-                <div>
-                    <h5>
-                        Categories Table Details
-
-                    </h5>
-                    <p>You can check all details</p>
-                </div>
-            </div>
-            <div class="col-md-4 text-end">
-                <button class="btn primary" >
-                    Add New item
-                </button>
-            </div>
-        </div>
+              
+           
        
         <div class="row">
             <table class="table mt-2  table-striped">
@@ -36,9 +24,9 @@
                     </tr>
                 </thead>
                 <tbody *ngIf="allads?.data.ads.length>0">
-                    <tr *ngFor="let category of allads.data.ads">
-                        <td>{{category.room.roomNumber}}</td>
-                        <td>{{category.isActive
+                    <tr *ngFor="let ads of allads.data.ads">
+                        <td>{{ads.room.roomNumber}}</td>
+                        <td>{{ads.isActive
                         }}</td>
                       
                         <td>
@@ -49,13 +37,15 @@
                             </button>
                             <mat-menu #menu="matMenu">
                                 <button mat-menu-item
-                                    (click)="openViewAdsDialog(category._id,
-                                     category.room.roomNumber ,
-                                    category.room.price,category.isActive)">
+                                    (click)="openViewAdsDialog(ads._id,
+                                     ads.room.roomNumber ,
+                                     ads.room.price,ads.isActive ,true)">
                                     <mat-icon>visibility</mat-icon>
                                     <span>View</span>
                                 </button>
                                 <button mat-menu-item
+                                (click)="openUpdateDialog(ads._id,
+                              ads.isActive , ads.room.discount )"
                                    >
                                     <mat-icon>edit_note</mat-icon>
                                     <span>Update</span>

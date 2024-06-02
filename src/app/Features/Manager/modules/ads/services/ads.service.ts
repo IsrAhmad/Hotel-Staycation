@@ -14,9 +14,9 @@ constructor(private _HttpClient:HttpClient) { }
 getAllAds(){
   return this._HttpClient.get(`admin/ads`);
 }
-updateADItem(id:string , paramsDAta:any):Observable<any>
+updateADItem(id:string , data:any):Observable<any>
 {
- return this._HttpClient.post(`admin/ads/${id}` , {params:paramsDAta})
+ return this._HttpClient.post(`admin/ads/${id}` , data)
 }
 viewADItem(id:string):Observable<any>{
   return this._HttpClient.get(`admin/ads/${id}`);
