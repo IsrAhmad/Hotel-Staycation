@@ -64,11 +64,24 @@
     </div>
 
 
-    <div class="row mt-3 ">
-        <div class="col-md-6 d-flex align-items-center  p-3">
-            <div class="chart w-50 ">
-                <canvas id="myChart">{{chart}}</canvas>
-            </div>
+    <div class="row mt-3  d-flex justify-content-between align-items-center">
+        <div class="col-md-5 d-flex align-items-center justify-content-center   p-3">
+          <div class="mainCahrt ">
+            <div class="chart ">
+              <h3>Bookings</h3>
+              <canvas id="myChart">{{chart}}</canvas>
+          </div>
+          </div>
+           
+        </div>
+        <div class="col-md-5 d-flex align-items-center  justify-content-center p-3">
+          <div class="mainCahrt ">
+            <h3>Users</h3>
+            <div class="chart ">
+              <canvas id="userChart">{{userChart}}</canvas>
+          </div>
+          </div>
+           
         </div>
     </div>
 </div>
