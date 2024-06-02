@@ -9,5 +9,10 @@ export class BookingService {
 
   constructor(private _HttpClient:HttpClient) { }
 
- 
+
+  getAllBookings(parmasData:any):Observable<any>{
+    return this._HttpClient.get('admin/booking' , {params:parmasData})
+  }
+
+
 }
