@@ -15,4 +15,10 @@ export class BookingService {
   }
 
  
+
+  getAllBookings(parmasData:any):Observable<any>{
+    return this._HttpClient.get('admin/booking' , {params:parmasData})
+  }
+
+
 }

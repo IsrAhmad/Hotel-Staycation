@@ -22,9 +22,9 @@ export class RoomsService {
     return this._HttpClient.post<IRoomRes>('admin/rooms' , data)
   }
 
- /* editRoom(id:string,data:FormData):Observable<IRoomRes>{
-    return this._HttpClient.post<IRoomRes>(`admin/rooms/${id}` , data)
-  }*/
+  editRoom(id:number,data:FormData):Observable<IRoomRes>{
+    return this._HttpClient.put<IRoomRes>(`admin/rooms/${id}` , data)
+  }
 
   getRoomById(id:number):Observable<IRoomRes>{
     return this._HttpClient.get<IRoomRes>(`admin/rooms/${id}`);

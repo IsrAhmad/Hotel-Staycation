@@ -8,6 +8,12 @@ export interface IVeiwBookingResponse {
     booking: IBooking
   }
   
+//   export interface IBooking {
+
+  export interface IVeiwBookingData {
+    booking: IBooking
+  }
+
   export interface IBooking {
     _id: string
     startDate: string
@@ -26,8 +32,19 @@ export interface IVeiwBookingResponse {
     userName: string
   }
   
+//   export interface IRoom {
+
+  export interface User {
+    _id: string
+    userName: string
+  }
+
   export interface IRoom {
     _id: string
     roomNumber: string
   }
-  
+
+  export  interface IParams {
+    page :number,
+    size:number
+  }
