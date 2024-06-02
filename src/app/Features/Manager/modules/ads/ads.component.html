@@ -18,6 +18,8 @@
                 <thead>
                     <tr>
                         <th>room numer</th>
+                        <th>discount</th>
+
                       
                         <th>isactive</th>
                         <th>Action</th>
@@ -26,6 +28,8 @@
                 <tbody *ngIf="allads?.data.ads.length>0">
                     <tr *ngFor="let ads of allads.data.ads">
                         <td>{{ads.room.roomNumber}}</td>
+                        <td>{{ads.room.discount}}</td>
+
                         <td>{{ads.isActive
                         }}</td>
                       
@@ -39,7 +43,7 @@
                                 <button mat-menu-item
                                     (click)="openViewAdsDialog(ads._id,
                                      ads.room.roomNumber ,
-                                     ads.room.price,ads.isActive ,true)">
+                                     ads.room.discount,ads.isActive ,true)">
                                     <mat-icon>visibility</mat-icon>
                                     <span>View</span>
                                 </button>

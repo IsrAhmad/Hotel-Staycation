@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-
+export interface IAds {
+  room?: string
+  discount: number
+  isActive: boolean
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -14,15 +18,15 @@ constructor(private _HttpClient:HttpClient) { }
 getAllAds(){
   return this._HttpClient.get(`admin/ads`);
 }
-updateADItem(id:string , data:any):Observable<any>
+updateADItem(id:string , data:IAds):Observable<any>
 {
- return this._HttpClient.post(`admin/ads/${id}` , data)
+ return this._HttpClient.put(`admin/ads/${id}` , data)
 }
 viewADItem(id:string):Observable<any>{
   return this._HttpClient.get(`admin/ads/${id}`);
 }
-addADItem(paramsDAta:any):Observable<any>{
-  return this._HttpClient.post(`admin/ads` ,{params:paramsDAta})
+addADItem(paramsDAta:IAds):Observable<any>{
+  return this._HttpClient.post(`admin/ads` ,paramsDAta)
 }
 getADById(id:string):Observable<any>{
   return this._HttpClient.get<any>(`admin/rooms/${id}`);

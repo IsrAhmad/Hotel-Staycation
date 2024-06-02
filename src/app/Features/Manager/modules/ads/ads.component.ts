@@ -5,6 +5,11 @@ import { AdsService } from './services/ads.service';
 import { ActivatedRoute } from '@angular/router';
 import { AddNewAdComponent } from './components/add-new-ad/add-new-ad.component';
 
+export interface IAds {
+  room?: string
+  discount: number
+  isActive: boolean
+}
 
 @Component({
   selector: 'app-ads',
@@ -66,13 +71,13 @@ getAdsByID(id:string){
     //check result 
     if (result) {
       console.log(result)
-     // this.updateAdsItem(adID, result);
+      this.updateAdsItem(adID,  {isActive :result.isActive , discount :result.discount});
       
     }
   });
 }
 
-updateAdsItem(id: string, data:any) {
+updateAdsItem(id: string, data:IAds) {
  
 
   this._AdsService.updateADItem(id,data ).subscribe({
@@ -105,7 +110,7 @@ openAddDialog() : void {
   });
 }
 
-addAdsItem( data:any) {
+addAdsItem( data:IAds) {
  
 
   this._AdsService.addADItem(data ).subscribe({
