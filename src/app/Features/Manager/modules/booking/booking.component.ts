@@ -5,7 +5,7 @@ import { Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
-import { Booking, IParams } from './models/ibooking';
+import { IBooking, IParams } from './models/ibooking';
 import { BookingService } from './services/booking.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class BookingComponent {
   displayedColumns: string[] = ['Room number','Price'
   ,'Start date','End date', 'Guest' , 'Actions'];
 
-  bookingData:Booking[]=[]
+  bookingData:IBooking[]=[]
   search!:string;
   pageSize = 10;
   pageIndex = 0;
@@ -32,7 +32,7 @@ export class BookingComponent {
     size:this.pageSize
   }
 
-  sortedBookings:Booking[] =[];
+  sortedBookings:IBooking[] =[];
 
   constructor(private _BookingService:BookingService,private _Router:Router,public dialog: MatDialog, private toastr: ToastrService){}
 

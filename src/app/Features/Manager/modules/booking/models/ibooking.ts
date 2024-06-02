@@ -3,11 +3,11 @@ export interface IVeiwBookingResponse {
     message: string
     data: IVeiwBookingData
   }
-  
-  export interface IVeiwBookingData {
-    booking: IBooking
-  }
-  
+
+  // export interface IVeiwBookingData {
+  //   booking: IBooking
+  // }
+
 //   export interface IBooking {
 
   export interface IVeiwBookingData {
@@ -26,18 +26,18 @@ export interface IVeiwBookingResponse {
     updatedAt: string
     stripeChargeId: string
   }
-  
+
   export interface IUser {
     _id: string
     userName: string
   }
-  
+
 //   export interface IRoom {
 
-  export interface User {
-    _id: string
-    userName: string
-  }
+  // export interface User {
+  //   _id: string
+  //   userName: string
+  // }
 
   export interface IRoom {
     _id: string
