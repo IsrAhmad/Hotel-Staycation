@@ -22,7 +22,7 @@ export class AdsComponent implements OnInit{
   //
   listOfFacilities :any;
 
-  displayedColumns: string[] = ['Room number','Discount', 'Is active' ,'Created by' , 'Actions'];
+  displayedColumns: string[] = ['Room number', 'Price','Discount', 'Capacity', 'Is active' ,'Created by' , 'Actions'];
 
   AdsDataRes:IAdsResponse={
     success:false,
@@ -66,6 +66,10 @@ export class AdsComponent implements OnInit{
       switch (sort.active) {
         case 'discount':
           return this.compare(a.room.discount, b.room.discount, isAsc);
+          case 'price':
+            return this.compare(a.room.price, b.room.price, isAsc);
+          case 'capacity':
+            return this.compare(a.room.capacity, b.room.capacity, isAsc);
   
         default:
           return 0;
