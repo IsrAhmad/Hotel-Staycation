@@ -115,7 +115,7 @@ export class RoomsComponent  implements OnInit{
   }
   filtetByRoomNumber(searchValue :HTMLInputElement){
     if (searchValue) {
-      this.sortedRooms = this.sortedRooms.filter(p => p.roomNumber === searchValue.value);
+      this.sortedRooms = this.sortedRooms.filter(p => p.roomNumber.includes(searchValue.value));
       this.totalCount =this.sortedRooms.length
     }
   }
