@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagerComponent } from './manager.component';
+import { ViewUserProfileComponent } from 'src/app/shared/components/view-user-profile/view-user-profile.component';
 
 const routes: Routes = [
   { path: '', component: ManagerComponent, children: [
@@ -13,7 +14,15 @@ const routes: Routes = [
   { path: 'facilities', loadChildren:
    () => import('./modules/facilities/facilities.module').then(m => m.FacilitiesModule) },
    { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) },
-  { path: 'booking', loadChildren: () => import('./modules/booking/booking.module').then(m => m.BookingModule) }]
+  { path: 'booking', loadChildren: () => import('./modules/booking/booking.module').then(m => m.BookingModule) },
+  {
+    path:'profile/:id' , component:ViewUserProfileComponent
+  },
+  {
+    path:'profile/:id/:viewUser' , component:ViewUserProfileComponent
+  },
+
+]
   },
  ]
 @NgModule({

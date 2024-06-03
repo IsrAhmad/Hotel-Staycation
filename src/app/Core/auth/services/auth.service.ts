@@ -9,6 +9,7 @@ import { IForgot } from '../model/IForgot';
 
 import { IRegister } from '../model/IRegister.model';
 import { Router } from '@angular/router';
+import { IUserResponse } from 'src/app/shared/models/iUser';
 
 
 @Injectable({
@@ -55,6 +56,11 @@ export class AuthService {
     localStorage.clear();
     sessionStorage.clear();
     this._Router.navigate(['/auth']);
+  }
+
+
+  getUserProfile(id: string): Observable<IUserResponse> {
+    return this._HttpClient.get<IUserResponse>(`admin/users/${id}`);
   }
 
   }

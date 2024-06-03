@@ -34,7 +34,7 @@
               <mat-icon>expand_more</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item [routerLink]="['/manager/profile',currentUser?._id]">
                 <mat-icon><span class="material-icons">
                   person
                   </span></mat-icon>

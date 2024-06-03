@@ -23,6 +23,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSortModule} from '@angular/material/sort';
+import { ViewUserProfileComponent } from './components/view-user-profile/view-user-profile.component';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import {MatSortModule} from '@angular/material/sort';
     NavbarComponent,
     NoDataComponent,
     AddEditeViewFacilitiesComponent,
+    ViewUserProfileComponent,
 
   ],
   imports: [
@@ -54,7 +58,10 @@ import {MatSortModule} from '@angular/material/sort';
    ReactiveFormsModule,
 
     MatListModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule
+    
+    
 
   ],
   exports:[

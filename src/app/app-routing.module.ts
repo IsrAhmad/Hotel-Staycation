@@ -23,6 +23,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./Features/Manager/manager.module').then((m) => m.ManagerModule),
   },
+
   { path: '**', component: NotFoundComponent },
 ];
 
