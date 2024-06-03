@@ -10,6 +10,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
+
 @NgModule({
   declarations: [
     RoomsComponent,
@@ -21,7 +22,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     SharedModule,
     NgxFileDropModule,
     NgxDropzoneModule,
-    CarouselModule
+    CarouselModule,
+    SharedModule
   ]
 })
 export class RoomsModule { }

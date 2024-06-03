@@ -1,30 +1,35 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { IVeiwBookingResponse ,IVeiwBookingData ,IUser ,IRoom ,IBooking} from './../models/ibooking';
+import { IVeiwBookingResponse, IVeiwBookingData, IUser, IRoom, IBooking } from './../models/ibooking';
 import { Component, OnInit } from '@angular/core';
 import { BookingService } from '../services/booking.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-veiw-booking',
   templateUrl: './veiw-booking.component.html',
   styleUrls: ['./veiw-booking.component.scss']
 })
 export class VeiwBookingComponent implements OnInit {
-  constructor(private _BookingService:BookingService){
-    this.veiwBooking('66525ca46ebbbefbc1a3e89f');
-  }
+  id: string = '';
+  constructor(private _BookingService: BookingService, private _ActivatedRoute: ActivatedRoute) {}
+  ngOnInit(): void {
+    this._ActivatedRoute.paramMap.subscribe(params => {
+      this.id = params.get('id') ?? '';
+    //  console.log('booking id' + this.id);
+    this.veiwBooking(this.id);
+    })}
 
 
-  user:IUser= {
+  user: IUser = {
     _id: '',
     userName: ''
   }
-  
-  room:IRoom ={
+
+  room: IRoom = {
     _id: '',
     roomNumber: ''
   }
 
-  booking:IBooking={
+  booking: IBooking = {
     _id: '',
     startDate: '',
     endDate: '',
@@ -38,24 +43,19 @@ export class VeiwBookingComponent implements OnInit {
 
   }
 
-  bookingData:IVeiwBookingData={
-    booking:this.booking
+  bookingData: IVeiwBookingData = {
+    booking: this.booking
 
   }
 
-  ngOnInit(): void {
-    
-  }
 
-
-
-  veiwBooking(id:string){
+  veiwBooking(id: string) {
     this._BookingService.veiwBooking(id).subscribe({
-      next:(res:IVeiwBookingResponse)=>{
-       // console.log(res);
-        this.bookingData=res.data;
-      },error:(err:HttpErrorResponse)=>{
-      //  console.log(err);
+      next: (res: IVeiwBookingResponse) => {
+        // console.log(res);
+        this.bookingData = res.data;
+      }, error: (err: HttpErrorResponse) => {
+        //  console.log(err);
       }
     })
   }
