@@ -1,0 +1,63 @@
+@import '../../../../../../../assets/styles/abstracts/text-color.scss';
+@import '../../../../../../../assets/styles/components/button.scss';
+@import '../../../../../../../assets/styles/components/inputs.scss';
+
+.text-primary-color {
+  color: #203FC7 !important;
+}
+
+table {
+  border-radius: 20px;
+  background-color: #fff;
+
+  th {
+    color: $table-header-color !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    font-family:  Roboto, sans-serif  !important;
+
+  }
+
+  td {
+    color: $table-body-color !important;
+  }
+
+  th,
+  td {
+    text-align: center;
+    vertical-align: middle !important;
+
+  }
+
+  thead,
+  tr,
+  th,
+  td {
+    border-style: none;
+  }
+
+}
+
+.heder-left-redius {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.heder-right-redius {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+.table-secondary {
+  background-color: $table-header-bg-color
+}
+
+::ng-deep .matMenu {
+  background-color: #fff !important;
+  border-radius: 1.2rem !important;
+}
+
+::ng-deep .btn-hover:hover {
+  background-color: rgb(240, 238, 238) !important;
+}

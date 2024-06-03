@@ -115,7 +115,7 @@ getRoomById(id: number) {
   this._RoomsService.getRoomById(id).subscribe({
     next: (res) => {
       this.roomRes = res
-      console.log(this.roomRes.data.room.images);
+     // console.log(this.roomRes.data.room.images);
     },
     error(err) { },
     complete: () => {
@@ -136,12 +136,12 @@ getRoomById(id: number) {
 files: File[] = [];
 
 onSelect(event:any) {
-  console.log(event);
+//  console.log(event);
   this.files.push(...event.addedFiles);
 }
 
 onRemove(event:any) {
-  console.log(event);
+ // console.log(event);
   this.files.splice(this.files.indexOf(event), 1);
 }
 
@@ -149,7 +149,7 @@ onRemove(event:any) {
 addEditRoom():void{
 
   if(this.addEditRoomForm.valid&&this.files.length>0){
-    console.log(this.files)
+   // console.log(this.files)
     let myData=new FormData();
 
     // Loop through form controls and append their values to FormData
@@ -170,9 +170,9 @@ addEditRoom():void{
       myData.append('imgs', file, file.name);
     });
 
-    console.log(myData.getAll('imgs'))
-    console.log(myData.getAll('facilities'))
-    console.log(myData.getAll('roomNumber'))
+  //  console.log(myData.getAll('imgs'))
+    //console.log(myData.getAll('facilities'))
+    //console.log(myData.getAll('roomNumber'))
 
 
     this.addRoomApi(myData);

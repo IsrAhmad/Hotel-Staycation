@@ -1,3 +1,35 @@
+export interface IGetAllUsersRequest {
+  page:number;
+  size:number;
+  [key:string]:any
+}
+
+
+export interface IGetAllUsersResponse {
+  success: boolean
+  message: string
+  data: IGetAllUsersData
+}
+
+export interface IGetAllUsersData {
+  users: IUser[]
+  totalCount: number
+}
+
+export interface IUser {
+  _id: string
+  userName: string
+  email: string
+  phoneNumber: number
+  country: string
+  role: string
+  profileImage: string
+  verified: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+
 export interface IAddAdminRequest {
     userName :string,
     email:string,
@@ -7,11 +39,7 @@ export interface IAddAdminRequest {
     country:string,
     profileImage:string,
     role:string
-
-
 }
-
-
 export interface IAddAdminResponse {
     success: boolean
     message: string

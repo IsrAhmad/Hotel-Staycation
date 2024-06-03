@@ -3,10 +3,10 @@
     <form [formGroup]="addAdminForm" (ngSubmit)="onAddAdmin(addAdminForm)" class="mt-1">
         <div class="row ">
             <!--image-->
-            <div class="row my-2">
+            <div class="row ">
                 <div class="col-md-12">
                     <div class="profile-image">
-                        <!-- <ng-container *ngIf="isImageUploade">
+                        <ng-container *ngIf="isImageUploade">
                         <div class="to-change-image">
                           <ngx-file-drop
                             dropZoneClassName=""
@@ -14,23 +14,19 @@
                             dropZoneLabel="Drop files here"
                             (onFileDrop)="dropped($event)"
                             (onFileOver)="fileOver($event)"
-                            (onFileLeave)="fileLeave($event)"
-                          >
+                            (onFileLeave)="fileLeave($event)">
                             <ng-template
                               ngx-file-drop-content-tmp
-                              let-openFileSelector="openFileSelector"
-                            >
+                              let-openFileSelector="openFileSelector">
                               <div>
                                 <button type="button" (click)="openFileSelector()" >
                                   <i class="fa-solid fa-camera fa-xl"></i>
-  
                                 </button>
                               </div>
                             </ng-template>
                           </ngx-file-drop>
                         </div>
                       </ng-container>
-  
                       <ngx-file-drop
                         dropZoneClassName="drop-zone"
                         *ngIf="!isImageUploade"
@@ -38,25 +34,21 @@
                         dropZoneLabel="Drop files here"
                         (onFileDrop)="dropped($event)"
                         (onFileOver)="fileOver($event)"
-                        (onFileLeave)="fileLeave($event)"
-                      >
+                        (onFileLeave)="fileLeave($event)">
                         <ng-template
                           ngx-file-drop-content-tmp
-                          let-openFileSelector="openFileSelector"
-                        >
+                          let-openFileSelector="openFileSelector">
                           <div>
                             <button
                               type="button"
                               (click)="openFileSelector()"
-                              class="bg-transparent d-flex flex-column align-items-center"
-                            >
-                              <i class="fa-solid fa-upload fs-4 mb-2"></i>
+                              class="bg-transparent d-flex flex-column align-items-center" >
+                              <i class="fa-solid fa-upload fs-2 "></i>
                               <span class=" small"> Upload</span>
                             </button>
                           </div>
                         </ng-template>
-                      </ngx-file-drop> -->
-
+                      </ngx-file-drop> 
                         <div *ngIf="isImageUploade" class="drop-zone">
                             <img [src]="imgUrl" class="w-100" alt="Uploaded Image" />
                         </div>
@@ -194,9 +186,13 @@
                 </div>
             </div>
 
-            <button [disabled]="addAdminForm.invalid" class="primary w-25 mt-5 ms-auto">
+            <!-- <button [disabled]="addAdminForm.invalid" class="primary w-25 mt-5 ms-auto">
                 Submit
-             </button>
+             </button> -->
+             <div class="btns  mt-4  text-end">
+                <button routerLink="/manager/users/" class="cancel mx-4 " type="button">Cancel</button>
+                <button  class="primary " [disabled]="addAdminForm.invalid ">Save</button>
+              </div>
         </div>
         
     </form>
