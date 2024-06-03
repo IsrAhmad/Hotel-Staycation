@@ -5,6 +5,7 @@ import { ViewUserProfileComponent } from 'src/app/shared/components/view-user-pr
 
 const routes: Routes = [
   { path: '', component: ManagerComponent, children: [
+    {path:'',redirectTo:'home',pathMatch:'full'},
  
     { path: 'home',  loadComponent: 
     () => import('../Manager/components/home/home.component').then(m => m.HomeComponent)},
