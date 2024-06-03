@@ -136,6 +136,12 @@ export class AddEditRoomComponent implements OnInit{
     });
   }
 
+  async fetchImage(url: string) {
+    var res = await fetch(url);
+    var blob = await res.blob();
+    return blob;
+  };
+
   async convertUrlsToFiles(urls: string[]) {
     const filePromises = urls.map(url =>
       fetch(url)
