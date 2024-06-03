@@ -8,6 +8,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 import { UpdateViewAdsComponent } from './components/update-view-ads/update-view-ads.component';
+import { AddAdsPopupComponent } from './components/add-ads-popup/add-ads-popup.component';
 
 export interface IAds {
   room?: string
@@ -197,8 +198,6 @@ export class AdsComponent implements OnInit{
    
      }
 
-
-
      updateAdsItem(id: number, data:IAds) {
 
 
@@ -211,6 +210,46 @@ export class AdsComponent implements OnInit{
     
         }, complete: () => {
           this.toastr.success("Updated succefully")
+
+          this.getAllAds();
+        }
+      });
+    }
+
+
+
+    openAddDialog(): void {
+   
+      const dialogRef = this.dialog.open(AddAdsPopupComponent, {
+        data: {isActive:'' ,discount:''  ,roomNumber:''},
+        width: '25%'
+   
+       });
+   
+       dialogRef.afterClosed().subscribe(result => {
+       console.log('The dialog was closed');
+       if(result){
+    
+       console.log( result);
+
+       }
+       });
+   
+   
+     }
+     
+     AddAdsItem(data:IAds) {
+
+
+      this._AdsService.addADItem(data ).subscribe({
+        next: (res) => {
+          console.log(res)
+        }, error: (err) => {
+          this.toastr.error(err.error.message)
+
+    
+        }, complete: () => {
+          this.toastr.success("Added succefully")
 
           // to load data again after adding new ads
           this.getAllAds();

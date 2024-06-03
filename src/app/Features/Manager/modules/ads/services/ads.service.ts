@@ -34,5 +34,7 @@ updateADItem(id:number , data:IAds):Observable<any>
 viewADItem(id:number):Observable<any>{
   return this._HttpClient.get(`admin/ads/${id}`);
 }
-
+addADItem(paramsDAta:IAds):Observable<any>{
+  return this._HttpClient.post(`admin/ads` ,paramsDAta)
+}
 }
