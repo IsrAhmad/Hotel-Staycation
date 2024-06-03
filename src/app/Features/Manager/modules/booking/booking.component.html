@@ -1,5 +1,10 @@
 <div class="container-fluid mt-4">
   <div class="row">
+    <div class="mt-2 mb-4 col-md-12">
+
+      <h2 class="m-0 p-0">{{headerText}}</h2>
+      <p class="m-0 p-0">{{headerPargraph}}</p>
+    </div>
     <div class="col-md-12">
       <mat-form-field appearance="outline" class="w-75">
         <button mat-icon-button matPrefix>
@@ -25,37 +30,36 @@
       </mat-form-field>
 
     </div>
-    <!--table headers -->
+
     <ng-container *ngIf=" sortedBookings.length == 0">
       <table mat-table class="table table-striped">
-        <!-- Room Number Column -->
+
         <ng-container matColumnDef="Room number">
           <th mat-header-cell *matHeaderCellDef> Room number</th>
         </ng-container>
 
-        <!-- Price Column -->
         <ng-container matColumnDef="Price">
           <th mat-header-cell *matHeaderCellDef> Price</th>
         </ng-container>
-        <!-- Start date Column -->
+
         <ng-container matColumnDef="Start date">
           <th mat-header-cell *matHeaderCellDef> Start date
           </th>
 
         </ng-container>
 
-        <!-- End date Column -->
+
         <ng-container matColumnDef="End date">
           <th mat-header-cell *matHeaderCellDef> End date </th>
 
         </ng-container>
 
-        <!-- Guest Column -->
+
         <ng-container matColumnDef="Guest">
           <th mat-header-cell *matHeaderCellDef> Guest</th>
 
         </ng-container>
-        <!--Actions-->
+
         <ng-container matColumnDef="Actions">
           <th mat-header-cell *matHeaderCellDef> Actions</th>
 
@@ -70,37 +74,37 @@
       <ng-container *ngIf=" sortedBookings.length >0">
         <table mat-table matSort (matSortChange)="sortData($event)" [dataSource]="sortedBookings" class="table table-striped">
 
-          <!-- Room Number Column -->
+
           <ng-container matColumnDef="Room number">
             <th mat-header-cell *matHeaderCellDef> Room number</th>
             <td mat-cell *matCellDef="let element"> {{element.room.roomNumber}} </td>
           </ng-container>
 
 
-          <!-- Price Column -->
+
           <ng-container matColumnDef="Price">
             <th mat-header-cell *matHeaderCellDef  mat-sort-header="price"> Price
             </th>
             <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
           </ng-container>
 
-          <!-- Start date Column -->
+
           <ng-container matColumnDef="Start date">
             <th mat-header-cell *matHeaderCellDef mat-sort-header="Start date"> Start date
 
             </th>
-            <td mat-cell *matCellDef="let element"> {{element.startDate | date: 'dd-MM-yyyy hh:mm a'}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.startDate | date: 'M/d/yy, h:mm a'}} </td>
           </ng-container>
 
-          <!-- End date Column -->
+
           <ng-container matColumnDef="End date">
             <th mat-header-cell *matHeaderCellDef  mat-sort-header="End date">End date </th>
-            <td mat-cell *matCellDef="let element"> {{element.endDate | date: 'dd-MM-yyyy hh:mm a'}}
+            <td mat-cell *matCellDef="let element"> {{element.endDate | date: 'M/d/yy, h:mm a'}}
 
 
             </td>
           </ng-container>
-          <!-- Guest Column -->
+
           <ng-container matColumnDef="Guest">
             <th mat-header-cell *matHeaderCellDef  mat-sort-header="Guest">Guest </th>
             <td mat-cell *matCellDef="let element"> {{element.user.userName}}
@@ -108,7 +112,7 @@
 
             </td>
           </ng-container>
-          <!--Actions-->
+
           <ng-container matColumnDef="Actions">
             <th mat-header-cell *matHeaderCellDef> Actions</th>
             <td mat-cell *matCellDef="let element">
@@ -122,10 +126,6 @@
                   <mat-icon class="text-primary-color">visibility</mat-icon>
                   <span>View</span>
                 </button>
-                <button class="btn-hover" mat-menu-item>
-                  <mat-icon class="text-primary-color  ">edit_square</mat-icon>
-                  <span>Edit</span>
-                </button>
                 <button (click)="deleteThisItem(element._id,element.roomNumber)" mat-menu-item class="btn-hover" type="button">
                   <mat-icon class="text-primary-color  ">delete</mat-icon>
                   <span>Delete</span>
@@ -138,7 +138,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <!--pagination-->
+
         <mat-paginator
           [length]="totalCount"
           [pageSize]="pageSize"
