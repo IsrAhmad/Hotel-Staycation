@@ -52,20 +52,20 @@ export class BookingComponent {
   ngOnInit(): void {
     this.getAllBookings();
   }
-
   sortData(sort: Sort) {
     const data = this.bookingData.slice();
     if (!sort.active || sort.direction === '') {
       this.sortedBookings = data;
       return;
     }
+
     this.sortedBookings = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'price':
           return this.compare(a.totalPrice, b.totalPrice, isAsc);
         case 'Guest':
-          return this.compare(a.user.userName, b.user.userName, isAsc);
+          return this.compareStrings(a.user.userName, b.user.userName, isAsc);
         case 'Start date':
           return this.compareDates(a.startDate, b.startDate, isAsc);
         case 'End date':
@@ -75,8 +75,13 @@ export class BookingComponent {
       }
     });
   }
+
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  compareStrings(a: string, b: string, isAsc: boolean) {
+    return a.toLowerCase().localeCompare(b.toLowerCase()) * (isAsc ? 1 : -1);
   }
 
   compareDates(a: string, b: string, isAsc: boolean) {
