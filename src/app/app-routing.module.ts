@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { managerGuard } from './Core/Guards/manager.guard';
+import { HomeComponent } from './Features/guest/components/home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
 
 
   {
@@ -16,15 +19,15 @@ const routes: Routes = [
       import('./Features/guest/guest.module').then((m) => m.GuestModule),
   },
   {
-    path: 'manager',
+    path: 'manager', canActivate: [managerGuard],
     loadChildren: () =>
       import('./Features/Manager/manager.module').then((m) => m.ManagerModule),
   },
-  {path: '**', component:NotFoundComponent},
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
