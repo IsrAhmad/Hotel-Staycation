@@ -147,11 +147,11 @@ Not active
                   <mat-icon>more_horiz</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu" class>
-                  <button  class="btn-hover" mat-menu-item type="button">
+                  <button (click)="openUpdateViewDialog(element._id,element.room.roomNumber,element.isActive,element.room.discount,false)" class="btn-hover" mat-menu-item type="button">
                     <mat-icon class="text-primary-color">visibility</mat-icon>
                     <span>View</span>
                   </button>
-                  <button  class="btn-hover" mat-menu-item>
+                  <button (click)="openUpdateViewDialog(element._id,element.room.roomNumber,element.isActive,element.room.discount,true)"  class="btn-hover" mat-menu-item>
                     <mat-icon class="text-primary-color  ">edit_square</mat-icon>
                     <span>Edit</span>
                   </button>

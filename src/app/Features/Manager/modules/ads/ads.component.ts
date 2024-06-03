@@ -7,7 +7,13 @@ import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { UpdateViewAdsComponent } from './components/update-view-ads/update-view-ads.component';
 
+export interface IAds {
+  room?: string
+  discount: number
+  isActive: boolean
+}
 @Component({
   selector: 'app-ads',
   templateUrl: './ads.component.html',
@@ -162,6 +168,55 @@ export class AdsComponent implements OnInit{
       })
     }
 
+
+    openUpdateViewDialog(adID: number ,roomNum:string,isActiveUpdated:boolean,updatedDiscount:string ,editType:boolean ): void {
+   
+      const dialogRef = this.dialog.open(UpdateViewAdsComponent, {
+        data: {id:adID,isActive:isActiveUpdated ,discount:updatedDiscount  ,roomNumber:roomNum,isEdit:editType},
+        width: '25%'
+   
+       });
+   
+       dialogRef.afterClosed().subscribe(result => {
+       console.log('The dialog was closed');
+       if(result){
+    
+       console.log( result);
+
+       if(editType){
+        //edit Api
+        this.updateAdsItem(adID,{isActive:result.isActive,discount:result.discount})
+       }else{
+        //view
+         this.openDeleteDialog(adID,roomNum,'Ads')
+   
+       }
+       }
+       });
+   
+   
+     }
+
+
+
+     updateAdsItem(id: number, data:IAds) {
+
+
+      this._AdsService.updateADItem(id,data ).subscribe({
+        next: (res) => {
+          console.log(res)
+        }, error: (err) => {
+          this.toastr.error(err.error.message)
+
+    
+        }, complete: () => {
+          this.toastr.success("Updated succefully")
+
+          // to load data again after adding new ads
+          this.getAllAds();
+        }
+      });
+    }
 
 
 
