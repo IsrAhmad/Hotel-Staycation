@@ -27,7 +27,6 @@ export class AddEditRoomComponent implements OnInit{
     private _ToastrService: ToastrService,
     private _Router: Router,
     private _ActivatedRoute: ActivatedRoute,
-    private http: HttpClient
   ) {}
 
   roomRes: IRoomRes = {
@@ -144,6 +143,7 @@ export class AddEditRoomComponent implements OnInit{
         .then(blob => new File([blob], url.substring(url.lastIndexOf('/') + 1)))
     );
     this.existingImages = await Promise.all(filePromises);
+    debugger
   }
 
  getFileNameFromUrl(url: string): string {
@@ -179,7 +179,7 @@ export class AddEditRoomComponent implements OnInit{
           myData.append(key, this.addEditRoomForm.get(key)?.value);
         }
       });
-
+    debugger
       // Append new files directly
       this.existingImages.forEach(file => {
         myData.append('imgs', file, file.name);
@@ -188,18 +188,6 @@ export class AddEditRoomComponent implements OnInit{
         myData.append('imgs', file, file.name);
       });
 
-     /* const allFiles = this.existingImages.concat(this.newFiles);
-      console.log(allFiles)
-
-    // Append the combined array to FormData under the 'imgs' key
-    allFiles.forEach(file => {
-      myData.append('imgs', file, file.name);
-    });*/
-  
-
-    /*this.existingImages.concat(this.newFiles).forEach(file => {
-      myData.append('imgs', file, file.name);
-    });*/
 
     console.log(myData.getAll('imgs'))
 
