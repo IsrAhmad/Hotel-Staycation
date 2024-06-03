@@ -59,7 +59,7 @@ export class AdsComponent implements OnInit{
 
   ngOnInit(): void {
     this.getAllAds();
-  
+    
    
   }
 
@@ -110,7 +110,7 @@ export class AdsComponent implements OnInit{
       this.sortedAds= this.AdsDataRes.data.ads.slice();
       console.log(this.sortedAds);
       this.totalCount =this.AdsDataRes.data.totalCount;
-          
+          console.log(this.totalCount)
      }    
     })
 
@@ -219,9 +219,9 @@ export class AdsComponent implements OnInit{
 
 
     openAddDialog(): void {
-   
+   console.log(this.AdsDataRes.data.ads)
       const dialogRef = this.dialog.open(AddAdsPopupComponent, {
-        data: {isActive:'' ,discount:''  ,roomNumber:''},
+        data: {roomdata :this.AdsDataRes.data.ads,isActive:'' ,discount:''  ,roomNumber:''},
         width: '25%'
    
        });
@@ -257,7 +257,7 @@ export class AdsComponent implements OnInit{
       });
     }
 
-
+  
 
 
 }

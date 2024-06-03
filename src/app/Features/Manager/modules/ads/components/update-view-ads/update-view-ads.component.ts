@@ -15,7 +15,7 @@ export class UpdateViewAdsComponent {
 
 
   constructor(
-    public dialogRef: MatDialogRef<AddEditeViewFacilitiesComponent>,
+    public dialogRef: MatDialogRef<UpdateViewAdsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     ) {}
     
