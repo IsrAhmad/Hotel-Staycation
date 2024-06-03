@@ -11,35 +11,48 @@ import { BookingService } from './services/booking.service';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.scss']
+  styleUrls: ['./booking.component.scss'],
 })
 export class BookingComponent {
+  btnText: string = 'Add new booking';
+  headerText: string = 'Booking Table Details';
+  headerPargraph: string = 'You can check all details';
 
-  headerText:string ='Booking Table Details' ;
-  listOfFacilities :any;
+  displayedColumns: string[] = [
+    'Room number',
+    'Price',
+    'Start date',
+    'End date',
+    'Guest',
+    'Actions',
+  ];
 
-  displayedColumns: string[] = ['Room number','Price'
-  ,'Start date','End date', 'Guest' , 'Actions'];
-
-  bookingData:IBooking[]=[]
-  search!:string;
+  bookingData: IBooking[] = [];
+  search!: string;
   pageSize = 10;
   pageIndex = 0;
-  totalCount!:number;
+  totalCount!: number;
 
-    params:IParams= {
-    page :this.pageIndex,
-    size:this.pageSize
+  params: IParams = {
+    page: this.pageIndex,
+    size: this.pageSize,
+  };
+
+  sortedBookings: IBooking[] = [];
+
+  constructor(
+    private _BookingService: BookingService,
+    private _Router: Router,
+    public dialog: MatDialog,
+    private toastr: ToastrService
+  ) {
+    this.sortedBookings = this.bookingData.slice();
   }
-
-  sortedBookings:IBooking[] =[];
-
-  constructor(private _BookingService:BookingService,private _Router:Router,public dialog: MatDialog, private toastr: ToastrService){}
 
   ngOnInit(): void {
     this.getAllBookings();
-
   }
+
   sortData(sort: Sort) {
     const data = this.bookingData.slice();
     if (!sort.active || sort.direction === '') {
@@ -51,45 +64,41 @@ export class BookingComponent {
       switch (sort.active) {
         case 'price':
           return this.compare(a.totalPrice, b.totalPrice, isAsc);
-        case 'guest':
+        case 'Guest':
           return this.compare(a.user.userName, b.user.userName, isAsc);
-        case 'roomNumber':
-          return this.compare(a.room.roomNumber, b.room.roomNumber, isAsc);
+        case 'Start date':
+          return this.compareDates(a.startDate, b.startDate, isAsc);
+        case 'End date':
+          return this.compareDates(a.endDate, b.endDate, isAsc);
         default:
           return 0;
       }
     });
   }
-    compare(a: number | string, b: number | string, isAsc: boolean) {
+  compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
-
-
-  getAllBookings(){
-
-    this._BookingService.getAllBookings(this.params).subscribe({
-      next:(res:any)=>{
-
-      this.bookingData= res.data.booking;
-      this.sortedBookings= this.bookingData.slice();
-      console.log(this.sortedBookings);
-      this.totalCount =res.data.totalCount;
-
-      console.log(res.data);
-
-//add toaster
-      },
-      error:(err)=>{
-
-      },
-      complete:()=>{
-
-      }
-    })
-
+  compareDates(a: string, b: string, isAsc: boolean) {
+    const dateA = new Date(a);
+    const dateB = new Date(b);
+    return (dateA < dateB ? -1 : 1) * (isAsc ? 1 : -1);
   }
-     //for paginaton
+
+  getAllBookings() {
+    this._BookingService.getAllBookings(this.params).subscribe({
+      next: (res: any) => {
+        this.bookingData = res.data.booking;
+        this.sortedBookings = this.bookingData.slice();
+        console.log(this.sortedBookings);
+        this.totalCount = res.data.totalCount;
+
+        console.log(res.data);
+      },
+      error: (err) => {},
+      complete: () => {},
+    });
+  }
   changePage(e: PageEvent) {
     this.params.page = e.pageIndex + 1;
     this.params.size = e.pageSize;
@@ -97,24 +106,29 @@ export class BookingComponent {
   }
 
   resetSearchInput() {
-    this. search= '';
+    this.search = '';
     this.getAllBookings();
   }
-  filtetByRoomNumber(searchValue :HTMLInputElement){
+  filtetByRoomNumber(searchValue: HTMLInputElement) {
     if (searchValue) {
-      this.sortedBookings = this.sortedBookings.filter(p => p.room.roomNumber === searchValue.value);
-      this.totalCount =this.sortedBookings.length
+      this.sortedBookings = this.sortedBookings.filter((p) =>
+        p.room.roomNumber.includes(searchValue.value)
+      );
+      this.totalCount = this.sortedBookings.length;
     }
   }
 
-
-  deleteThisItem(id:number,name:string):void{
-    this.openDeleteDialog('700ms','350ms',id,name,'Room')
-
+  deleteThisItem(id: number, name: string): void {
+    this.openDeleteDialog('700ms', '350ms', id, name, 'Room');
   }
 
-  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string,componentName:string): void {  }
+  openDeleteDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    id: number,
+    itname: string,
+    componentName: string
+  ): void {}
 
-  deleteBooking(id:string):void{  }
-
+  deleteBooking(id: string): void {}
 }
