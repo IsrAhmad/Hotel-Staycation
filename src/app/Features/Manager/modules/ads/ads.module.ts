@@ -5,6 +5,7 @@ import { AdsRoutingModule } from './ads-routing.module';
 import { AdsComponent } from './ads.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UpdateViewAdsComponent } from './components/update-view-ads/update-view-ads.component';
+import { AddAdsPopupComponent } from './components/add-ads-popup/add-ads-popup.component';
 
 
 
@@ -12,6 +13,7 @@ import { UpdateViewAdsComponent } from './components/update-view-ads/update-view
   declarations: [
     AdsComponent,
     UpdateViewAdsComponent,
+    AddAdsPopupComponent,
   ],
   imports: [
     CommonModule,
