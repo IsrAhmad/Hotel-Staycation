@@ -1,77 +1,95 @@
 
-<section id="user-view" >
+<section id="user-view" class="my-3" >
 
+ <div class=" main ">
 
+        <div class="d-flex align-items-center  mt-4 " type="button" (click)="goToHomeOrUsers()">
+          <i class="fa-solid fa-arrow-left fa-xl text-primary-color"></i>
+          <span class="fs-6 ms-2 text-secondary-color"> {{(isViewUser)? 'View all users': 'Back to home'}}</span>
+        </div>
+        <div class="container">
+
+       
+    <mat-card class="p-5  rounded-5 bg-light my-5" >
+
+      
   
-  
-    <div class=" main ">
-      <div class="view  ">
-    <mat-card class="p-5 rounded-5 bg-light" >
-  
-        <div class="row">
-          <div class="col-md-4 d-flex align-items-center justify-content-center ">
-            <div >
+        <div class="row g-4">
+          <div class="col-lg-4 d-flex align-items-center justify-content-center ">
               <div >
                 <img class="img-fluid rounded-circle" [src]="userDataRes.data.user.profileImage" alt="">
               </div>
-           
+                
             </div>
-             
-            </div>
-          <div class="col-md-8">
-                  <div class="title my-4">
-                    <h3>User: <span class="seconary-color">
-                      {{userDataRes.data.user.userName}}
-                    </span></h3>
-                  </div>
+          <div class="col-lg-8">
+                  
                   <div class="row">
                     <div class="col-md-6">
-                      <mat-form-field appearance="fill" class="w-100">
-                        <mat-label class="text-secondry">User Name</mat-label>
-                        <input class="text-main"  matInput [value]="userDataRes.data.user.userName" [disabled]="true"/>
-                      </mat-form-field>
 
-                      
+                      <div class="title my-4 d-flex  align-items-center" >
+                        <h2 class=" m-0 text-secondary-color h3">User name :</h2>
+                        <span class="ms-2 fs-6">
+                          {{userDataRes.data.user.userName}}
+                        </span>
+                      </div>
+                    
       
                     </div>
                     <div class="col-md-6">
-                      <mat-form-field appearance="fill" class="w-100">
-                        <mat-label class="text-secondry">E-mail</mat-label>
-                        <input class="text-main"  matInput [value]="userDataRes.data.user.email" [disabled]="true"/>
-                      </mat-form-field>
+
+                      <div class="title my-4 d-flex  align-items-center" >
+                        <h2 class=" m-0 text-secondary-color h3">E-mail :</h2>
+                        <span class="ms-2 fs-6">
+                          {{userDataRes.data.user.email}}
+                        </span>
+                      </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                      <div class="title my-4 d-flex  align-items-center" >
+                        <h2 class=" m-0 text-secondary-color h3">Country :</h2>
+                        <span class="ms-2 fs-6">
+                          {{userDataRes.data.user.country}}
+                        </span>
+                      </div>
+
       
                     </div>
                     <div class="col-md-6">
-                      <mat-form-field appearance="fill" class="w-100">
-                        <mat-label class="text-secondry">Country</mat-label>
-                        <input class="text-main"  matInput [value]="userDataRes.data.user.country" [disabled]="true"/>
-                      </mat-form-field>
+
+                      <div class="title my-4 d-flex  align-items-center" >
+                        <h2 class=" m-0 text-secondary-color h3">Phone number :</h2>
+                        <span class="ms-2 fs-6">
+                          {{userDataRes.data.user.phoneNumber}}
+                        </span>
+                      </div>
+               
       
                     </div>
                     <div class="col-md-6">
-                      <mat-form-field appearance="fill" class="w-100">
-                        <mat-label class="text-secondry">Phone Number</mat-label>
-                        <input class="text-main"  matInput [value]="userDataRes.data.user.phoneNumber" [disabled]="true"/>
-                      </mat-form-field>
+
+                      <div class="title my-4 d-flex  align-items-center" >
+                        <h2 class=" m-0 text-secondary-color h3">Join date :</h2>
+                        <span class="ms-2 fs-6">
+                          {{userDataRes.data.user.createdAt | date: 'short'}}
+                        </span>
+                      </div>
+                
       
                     </div>
                     <div class="col-md-6">
-                      <mat-form-field appearance="fill" class="w-100">
-                        <mat-label class="text-secondry">Join Date</mat-label>
-                        <input class="text-main"  matInput [value]="userDataRes.data.user.createdAt" [disabled]="true"/>
-                      </mat-form-field>
+
+                      <div class="title my-4 d-flex  align-items-center" >
+                        <h2 class=" m-0 text-secondary-color h3">Role :</h2>
+                        <span class="ms-2 fs-6">
+                          {{userDataRes.data.user.role}}
+                        </span>
+                      </div>
+               
       
                     </div>
-                    <div class="col-md-6">
-                      <mat-form-field appearance="fill" class="w-100">
-                        <mat-label class="text-secondry">Role</mat-label>
-                        <input class="text-main"  matInput [value]="userDataRes.data.user.role" [disabled]="true"/>
-                      </mat-form-field>
-      
-                    </div>
-                    <div class="table-card text-end">
-                      <button type="submit" class="px-4 status" >Cancel</button>
-                    </div>
+           
              
   
                 </div>
@@ -81,8 +99,9 @@
   
     </mat-card>
   </div>
-  
+
   </div>
+  
   
       </section>
       
