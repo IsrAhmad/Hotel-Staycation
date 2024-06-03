@@ -94,9 +94,9 @@ export class AddEditRoomComponent implements OnInit{
     nav: false
   };
 
-  files: File[] = [];
+  files: any ;
   existingImages: File[] = [];
-  newFiles: File[] = [];
+  newFiles: any;
 
   ngOnInit(): void {
     this.roomID = this._ActivatedRoute.snapshot.params['id'];
@@ -121,6 +121,9 @@ export class AddEditRoomComponent implements OnInit{
         this.roomRes = res;
        
         this.convertUrlsToFiles(this.roomRes.data.room.images);
+
+        this.newFiles=this.fetchImage(this.roomRes.data.room.images[0])
+
 
       },
       error: (err) => { },
@@ -148,7 +151,10 @@ export class AddEditRoomComponent implements OnInit{
         .then(res => res.blob())
         .then(blob => new File([blob], url.substring(url.lastIndexOf('/') + 1)))
     );
-    this.existingImages = await Promise.all(filePromises);
+   // this.existingImages = await Promise.all(filePromises);
+       this.newFiles = await Promise.all(filePromises);
+
+
     debugger
   }
 
@@ -163,11 +169,11 @@ export class AddEditRoomComponent implements OnInit{
 
   onRemove(event: any, isExisting: boolean) {
     console.log(event);
-    if (isExisting) {
+  /*  if (isExisting) {
       this.existingImages.splice(this.existingImages.indexOf(event), 1);
-    } else {
+    } else {*/
       this.newFiles.splice(this.newFiles.indexOf(event), 1);
-    }
+   // }
   }
 
   addEditRoom(): void {
@@ -185,15 +191,21 @@ export class AddEditRoomComponent implements OnInit{
           myData.append(key, this.addEditRoomForm.get(key)?.value);
         }
       });
-    debugger
+  //  debugger
+
+    console.log(this.existingImages)
+    console.log(this.newFiles)
+
       // Append new files directly
-      this.existingImages.forEach(file => {
+    /*  this.existingImages.forEach(file => {
         myData.append('imgs', file, file.name);
-      });
-      this.newFiles.forEach(file => {
+      });*/
+      this.newFiles.forEach((file:any) => {
         myData.append('imgs', file, file.name);
       });
 
+      
+    
 
     console.log(myData.getAll('imgs'))
 
