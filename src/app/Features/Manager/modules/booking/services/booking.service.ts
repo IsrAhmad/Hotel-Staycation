@@ -1,7 +1,9 @@
-import { IVeiwBookingResponse } from './../models/ibooking';
+import { IBookingResponse, IVeiwBookingResponse } from './../models/ibooking';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IParams } from '../models/ibooking';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +16,10 @@ export class BookingService {
     return this._HttpClient.get<IVeiwBookingResponse>(`admin/booking/${id}`)
   }
 
- 
 
-  getAllBookings(parmasData:any):Observable<any>{
-    return this._HttpClient.get('admin/booking' , {params:parmasData})
+
+  getAllBookings(parmasData:any):Observable<IBookingResponse>{
+    return this._HttpClient.get<IBookingResponse>('admin/booking' , {params:parmasData})
   }
 
 

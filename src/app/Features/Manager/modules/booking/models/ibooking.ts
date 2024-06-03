@@ -32,12 +32,15 @@ export interface IVeiwBookingResponse {
     userName: string
   }
 
-//   export interface IRoom {
-
-  // export interface User {
-  //   _id: string
-  //   userName: string
-  // }
+  export interface IBookingData {
+    booking: IBooking[];
+    totalCount: number;
+  }
+  export interface IBookingResponse {
+    success: boolean;
+    message: string;
+    data: IBookingData;
+  }
 
   export interface IRoom {
     _id: string
