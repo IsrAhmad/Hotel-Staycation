@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/Core/auth/services/auth.service';
 import { NavbarService } from '../../services/navbar.service';
 import { IUserResponse, IUser } from '../../models/iUser';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangePassPopupComponent } from '../change-pass-popup/change-pass-popup.component';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +21,8 @@ export class NavbarComponent {
 
   constructor(
     private _AuthService: AuthService,
-    private _NavbarService: NavbarService
+    private _NavbarService: NavbarService,
+    public dialog: MatDialog
   ) {
     const storedId = localStorage.getItem('id');
     if (storedId !== null) {
@@ -49,5 +52,24 @@ export class NavbarComponent {
   logout() {
     this._AuthService.logout();
   }
+
+  openChangePassDialog() {
+    let oldPassword=''
+    const dialogRef = this.dialog.open(ChangePassPopupComponent, {
+     data: {oldPassword:'',newPassword:'',confirmPassword:''},
+      width: '50%'
+ 
+     });
+ 
+     dialogRef.afterClosed().subscribe(result => {
+     console.log('The dialog was closed');
+     console.log( result);
+     if(result){
+   
+     }
+     });
+ 
+ 
+   }
 
 }

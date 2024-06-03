@@ -25,6 +25,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSortModule} from '@angular/material/sort';
 import { ViewUserProfileComponent } from './components/view-user-profile/view-user-profile.component';
 import { MatCardModule } from '@angular/material/card';
+import { ChangePassPopupComponent } from './components/change-pass-popup/change-pass-popup.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MatCardModule } from '@angular/material/card';
     NoDataComponent,
     AddEditeViewFacilitiesComponent,
     ViewUserProfileComponent,
+    ChangePassPopupComponent,
 
   ],
   imports: [
