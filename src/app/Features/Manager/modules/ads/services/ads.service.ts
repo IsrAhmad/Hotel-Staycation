@@ -5,6 +5,11 @@ import { IParams, IRoomResponse } from '../../rooms/models/IRoom.model';
 import { IAdsResponse } from '../models/IAdsResponse';
 import { IDelete } from 'src/app/shared/models/IDelete';
 
+export interface IAds {
+  room?: string
+  discount: number
+  isActive: boolean
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +25,14 @@ getAllAds(parmasData:IParams):Observable<IAdsResponse>{
 
 deleteAds(id:number):Observable<IDelete>{
   return this._HttpClient.delete<IDelete>(`admin/ads/${id}`)
+}
+
+updateADItem(id:number , data:IAds):Observable<any>
+{
+ return this._HttpClient.put(`admin/ads/${id}` , data)
+}
+viewADItem(id:number):Observable<any>{
+  return this._HttpClient.get(`admin/ads/${id}`);
 }
 
 }
