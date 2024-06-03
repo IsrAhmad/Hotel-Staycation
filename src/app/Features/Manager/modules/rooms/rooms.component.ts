@@ -41,6 +41,7 @@ export class RoomsComponent  implements OnInit{
     size:this.pageSize
 
   }
+  
 
   sortedRooms:IRoom[] =[];
 

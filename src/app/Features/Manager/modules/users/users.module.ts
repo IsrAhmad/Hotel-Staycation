@@ -6,7 +6,7 @@ import { UsersComponent } from './users.component';
 import { AddAdminComponent } from './components/add-admin/add-admin.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { NgxFileDropEntry, NgxFileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxFileDropModule
   ]
 })
 export class UsersModule { }
