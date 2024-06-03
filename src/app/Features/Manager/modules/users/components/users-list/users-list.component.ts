@@ -81,6 +81,9 @@ export class UsersListComponent implements OnInit {
   veiwItem(id:string){
     //redirect to  veiw user component
 
+    this._Router.navigate(['/manager/profile',id,'viewUser']);
+
+
   }
 
 
