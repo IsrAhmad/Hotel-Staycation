@@ -16,10 +16,11 @@ interface EditEvent {
 }
 @Component({
   selector: 'app-facilities',
-  templateUrl:'./facilities.component.html',
+  templateUrl: './facilities.component.html',
   styleUrls: ['./facilities.component.scss']
 })
 export class FacilitiesComponent implements OnInit {
+  search!: string;
 
   createdBy: ICreatedBy = {
     _id: '',
@@ -45,43 +46,47 @@ export class FacilitiesComponent implements OnInit {
     'Updated At',
     'Actions',
   ];
-  totalCount!:number;
+  totalCount!: number;
   pageSize = 10;
   pageIndex = 0;
-  params:IParams= {
-    page :this.pageIndex,
-    size:this.pageSize
+  params: IParams = {
+    page: this.pageIndex,
+    size: this.pageSize
 
   }
+
   facilitiesData: any;
   data: any;
-  constructor(private _FacilitiesService: FacilitiesService,
-     private toastr: ToastrService ,private _Router:Router,public dialog: MatDialog) { }
+  facilitiesdta:any;
+ 
 
-  editAddFacRes:IAddAndEditFacRes={
-    success:false,
-    message:'',
-    data:{
-      facility:{
-    _id: '',
-    name: '',
-    createdAt: '',
-    updatedAt: '',
-    createdBy: {
-      _id:'',
-      userName:''
-    }
+  constructor(private _FacilitiesService: FacilitiesService,
+    private toastr: ToastrService, private _Router: Router, public dialog: MatDialog) { }
+
+  editAddFacRes: IAddAndEditFacRes = {
+    success: false,
+    message: '',
+    data: {
+      facility: {
+        _id: '',
+        name: '',
+        createdAt: '',
+        updatedAt: '',
+        createdBy: {
+          _id: '',
+          userName: ''
+        }
 
 
       }
     }
   }
 
-//   constructor(private _FacilitiesService: FacilitiesService,
-//      private toastr: ToastrService ,
-//      private _Router:Router,
+  //   constructor(private _FacilitiesService: FacilitiesService,
+  //      private toastr: ToastrService ,
+  //      private _Router:Router,
 
-// private dialog: MatDialog) { }
+  // private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllFaclities();
@@ -90,108 +95,108 @@ export class FacilitiesComponent implements OnInit {
   getAllFaclities() {
     this._FacilitiesService.getAllFacilities(this.params).subscribe({
       next: (res: IFacilitiesResponse) => {
-     console.log(res)
+      //  console.log(res)
         this.facilitiesData = res.data.facilities;
-        console.log(this.facilitiesData);
+        this.facilitiesdta=res.data;
+        //console.log(this.facilitiesData);
         this.totalCount = res.data.totalCount;
-        console.log(this.totalCount)
+        // console.log(this.totalCount)
       }, error: (err: HttpErrorResponse) => {
-        console.log(err)
+        // console.log(err)
 
       }, complete: () => {
 
       }
     })
   }
-      //for paginaton 
-      changePage(e: PageEvent) {
-        this.params.page = e.pageIndex + 1;
-        this.params.size = e.pageSize;
-        this.getAllFaclities();
-      }
+  //for paginaton 
+  changePage(e: PageEvent) {
+    this.params.page = e.pageIndex + 1;
+    this.params.size = e.pageSize;
+    this.getAllFaclities();
+  }
 
-  editOrView(event: EditEvent,editOrNotType:boolean) {
-   console.log(event)
+  editOrView(event: EditEvent, editOrNotType: boolean) {
+    console.log(event)
 
-   const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
-    data: {id:event.id, edit:editOrNotType,name:event.name},
-     width: '25%'
+    const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
+      data: { id: event.id, edit: editOrNotType, name: event.name },
+      width: '25%'
 
     });
 
     dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    console.log( result);
-    if(result){
-    //edit here
-    //api edit
-    if(editOrNotType){
-      this.editFaility(event.id,result)
-    }else{
-      this.openDeleteDialog('700ms','350ms',event.id,event.name,'Facility')
+      console.log('The dialog was closed');
+      console.log(result);
+      if (result) {
+        //edit here
+        //api edit
+        if (editOrNotType) {
+          this.editFaility(event.id, result)
+        } else {
+          this.openDeleteDialog('700ms', '350ms', event.id, event.name, 'Facility')
 
-    }
-    }
+        }
+      }
     });
 
 
   }
   willBeDeleted(event: any) {
     console.log(event);
-    this.openDeleteDialog('700ms','350ms',event.id,event.name,'Facility')
+    this.openDeleteDialog('700ms', '350ms', event.id, event.name, 'Facility')
   }
 
 
-  addFacility():void{
-
+  addFacility(): void {
     const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
-      data:{name:''},
-       width: '25%'
+      data: { name: '' },
+      width: '25%'
 
-      });
+    });
 
-      dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log( result);
-      if(result){
-      //add api
-      console.log('add api')
-      console.log( result.name);
-      this.addFaility(result)
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+      //console.log( result);
+      if (result) {
+        //add api
+        //console.log('add api')
+        // console.log( result.name);
+        this.addFaility(result)
 
       }
-      });
+    });
 
   }
   // DELETE_DIALOG
-  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string,componentName:string): void {
-    const dialo =this.dialog.open(DeleteComponent, {
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: number, itname: string, componentName: string): void {
+    const dialo = this.dialog.open(DeleteComponent, {
       width: '500px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data:{
-        comp:componentName,
-        id:id,
-        name:itname
+      data: {
+        comp: componentName,
+        id: id,
+        name: itname
       }
     });
-    dialo.afterClosed().subscribe(res=>{
-      if(res!=null){
+    dialo.afterClosed().subscribe(res => {
+      if (res != null) {
         this.deleteFacility(res)
       }
     })
   }
   // DELETE_FUNCTION
-  deleteFacility(id:number){
+  deleteFacility(id: number) {
     this._FacilitiesService.deleteFacility(id).subscribe({
-      next:res=>{
+      next: res => {
         console.log(res);
       },
-      error:err=>{
+      error: err => {
         console.log(err);
         this.toastr.error(err.error.message)
       },
-      complete:()=>{
+      complete: () => {
         this.toastr.success("Deleted succefully")
 
         this.getAllFaclities()
@@ -242,41 +247,50 @@ export class FacilitiesComponent implements OnInit {
     }*/
 
 
-    editFaility(id:number,name:string):void{
+  editFaility(id: number, name: string): void {
 
-      this._FacilitiesService.editFacility(id,name).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.editAddFacRes = res;
-        }, error: (err) => {
-          console.log(err)
-          this.toastr.error(err.error.message)
+    this._FacilitiesService.editFacility(id, name).subscribe({
+      next: (res) => {
+        // console.log(res);
+        this.editAddFacRes = res;
+      }, error: (err) => {
+        // console.log(err)
+        this.toastr.error(err.error.message)
 
-        }, complete: () => {
-          this.getAllFaclities()
-          this.toastr.success(this.editAddFacRes.message)
+      }, complete: () => {
+        this.getAllFaclities()
+        this.toastr.success(this.editAddFacRes.message)
 
-        }
-      })
+      }
+    })
+  }
+
+  addFaility(name: number): void {
+    this._FacilitiesService.addFacility(name).subscribe({
+      next: (res) => {
+        //console.log(res);
+        this.editAddFacRes = res;
+      }, error: (err) => {
+        //console.log(err)
+        this.toastr.error(err.error.message)
+      }, complete: () => {
+        this.getAllFaclities()
+        this.toastr.success(this.editAddFacRes.message)
+      }
+    })
+  }
+
+
+  resetSearcgInput() {
+    this.search = '';
+    this.getAllFaclities();
+  }
+
+  filtetByName(searchValue: HTMLInputElement) {
+    if (searchValue) {
+      this.facilitiesData = this.facilitiesData.filter((p: IFacility) => p.name.includes(searchValue.value));
+      this.totalCount = this.facilitiesdta.totalCount
     }
-
-    addFaility(name:number):void{
-
-      this._FacilitiesService.addFacility(name).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.editAddFacRes = res;
-        }, error: (err) => {
-          console.log(err)
-          this.toastr.error(err.error.message)
-
-
-        }, complete: () => {
-          this.getAllFaclities()
-
-          this.toastr.success(this.editAddFacRes.message)
-        }
-      })
-    }
+  }
 
 }
