@@ -11,7 +11,7 @@ import { IParams } from '../rooms/models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
 
 interface EditEvent {
-  id: string;
+  id: number;
   name: string;
 }
 @Component({
@@ -55,7 +55,8 @@ export class FacilitiesComponent implements OnInit {
   }
   facilitiesData: any;
   data: any;
-  constructor(private _FacilitiesService: FacilitiesService, private toastr: ToastrService ,private _Router:Router,public dialog: MatDialog) { }
+  constructor(private _FacilitiesService: FacilitiesService,
+     private toastr: ToastrService ,private _Router:Router,public dialog: MatDialog) { }
 
   editAddFacRes:IAddAndEditFacRes={
     success:false,
@@ -126,8 +127,10 @@ export class FacilitiesComponent implements OnInit {
     //api edit
     if(editOrNotType){
       this.editFaility(event.id,result)
+    }else{
+      this.openDeleteDialog('700ms','350ms',event.id,event.name,'Facility')
+
     }
-    console.log('edit api')
     }
     });
 
@@ -183,13 +186,14 @@ export class FacilitiesComponent implements OnInit {
     this._FacilitiesService.deleteFacility(id).subscribe({
       next:res=>{
         console.log(res);
-        this.toastr.success(res.message)
       },
       error:err=>{
         console.log(err);
         this.toastr.error(err.error.message)
       },
       complete:()=>{
+        this.toastr.success("Deleted succefully")
+
         this.getAllFaclities()
       }
     })
@@ -238,7 +242,7 @@ export class FacilitiesComponent implements OnInit {
     }*/
 
 
-    editFaility(id:string,name:string):void{
+    editFaility(id:number,name:string):void{
 
       this._FacilitiesService.editFacility(id,name).subscribe({
         next: (res) => {
@@ -256,7 +260,7 @@ export class FacilitiesComponent implements OnInit {
       })
     }
 
-    addFaility(name:string):void{
+    addFaility(name:number):void{
 
       this._FacilitiesService.addFacility(name).subscribe({
         next: (res) => {

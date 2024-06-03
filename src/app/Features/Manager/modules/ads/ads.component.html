@@ -155,7 +155,7 @@ Not active
                     <mat-icon class="text-primary-color  ">edit_square</mat-icon>
                     <span>Edit</span>
                   </button>
-                  <button  mat-menu-item class="btn-hover" type="button">
+                  <button (click)="openDeleteDialog(element._id,element.room.roomNumber,'Ads')" mat-menu-item class="btn-hover" type="button">
                     <mat-icon class="text-primary-color  ">delete</mat-icon>
                     <span>Delete</span>
                   </button>

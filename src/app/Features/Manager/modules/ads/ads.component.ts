@@ -5,6 +5,8 @@ import { IParams } from '../rooms/models/IRoom.model';
 import { Ad, IAdsResponse } from './models/IAdsResponse';
 import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 
 @Component({
   selector: 'app-ads',
@@ -46,7 +48,7 @@ export class AdsComponent implements OnInit{
 
   sortedAds:Ad[] =[];
 
-  constructor(private _AdsService:AdsService ,private toastr: ToastrService){}
+  constructor(private _AdsService:AdsService ,private toastr: ToastrService,public dialog: MatDialog){}
 
   ngOnInit(): void {
     this.getAllAds();
@@ -124,6 +126,41 @@ export class AdsComponent implements OnInit{
     }
   }
 
+
+
+    // DELETE_DIALOG
+    openDeleteDialog(id:number,itname:string,componentName:string): void {
+      const dialo =this.dialog.open(DeleteComponent, {
+        width: '31.25rem',
+        data:{
+          comp:componentName,
+          id:id,
+          name:itname
+        }
+      });
+      dialo.afterClosed().subscribe(res=>{
+        if(res!=null){
+          this.deleteAds(res)
+        }
+      })
+    }
+    // DELETE_FUNCTION
+    deleteAds(id:number){
+      this._AdsService.deleteAds(id).subscribe({
+        next:res=>{
+          console.log(res);
+        },
+        error:err=>{
+          console.log(err);
+          this.toastr.error(err.error.message)
+        },
+        complete:()=>{
+          this.toastr.success("Deleted succefully")
+
+          this.getAllAds()
+        }
+      })
+    }
 
 
 
