@@ -154,13 +154,14 @@ export class RoomsComponent  implements OnInit{
     this._RoomsService.deleteRoom(id).subscribe({
       next:res=>{
         console.log(res);
-        this.toastr.success(res.message)
       },
       error:err=>{
         console.log(err);
         this.toastr.error(err.error.message)
       },
       complete:()=>{
+        this.toastr.success("Deleted succefully")
+
         this.getAllRooms()
       }
     })

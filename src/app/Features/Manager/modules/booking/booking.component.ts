@@ -123,17 +123,53 @@ export class BookingComponent {
     }
   }
 
-  deleteThisItem(id: number, name: string): void {
-    this.openDeleteDialog('700ms', '350ms', id, name, 'Room');
+
+  deleteThisItem(id:number,name:string):void{
+    this.openDeleteDialog(id,name,'Booking')
+
+    
+    
+
+
   }
 
-  openDeleteDialog(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string,
-    id: number,
-    itname: string,
-    componentName: string
-  ): void {}
+
+
+    // DELETE_DIALOG
+    openDeleteDialog(id:number,itname:string,componentName:string): void {
+      const dialo =this.dialog.open(DeleteComponent, {
+        width: '31.25rem',
+        data:{
+          comp:componentName,
+          id:id,
+          name:itname
+        }
+      });
+      dialo.afterClosed().subscribe(res=>{
+        if(res!=null){
+          this.deleteBooking(res)
+        }
+      })
+    }
+    // DELETE_FUNCTION
+    deleteBooking(id:number){
+      this._BookingService.deleteBooking(id).subscribe({
+        next:res=>{
+          console.log(res);
+        },
+        error:err=>{
+          console.log(err);
+          this.toastr.error(err.error.message)
+        },
+        complete:()=>{
+          this.toastr.success("Deleted succefully")
+
+          this.getAllBookings()
+        }
+      })
+    }
+
+
 
   deleteBooking(id: string): void {}
 }
