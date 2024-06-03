@@ -171,5 +171,4 @@ export class BookingComponent {
 
 
 
-  deleteBooking(id: string): void {}
 }
