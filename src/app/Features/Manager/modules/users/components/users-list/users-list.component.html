@@ -19,40 +19,45 @@
       </mat-form-field>
     </div>
 
-  <!-- table -->
-  <div class="py-2">
-    <table class="table table-striped  text-center">
+    <!-- table -->
+    <div class="py-2">
+      <table class="table table-striped  text-center">
         <thead class=" table-secondary" style="border-radius: 20px;">
-            <tr style="border-radius: 20px;" >
-                <th class="p-3" >User Name </th>
-                <th class="p-3" >Email </th>
-                <th class="p-3" >Phone Number </th>
-                <th class="p-3" >Country </th>
-                <th class="p-3" >Role </th>
-                <th class="p-3" >Created At </th>
-                <th class="p-3" >Updated At </th>
-                <th class="p-3">View</th>
-            </tr>
+          <tr style="border-radius: 20px;">
+            <th class="p-3">User Name </th>
+            <th class="p-3">Email </th>
+            <th class="p-3">Phone Number </th>
+            <th class="p-3">Country </th>
+            <th class="p-3">Role </th>
+            <th class="p-3">Created At </th>
+            <th class="p-3">Veiw</th>
+          </tr>
+
         </thead>
         <tbody>
-                <tr *ngFor="let item of allUsers.data.users">
-                    <td class="p-4">{{ item.userName }}</td>
-                    <td>{{ item.email }}</td>
-                    <td>{{ item.phoneNumber }}</td>
-                    <td>{{ item.country }}</td>
-                    <td>{{ item.role }}</td>
-                    <td>{{ item.createdAt | date: 'short' }}</td>
-                    <td>{{ item.updatedAt | date: 'short' }}</td>
-                    <td class="cursor-pointer">
-                      <span (click)="veiwItem(item._id)">
-                        <i class="fa-regular  fa-eye-slash"></i>
-                      </span>
-                    </td>
+          <tr *ngFor="let item of allUsers.data.users">
+            <td class="p-4">{{ item.userName }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.phoneNumber }}</td>
+            <td>{{ item.country }}</td>
+            <td>{{ item.role }}</td>
+            <td>{{ item.createdAt | date: 'short' }}</td>
+            <td>
+              <button (click)="veiwItem(item._id)" class="bg bg-transparent text-end">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </td>
 
-                </tr>
+          </tr>
         </tbody>
-    </table>
-</div>
+      </table>
+    </div>
+
+    <!--pagination-->
+    <mat-paginator [length]="totalCount" [pageSize]="pageSize" [pageIndex]="pageIndex"
+      [pageSizeOptions]="[5, 10, 25, 100]" (page)="changePage($event)" aria-label="Select page">
+    </mat-paginator>
+
 
   <!--pagination-->
   <mat-paginator
