@@ -12,7 +12,7 @@
         </button>
         <mat-label>Search By User Name</mat-label>
         <input matInput type="text" placeholder="userName" #searchValue [(ngModel)]="search"
-          (keyup)="filtetByUserName(searchValue)" (keydown.backspace)="resetSearcgInput()" />
+          (keyup.enter)="filtetByUserName(searchValue)" (keydown.backspace)="resetSearcgInput()" />
         <button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearcgInput()">
           <mat-icon>close</mat-icon>
         </button>
