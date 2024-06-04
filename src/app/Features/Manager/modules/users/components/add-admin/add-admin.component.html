@@ -5,50 +5,38 @@
             <!--image-->
             <div class="row ">
                 <div class="col-md-12">
-                    <div class="profile-image">
+                    <div class="profile-image mb-4">
                         <ng-container *ngIf="isImageUploade">
-                        <div class="to-change-image">
-                          <ngx-file-drop
-                            dropZoneClassName=""
-                            [multiple]="false"
-                            dropZoneLabel="Drop files here"
-                            (onFileDrop)="dropped($event)"
-                            (onFileOver)="fileOver($event)"
-                            (onFileLeave)="fileLeave($event)">
-                            <ng-template
-                              ngx-file-drop-content-tmp
-                              let-openFileSelector="openFileSelector">
-                              <div>
-                                <button type="button" (click)="openFileSelector()" >
-                                  <i class="fa-solid fa-camera fa-xl"></i>
-                                </button>
-                              </div>
+                            <div class="to-change-image ">
+                                <ngx-file-drop style=" position: absolute;bottom: 62%;left: 55%;" dropZoneClassName=""
+                                    [multiple]="false" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                                        <div>
+                                            <button type="button" (click)="openFileSelector()">
+                                                <i class="fa-solid fa-camera fa-xl"></i>
+                                            </button>
+                                        </div>
+                                    </ng-template>
+                                </ngx-file-drop>
+                            </div>
+                        </ng-container> 
+                        <ngx-file-drop dropZoneClassName="drop-zone" *ngIf="!isImageUploade" [multiple]="false"
+                            dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                            (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                            <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                                <div class="position-relative ">
+                                    <div>
+                                        <button type="button" (click)="openFileSelector()"
+                                            class="bg-transparent d-flex flex-column align-items-center">
+                                            <i class="fa-solid fa-upload fs-2 "></i>
+                                            <span class=" small"> Upload</span>
+                                        </button>
+                                    </div>
+
+                                </div>
                             </ng-template>
-                          </ngx-file-drop>
-                        </div>
-                      </ng-container>
-                      <ngx-file-drop
-                        dropZoneClassName="drop-zone"
-                        *ngIf="!isImageUploade"
-                        [multiple]="false"
-                        dropZoneLabel="Drop files here"
-                        (onFileDrop)="dropped($event)"
-                        (onFileOver)="fileOver($event)"
-                        (onFileLeave)="fileLeave($event)">
-                        <ng-template
-                          ngx-file-drop-content-tmp
-                          let-openFileSelector="openFileSelector">
-                          <div>
-                            <button
-                              type="button"
-                              (click)="openFileSelector()"
-                              class="bg-transparent d-flex flex-column align-items-center" >
-                              <i class="fa-solid fa-upload fs-2 "></i>
-                              <span class=" small"> Upload</span>
-                            </button>
-                          </div>
-                        </ng-template>
-                      </ngx-file-drop> 
+                        </ngx-file-drop>
                         <div *ngIf="isImageUploade" class="drop-zone">
                             <img [src]="imgUrl" class="w-100" alt="Uploaded Image" />
                         </div>
@@ -189,12 +177,12 @@
             <!-- <button [disabled]="addAdminForm.invalid" class="primary w-25 mt-5 ms-auto">
                 Submit
              </button> -->
-             <div class="btns  mt-4  text-end">
+            <div class="btns  mt-4  text-end">
                 <button routerLink="/manager/users/" class="cancel mx-4 " type="button">Cancel</button>
-                <button  class="primary " [disabled]="addAdminForm.invalid ">Save</button>
-              </div>
+                <button class="primary " [disabled]="addAdminForm.invalid ">Save</button>
+            </div>
         </div>
-        
+
     </form>
 
 
