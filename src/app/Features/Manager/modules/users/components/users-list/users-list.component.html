@@ -31,6 +31,7 @@
                 <th class="p-3" >Role </th>
                 <th class="p-3" >Created At </th>
                 <th class="p-3" >Updated At </th>
+                <th class="p-3">Veiw</th>
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,12 @@
                     <td>{{ item.role }}</td>
                     <td>{{ item.createdAt | date: 'short' }}</td>
                     <td>{{ item.updatedAt | date: 'short' }}</td>
+                    <td class="cursor-pointer">
+                      <span (click)="veiwItem(item._id)">
+                        <i class="fa-regular  fa-eye-slash"></i>
+                      </span>
+                    </td>
+
                 </tr>
         </tbody>
     </table>

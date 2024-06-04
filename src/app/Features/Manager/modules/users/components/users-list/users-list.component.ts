@@ -78,6 +78,10 @@ export class UsersListComponent implements OnInit {
     this._Router.navigate(['/manager/users/addAdmin']);
   }
 
+  veiwItem(id:string){
+    //redirect to  veiw user component
+
+  }
 
 
 }
