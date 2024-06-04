@@ -5,15 +5,15 @@
             <!--image-->
             <div class="row ">
                 <div class="col-md-12">
-                    <div class="profile-image mb-4">
+                    <div class="profile-image mb-4 mt-0">
                         <ng-container *ngIf="isImageUploade">
                             <div class="to-change-image ">
-                                <ngx-file-drop style=" position: absolute;bottom: 62%;left: 55%;" dropZoneClassName=""
+                                <ngx-file-drop  dropZoneClassName=""
                                     [multiple]="false" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
                                     (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-                                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-                                        <div>
-                                            <button type="button" (click)="openFileSelector()">
+                                    <ng-template  ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                                        <div class="text-center ms-5 ps-5 mb-0 pb-0 ">
+                                            <button class="ms-5" type="button" (click)="openFileSelector()">
                                                 <i class="fa-solid fa-camera fa-xl"></i>
                                             </button>
                                         </div>
