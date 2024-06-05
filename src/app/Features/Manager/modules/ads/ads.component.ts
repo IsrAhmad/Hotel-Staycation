@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdsService } from './services/ads.service';
 import { ToastrService } from 'ngx-toastr';
-import { IParams } from '../rooms/models/IRoom.model';
+import { IParams, IRoom } from '../rooms/models/IRoom.model';
 import { Ad, IAdsResponse } from './models/IAdsResponse';
 import { Sort } from '@angular/material/sort';
 import { PageEvent } from '@angular/material/paginator';
@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 import { UpdateViewAdsComponent } from './components/update-view-ads/update-view-ads.component';
 import { AddAdsPopupComponent } from './components/add-ads-popup/add-ads-popup.component';
+import { RoomsService } from '../rooms/services/rooms.service';
 
 export interface IAds {
   room?: string
@@ -55,10 +56,13 @@ export class AdsComponent implements OnInit{
 
   sortedAds:Ad[] =[];
 
-  constructor(private _AdsService:AdsService ,private toastr: ToastrService,public dialog: MatDialog){}
+  constructor(private _AdsService:AdsService ,private toastr: ToastrService,public dialog: MatDialog, private _RoomsService:RoomsService
+  ){}
 
   ngOnInit(): void {
     this.getAllAds();
+    this.getAllRooms();
+
     
    
   }
@@ -219,9 +223,9 @@ export class AdsComponent implements OnInit{
 
 
     openAddDialog(): void {
-   console.log(this.AdsDataRes.data.ads)
+   console.log()
       const dialogRef = this.dialog.open(AddAdsPopupComponent, {
-        data: {roomdata :this.AdsDataRes.data.ads,isActive:'' ,discount:''  ,roomNumber:''},
+        data: {roomData :this.roomData,isActive:'' ,discount:''  ,room:''},
         width: '25%'
    
        });
@@ -231,6 +235,7 @@ export class AdsComponent implements OnInit{
        if(result){
     
        console.log( result);
+       this.AddAdsItem({room:result.room,discount:result.discount,isActive:result.isActive})
 
        }
        });
@@ -251,13 +256,32 @@ export class AdsComponent implements OnInit{
         }, complete: () => {
           this.toastr.success("Added succefully")
 
-          // to load data again after adding new ads
           this.getAllAds();
         }
       });
     }
 
   
+    roomData:IRoom[]=[]
+
+
+    getAllRooms(){
+  
+      this._RoomsService.getAllRooms({page:1,size:1000}).subscribe({
+       next:(res )=>{
+     
+        this.roomData= res.data.rooms;
+   
+         }  ,
+       error:(err)=>{
+         
+       },
+       complete:()=>{
+  
+       }    
+      })
+  
+    }
 
 
 }

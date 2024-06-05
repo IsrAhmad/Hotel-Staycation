@@ -1,5 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { RoomsService } from '../../../rooms/services/rooms.service';
+import { IRoom } from '../../../rooms/models/IRoom.model';
 
 @Component({
   selector: 'app-add-ads-popup',
@@ -11,8 +13,12 @@ export class AddAdsPopupComponent {
     public dialogRef: MatDialogRef<AddAdsPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     ) {}
+
+
     
     onNoClick(): void {
     this.dialogRef.close();
     }
+
+  
 }
