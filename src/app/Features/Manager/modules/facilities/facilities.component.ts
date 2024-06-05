@@ -41,9 +41,9 @@ export class FacilitiesComponent implements OnInit {
   // }
   tableHeaders: string[] = [
     'Name',
-    'Created By',
-    'Created At',
-    'Updated At',
+    'Created by',
+    'Created at',
+    'Updated at',
     'Actions',
   ];
   totalCount!: number;
@@ -58,7 +58,7 @@ export class FacilitiesComponent implements OnInit {
   facilitiesData: any;
   data: any;
   facilitiesdta:any;
- 
+
 
   constructor(private _FacilitiesService: FacilitiesService,
     private toastr: ToastrService, private _Router: Router, public dialog: MatDialog) { }
@@ -109,7 +109,7 @@ export class FacilitiesComponent implements OnInit {
       }
     })
   }
-  //for paginaton 
+  //for paginaton
   changePage(e: PageEvent) {
     this.params.page = e.pageIndex + 1;
     this.params.size = e.pageSize;

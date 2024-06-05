@@ -10,8 +10,8 @@
         <button mat-icon-button matPrefix>
           <mat-icon>search</mat-icon>
         </button>
-        <mat-label>Search By User Name</mat-label>
-        <input matInput type="text" placeholder="userName" #searchValue [(ngModel)]="search"
+        <mat-label>Search by username</mat-label>
+        <input matInput type="text" placeholder="Search by username" #searchValue [(ngModel)]="search"
           (keyup.enter)="filtetByUserName(searchValue)" (keydown.backspace)="resetSearcgInput()" />
         <button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearcgInput()">
           <mat-icon>close</mat-icon>
@@ -24,12 +24,12 @@
       <table class="table table-striped  text-center">
         <thead class=" table-secondary" style="border-radius: 20px;">
           <tr style="border-radius: 20px;">
-            <th class="p-3">User Name </th>
+            <th class="p-3">Username </th>
             <th class="p-3">Email </th>
-            <th class="p-3">Phone Number </th>
+            <th class="p-3">Phone number </th>
             <th class="p-3">Role </th>
-            <th class="p-3">Created At </th>
-            <th class="p-3">Veiw</th>
+            <th class="p-3">Created at </th>
+            <th class="p-3">View</th>
           </tr>
 
         </thead>

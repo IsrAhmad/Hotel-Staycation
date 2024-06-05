@@ -10,11 +10,11 @@
         <button mat-icon-button matPrefix>
           <mat-icon>search</mat-icon>
         </button>
-        <mat-label>Search</mat-label>
+        <mat-label>Search by room number</mat-label>
         <input
           matInput
           type="text"
-          placeholder="Search"
+          placeholder="Search by room number"
           #searchValue
           [(ngModel)]="search"
           (keyup.enter)="filtetByRoomNumber(searchValue)"

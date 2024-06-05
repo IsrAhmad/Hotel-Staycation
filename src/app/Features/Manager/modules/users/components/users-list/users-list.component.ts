@@ -11,7 +11,7 @@ import { Sort } from '@angular/material/sort';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-  btnText: string = 'Add New Admin';
+  btnText: string = 'Add new admin';
   headerText: string = 'Users Table Details';
   headerPargraph: string = 'You can check all details';
   search!: string;
@@ -55,7 +55,7 @@ export class UsersListComponent implements OnInit {
     })
   }
 
-  //for paginaton 
+  //for paginaton
   changePage(e: PageEvent) {
     this.parm.page = e.pageIndex + 1;
     this.parm.size = e.pageSize;
