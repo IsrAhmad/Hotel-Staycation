@@ -5,7 +5,7 @@ import { ViewUserProfileComponent } from 'src/app/shared/components/view-user-pr
 
 const routes: Routes = [
   { path: '', component: GuestComponent, children: [
-    {path: '' , redirectTo: 'home' , pathMatch: 'full'},
+   // {path: '' , redirectTo: 'home' , pathMatch: 'full'},
     { path: 'home',  loadComponent: () => import('../guest/components/home/home.component').then(m => m.HomeComponent)},
     { path: 'explore',  loadComponent: () => import('../guest/components/explore/explore.component').then(m => m.ExploreComponent)},
     { path: 'favorite',  loadComponent: () => import('../guest/components/favorite/favorite.component').then(m => m.FavoriteComponent)},

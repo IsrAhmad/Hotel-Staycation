@@ -26,6 +26,7 @@ import { ViewUserProfileComponent } from './components/view-user-profile/view-us
 import { MatCardModule } from '@angular/material/card';
 import { ChangePassPopupComponent } from './components/change-pass-popup/change-pass-popup.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSortModule,
     MatCardModule,
     MatAutocompleteModule,
+    TranslateModule,
 
 
 
@@ -96,6 +98,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
       NoDataComponent ,
       MatSortModule,
       MatAutocompleteModule,
+      TranslateModule,
 
 
   ]
