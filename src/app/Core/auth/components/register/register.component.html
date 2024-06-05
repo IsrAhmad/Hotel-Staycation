@@ -383,7 +383,7 @@
               </div>
 
               <button
-                [disabled]="registerForm.invalid"
+                [disabled]="registerForm.invalid || !isImageUploade"
                 class="primary w-100 my-2 "
               >
                 Sign up
