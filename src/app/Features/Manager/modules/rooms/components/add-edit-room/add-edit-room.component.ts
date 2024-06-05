@@ -95,7 +95,7 @@ export class AddEditRoomComponent implements OnInit{
   };
 
   files: any ;
-  existingImages: any = [];
+  existingImages: any;
   newFiles: File[]=[];
 
   ngOnInit(): void {
@@ -145,7 +145,7 @@ export class AddEditRoomComponent implements OnInit{
     return blob;
   };
 
-  async convertUrlsToFiles(urls: string[]) {
+ /* async convertUrlsToFiles(urls: string[]) {
     const filePromises = urls.map(url =>
       fetch(url)
         .then(res => res.blob())
@@ -156,6 +156,17 @@ export class AddEditRoomComponent implements OnInit{
 
 
    // debugger
+  }*/
+  async convertUrlsToFiles(urls: string[]) {
+    const filePromises = urls.map(async (url) => {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      // Extract MIME type from the response
+      const mimeType = response.headers.get('content-type') || '';
+      return new File([blob], this.getFileNameFromUrl(url), { type: mimeType });
+    });
+
+    this.existingImages = await Promise.all(filePromises);
   }
 
  getFileNameFromUrl(url: string): string {
