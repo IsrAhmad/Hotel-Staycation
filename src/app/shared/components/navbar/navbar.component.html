@@ -35,9 +35,9 @@
             </button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item [routerLink]="['/manager/profile',currentUser?._id]">
-                <mat-icon><span class="material-icons">
+                <mat-icon>
                   person
-                  </span></mat-icon>
+                  </mat-icon>
                 <span>Profile</span>
               </button>
               <button (click)="openChangePassDialog()" mat-menu-item >
