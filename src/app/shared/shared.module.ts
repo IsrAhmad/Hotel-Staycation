@@ -26,6 +26,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { ViewUserProfileComponent } from './components/view-user-profile/view-user-profile.component';
 import { MatCardModule } from '@angular/material/card';
 import { ChangePassPopupComponent } from './components/change-pass-popup/change-pass-popup.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ChangePassPopupComponent } from './components/change-pass-popup/change-
 
     MatListModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatAutocompleteModule,
     
     
 
@@ -98,6 +100,7 @@ import { ChangePassPopupComponent } from './components/change-pass-popup/change-
       MatSelectModule,
       NoDataComponent ,
       MatSortModule,
+      MatAutocompleteModule,
 
 
   ]
