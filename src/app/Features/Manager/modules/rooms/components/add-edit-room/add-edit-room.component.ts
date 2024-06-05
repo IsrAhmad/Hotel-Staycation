@@ -209,10 +209,16 @@ export class AddEditRoomComponent implements OnInit{
 
     console.log(this.newFiles)
 
-      // Append new files directly
+    if (this.roomID) {
      this.existingImages.forEach((file :any )=> {
-        myData.append('imgs', file, file.name);
-      });
+      myData.append('imgs', file, file.name);
+    });
+
+
+  }
+
+
+   
       this.newFiles.forEach((file:any) => {
         myData.append('imgs', file, file.name);
       });
