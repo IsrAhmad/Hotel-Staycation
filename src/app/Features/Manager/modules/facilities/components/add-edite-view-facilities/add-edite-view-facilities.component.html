@@ -12,7 +12,7 @@
 
         <div  class="d-flex align-items-center  justify-content-between mt-5">
             <button  (click)="onNoClick()" class=" cancel py-2">Cancel</button>
-            <button [disabled]="data.name.length==0"  [mat-dialog-close]="data.name"  class=" py-2 ms-auto" [class]="(data.edit==false&&data.id)? 'delete':'primary'" >{{(data.id)? (data.edit==true)?'Edit this Facility':'Delete this Facility' :"Add Facility"}}</button>
+            <button [disabled]="data.name.length==0"  [mat-dialog-close]="data.name"  class=" py-2 ms-auto" [class]="(data.edit==false&&data.id)? 'delete':'primary'" >{{(data.id)? (data.edit==true)?'Edit ':'Delete ' :"Add "}}</button>
             
         </div>
 
