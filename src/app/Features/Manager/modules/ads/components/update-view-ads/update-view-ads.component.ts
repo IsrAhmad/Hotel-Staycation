@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddEditeViewFacilitiesComponent } from 'src/app/shared/components/add-edite-view-facilities/add-edite-view-facilities.component';
+import { AddEditeViewFacilitiesComponent } from 'src/app/Features/Manager/modules/facilities/components/add-edite-view-facilities/add-edite-view-facilities.component';
 
 @Component({
   selector: 'app-update-view-ads',

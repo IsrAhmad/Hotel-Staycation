@@ -12,7 +12,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 import {MatInputModule} from '@angular/material/input';
-import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
+import { AddEditeViewFacilitiesComponent } from '../Features/Manager/modules/facilities/components/add-edite-view-facilities/add-edite-view-facilities.component';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
