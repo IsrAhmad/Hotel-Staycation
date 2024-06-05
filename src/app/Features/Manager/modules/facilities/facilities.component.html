@@ -8,8 +8,8 @@
         <button mat-icon-button matPrefix>
           <mat-icon>search</mat-icon>
         </button>
-        <mat-label>Search by name</mat-label>
-        <input matInput type="text" placeholder="Search by name" #searchValue [(ngModel)]="search"
+        <mat-label>Search by facility name</mat-label>
+        <input matInput type="text" placeholder="Search by facility name" #searchValue [(ngModel)]="search"
           (keyup.enter)="filtetByName(searchValue)" (keydown.backspace)="resetSearcgInput()" />
         <button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearcgInput()">
           <mat-icon>close</mat-icon>
