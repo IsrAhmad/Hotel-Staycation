@@ -63,7 +63,7 @@ export class RegisterComponent {
      newUserData.append('role' , this.userRole);
      newUserData.append('password', userData.value.password);
      newUserData.append('confirmPassword', userData.value.confirmPassword);
-      if(userData.valid){
+      if(userData.valid&&this.isImageUploade){
 
       this._AuthService.register(newUserData).subscribe({
         next:(response)=>{

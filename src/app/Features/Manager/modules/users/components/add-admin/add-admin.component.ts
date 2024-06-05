@@ -54,7 +54,7 @@ export class AddAdminComponent implements OnInit {
     newUserData.append('role', 'admin');
     newUserData.append('profileImage' ,this.userProfileImg,this.userProfileImg.name);
 
-    if (userData.valid) {
+    if (userData.valid&&this.isImageUploade) {
       this._UsersService.addAdmin(newUserData).subscribe({
         next: (res: IAddAdminResponse) => {
           console.log(res);
