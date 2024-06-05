@@ -6,9 +6,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
-import { AddEditeViewFacilitiesComponent } from 'src/app/Features/Manager/modules/facilities/components/add-edite-view-facilities/add-edite-view-facilities.component';
+
 import { IParams } from '../rooms/models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
+import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
 
 interface EditEvent {
   id: number;
