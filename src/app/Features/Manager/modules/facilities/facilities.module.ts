@@ -9,11 +9,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {NgFor, NgIf} from '@angular/common';
 import {MatTableModule} from '@angular/material/table';
+import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
 
 
 @NgModule({
   declarations: [
-    FacilitiesComponent
+    FacilitiesComponent,
+    AddEditeViewFacilitiesComponent
   ],
   imports: [
     CommonModule,
