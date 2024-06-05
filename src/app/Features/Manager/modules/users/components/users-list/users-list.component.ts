@@ -47,6 +47,8 @@ export class UsersListComponent implements OnInit {
       next: (res: IGetAllUsersResponse) => {
         this.allUsers = res;
         this.allUsersData= res.data;
+        console.log(this.allUsersData);
+        this.totalCount = this.allUsers.data.totalCount;
        // this.users=res.data.users
         //console.log(res);
       }, error: (err: HttpErrorResponse) => {
@@ -70,7 +72,7 @@ export class UsersListComponent implements OnInit {
   filtetByUserName(searchValue: HTMLInputElement) {
     if (searchValue) {
       this.allUsersData.users = this.allUsersData.users.filter(p => p.userName.includes(searchValue.value));
-      this.totalCount = this.allUsersData.totalCount
+      this.totalCount = this.allUsersData.users.length;
     }
   }
 
