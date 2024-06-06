@@ -45,6 +45,12 @@ export class HomeComponent {
     { src: '../../../assets/images/home-18.png', alt: 'Home 14' }
   ];
 
+  testimonialImages = [
+    { src: '../../../assets/images/home-19.png', alt: 'Home 19' },
+  ];
+
+  stars = new Array(5);
+
 constructor(public dialog: MatDialog){}
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
