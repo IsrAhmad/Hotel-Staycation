@@ -1,0 +1,54 @@
+@import '../../../../../assets/styles/abstracts/variables.scss';
+@import '../../../../../assets/styles/components/button.scss';
+
+h4{
+    color: $secondary-color;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: 'Poppins' !important;
+}
+
+p{
+    color: $room-details-p;
+    font-size: 14px !important;
+    font-family: 'Poppins' !important;
+}
+.breadcrumb-item{
+    text-decoration: none;
+    color: $room-details-p;
+    cursor: pointer;
+}
+.price{
+    color:  #1ABC9C;
+}
+.discount{
+    color:$red-color;
+}
+.active{
+    font-size: 16px;
+    color:$light-gray-color;
+}
+.subTitle{
+    color: $secondary-color;
+    font-size: 20px;
+}
+.title{
+    font-size: 30px;
+}
+
+h5{
+     color: $secondary-color;
+     font-size: 16px;
+}
+
+::ng-deep .mat-datepicker-toggle{
+color: $secondary-color !important;
+}
+
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color:  #F5F6F8 !important;
+}
+.card-span{
+    color: $secondary-color;
+}
