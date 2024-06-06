@@ -1,5 +1,5 @@
-<section class="container d-flex align-items-center justify-content-center">
-  <div class="row mt-3">
+<section class="container d-flex align-items-center justify-content-center vw-100">
+  <div class="row mt-3 w-100">
     <section class="row">
       <div class="col-md-7">
         <h1 class="h1">
@@ -46,7 +46,7 @@
       </div>
       <div class="col-md-5 mt-3">
         <div class="w-75">
-          <img class="image" src="../../../../../assets/images/home-1.png" />
+          <img class="image my-3" src="../../../../../assets/images/home-1.png" />
         </div>
       </div>
     </section>
@@ -54,7 +54,7 @@
     <section class="mt-3">
       <h2 class="h2">Most popular ads</h2>
       <div
-        class="row d-flex justify-content-center align-items-center container-fluid"
+        class="row d-flex justify-content-center align-items-center"
       >
         <div
           class="col-md-4 card1 d-flex justify-content-center align-items-center"
@@ -65,7 +65,7 @@
           class="col-md-8 d-flex justify-content-center align-items-center mt-3"
         >
           <div class="row">
-            <div *ngFor="let image of popularImages" class="col-md-6 card2">
+            <div *ngFor="let image of popularImages" class="col-md-6 col-sm-12 card2">
               <img [src]="image.src" [alt]="image.alt" />
             </div>
           </div>
@@ -102,10 +102,10 @@
 
     <section class="my-5">
       <div class="row">
-        <div *ngFor="let image of testimonialImages" class="col-md-5">
+        <div *ngFor="let image of testimonialImages" class="col-md-4">
           <img class="card4" [src]="image.src" [alt]="image.alt" />
         </div>
-        <div class="col-md-7">
+        <div class="col-md-8">
           <h2>Happy Family</h2>
           <div class="star-container my-2 mt-5">
             <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
@@ -115,7 +115,7 @@
             I should try again next time soon ...
           </h4>
           <p class="paragraph">Angga, Product Designer</p>
-          <div class="col-4 d-flex justify-content-between">
+          <div class="col-3 d-flex justify-content-between">
             <i class="fa-regular fa-circle-left arrow"></i>
             <i class="fa-regular fa-circle-right arrow"></i>
           </div>

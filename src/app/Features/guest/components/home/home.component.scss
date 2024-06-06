@@ -1,5 +1,6 @@
 @import "../../../../../assets/styles/abstracts/text-color.scss";
 @import "../../../../../assets/styles/components/button.scss";
+@import "../../../../../assets/styles/components/card.scss";
 
 button {
   &.plus {
@@ -34,7 +35,6 @@ button {
   &:hover {
     border: 1px $secondary-color;
     color: $secondary-color;
-    background-color: #fff;
   }
 }
 
