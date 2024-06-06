@@ -1,0 +1,153 @@
+@import "../../../../../assets/styles/abstracts/text-color.scss";
+@import "../../../../../assets/styles/components/button.scss";
+@import "../../../../../assets/styles/components/card.scss";
+
+button {
+  &.plus {
+    border: 1px solid #e74c3c;
+    background-color: #e74c3c;
+    color: white;
+    transition: 0.4s !important;
+
+    &:hover {
+      border: 1px solid #e74c3c;
+      color: #e74c3c;
+      background-color: #fff;
+    }
+  }
+  &.minus {
+    border: 1px solid #1abc9c;
+    background-color: #1abc9c;
+    color: white;
+    transition: 0.4s !important;
+
+    &:hover {
+      border: 1px solid #1abc9c;
+      color: #1abc9c;
+      background-color: #fff;
+    }
+  }
+}
+.arrow {
+  color: $primary-color;
+  font-size: 57px;
+  cursor: pointer;
+  &:hover {
+    border: 1px $secondary-color;
+    color: $secondary-color;
+  }
+}
+
+.star-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.star-container .fa-star {
+  color: gold;
+  font-size: 24px;
+  margin: 0 5px;
+}
+
+
+.icon {
+  width: 4.21rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 27.44rem;
+  height: 25.66rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paragraph {
+  color: #b0b0b0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: $secondary-color;
+  &.h1 {
+    font-weight: 700;
+  }
+  &.h2 {
+    font-size: 24px;
+  }
+  &.h3,
+  h2 {
+    font-weight: 500;
+  }
+  &.h4 {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+.card1 {
+  width: 361px;
+  height: 470px;
+  top: 729px;
+  left: 148px;
+  gap: 0px;
+  border-radius: 15px 0px 0px 0px;
+  opacity: 0px;
+}
+
+.card2 {
+  width: 22.5rem;
+  height: 13.4rem;
+  top: 979px;
+  left: 540px;
+  gap: 0px;
+  border-radius: 15px 0px 0px 0px;
+  opacity: 0px;
+}
+.card1,
+.card2 {
+  margin-bottom: 1rem;
+}
+
+.card1 img,
+.card2 img {
+  width: 100%;
+  height: auto;
+}
+
+.card3 {
+  width: 263px;
+  height: 180px;
+  top: 1320px;
+  left: 150px;
+  gap: 0px;
+  border-radius: 15px 0px 0px 0px;
+  opacity: 0px;
+
+}
+.card3 {
+  margin-bottom: 15px;
+}
+
+.card3 img {
+  width: 100%;
+  height: auto;
+}
+.card4 {
+  width: 365.98px;
+height: 501.88px;
+top: 2960px;
+left: 555px;
+gap: 0px;
+border-radius: 100px 15px 15px 15px;
+opacity: 0px;
+}
