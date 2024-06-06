@@ -7,6 +7,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NativeDateAdapter} from '@angular/material/core';
+import { HttpClient } from '@angular/common/http';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import {MatCardModule} from '@angular/material/card';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FormGroup, FormControl } from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
   selector: 'app-home',
@@ -51,6 +58,11 @@ export class HomeComponent {
 
   stars = new Array(5);
 
+  today = new Date();
+ month = this.today.getMonth();
+ year = this.today.getFullYear();
+
+
 constructor(public dialog: MatDialog){}
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -60,6 +72,11 @@ openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void 
     exitAnimationDuration,
   });
 }
+
+campaignOne = new FormGroup({
+  start: new FormControl(new Date(this.year, this.month, 13)),
+  end: new FormControl(new Date(this.year, this.month, 16)),
+});
 
 
 }

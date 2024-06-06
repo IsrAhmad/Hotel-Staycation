@@ -15,9 +15,21 @@
           <div class="row">
             <div class="col-md-2">
               <h5>Pick a Date</h5>
-              <button class="secondary icon">
-                <i class="fa-solid fa-calendar-days"></i>
-              </button>
+              <!-- <mat-form-field class="example-form-field w-100">
+                <mat-label>Date</mat-label>
+                <mat-date-range-input
+                  [formGroup]="campaignOne"
+                  [rangePicker]="campaignOnePicker"
+                  [comparisonStart]="campaignOne.value.start"
+                  [comparisonEnd]="campaignOne.value.end">
+                  <input matStartDate placeholder="Start date" formControlName="start">
+                  <input matEndDate placeholder="End date" formControlName="end">
+                </mat-date-range-input>
+
+                <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+              </mat-form-field> -->
+
             </div>
             <div class="col-md-9 d-flex justify-content-start align-items-end">
               <p class="mx-1">20 Jan - 22 Jan</p>
@@ -102,10 +114,10 @@
 
     <section class="my-5">
       <div class="row">
-        <div *ngFor="let image of testimonialImages" class="col-md-4">
+        <div *ngFor="let image of testimonialImages" class="col-xl-4 ">
           <img class="card4" [src]="image.src" [alt]="image.alt" />
         </div>
-        <div class="col-md-8">
+        <div class="col-xl-8 ">
           <h2>Happy Family</h2>
           <div class="star-container my-2 mt-5">
             <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
