@@ -45,15 +45,54 @@ button {
 }
 
 .paragraph {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
-h1,h2,h3,h4,h5,p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   color: $secondary-color;
   &.h1 {
     font-weight: 700;
   }
-  &.h3 {
+  &.h2 {
+    font-size: 24px;
+  }
+  &.h3,
+  h2 {
     font-weight: 500;
   }
 }
+
+.card1 {
+  width: 361px;
+  height: 470px;
+  top: 729px;
+  left: 148px;
+  gap: 0px;
+  border-radius: 15px 0px 0px 0px;
+  opacity: 0px;
+}
+
+.card2 {
+  width: 361px;
+  height: 215px;
+  top: 979px;
+  left: 540px;
+  gap: 0px;
+  border-radius: 15px 0px 0px 0px;
+  opacity: 0px;
+}
+.card1, .card2 {
+  margin-bottom: 15px;
+}
+
+.card1 img, .card2 img {
+  width: 100%;
+  height: auto;
+}
+
+
