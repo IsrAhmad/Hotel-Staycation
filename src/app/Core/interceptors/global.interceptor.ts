@@ -16,9 +16,10 @@ export class GlobalInterceptor implements HttpInterceptor {
     const baseUrl: string = 'https://154.41.228.234:3000/api/v0/';
     const token = localStorage.getItem('token');
     let x = request.clone({
-      url: baseUrl + request.url,
+      url: request.url.includes('assets')? request.url: baseUrl + request.url,
       setHeaders: {
-        'Authorization':`${token}`
+        'Authorization':`${token}`,
+      //  'Lang':`${lang}`
       }
     })
     return next.handle(x);

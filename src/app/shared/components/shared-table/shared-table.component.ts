@@ -6,7 +6,7 @@ interface deleteEvent {
   name:string
 }
 interface EditOrViewEvent {
-  id: string;
+  id: number;
   name: string;
 }
 @Component({
@@ -39,11 +39,11 @@ export class SharedTableComponent  implements OnInit{
 
 
 
-  isEdited(id: string,name:string) {
+  isEdited(id: number,name:string) {
     this.edit.emit({id,name});
   }
 
-  viewItem(id: string,name:string) {
+  viewItem(id: number,name:string) {
     this.view.emit({id,name});
   }
 

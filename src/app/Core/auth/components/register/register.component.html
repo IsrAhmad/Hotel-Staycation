@@ -103,7 +103,7 @@
               <!--user Name-->
               <div class="row">
                 <div class="d-flex flex-column">
-                  <label for="userName" class> User Name</label>
+                  <label for="userName" class> Username</label>
                   <div class="input-group">
                     <input
                       formControlName="userName"
@@ -233,7 +233,7 @@
               <!--email-->
               <div class="row">
                 <div class="mt-1 d-flex flex-column">
-                  <label for="email">Email Address</label>
+                  <label for="email">Email address</label>
                   <div class="input-group">
                     <input
                       formControlName="email"
@@ -334,7 +334,7 @@
                 <div class="col-md-12">
                   <!--confirm Password-->
                   <div class="d-flex flex-column">
-                    <label for="confirmPassword" class>confirm Password</label>
+                    <label for="confirmPassword" class>Confirm password</label>
 
                     <div class="input-group d-flex align-items-center">
                       <input
@@ -383,7 +383,7 @@
               </div>
 
               <button
-                [disabled]="registerForm.invalid"
+                [disabled]="registerForm.invalid || !isImageUploade"
                 class="primary w-100 my-2 "
               >
                 Sign up

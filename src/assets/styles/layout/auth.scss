@@ -87,13 +87,16 @@
             }
             .to-change-image{
             position: absolute;
-            top: -3.125rem;
-            right: 30%;
+            top: 50%;
+            right:47%;
+            transform: translate(-50%, -50%);
+
             border-radius: 5px;
-            color: white;
+            color: transparent;
+            background-color:  transparent !important;
             
             button{
-                background-color:  #F7F7F7;
+                background-color:  transparent;
                 padding: 15px 10px;
                 border-radius: 15px;
             }

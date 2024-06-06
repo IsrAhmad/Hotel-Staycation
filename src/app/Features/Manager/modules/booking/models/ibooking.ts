@@ -1,33 +1,53 @@
-export interface VeiwBookingRequest {
+export interface IVeiwBookingResponse {
     success: boolean
     message: string
-    data: VeiwBookingData
+    data: IVeiwBookingData
   }
-  
-  export interface VeiwBookingData {
-    booking: Booking
+
+  // export interface IVeiwBookingData {
+  //   booking: IBooking
+  // }
+
+//   export interface IBooking {
+
+  export interface IVeiwBookingData {
+    booking: IBooking
   }
-  
-  export interface Booking {
+
+  export interface IBooking {
     _id: string
     startDate: string
     endDate: string
     totalPrice: number
-    user: User
-    room: Room
+    user: IUser
+    room: IRoom
     status: string
     createdAt: string
     updatedAt: string
     stripeChargeId: string
   }
-  
-  export interface User {
+
+  export interface IUser {
     _id: string
     userName: string
   }
-  
-  export interface Room {
+
+  export interface IBookingData {
+    booking: IBooking[];
+    totalCount: number;
+  }
+  export interface IBookingResponse {
+    success: boolean;
+    message: string;
+    data: IBookingData;
+  }
+
+  export interface IRoom {
     _id: string
     roomNumber: string
   }
-  
+
+  export  interface IParams {
+    page :number,
+    size:number
+  }

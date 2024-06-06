@@ -166,6 +166,7 @@ export class AddEditRoomComponent implements OnInit{
       return new File([blob], this.getFileNameFromUrl(url), { type: mimeType });
     });
 
+
     this.existingImages = await Promise.all(filePromises);
   }
 
@@ -177,6 +178,7 @@ export class AddEditRoomComponent implements OnInit{
     console.log(event);
     this.newFiles.push(...event.addedFiles);
   }
+
 
   onRemove(event: any, isExisting: boolean) {
     console.log(event);
@@ -213,6 +215,7 @@ export class AddEditRoomComponent implements OnInit{
      this.existingImages.forEach((file :any )=> {
       myData.append('imgs', file, file.name);
     });
+
 
 
   }

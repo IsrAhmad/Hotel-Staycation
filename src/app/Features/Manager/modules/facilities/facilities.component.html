@@ -1,33 +1,35 @@
 <div class="container-fluid mt-4">
   <div class="row">
-    <app-shared-header [headerBtnText]="'Add New Facility'"
-      [headerMainText]="'Facilities Table Details'"
-      [headerPargraph]="'You can check all details'"
-      (addClicked)="addFacility()"></app-shared-header>
+    <app-shared-header [headerBtnText]="'Add new facility'" [headerMainText]="'Facilities Table Details'"
+      [headerPargraph]="'You can check all details'" (addClicked)="addFacility()"></app-shared-header>
+    <!--search and filter-->
+    <div class="col-md-12">
+      <mat-form-field appearance="outline" class="w-50">
+        <button mat-icon-button matPrefix>
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-label>Search by facility name</mat-label>
+        <input matInput type="text" placeholder="Search by facility name" #searchValue [(ngModel)]="search"
+          (keyup.enter)="filtetByName(searchValue)" (keydown.backspace)="resetSearcgInput()" />
+        <button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearcgInput()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
 
     <ng-container *ngIf=" totalCount == 0">
-   <app-no-data></app-no-data>
+      <app-no-data></app-no-data>
     </ng-container>
     <ng-container *ngIf="totalCount > 0">
-      <app-shared-table
-        [tableHeaders]="tableHeaders"
-        [tableDefinitionText]="'facilities'"
-        [tableBodyContent]="facilitiesData"
-        (edit)="editOrView($event,true)"
-        (view)="editOrView($event,false)"
+      <app-shared-table [tableHeaders]="tableHeaders" [tableDefinitionText]="'facilities'"
+        [tableBodyContent]="facilitiesData" (edit)="editOrView($event,true)" (view)="editOrView($event,false)"
         (delete)="willBeDeleted($event)"></app-shared-table>
       <!--pagination-->
-      <mat-paginator
-        [length]="totalCount"
-        [pageSize]="pageSize"
-        [pageIndex]="pageIndex"
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        (page)="changePage($event)"
-        aria-label="Select page">
+      <mat-paginator [length]="totalCount" [pageSize]="pageSize" [pageIndex]="pageIndex"
+        [pageSizeOptions]="[5, 10, 25, 100]" (page)="changePage($event)" aria-label="Select page">
       </mat-paginator>
     </ng-container>
 
   </div>
 
 </div>
-

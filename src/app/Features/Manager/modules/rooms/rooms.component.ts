@@ -41,6 +41,7 @@ export class RoomsComponent  implements OnInit{
     size:this.pageSize
 
   }
+  
 
   sortedRooms:IRoom[] =[];
 
@@ -115,7 +116,7 @@ export class RoomsComponent  implements OnInit{
   }
   filtetByRoomNumber(searchValue :HTMLInputElement){
     if (searchValue) {
-      this.sortedRooms = this.sortedRooms.filter(p => p.roomNumber === searchValue.value);
+      this.sortedRooms = this.sortedRooms.filter(p => p.roomNumber.includes(searchValue.value));
       this.totalCount =this.sortedRooms.length
     }
   }
@@ -153,13 +154,14 @@ export class RoomsComponent  implements OnInit{
     this._RoomsService.deleteRoom(id).subscribe({
       next:res=>{
         console.log(res);
-        this.toastr.success(res.message)
       },
       error:err=>{
         console.log(err);
         this.toastr.error(err.error.message)
       },
       complete:()=>{
+        this.toastr.success("Deleted succefully")
+
         this.getAllRooms()
       }
     })

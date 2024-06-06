@@ -12,7 +12,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 import {MatInputModule} from '@angular/material/input';
-import { AddEditeViewFacilitiesComponent } from './components/add-edite-view-facilities/add-edite-view-facilities.component';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -23,6 +22,13 @@ import {MatSelectModule} from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSortModule} from '@angular/material/sort';
+import { ViewUserProfileComponent } from './components/view-user-profile/view-user-profile.component';
+import { MatCardModule } from '@angular/material/card';
+import { ChangePassPopupComponent } from './components/change-pass-popup/change-pass-popup.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TranslateModule } from '@ngx-translate/core';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +40,9 @@ import {MatSortModule} from '@angular/material/sort';
     DeleteComponent,
     NavbarComponent,
     NoDataComponent,
-    AddEditeViewFacilitiesComponent,
+    ViewUserProfileComponent,
+    ChangePassPopupComponent,
+    FooterComponent,
 
   ],
   imports: [
@@ -54,7 +62,12 @@ import {MatSortModule} from '@angular/material/sort';
    ReactiveFormsModule,
 
     MatListModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule,
+    MatAutocompleteModule,
+    TranslateModule,
+
+
 
   ],
   exports:[
@@ -69,9 +82,6 @@ import {MatSortModule} from '@angular/material/sort';
      MatDialogModule,
      MatPaginatorModule,
      NavbarComponent,
-     AddEditeViewFacilitiesComponent,
-      
-
      SidebarComponent,
      MatPaginatorModule,
      MatFormFieldModule,
@@ -89,6 +99,9 @@ import {MatSortModule} from '@angular/material/sort';
       MatSelectModule,
       NoDataComponent ,
       MatSortModule,
+      MatAutocompleteModule,
+      TranslateModule,
+      FooterComponent
 
 
   ]

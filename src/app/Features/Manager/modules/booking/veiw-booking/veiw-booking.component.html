@@ -1,1 +1,39 @@
-<p>veiw-booking works!</p>
+<div class="container p-5 mt-4" *ngIf="bookingData">
+    <div class="row ">
+        <div class="col-md-6 my-2 ">
+            <label for="">User Name</label>
+            <input disabled type="text" class="form-control" [value]="bookingData.booking.user.userName " name="" id="">
+        </div>
+        
+        <div class="col-md-6 my-2">
+            <label for="">Room Number</label>
+            <input disabled type="text" class="form-control" [value]="bookingData.booking.room.roomNumber " name="" id="">
+        </div>
+        
+        <div class="col-md-6 my-2">
+            <label for="">Status</label>
+            <input disabled type="text" class="form-control" [value]="bookingData.booking.status " name="" id="">
+        </div>
+        
+        <div class="col-md-6 my-2">
+            <label for="">Total Price</label>
+            <input disabled type="text" class="form-control" [value]="bookingData.booking.totalPrice " name="" id="">
+        </div>
+      
+        <div class="col-md-6 my-2">
+            <label for="">Start Date</label>
+            <input disabled type="text" class="form-control" [value]="bookingData.booking.startDate| date: 'short'" name="" id="">
+        </div>
+        
+        <div class="col-md-6 my-2">
+            <label for="">End Date</label>
+            <input disabled type="text" class="form-control" [value]="bookingData.booking.endDate | date: 'short'" name="" id="">
+        </div>
+    </div>
+    <div class="w-25 ms-auto mt-5 text-end ">
+        <button routerLink="../../"  type="button" class="cancel w-75">Cancel</button>
+    </div>
+   
+       
+     
+</div>

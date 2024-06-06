@@ -1,0 +1,37 @@
+@import '../../../../assets/styles/abstracts/variables.scss';
+
+h2{
+    font-size: 18px;
+    color: $secondary-color;
+    &:hover{
+        font-size: 20px;
+        transition: 0.3ms;
+        &::first-letter {
+            border-bottom: 4px solid $secondary-color;
+           
+          }
+    }
+    span{
+        color: $mat-icon-color;
+    }
+}
+p{
+    color: $main-p;
+    font-size: 15px;
+   
+}
+ul{
+    list-style-type: none;
+    li{
+        a{
+            color: $main-p;
+            font-size: 15px;
+            cursor: pointer;
+            &:hover{
+                color: $secondary-color;
+                font-size: 16px
+            }
+        }
+       
+    }
+}
