@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ChangePassPopupComponent } from './components/change-pass-popup/change-pass-popup.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TranslateModule } from '@ngx-translate/core';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NoDataComponent,
     ViewUserProfileComponent,
     ChangePassPopupComponent,
+    FooterComponent,
 
   ],
   imports: [
@@ -99,6 +101,7 @@ import { TranslateModule } from '@ngx-translate/core';
       MatSortModule,
       MatAutocompleteModule,
       TranslateModule,
+      FooterComponent
 
 
   ]
