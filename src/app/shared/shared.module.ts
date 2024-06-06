@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 import {MatInputModule} from '@angular/material/input';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -64,6 +64,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatCardModule,
     MatAutocompleteModule,
     TranslateModule,
+    MatDatepickerModule,
 
 
 
@@ -99,6 +100,7 @@ import { TranslateModule } from '@ngx-translate/core';
       MatSortModule,
       MatAutocompleteModule,
       TranslateModule,
+      MatDatepickerModule,
 
 
   ]

@@ -1,0 +1,59 @@
+@import "../../../../../assets/styles/abstracts/text-color.scss";
+@import "../../../../../assets/styles/components/button.scss";
+
+button {
+  &.plus {
+    border: 1px solid #e74c3c;
+    background-color: #e74c3c;
+    color: white;
+    transition: 0.4s !important;
+
+    &:hover {
+      border: 1px solid #e74c3c;
+      color: #e74c3c;
+      background-color: #fff;
+    }
+  }
+  &.minus {
+    border: 1px solid #1abc9c;
+    background-color: #1abc9c;
+    color: white;
+    transition: 0.4s !important;
+
+    &:hover {
+      border: 1px solid #1abc9c;
+      color: #1abc9c;
+      background-color: #fff;
+    }
+  }
+}
+
+.icon {
+  width: 4.21rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 27.44rem;
+  height: 25.66rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paragraph {
+  color: #B0B0B0;
+}
+
+h1,h2,h3,h4,h5,p {
+  color: $secondary-color;
+  &.h1 {
+    font-weight: 700;
+  }
+  &.h3 {
+    font-weight: 500;
+  }
+}
