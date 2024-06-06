@@ -46,25 +46,16 @@
         </div>
       </section>
 
-      <section class="mt-3 ads">
+      <section class="mt-3">
         <h2 class="h2">Most popular ads</h2>
-        <div class="row d-flex justify-content-center align-items-center w-100 bg-danger">
+        <div class="row d-flex justify-content-center align-items-center container-fluid">
           <div class="col-md-4 card1 d-flex justify-content-center align-items-center">
             <img src="../../../../../assets/images/home-2.png" alt="Home 2">
           </div>
           <div class="col-md-8 d-flex justify-content-center align-items-center mt-3">
             <div class="row">
-              <div class="col-md-6 card2">
-                <img src="../../../../../assets/images/home-3.png" alt="Home 3">
-              </div>
-              <div class="col-md-6 card2">
-                <img src="../../../../../assets/images/home-4.png" alt="Home 4">
-              </div>
-              <div class="col-md-6 card2">
-                <img src="../../../../../assets/images/home-5.png" alt="Home 5">
-              </div>
-              <div class="col-md-6 card2">
-                <img src="../../../../../assets/images/home-6.png" alt="Home 6">
+              <div *ngFor="let image of popularImages" class="col-md-6 card2">
+                <img [src]="image.src" [alt]="image.alt">
               </div>
             </div>
           </div>
@@ -72,9 +63,33 @@
       </section>
 
 
-      <section class="">Beauty bg</section>
-      <section class="">Living room</section>
-      <section class="">ADS</section>
+
+      <section class="mt-3">
+        <h2 class="h2">Houses with beauty backyard</h2>
+        <div class="row">
+          <div *ngFor="let image of images" class="col-md-4 card3">
+            <img [src]="image.src" [alt]="image.alt">
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-3">
+        <h2 class="h2">Hotels with large living room</h2>
+        <div class="row">
+          <div *ngFor="let image of livingImages" class="col-md-4 card3">
+            <img [src]="image.src" [alt]="image.alt">
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-3">
+        <h2 class="h2">Hotels with large living room</h2>
+        <div class="row">
+          <div *ngFor="let image of adImages" class="col-md-4 card3">
+            <img [src]="image.src" [alt]="image.alt">
+          </div>
+        </div>
+      </section>
       <section class="">Testimonials</section>
   </div>
 </section>

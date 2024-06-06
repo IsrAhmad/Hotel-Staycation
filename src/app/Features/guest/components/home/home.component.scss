@@ -78,21 +78,39 @@ p {
 }
 
 .card2 {
-  width: 361px;
-  height: 215px;
+  width: 22.5rem;
+  height: 13.4rem;
   top: 979px;
   left: 540px;
   gap: 0px;
   border-radius: 15px 0px 0px 0px;
   opacity: 0px;
 }
-.card1, .card2 {
-  margin-bottom: 15px;
+.card1,
+.card2 {
+  margin-bottom: 1rem;
 }
 
-.card1 img, .card2 img {
+.card1 img,
+.card2 img {
   width: 100%;
   height: auto;
 }
 
+.card3 {
+  width: 361px;
+  height: 215px;
+  top: 734px;
+  left: 540px;
+  gap: 0px;
+  border-radius: 15px 0px 0px 0px;
+  opacity: 0px;
+}
+.card3 {
+  margin-bottom: 15px;
+}
 
+.card3 img {
+  width: 100%;
+  height: auto;
+}

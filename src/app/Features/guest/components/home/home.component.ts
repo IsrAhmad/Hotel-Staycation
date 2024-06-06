@@ -16,6 +16,35 @@ import {NativeDateAdapter} from '@angular/material/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+  popularImages = [
+    { src: '../../../assets/images/home-3.png', alt: 'Home 3' },
+    { src: '../../../assets/images/home-4.png', alt: 'Home 4' },
+    { src: '../../../assets/images/home-5.png', alt: 'Home 5' },
+    { src: '../../../assets/images/home-6.png', alt: 'Home 6' }
+  ];
+
+  images = [
+    { src: '../../../assets/images/home-7.png', alt: 'Home 7' },
+    { src: '../../../assets/images/home-8.png', alt: 'Home 8' },
+    { src: '../../../assets/images/home-9.png', alt: 'Home 9' },
+    { src: '../../../assets/images/home-10.png', alt: 'Home 10' }
+  ];
+
+  livingImages = [
+    { src: '../../../assets/images/home-11.png', alt: 'Home 11' },
+    { src: '../../../assets/images/home-12.png', alt: 'Home 12' },
+    { src: '../../../assets/images/home-13.png', alt: 'Home 13' },
+    { src: '../../../assets/images/home-14.png', alt: 'Home 14' }
+  ];
+
+  adImages = [
+    { src: '../../../assets/images/home-15.png', alt: 'Home 11' },
+    { src: '../../../assets/images/home-16.png', alt: 'Home 12' },
+    { src: '../../../assets/images/home-17.png', alt: 'Home 13' },
+    { src: '../../../assets/images/home-18.png', alt: 'Home 14' }
+  ];
+
 constructor(public dialog: MatDialog){}
 
 openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
