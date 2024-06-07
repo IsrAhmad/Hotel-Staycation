@@ -1,3 +1,6 @@
+
+
+
 export interface IRoomReveiwRequest {
     roomId: string
     rating: number
@@ -9,19 +12,24 @@ export interface IRoomReveiwRequest {
         message: string
         data: IRoomReviewData
       }
-      
+     
       export interface IRoomReviewData {
-        roomReview: RoomReview
+        roomReviews: RoomReview[]
+        totalCount: number
       }
       
       export interface RoomReview {
-        room: string
-        user: string
+        room: Room
+        user: IUser
         rating: number
         review: string
         _id: string
         createdAt: string
         updatedAt: string
+      }
+      export interface Room {
+        _id: string
+        roomNumber: string
       }
 
       export interface IRommCommentRequest {
@@ -36,15 +44,28 @@ export interface IRoomReveiwRequest {
       }
       
       export interface IRommCommentData {
-        roomComment: IRoomComment
+        roomComments: IRoomComment[],
+      
       }
       
       export interface IRoomComment {
         room: string
-        user: string
+        user: IUser
         comment: string
         _id: string
         createdAt: string
         updatedAt: string
       }
-  
+      export interface Room {
+        _id: string
+        roomNumber: string
+      }
+      
+      export interface IUser {
+        _id: string
+        userName: string
+        profileImage: string
+      }
+     
+
+
