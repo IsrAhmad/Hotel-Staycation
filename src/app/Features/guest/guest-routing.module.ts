@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: 'home',  loadComponent: () => import('../guest/components/home/home.component').then(m => m.HomeComponent)},
     { path: 'explore',  loadComponent: () => import('../guest/components/explore/explore.component').then(m => m.ExploreComponent)},
     { path: 'favorite',  loadComponent: () => import('../guest/components/favorite/favorite.component').then(m => m.FavoriteComponent)},
-    { path: 'room-details',  loadComponent: () => import('../guest/components/room-details/room-details.component').then(m => m.RoomDetailsComponent)},
+    { path: 'room-details/:id',  loadComponent: () => import('../guest/components/room-details/room-details.component').then(m => m.RoomDetailsComponent)},
   ] },
   { path: 'payment', loadChildren: () => import('./modules/payment/payment.module').then(m => m.PaymentModule) },
   {
