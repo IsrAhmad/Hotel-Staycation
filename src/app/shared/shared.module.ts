@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { DeleteComponent } from './components/delete/delete.component';
 import {MatInputModule} from '@angular/material/input';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -68,6 +68,7 @@ import { UserNavComponent } from './components/user-nav/user-nav.component';
     MatCardModule,
     MatAutocompleteModule,
     TranslateModule,
+    MatDatepickerModule,
 
 
 
@@ -105,6 +106,7 @@ import { UserNavComponent } from './components/user-nav/user-nav.component';
       TranslateModule,
       FooterComponent,
       UserNavComponent
+      MatDatepickerModule,
 
 
   ]
