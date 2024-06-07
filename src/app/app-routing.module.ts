@@ -5,9 +5,7 @@ import { managerGuard } from './Core/Guards/manager.guard';
 import { HomeComponent } from './Features/guest/components/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-
-
+  { path: '', redirectTo:'guest',pathMatch:'full' },
   {
     path: 'auth',
     loadChildren: () =>
