@@ -105,7 +105,7 @@ import { UserNavComponent } from './components/user-nav/user-nav.component';
       MatAutocompleteModule,
       TranslateModule,
       FooterComponent,
-      UserNavComponent
+      UserNavComponent,
       MatDatepickerModule,
 
 
