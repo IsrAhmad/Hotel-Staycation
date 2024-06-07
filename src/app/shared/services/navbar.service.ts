@@ -15,4 +15,8 @@ export class NavbarService {
   );
   }
 
+  getUserProfile(_id:string){
+    return this._HttpClient.get(`portal/users/${_id}`)
+  }
+
 }

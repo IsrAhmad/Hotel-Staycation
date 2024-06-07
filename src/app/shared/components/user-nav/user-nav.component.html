@@ -1,0 +1,102 @@
+<!--anormal user-->
+<ng-container *ngIf="!loggedIn">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light  p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-5" href="#"><span>Stay</span>cation.</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto  ">
+              <li class="nav-item  notLoged">
+                <a class="nav-link  active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item notLoged">
+                <a class="nav-link " href="#">Explore</a>
+              </li>
+              
+              <li>
+                
+                <button class=" btn primary mb-1 me-3" (click)="register()"> Register</button>
+              </li>
+              <li>
+                <button class="btn primary me-3 mb-1" (click)="login()"> Login Now</button>
+              </li>
+             
+            </ul>
+          </div>
+        </div>
+        </nav>
+</ng-container>
+
+
+    <!--logged in -->
+
+<ng-container *ngIf="loggedIn">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light  p-3 mt-5">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-5" href="#"><span>Stay</span>cation.</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class=" collapse navbar-collapse  " id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto  ">
+              <li class="nav-item">
+                <a class="nav-link mx-1  active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link " href="#">Explore</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#">Reviews</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link " href="#">favorites</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">    
+                <img [src]="currentUser?.data.user.profileImage" alt="">
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">       {{currentUser?.data.user.userName}}</a>
+           
+                
+                
+              </li>
+             
+              <li  class="nav-item">
+                <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>expand_more</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['/guest/profile',currentUser?.data.user._id]">
+                  <mat-icon>
+                    person
+                    </mat-icon>
+                  <span>Profile</span>
+                </button>
+                <button  mat-menu-item  (click)="openChangePassDialog()">
+                  <mat-icon>edit_square</mat-icon>
+                  <span>Change Password</span>
+                </button>
+                <button  mat-menu-item  (click)="logout()">
+                  <mat-icon>logout</mat-icon>
+                  <span>Logout</span>
+                </button>
+              </mat-menu>
+              </li>
+             
+        
+             
+            </ul>
+          </div>
+        </div>
+        </nav>
+</ng-container>

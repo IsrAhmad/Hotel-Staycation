@@ -28,6 +28,7 @@ import { ChangePassPopupComponent } from './components/change-pass-popup/change-
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from './components/footer/footer.component';
+import { UserNavComponent } from './components/user-nav/user-nav.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ViewUserProfileComponent,
     ChangePassPopupComponent,
     FooterComponent,
+    UserNavComponent,
 
   ],
   imports: [
@@ -102,8 +104,9 @@ import { FooterComponent } from './components/footer/footer.component';
       MatSortModule,
       MatAutocompleteModule,
       TranslateModule,
-      MatDatepickerModule,
       FooterComponent,
+      UserNavComponent
+      MatDatepickerModule,
 
 
   ]

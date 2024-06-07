@@ -1,0 +1,26 @@
+@import '../../../../assets/styles/abstracts/variables.scss';
+@import '../../../../assets/styles/components/button.scss';
+
+.navbar-brand{
+    span{
+        color: $mat-icon-color;
+    }
+}
+.notLoged ,.primary{
+    padding: 8px 18px !important;
+}
+.nav-link{
+  
+    &:hover{
+        color: $mat-icon-color;
+    }
+}
+img{
+    width: 30px;
+    height: 30px;
+   
+    border-radius: 50%;
+}
+
+
+
