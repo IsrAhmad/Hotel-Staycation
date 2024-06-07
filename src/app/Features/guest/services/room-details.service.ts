@@ -23,4 +23,10 @@ export class RoomDetailsService {
   AddRoomComment(data: FormGroup): Observable<IRommCommentResponse> {
     return this._HttpClient.post<IRommCommentResponse>(`portal/room-comments`, data)
   }
+  getAllRoomComments(id:string):Observable<IRommCommentResponse>{
+    return this._HttpClient.get<IRommCommentResponse>(`portal/room-comments/${id}`)
+  }
+  getAllRoomReviews(id:string):Observable<IRoomReveiwResponse>{
+    return this._HttpClient.get<IRoomReveiwResponse>(`portal/room-reviews//${id}`)
+  }
 }

@@ -106,6 +106,132 @@
         </mat-card>
       </div>
     </div>
+     <!-- review and rate  Section -->
+     <div class="row mt-3 mb-5 ">
+    <div class="col-md-12 px-5 py-3 mb-5 ">
+      <h5 class="mb-4">
+        Comments & Reviews
+      </h5>
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+            Comments
+            </mat-panel-title>
+            <mat-panel-description>
+              See all comments
+              <mat-icon>chat</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+              <ng-container *ngIf="commentsResponse.roomComments.length >0">
+                <div class="row ">
+                  <div class="col-md-12">
+                    <div class="card " *ngFor=" let comment of commentsResponse.roomComments">
+                      <div class="card-body p-4">
+                        <div class="row">
+                          <div class="col ">
+                            <div class="d-flex flex-start">
+                              <img class="rounded-circle shadow-1-strong me-3"
+                                [src]="comment.user.profileImage"
+                                 alt="avatar" width="65"
+                                height="65" />
+                              <div class="flex-grow-1 flex-shrink-1">
+                                <div>
+                                  <div class="d-flex justify-content-between align-items-center">
+                                    <p class="mb-1">
+                                     {{comment.user.userName}} <span class="small">{{comment.createdAt |date}}</span>
+                                    </p>
+                                   
+                                  </div>
+                                  <p class="small mb-0">
+                                   {{comment.comment}}
+                                  </p>
+                                </div>
+            
+                                
+            
+                               
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="commentsResponse.roomComments.length == 0">
+                <p>No comments yet</p>
+              </ng-container>
+              
+        
+          
+      
+        </mat-expansion-panel>
+       
+      
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+             Reviews
+            </mat-panel-title>
+            <mat-panel-description>
+             See all reviews
+              <mat-icon>reviews</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <ng-container *ngIf="reviewsResponse.roomReviews.length>0">
+            <div class="row ">
+              <div class="col-md-12 ">
+                <div class="card " *ngFor=" let review of reviewsResponse.roomReviews">
+                  <div class="card-body p-4 ">
+                    <div class="row">
+                      <div class="col ">
+                        <div class="d-flex flex-start">
+                          <img class="rounded-circle shadow-1-strong me-3"
+                            [src]="review.user.profileImage"
+                             alt="avatar" width="65"
+                            height="65" />
+                          <div class="flex-grow-1 flex-shrink-1">
+                            <div>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <p class="mb-1">
+                                 {{review.user.userName}} <span class="small">{{review.createdAt |date}}</span>
+                                </p>
+                               
+                              </div>
+                              <p class="small mb-2">
+                               {{review.review}}
+                              </p>
+                              <div class="">
+                                <star-rating-control [starType]="'svg'"  class="star filled "
+                                [numOfStars]="review.rating"></star-rating-control>
+                              </div>
+                            </div>
+        
+                            
+        
+                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="reviewsResponse.roomReviews.length == 0">
+            <p>No Reviews yet</p>
+          </ng-container>
+      
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+    </div>
+    </div>
+
     <!-- Rate Section -->
     <div class="col-md-12 px-5 py-3 mb-5 rate-card h-auto">
       <div class="row ">
@@ -115,7 +241,7 @@
               <h3 class="mb-1">Rate</h3>
               <div class="d-flex justify-content-start align-items-center  ">
                 <star-rating-control formControlName="rating" [starType]="'svg'" [rating]="rating"
-                  [numOfStars]="4"></star-rating-control>
+                  [numOfStars]="5"></star-rating-control>
               </div>
             </div>
             <div class=" " >
