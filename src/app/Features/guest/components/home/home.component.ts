@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,MatButtonModule, MatDialogModule],
+  imports: [CommonModule,MatButtonModule, MatDialogModule,SharedModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
