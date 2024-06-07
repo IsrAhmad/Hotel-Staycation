@@ -11,7 +11,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './Core/interceptors/loading.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

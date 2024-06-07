@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'payment', loadChildren: () => import('./modules/payment/payment.module').then(m => m.PaymentModule) },
   {
     path:'profile/:id' , component:ViewUserProfileComponent
-  },
+  }
 
 ];
 

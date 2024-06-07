@@ -1,92 +1,142 @@
-
-<section class="roomDetails  ">
-    <div class="container ">
-        <div class="row">
-            <!--breadcurmb-->
-            <div class="col-md-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a routerLink="/guest/home">Home</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Room Details</li>
-                    </ol>
-                  </nav>
+<section class="roomDetails  " *ngIf="roomRes">
+  <div class="container ">
+    <div class="row">
+      <!--breadcurmb-->
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/guest/home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Room Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-md-4  text-center">
+        <div class="roomNumer">
+          <h4 class="">
+            {{roomRes.roomNumber}}
+          </h4>
+          <p>
+            Bogor, Indonesia
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <owl-carousel-o [options]="sliderOptions">
+        <ng-container *ngFor="let item of roomRes?.images">
+          <ng-template carouselSlide [id]="roomRes._id">
+            <img height="300" [src]="item" alt="room photos">
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+    <div class="row mt-3 mb-5 ">
+      <div class="col-md-6">
+        <div class="paragraph p-2">
+          <p>
+            Minimal techno is a minimalist subgenre of techno music. It is characterized by a stripped-down aesthetic
+            that exploits the use of repetition and understated development. Minimal techno is thought to have been
+            originally developed in the early 1990s by Detroit-based producers Robert Hood and Daniel Bell.
+          </p>
+          <p>
+            Such trends saw the demise of the soul-infused techno that typified the original Detroit sound. Robert Hood
+            has noted that he and Daniel Bell both realized something was missing from techno in the post-rave era.
+          </p>
+          <p>
+            Design is a plan or specification for the construction of an object or system or for the implementation of
+            an activity or process, or the result of that plan or specification in the form of a prototype, product or
+            process. The national agency for design: enabling Singapore to use design for economic growth and to make
+            lives better.
+          </p>
+        </div>
+        <div class="p-2">
+          <div *ngIf="roomRes.facilities.length>1">
+            <div class="p-2" *ngFor="let item of roomRes.facilities">
+              {{item}}
             </div>
-        </div>
-        <div class="row d-flex align-items-center justify-content-center">
-            <div class="col-md-4  text-center">
-                <div class="roomNumer">
-                    <h4 class="">
-                        <!--room number will be replaced-->
-                        Village Angga
-                    </h4>
-                    <p>
-                        Bogor, Indonesia
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <owl-carousel-o [options]="sliderOptions">
-
-                <ng-container *ngFor="let item of roomRes?.images">
-                  <ng-template carouselSlide [id]="roomRes._id">
-                    <img height="300" [src]="item" alt="room photos">
-                  </ng-template>
-                </ng-container>
-            
-              </owl-carousel-o>
-        </div>
-       <div class="row mt-3 mb-5 ">
-        <div class="col-md-6">
-          <div class="paragraph p-2">
-            <p>
-                Minimal techno is a minimalist subgenre of techno music. It is characterized by a stripped-down aesthetic that exploits the use of repetition and understated development. Minimal techno is thought to have been originally developed in the early 1990s by Detroit-based producers Robert Hood and Daniel Bell.
-            </p>
-            <p>
-                Such trends saw the demise of the soul-infused techno that typified the original Detroit sound. Robert Hood has noted that he and Daniel Bell both realized something was missing from techno in the post-rave era.
-            </p>
-            <p>
-                Design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process. The national agency for design: enabling Singapore to use design for economic growth and to make lives better.
-            </p>
+          </div>
+          <div *ngIf="roomRes.facilities.length==0">
+            <h5>No Faccilities For This Room</h5>
           </div>
         </div>
-        <div class="col-md-6">
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <mat-card-subtitle class="subTitle mb-3">Start Booking </mat-card-subtitle>
-                  <mat-card-title class="title mb-2">  <span class="price">$ 280</span> per night</mat-card-title>
-                 
-                  <mat-card-subtitle> <span class="discount">Discount 20% Off</span> </mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content class="mt-5">
-                  
-                 <h5>Pick a date</h5>
-                  <mat-form-field class="example-form-field w-100">
-                    <mat-label>Date</mat-label>
-                    <mat-date-range-input 
-                      [formGroup]="campaignOne"
-                      [rangePicker]="campaignOnePicker"
-                      [comparisonStart]="campaignOne.value.start"
-                      [comparisonEnd]="campaignOne.value.end">
-                      <input matStartDate placeholder="Start date" formControlName="start">
-                      <input matEndDate placeholder="End date" formControlName="end">
-                    </mat-date-range-input>
-                   
-                    <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
-                  </mat-form-field>
 
-                  <p>
-                    You will pay  <span class="card-span">$480 USD</span> per  <span class="card-span">2 Person</span>
-                  </p>
-                   <div class="d-flex align-items-center justify-content-center">
-                    <button class="primary">Continue Book</button>
-                   </div>
-                 
-                </mat-card-content>
-              
-              </mat-card>
-        </div>
-       </div>
+
+
+      </div>
+      <div class="col-md-6">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-subtitle class="subTitle mb-3">Start Booking </mat-card-subtitle>
+            <mat-card-title class="title mb-2"> <span class="price">${{roomRes.price}}</span> per
+              night</mat-card-title>
+            <mat-card-subtitle> <span class="discount">Discount ${{roomRes.discount}} Off</span> </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="mt-5">
+            <h5>Pick a date</h5>
+            <mat-form-field class="example-form-field w-100">
+              <mat-label>Date</mat-label>
+              <mat-date-range-input [formGroup]="campaignOne" [rangePicker]="campaignOnePicker"
+                [comparisonStart]="campaignOne.value.start" [comparisonEnd]="campaignOne.value.end">
+                <input matStartDate placeholder="Start date" formControlName="start">
+                <input matEndDate placeholder="End date" formControlName="end">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+            </mat-form-field>
+            <p>
+              You will pay <span class="card-span">${{ getDiscountedPrice(roomRes.price, roomRes.discount
+                ,roomRes.capacity) }}</span> per
+              <span class="card-span">{{roomRes.capacity}} Person</span>
+            </p>
+            <div class="d-flex align-items-center justify-content-center">
+              <button class="primary">Continue Book</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
+    <!-- Rate Section -->
+    <div class="col-md-12 px-5 py-3 rate-card">
+      <div class="row ">
+        <div class="col-md-6 p-3 h-100">
+          <form [formGroup]="reviewForm" (ngSubmit)="onAddReview(reviewForm)">
+            <div class="" style="height: 10vh!important;">
+              <h3 class="mb-1">Rate</h3>
+              <div class="d-flex justify-content-start align-items-center  ">
+                <star-rating-control formControlName="rating" [starType]="'svg'" [rating]="rating"
+                  [numOfStars]="4"></star-rating-control>
+              </div>
+            </div>
+            <div class=" " style="height: 36vh!important;">
+              <div class="my-3">
+                <label for="message" class="my-4">Message</label>
+                <textarea formControlName="review" name="message" rows="5" id="message" class="form-control"></textarea>
+              </div>
+              <button type="submit" [disabled]="reviewForm.invalid" class="primary w-25 mt-3">Rate</button>
+            </div>
+          </form>
+        </div>
+        <!-- Add Your Comment section -->
+        <div class="col-md-6 p-3 h-100">
+          <form [formGroup]="commentForm" (ngSubmit)="onAddComment(commentForm.value)">
+            <div class="" style="height: 10vh!important;">
+              <h3>Add Your Comment</h3>
+            </div>
+            <div class=" " style="height: 36vh!important;">
+              <div class="my-3">
+                <label for="comment" class="my-4">Comment</label>
+                <textarea formControlName="comment" name="message" rows="5" id="message"
+                  class="form-control"></textarea>
+              </div>
+              <div class="w-100  text-end ">
+                <button type="submit" [disabled]="commentForm.invalid" class="primary w-25 mt-3 ">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
