@@ -34,37 +34,7 @@ import { IRoomResponse } from 'src/app/Features/Manager/modules/rooms/models/IRo
 })
 export class HomeComponent {
 
-  popularImages = [
-    { src: '../../../assets/images/home-3.png', alt: 'Home 3' },
-    { src: '../../../assets/images/home-4.png', alt: 'Home 4' },
-    { src: '../../../assets/images/home-5.png', alt: 'Home 5' },
-    { src: '../../../assets/images/home-6.png', alt: 'Home 6' }
-  ];
 
-  images = [
-    { src: '../../../assets/images/home-7.png', alt: 'Home 7' },
-    { src: '../../../assets/images/home-8.png', alt: 'Home 8' },
-    { src: '../../../assets/images/home-9.png', alt: 'Home 9' },
-    { src: '../../../assets/images/home-10.png', alt: 'Home 10' }
-  ];
-
-  livingImages = [
-    { src: '../../../assets/images/home-11.png', alt: 'Home 11' },
-    { src: '../../../assets/images/home-12.png', alt: 'Home 12' },
-    { src: '../../../assets/images/home-13.png', alt: 'Home 13' },
-    { src: '../../../assets/images/home-14.png', alt: 'Home 14' }
-  ];
-
-  adImages = [
-    { src: '../../../assets/images/home-15.png', alt: 'Home 11' },
-    { src: '../../../assets/images/home-16.png', alt: 'Home 12' },
-    { src: '../../../assets/images/home-17.png', alt: 'Home 13' },
-    { src: '../../../assets/images/home-18.png', alt: 'Home 14' }
-  ];
-
-  testimonialImages = [
-    { src: '../../../assets/images/home-19.png', alt: 'Home 19' },
-  ];
 
   stars = new Array(5);
 
@@ -152,13 +122,41 @@ adsOption: OwlOptions = {
   nav: true,
 };
 
+testimonialOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: false,
+  dots: false,
+  navSpeed: 700,
+  margin: 20,
+  navText: [
+    '<i class="fa-solid fa-caret-left"></i>',
+    '<i class="fa-solid fa-caret-right"></i>',
+  ],
+  responsive: {
+    0: {
+      items: 1,
+    },
+    400: {
+      items: 1,
+    },
+    740: {
+      items: 1,
+    },
+    940: {
+      items: 1,
+    },
+  },
+  nav: true,
+};
+
 constructor(public dialog: MatDialog,private _GuestService:GuestService, private _ToastrService: ToastrService
   , private _router: Router
 ){}
 ngOnInit(): void {
   this.getAllAds()
   this.getAllRooms({})
-  //this.getAllReviews(this.tableOfReviews)*/
   
 }
 
@@ -182,18 +180,10 @@ capacity: number = 0; // Initial value
       this.capacity--;
     }
   }
-  imagesToShow: any[] = [];
-  tableData: any;
- // tableUserAds: IAds[] = [];
-  tableDataRooms: any[] = [];
 
   lang: any = localStorage.getItem('lang');
- // constructor(public dialog: MatDialog, private _AdsUserService: AdsUserService,
- // private _roomDetailsService: RoomDetailsService, private _router: Router, private _HelperService: HelperService, private _ToastrService: ToastrService) { }
 
-  tableOfReviews:any[]=[];
   
-
 
   BookingForm: FormGroup = new FormGroup({
     startDate: new FormControl(null),
@@ -211,7 +201,6 @@ capacity: number = 0; // Initial value
       next: (res) => {
         console.log(res)
         this.userAds = res;
-      //  this.tableUserAds = res.data.ads.slice(0, 4);
       },
       error: (err) => {
         console.log(err)
@@ -235,24 +224,6 @@ capacity: number = 0; // Initial value
     })
   }
 
-
-/*
-
-
-
-  getAllReviews(id:any){
-    this._AdsUserService.getAllRoomReviews(id).subscribe({
-      next:(res)=>{
-        console.log(res)
-        this.tableData=res;
-        this.tableOfReviews=res.data.roomReviews
-      },
-      error:(err)=>{
-        console.log(err)
-      }
-    })
-  }
-*/
 
 
 saveRoomInFav(roomId: string) {

@@ -229,27 +229,82 @@
 
     
 
-    <section class="my-5">
-      <div class="row">
-        <div *ngFor="let image of testimonialImages" class="col-xl-4 ">
-          <img class="card4" [src]="image.src" [alt]="image.alt" />
-        </div>
-        <div class="col-xl-8 ">
-          <h2>Happy Family</h2>
-          <div class="star-container my-2 mt-5">
-            <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
+    <section class="mt-5">
+      <div class=" slider">
+
+      <owl-carousel-o [options]="testimonialOptions">
+        <ng-template carouselSlide>
+
+
+          <div class="row g-4">
+            <div  class="col-xl-4 ">
+              <div class="test-card">
+                <img class="w-100 h-100" src="../../../../../assets/images/home-19.png" alt="" />
+
+              </div>
+            </div>
+            <div class="col-xl-8 ">
+              <h2>Happy Family</h2>
+              <div class="star-container my-2 mt-4">
+                <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
+              </div>
+              <h4 class="h4">
+                What a great trip with my family and
+                I should try again next time soon ...
+              </h4>
+              <p class="paragraph">Angga, Product Designer</p>
+             
+            </div>
           </div>
-          <h4 class="h4">
-            What a great trip with my family and
-            I should try again next time soon ...
-          </h4>
-          <p class="paragraph">Angga, Product Designer</p>
-          <div class="col-3 d-flex justify-content-between">
-            <i class="fa-regular fa-circle-left arrow"></i>
-            <i class="fa-regular fa-circle-right arrow"></i>
+
+        </ng-template>  
+        <ng-template carouselSlide>
+
+          <div class="row g-4">
+            <div  class="col-xl-4 ">
+              <div class="test-card">
+                <img class="w-100 h-100" src="../../../../../assets/images/family2.jpg" alt="" />
+
+              </div>            </div>
+            <div class="col-xl-8 ">
+              <h2>Fantastic Getaway</h2>
+              <div class="star-container my-2 mt-4">
+                <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
+              </div>
+              <h4 class="h4">
+                A fantastic getaway! Looking forward to our next trip ...
+              </h4>
+              <p class="paragraph">Budi, Software Engineer</p>
+             
+            </div>
           </div>
-        </div>
-      </div>
+        </ng-template>  
+        <ng-template carouselSlide>
+
+          <div class="row g-4">
+            <div  class="col-xl-4 ">
+              <div class="test-card">
+                <img class="w-100 h-100" src="../../../../../assets/images/family3.jpg" alt="" />
+
+              </div>            </div>
+            <div class="col-xl-8 ">
+              <h2>Wonderful Journey</h2>
+              <div class="star-container my-2 mt-4">
+                <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
+              </div>
+              <h4 class="h4">
+                The journey was wonderful and full of surprises. Highly recommend! ...
+              </h4>
+              <p class="paragraph">Siti, Graphic Designer
+              </p>
+             
+            </div>
+          </div>
+        </ng-template>  
+      </owl-carousel-o>
+
+    </div>
+ 
     </section>
   </div>
 
