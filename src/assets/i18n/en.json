@@ -1,3 +1,28 @@
 {
-    "hello":"hello jsp"
+    "home": {
+      "header": "Forget Busy Work, We provide what you need to enjoy your holiday with family.",
+      "header-1" : "Forget Busy Work,",
+      "header-2" : "Start Next Vacation",
+      "description": "We provide what you need to enjoy your holiday with family. Time to make another memorable moments.",
+      "description-1": "We provide what you need to enjoy your holiday with family.",
+      "description-2": "Time to make another memorable moments.",
+      "start-booking": "Start Booking",
+      "pick-date":"Pick a Date",
+      "date":"Date",
+      "start-date":"Start date",
+      "end-date":"End date",
+      "capacity":"Capacity",
+      "explore":"Explore",
+      "most-popular-ads":"Most popular ads",
+      "per-night":"per night",
+      "house-with-backyard":"Houses with beautiful backyard",
+      "cairo":"Cairo",
+      "egypt":"Egypt",
+      "popular-choice": "Popular Choice",
+      "ads": "Ads",
+      "off": "Off",
+      "happy-family": "Happy Family",
+      "testimonial-1": "What a great trip with my family and I should try again next time soon ...",
+      "guest-1": "Angga, Product Designer"
+    }
 }
