@@ -28,3 +28,52 @@ h1,h2,h3,h4,h5,h6{
     align-items: center;
     justify-content: center;
     }
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+
+
+@import './assets/styles/abstracts/variables.scss';
+
+.slider .owl-next,
+.slider .owl-prev {
+  background-color: $primary-color !important;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: var(--transition) !important;
+  border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  -ms-border-radius: 50% !important;
+  -o-border-radius: 50% !important;
+  -webkit-transition: var(--transition) !important;
+  -moz-transition: var(--transition) !important;
+  -ms-transition: var(--transition) !important;
+  -o-transition: var(--transition) !important;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  & svg {
+    font-size: 18px;
+    color: var(--light-color) !important;
+  }
+}
+.slider .owl-prev {
+  left: -15px !important;
+}
+.slider .owl-next {
+  right: -15px !important;
+}
+.slider .owl-next:hover,
+.slider .owl-prev:hover {
+  background-color: #3252dfb7 !important;
+}
