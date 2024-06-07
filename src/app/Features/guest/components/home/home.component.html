@@ -190,6 +190,7 @@
         </owl-carousel-o>
       </div>
     </section>
+    <!-- 
 
     <section class="mt-3">
       <h2 class="h2">Hotels with large living room</h2>
@@ -198,16 +199,34 @@
           <img [src]="image.src" [alt]="image.alt" />
         </div>
       </div>
-    </section>
+    </section>   -->
 
-    <section class="mt-3">
+    <section class="mt-5">
       <h2 class="h2">Ads</h2>
-      <div class="row">
-        <div *ngFor="let image of adImages" class="col-md-4 card3">
-          <img [src]="image.src" [alt]="image.alt" />
-        </div>
+      <div class=" slider">
+        <owl-carousel-o [options]="adsOption">
+          <ng-container *ngFor="let ad of userAds.data.ads">
+            <ng-template carouselSlide>
+              <div class=" card-sm ">
+                  <img [src]="ad.room.images[0]" alt="" class="w-100 imgHeight2 rounded-4 ">
+        
+             
+                  <div class="">
+                    <h4 class="mt-2 h3  text-secondary-color">{{ad.room.roomNumber}}</h4>
+                    <h5 class=" p-0 m-0 text-main-p">Cairo Egypt </h5>
+                  </div>
+                  <div class="imag-price px-3">
+                    <p class="text-white">$ <span class="h6 text-white fw-bolder">{{ad.room.discount}}</span>
+                      off</p>        
+                  </div>
+                </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
       </div>
     </section>
+
+    
 
     <section class="my-5">
       <div class="row">
