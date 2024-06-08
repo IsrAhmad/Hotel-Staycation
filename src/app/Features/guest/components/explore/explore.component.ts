@@ -5,9 +5,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { GuestService } from '../../services/guest.service';
 import { IParams, IRoomResponse } from 'src/app/Features/Manager/modules/rooms/models/IRoom.model';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IFavoriteResponse } from '../favorite/models/IFavorite';
 import { PageEvent } from '@angular/material/paginator';
+import { IExplorParms } from '../../models/IExplorParms';
 
 @Component({
   selector: 'app-explore',
@@ -17,6 +18,8 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./explore.component.scss']
 })
 export class ExploreComponent  implements OnInit{
+
+
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
   roomsRes:IRoomResponse={
     success:false,
@@ -32,15 +35,18 @@ export class ExploreComponent  implements OnInit{
   totalCount!:number;
   page = 0;
   size = 10;
+  startDate: string = '';
+  endDate: string = '';
+  capacity: number = 0;
  
-  params:IParams= {
+  params:IExplorParms= {
     page :this.page,
     size:this.size
 
   }
   constructor(private translate:TranslateService ,
     private _GuestService:GuestService,
-    private _ToastrService: ToastrService , private _router: Router){
+    private _ToastrService: ToastrService , private _router: Router,private ActivRoute: ActivatedRoute){
 
   }
  
@@ -52,7 +58,31 @@ export class ExploreComponent  implements OnInit{
       console.log(event)
       this.lang=event.lang
     });
+
+    this.getParamsForExplor()
+    if(this.startDate&&this.endDate&&this.capacity){
+      this.params={
+        page:0,
+        size:10,
+        startDate:this.startDate,
+        endDate:this.endDate,
+        capacity:this.capacity
+  
+      }
+    }
     this.getAllRoomForExplore();
+  }
+
+  getParamsForExplor(){
+    this.ActivRoute.queryParams.subscribe(params => {
+      this.startDate = params['startDate'];
+      this.endDate = params['endDate'];
+      this.capacity = params['capacity'];
+      console.log('Start Date:', this.startDate);
+      console.log('End Date:', this.endDate);
+      console.log('Capacity:', this.capacity);
+    });
+
   }
 
   getAllRoomForExplore() {

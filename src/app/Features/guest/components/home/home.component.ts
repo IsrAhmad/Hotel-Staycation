@@ -18,13 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
-import {
-  FormGroup,
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { MatNativeDateModule } from '@angular/material/core';
+
 import { GuestService } from '../../services/guest.service';
 import { IAdsResponse } from 'src/app/Features/Manager/modules/ads/models/IAdsResponse';
 import { ToastrService } from 'ngx-toastr';
@@ -157,29 +151,11 @@ export class HomeComponent {
         items: 1,
       },
     },
-  },
   nav: true,
 };
 
-testimonialOptions: OwlOptions = {
-  loop: true,
-  mouseDrag: true,
-  touchDrag: true,
-  pullDrag: false,
-  dots: false,
-  navSpeed: 700,
-  margin: 20,
-  navText: [
-    '<i class="fa-solid fa-caret-left"></i>',
-    '<i class="fa-solid fa-caret-right"></i>',
-  ],
-  responsive: {
-    0: {
-      items: 1,
-    }
-  },
-  nav: true,
-};
+
+
 campaignOne: FormGroup;
 
 
@@ -208,37 +184,7 @@ ngOnInit(): void {
 }
 
 
-/*
-campaignOne = new FormGroup({
-  start: new FormControl(new Date(this.year, this.month, 13)),
-  end: new FormControl(new Date(this.year, this.month, 16)),
-});
-*/
-    nav: true,
-  };
-
-  constructor(
-    public dialog: MatDialog,
-    private _GuestService: GuestService,
-    private _ToastrService: ToastrService,
-    private _router: Router,
-    private translate: TranslateService
-  ) {}
-  ngOnInit(): void {
-    this.getAllAds();
-    this.getAllRooms({});
-
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      // do something
-      console.log(event);
-      this.lang = event.lang;
-    });
-  }
-
-  campaignOne = new FormGroup({
-    start: new FormControl(new Date(this.year, this.month, 13)),
-    end: new FormControl(new Date(this.year, this.month, 16)),
-  });
+ 
 
   capacity: number = 0; // Initial value
   loginToFav: any = localStorage.getItem('role');
@@ -258,14 +204,10 @@ campaignOne = new FormGroup({
       ? localStorage.getItem('lang')!
       : 'en';
 
-  BookingForm: FormGroup = new FormGroup({
-    startDate: new FormControl(null),
-    endDate: new FormControl(null),
-  })
+ 
 
   explore(): void {
 
-   
    
     const startDate = this.campaignOne.get('start')?.value;
     const endDate = this.campaignOne.get('end')?.value;
@@ -279,7 +221,7 @@ campaignOne = new FormGroup({
       console.log('Start Date:', formattedStartDate);
       console.log('End Date:', formattedEndDate);
 
-      this._router.navigate(['/guest/payment'], {
+      this._router.navigate(['/guest/explore'], {
         queryParams: {
           startDate: formattedStartDate,
           endDate: formattedEndDate,
@@ -288,9 +230,8 @@ campaignOne = new FormGroup({
       });
 
     }
-  });
+  };
 
-  handleForm(data: FormGroup): void {}
 
   getAllAds() {
     this._GuestService.getAllAds().subscribe({
