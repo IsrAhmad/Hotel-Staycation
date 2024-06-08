@@ -14,7 +14,7 @@
     <div class="row d-flex align-items-center justify-content-center">
       <div class="col-md-4  text-center">
         <div class="roomNumer">
-          <h4 class=""> {{roomRes.roomNumber}}</h4>
+          <h4 class="mb-1 p-1 "> {{roomRes.roomNumber}}</h4>
           <p> Bogor, Indonesia </p>
         </div>
       </div>
@@ -65,6 +65,12 @@
                 <div *ngIf="item.name=='Lounges'"> <i class="fa-solid fa-dumbbell"></i></div>
                 <div *ngIf="item.name=='Dining & Restaurants'"> <i class="fa-solid fa-utensils"></i></div>
                 <div *ngIf="item.name=='Buffet'"> <i class="fa-solid fa-bowl-rice"></i></div>
+                <div *ngIf="item.name=='air conditioning'"> <i class="fa-solid fa-fan"></i></div>
+                <div *ngIf="item.name!=='Buffet' && item.name!=='Dining & Restaurants' && item.name!=='Mini fridge' &&
+                item.name!=='Kitchen' && item.name!=='Garage' && item.name!=='Xbox' && item.name!=='Royal suite' && item.name!=='WIFI' &&
+                item.name!=='Coffee maker' && item.name!=='Sea view' && item.name!=='Lounges' && item.name!=='Wifi' &&
+                item.name!=='Pets allowed' && item.name!=='Kids area' && item.name!=='coffe machine' && item.name!=='air conditioning'">
+                 <i class="fa-solid fa-gift"></i></div>
                 {{item.name}}
               </div>
             </div>
@@ -140,17 +146,12 @@
                                   <div class="d-flex justify-content-between align-items-center">
                                     <p class="mb-1">
                                      {{comment.user.userName}} <span class="small">{{comment.createdAt |date}}</span>
-                                    </p>
-                                   
+                                    </p>                
                                   </div>
                                   <p class="small mb-0">
                                    {{comment.comment}}
                                   </p>
                                 </div>
-            
-                                
-            
-                               
                               </div>
                             </div>
                           </div>
@@ -163,13 +164,7 @@
               <ng-container *ngIf="commentsResponse.roomComments.length == 0">
                 <p>No comments yet</p>
               </ng-container>
-              
-        
-          
-      
         </mat-expansion-panel>
-       
-      
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -180,7 +175,6 @@
               <mat-icon>reviews</mat-icon>
             </mat-panel-description>
           </mat-expansion-panel-header>
-      
           <ng-container *ngIf="reviewsResponse.roomReviews.length>0">
             <div class="row ">
               <div class="col-md-12 ">
@@ -198,8 +192,7 @@
                               <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1">
                                  {{review.user.userName}} <span class="small">{{review.createdAt |date}}</span>
-                                </p>
-                               
+                                </p>                  
                               </div>
                               <p class="small mb-2">
                                {{review.review}}
@@ -209,10 +202,6 @@
                                 [numOfStars]="review.rating"></star-rating-control>
                               </div>
                             </div>
-        
-                            
-        
-                           
                           </div>
                         </div>
                       </div>
@@ -224,14 +213,11 @@
           </ng-container>
           <ng-container *ngIf="reviewsResponse.roomReviews.length == 0">
             <p>No Reviews yet</p>
-          </ng-container>
-      
+          </ng-container>  
         </mat-expansion-panel>
       </mat-accordion>
-      
     </div>
     </div>
-
     <!-- Rate Section -->
     <div class="col-md-12 px-5 py-3 mb-5 rate-card h-auto">
       <div class="row ">
@@ -241,7 +227,7 @@
               <h3 class="mb-1">Rate</h3>
               <div class="d-flex justify-content-start align-items-center  ">
                 <star-rating-control formControlName="rating" [starType]="'svg'" [rating]="rating"
-                  [numOfStars]="5"></star-rating-control>
+                  [numOfStars]="4"></star-rating-control>
               </div>
             </div>
             <div class=" " >
@@ -261,7 +247,7 @@
             <div class="" >
               <h3 class="mb-1">Add Your Comment</h3>
               <div class="d-flex justify-content-start align-items-center  opacity-0">
-                <star-rating-control formControlName="rating" [starType]="'svg'" [rating]="rating"
+                <star-rating-control  [starType]="'svg'" [rating]="rating"
                   [numOfStars]="4"></star-rating-control>
               </div>
             </div>
@@ -272,7 +258,7 @@
                   class="form-control"></textarea>
               </div>
               <div class="w-100  text-end ">
-                <button type="submit" [disabled]="commentForm.invalid" class="primary w-25 mt-3 ">Send</button>
+                <button type="submit" [disabled]="commentForm.invalid"  class="primary w-25 mt-3 ">Send</button>
               </div>
             </div>
           </form>
