@@ -4,9 +4,9 @@
       <!--breadcurmb-->
       <div class="col-md-12">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a routerLink="/guest/home">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Room Details</li>
+          <ol class="breadcrumb " >
+            <li class="breadcrumb-item"><a routerLink="/guest/home">{{"room-details.home"|translate}}</a></li>
+            <li class="breadcrumb-item active" [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'" aria-current="page">{{"room-details.room-details"|translate}}</li>
           </ol>
         </nav>
       </div>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="row">
-      <owl-carousel-o [options]="sliderOptions">
+      <owl-carousel-o [options]="sliderOptions" dir="ltr">
         <ng-container *ngFor="let item of roomRes?.images">
           <ng-template carouselSlide [id]="roomRes._id">
             <img height="300" [src]="item" alt="room photos">
@@ -32,20 +32,11 @@
       <div class="col-md-6">
         <div class="paragraph p-2">
           <p>
-            Minimal techno is a minimalist subgenre of techno music. It is characterized by a stripped-down aesthetic
-            that exploits the use of repetition and understated development. Minimal techno is thought to have been
-            originally developed in the early 1990s by Detroit-based producers Robert Hood and Daniel Bell.
+            {{"room-details.description-1" | translate}}
           </p>
-          <p>
-            Such trends saw the demise of the soul-infused techno that typified the original Detroit sound. Robert Hood
-            has noted that he and Daniel Bell both realized something was missing from techno in the post-rave era.
-          </p>
-          <p>
-            Design is a plan or specification for the construction of an object or system or for the implementation of
-            an activity or process, or the result of that plan or specification in the form of a prototype, product or
-            process. The national agency for design: enabling Singapore to use design for economic growth and to make
-            lives better.
-          </p>
+          <p>{{"room-details.description-2" | translate}}</p>
+          <p>{{"room-details.description-3" | translate}}</p>
+
         </div>
         <div class="">
           <div *ngIf="roomRes.facilities.length>1">
@@ -77,22 +68,22 @@
             </div>
           </div>
           <div *ngIf="roomRes.facilities.length==0">
-            <h5>No Facilities For This Room</h5>
+
+            <h5>{{"room-details.no-facilities" | translate}}</h5>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <mat-card class="example-card">
           <mat-card-header>
-            <mat-card-subtitle class="subTitle mb-3">Start Booking </mat-card-subtitle>
-            <mat-card-title class="title mb-2"> <span class="price">${{roomRes.price}}</span> per
-              night</mat-card-title>
-            <mat-card-subtitle> <span class="discount">Discount ${{roomRes.discount}} Off</span> </mat-card-subtitle>
+            <mat-card-subtitle class="subTitle mb-3">{{"room-details.start-booking" | translate}}</mat-card-subtitle>
+            <mat-card-title class="title mb-2"><span class="price">${{roomRes.price}}</span> {{ "room-details.per-night" | translate }}</mat-card-title>
+            <mat-card-subtitle><span class="discount">{{ "room-details.discount" | translate }} ${{roomRes.discount}} {{ "room-details.off" | translate }}</span></mat-card-subtitle>
           </mat-card-header>
           <mat-card-content class="mt-5">
-            <h5>Pick a date</h5>
+            <h5>{{ "room-details.pick-date" | translate }}</h5>
             <mat-form-field class="example-form-field w-100">
-              <mat-label>Date</mat-label>
+              <mat-label>{{ "room-details.date" | translate }}</mat-label>
               <mat-date-range-input [formGroup]="campaignOne" [rangePicker]="campaignOnePicker"
                 [comparisonStart]="campaignOne.value.start" [comparisonEnd]="campaignOne.value.end">
                 <input matStartDate placeholder="Start date" formControlName="start">
@@ -101,13 +92,12 @@
               <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
               <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
             </mat-form-field>
-            <p>
-              You will pay <span class="card-span">${{ getDiscountedPrice(roomRes.price, roomRes.discount
-                ,roomRes.capacity) }}</span> per
-              <span class="card-span">{{roomRes.capacity}} Person</span>
+            <p>{{ "room-details.you-will-pay" | translate }} <span class="card-span">${{ getDiscountedPrice(roomRes.price, roomRes.discount
+                ,roomRes.capacity) }}</span>  {{ "room-details.per" | translate }}
+              <span class="card-span">{{roomRes.capacity}} {{ "room-details.person" | translate }}</span>
             </p>
             <div class="d-flex align-items-center justify-content-center">
-              <button class="primary">Continue Book</button>
+              <button class="primary">{{ "room-details.continue-booking" | translate }}</button>
             </div>
           </mat-card-content>
         </mat-card>
@@ -116,36 +106,34 @@
      <!-- review and rate  Section -->
      <div class="row mt-3 mb-5 ">
     <div class="col-md-12 px-5 py-3 mb-5 ">
-      <h5 class="mb-4">
-        Comments & Reviews
-      </h5>
-      <mat-accordion class="example-headers-align" multi>
+      <h5 class="mb-4">{{ "room-details.comments-reviews" | translate }}</h5>
+
+      <mat-accordion class="example-headers-align " multi>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>
-            Comments
-            </mat-panel-title>
-            <mat-panel-description>
-              See all comments
-              <mat-icon>chat</mat-icon>
-            </mat-panel-description>
+            <mat-panel-title>{{ "room-details.comments" | translate }}</mat-panel-title>
+            <mat-panel-description>{{ "room-details.see-all-comments" | translate }}<mat-icon>chat</mat-icon></mat-panel-description>
           </mat-expansion-panel-header>
-              <ng-container *ngIf="commentsResponse.roomComments.length >0">
+              <ng-container *ngIf="RoomComment.length >0">
                 <div class="row ">
                   <div class="col-md-12">
-                    <div class="card " *ngFor=" let comment of commentsResponse.roomComments">
+                    <div class="card mb-3" *ngFor=" let comment of RoomComment">
                       <div class="card-body p-4">
-                        <div class="row  d-flex align-items-center">
+<!--                         <div class="row  d-flex align-items-center">
                           <div class="col-lg-9  col-md-7 my-2">
                             <div class="d-flex flex-start align-items-center">
-                              <img class="rounded-circle shadow-1-strong me-3"
+                              <img class="rounded-circle shadow-1-strong me-3" -->
+                        <div class="row">
+                          <div class="col ">
+                            <div class="d-flex flex-start align-items-center">
+                              <img class="rounded-circle shadow-1-strong mx-3"
                                 [src]="comment.user.profileImage"
                                  alt="avatar" width="65"
                                 height="65" />
                               <div class="flex-grow-1 flex-shrink-1">
                                 <div>
                                   <div class="d-flex justify-content-between align-items-center">
-                                    <p class="mb-1">
+                                    <p class="mb-1 text-muted">
                                      {{comment.user.userName}} <span class="small">{{comment.createdAt |date}}</span>
                                     </p>                
                                   </div>
@@ -166,36 +154,39 @@
                   </div>
                 </div>
               </ng-container>
-              <ng-container *ngIf="commentsResponse.roomComments.length == 0">
-                <p>No comments yet</p>
+              <ng-container *ngIf="RoomComment.length == 0">
+                <p>{{ "room-details.no-comments-yet" | translate }}</p>
               </ng-container>
         </mat-expansion-panel>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>
-             Reviews
-            </mat-panel-title>
-            <mat-panel-description>
-             See all reviews
-              <mat-icon>reviews</mat-icon>
-            </mat-panel-description>
+            <mat-panel-title>{{ "room-details.reviews" | translate }}</mat-panel-title>
+            <mat-panel-description>{{ "room-details.see-all-reviews" | translate }}<mat-icon>reviews</mat-icon></mat-panel-description>
+
           </mat-expansion-panel-header>
-          <ng-container *ngIf="reviewsResponse.roomReviews.length>0">
-            <div class="row d-flex align-items-center">
+<!--           <ng-container *ngIf="reviewsResponse.roomReviews.length>0">
+            <div class="row d-flex align-items-center"> -->
+          
+          <ng-container *ngIf="roomReviews.length>0">
+            <div class="row ">
+
               <div class="col-md-12 ">
-                <div class="card " *ngFor=" let review of reviewsResponse.roomReviews">
+                <div class="card mb-3" *ngFor=" let review of roomReviews">
                   <div class="card-body p-4 ">
                     <div class="row">
-                      <div class="col-md-9  ">
+<!--                       <div class="col-md-9  ">
                         <div class="d-flex flex-start">
-                          <img class="rounded-circle shadow-1-strong me-3"
+                          <img class="rounded-circle shadow-1-strong me-3" -->
+                      <div class="col ">
+                        <div class="d-flex flex-start align-items-center">
+                          <img class="rounded-circle shadow-1-strong mx-3"
                             [src]="review.user.profileImage"
                              alt="avatar" width="65"
                             height="65" />
                           <div class="flex-grow-1 flex-shrink-1">
                             <div>
                               <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-1">
+                                <p class="mb-1 text-muted">
                                  {{review.user.userName}} <span class="small">{{review.createdAt |date}}</span>
                                 </p>                  
                               </div>
@@ -216,8 +207,8 @@
               </div>
             </div>
           </ng-container>
-          <ng-container *ngIf="reviewsResponse.roomReviews.length == 0">
-            <p>No Reviews yet</p>
+          <ng-container *ngIf="roomReviews.length == 0">
+            <p>{{ "room-details.no-reviews-yet" | translate }}</p>
           </ng-container>  
         </mat-expansion-panel>
       </mat-accordion>
@@ -229,7 +220,7 @@
         <div class="col-md-6 p-3 ">
           <form [formGroup]="reviewForm" (ngSubmit)="onAddReview(reviewForm)">
             <div class="" >
-              <h3 class="mb-1">Rate</h3>
+              <h3 class="mb-1">{{ "room-details.rate" | translate }}</h3>
               <div class="d-flex justify-content-start align-items-center  ">
                 <star-rating-control formControlName="rating" [starType]="'svg'" [rating]="rating"
                   [numOfStars]="4"></star-rating-control>
@@ -237,11 +228,11 @@
             </div>
             <div class=" " >
               <div class="my-3">
-                <label for="message" class="my-4">Message</label>
+                <label for="message" class="my-4">{{ "room-details.message" | translate }}</label>
                 <textarea formControlName="review" name="message" rows="5" id="message" class="form-control"></textarea>
               </div>
               <div class="w-100  text-end ">
-              <button type="submit" [disabled]="reviewForm.invalid" class="primary w-25 mt-3">Rate</button>
+              <button type="submit" [disabled]="reviewForm.invalid" class="primary w-25 mt-3">{{ "room-details.rate" | translate }}</button>
               </div>
             </div>
           </form>
@@ -250,7 +241,7 @@
         <div class="col-md-6 p-3 ">
           <form [formGroup]="commentForm" (ngSubmit)="onAddComment(commentForm.value)">
             <div class="" >
-              <h3 class="mb-1">Add Your Comment</h3>
+              <h3 class="mb-1">{{ "room-details.add-comment" | translate }}</h3>
               <div class="d-flex justify-content-start align-items-center  opacity-0">
                 <star-rating-control  [starType]="'svg'" [rating]="rating"
                   [numOfStars]="4"></star-rating-control>
@@ -258,12 +249,14 @@
             </div>
             <div class=" " >
               <div class="my-3">
-                <label for="comment" class="my-4">Comment</label>
+                <label for="comment" class="my-4">{{ "room-details.comment" | translate }}</label>
                 <textarea formControlName="comment" name="message" rows="5" id="message"
                   class="form-control"></textarea>
               </div>
               <div class="w-100  text-end ">
-                <button type="submit" [disabled]="commentForm.invalid" class="primary w-25 mt-3 ">Send</button>
+<!--                 <button type="submit" [disabled]="commentForm.invalid" class="primary w-25 mt-3 ">Send</button> -->
+                <button type="submit" [disabled]="commentForm.invalid"  class="primary w-25 mt-3 ">{{ "room-details.send" | translate }}</button>
+
               </div>
             </div>
           </form>

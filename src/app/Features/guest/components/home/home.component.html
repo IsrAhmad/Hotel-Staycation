@@ -4,22 +4,22 @@
 
 
     <section class="row g-4 align-items-center justify-content-center">
-      <div class=" col-lg-6 order-1 order-lg-0  d-flex justify-content-center   text-start flex-column ">
-        <h1 class="h1">
-          Forget Busy Work,<br />
-          Start Next Vacation
+      <div class=" col-lg-6 order-1 order-lg-0  d-flex justify-content-center    flex-column ">
+        <h1 class="h1 ">
+          {{"home.header-1"|translate}}<br />
+          {{"home.header-2"|translate}}
         </h1>
         <p class="paragraph">
-          We provide what you need to enjoy your holiday with family.<br />
-          Time to make another memorable moments.
+          {{"home.description-1"|translate}}<br />
+          {{"home.description-2"|translate}}
         </p>
         <div class="">
-          <h3 class="h3">Start Booking</h3>
+          <h3 class="h3">{{"home.start-booking"|translate}}</h3>
           <div class="">
             <div class="">
-              <h5>Pick a Date</h5>
+              <h5>{{"home.pick-date"|translate}}</h5>
               <mat-form-field class="example-form-field w-75" appearance="outline">
-                <mat-label>Date</mat-label>
+                <mat-label>{{"home.date"|translate}}</mat-label>
                 <mat-date-range-input 
                   [formGroup]="campaignOne"
                   [rangePicker]="campaignOnePicker"
@@ -38,7 +38,7 @@
           </div>
         
 
-          <h5 class="">Capacity</h5>
+          <h5 class="">{{"home.capacity"|translate}}</h5>
           <div class="input-group mb-3 w-75 ">
             <div class="input-group-prepend">
               <span class="btn-minus p-3 px-4 input-group-text bg-main border rounded-end-0 bg-danger myPointer cursor-pointer"
@@ -57,7 +57,7 @@
 
 
           <div class="w-50 ">
-            <button class="primary w-100 mt-3">Explore</button>
+            <button class="primary w-100 mt-3">{{"home.explore"|translate}}</button>
           </div>
 
 
@@ -83,7 +83,7 @@
 
 
     <section class="mt-5 py-3">
-      <h2 class="h2 ">Most popular ads</h2>
+      <h2 class="h2 ">{{"home.most-popular-ads"|translate}}</h2>
 
 
       <div class="row justify-content-center g-4 ">
@@ -106,7 +106,7 @@
             </div>
             <div class="imag-price px-5">
               <p class="text-white">$ <span class="h6 text-white fw-bolder">{{item.room.price}}</span>
-                per night</p>
+                {{"home.per-night"|translate}}</p>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
             </div>
             <div class="imag-price px-5">
               <p class="text-white">$ <span class="h6 text-white fw-bolder">{{item.room.price}}</span>
-                per night</p>
+                {{"home.per-night"|translate}}</p>
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@
             </div>
             <div class="imag-price px-5">
               <p class="text-white">$ <span class="h6 text-white fw-bolder">{{item.room.price}}</span>
-                per night</p>
+                {{"home.per-night"|translate}}</p>
   
             </div>
           </div>
@@ -166,60 +166,69 @@
 
 
 
-    <section class="mt-5 ">
-      <h2 class="h2">Houses with beauty backyard</h2>
 
-      <div class=" slider">
-        <owl-carousel-o [options]="roomsOption">
+    <section class="mt-5 ">
+      <h2 class="h2">{{"home.house-with-backyard"|translate}}</h2>
+
+      <div class=" slider ">
+        <owl-carousel-o [options]="roomsOption"  dir="ltr">
           <ng-container *ngFor="let room of roomsRes.data.rooms">
             <ng-template carouselSlide>
               <div class=" card-sm ">
                   <img [src]="room.images[0]" alt="" class="w-100 imgHeight2 rounded-4 ">
         
-             
-                  <div class="">
-                    <h4 class="mt-2 h3  text-secondary-color">{{room.roomNumber}}</h4>
-                    <h5 class=" p-0 m-0 text-main-p">Cairo Egypt </h5>
+                  <div class="imag-icon">
+                    <a *ngIf="!(loginToFav === 'user' )" (click)="goLogin()"
+                      class=" text-decoration-none text-white"><i class="fa-solid fa-heart fav"></i></a>
+                    <a *ngIf="loginToFav === 'user' " class=" text-decoration-none text-white"
+                      (click)="saveRoomInFav(room._id)"><i class="fa-solid fa-heart fav"></i></a>
+                    <a class=" text-decoration-none text-white" [routerLink]="[ '/guest/room-details',room._id ]"><i
+                        class="fa-solid fa-eye eye "></i></a>
                   </div>
+                 
                   <div class="imag-price px-3">
-                    <p class="text-white">Popular Choice</p>
+                    <p class="text-white">{{"home.popular-choice"|translate}}</p>
         
                   </div>
+                </div>
+                <div class="" >
+                  <h4 class="mt-2 h3  text-secondary-color">{{room.roomNumber}}</h4>
+                  <h5 class=" p-0 m-0 text-main-p">Bogor, Indonesia</h5>
                 </div>
             </ng-template>
           </ng-container>
         </owl-carousel-o>
       </div>
     </section>
-    <!-- 
 
-    <section class="mt-3">
-      <h2 class="h2">Hotels with large living room</h2>
-      <div class="row">
-        <div *ngFor="let image of livingImages" class="col-md-4 card3">
-          <img [src]="image.src" [alt]="image.alt" />
-        </div>
-      </div>
-    </section>   -->
+
 
     <section class="mt-5">
-      <h2 class="h2">Ads</h2>
+      <h2 class="h2">{{"home.ads"|translate}}</h2>
       <div class=" slider">
-        <owl-carousel-o [options]="adsOption">
+        <owl-carousel-o [options]="adsOption" dir="ltr">
           <ng-container *ngFor="let ad of userAds.data.ads">
             <ng-template carouselSlide>
               <div class=" card-sm ">
                   <img [src]="ad.room.images[0]" alt="" class="w-100 imgHeight2 rounded-4 ">
         
-             
-                  <div class="">
-                    <h4 class="mt-2 h3  text-secondary-color">{{ad.room.roomNumber}}</h4>
-                    <h5 class=" p-0 m-0 text-main-p">Cairo Egypt </h5>
+                  <div class="imag-icon">
+                    <a *ngIf="!(loginToFav === 'user' )" (click)="goLogin()"
+                      class=" text-decoration-none text-white"><i class="fa-solid fa-heart fav"></i></a>
+                    <a *ngIf="loginToFav === 'user' " class=" text-decoration-none text-white"
+                      (click)="saveRoomInFav(ad.room._id)"><i class="fa-solid fa-heart fav"></i></a>
+                    <a class=" text-decoration-none text-white" [routerLink]="[ '/guest/room-details',ad.room._id ]"><i
+                        class="fa-solid fa-eye eye "></i></a>
                   </div>
+                 
                   <div class="imag-price px-3">
                     <p class="text-white">$ <span class="h6 text-white fw-bolder">{{ad.room.discount}}</span>
-                      off</p>        
+                      {{"home.off"|translate}}</p>        
                   </div>
+                </div>
+                <div class="">
+                  <h4 class="mt-2 h3  text-secondary-color">{{ad.room.roomNumber}}</h4>
+                  <h5 class=" p-0 m-0 text-main-p">Bogor, Indonesia</h5>
                 </div>
             </ng-template>
           </ng-container>
@@ -232,27 +241,26 @@
     <section class="mt-5">
       <div class=" slider">
 
-      <owl-carousel-o [options]="testimonialOptions">
+      <owl-carousel-o [options]="testimonialOptions" dir="ltr">
         <ng-template carouselSlide>
 
 
           <div class="row g-4">
-            <div  class="col-xl-4 ">
+            <div  class="col-xl-5 ">
               <div class="test-card">
                 <img class="w-100 h-100" src="../../../../../assets/images/home-19.png" alt="" />
 
               </div>
             </div>
-            <div class="col-xl-8 ">
-              <h2>Happy Family</h2>
-              <div class="star-container my-2 mt-4">
+            <div class="col-xl-7 " [class]="lang=='en'?'text-start':'text-end'">
+              <h2>{{"home.happy-family"|translate}}</h2>
+              <div class="star-container my-2 mt-4  " [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
               <h4 class="h4">
-                What a great trip with my family and
-                I should try again next time soon ...
+                {{"home.testimonial-1"|translate}}
               </h4>
-              <p class="paragraph">Angga, Product Designer</p>
+              <p class="paragraph">{{"home.guest-1"|translate}}</p>
              
             </div>
           </div>
@@ -261,20 +269,20 @@
         <ng-template carouselSlide>
 
           <div class="row g-4">
-            <div  class="col-xl-4 ">
+            <div  class="col-xl-5 ">
               <div class="test-card">
                 <img class="w-100 h-100" src="../../../../../assets/images/family2.jpg" alt="" />
 
               </div>            </div>
-            <div class="col-xl-8 ">
-              <h2>Fantastic Getaway</h2>
-              <div class="star-container my-2 mt-4">
+            <div class="col-xl-7 " [class]="lang=='en'?'text-start':'text-end'">
+              <h2>{{"home.fantastic-getaway"|translate}}</h2>
+              <div class="star-container my-2 mt-4" [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
               <h4 class="h4">
-                A fantastic getaway! Looking forward to our next trip ...
+                {{"home.testimonial-2"|translate}}
               </h4>
-              <p class="paragraph">Budi, Software Engineer</p>
+              <p class="paragraph">{{"home.guest-2"|translate}}</p>
              
             </div>
           </div>
@@ -282,20 +290,20 @@
         <ng-template carouselSlide>
 
           <div class="row g-4">
-            <div  class="col-xl-4 ">
+            <div  class="col-xl-5 ">
               <div class="test-card">
                 <img class="w-100 h-100" src="../../../../../assets/images/family3.jpg" alt="" />
 
               </div>            </div>
-            <div class="col-xl-8 ">
-              <h2>Wonderful Journey</h2>
-              <div class="star-container my-2 mt-4">
+            <div class="col-xl-7 "  [class]="lang=='en'?'text-start':'text-end'">
+              <h2>{{"home.wonderful-journey"|translate}}</h2>
+              <div class="star-container my-2 mt-4" [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
               <h4 class="h4">
-                The journey was wonderful and full of surprises. Highly recommend! ...
+                {{"home.testimonial-3"|translate}}
               </h4>
-              <p class="paragraph">Siti, Graphic Designer
+              <p class="paragraph">{{"home.guest-3"|translate}}
               </p>
              
             </div>

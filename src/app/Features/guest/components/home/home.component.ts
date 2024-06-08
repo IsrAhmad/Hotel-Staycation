@@ -20,6 +20,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IFavoriteResponse } from '../favorite/models/IFavorite';
 import {  Router } from '@angular/router';
 import { IRoomResponse } from 'src/app/Features/Manager/modules/rooms/models/IRoom.model';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -80,7 +81,7 @@ roomsOption: OwlOptions = {
     0: {
       items: 1,
     },
-    400: {
+    576: {
       items: 2,
     },
     740: {
@@ -109,7 +110,7 @@ adsOption: OwlOptions = {
     0: {
       items: 1,
     },
-    400: {
+    576: {
       items: 2,
     },
     740: {
@@ -137,26 +138,23 @@ testimonialOptions: OwlOptions = {
   responsive: {
     0: {
       items: 1,
-    },
-    400: {
-      items: 1,
-    },
-    740: {
-      items: 1,
-    },
-    940: {
-      items: 1,
-    },
+    }
   },
   nav: true,
 };
 
 constructor(public dialog: MatDialog,private _GuestService:GuestService, private _ToastrService: ToastrService
-  , private _router: Router
+  , private _router: Router,private translate:TranslateService
 ){}
 ngOnInit(): void {
   this.getAllAds()
   this.getAllRooms({})
+
+  this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    // do something
+    console.log(event)
+    this.lang=event.lang
+  });
   
 }
 
@@ -181,7 +179,7 @@ capacity: number = 0; // Initial value
     }
   }
 
-  lang: any = localStorage.getItem('lang');
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
   
 

@@ -1,4 +1,5 @@
-import { IRommCommentResponse, IRoomReveiwResponse, IDeleteCommentResponse, IRommCommentData, IRoomReviewData } from './../../models/room-details';
+
+import { IRommCommentResponse, IRoomReveiwResponse, IDeleteCommentResponse, IRoomReveiwRequest, IRommCommentData, IRoomReviewData, IRoomComment, RoomReview } from './../../models/room-details';
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule, formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -22,6 +23,7 @@ import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dial
 import { UpDateCommentComponent } from './components/up-date-comment/up-date-comment.component';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -46,17 +48,35 @@ export class RoomDetailsComponent {
   id: string = '';
   reviewForm!: FormGroup;
   commentForm!: FormGroup;
-  deletRes:IDeleteCommentResponse ={
+
+deletRes:IDeleteCommentResponse ={
     success: false,
     message: ''
   };
 
 
+//   constructor( private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
+//     private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService) {
+  RoomComment:IRoomComment[]=[];
+  roomReviews:RoomReview[]=[];
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
+
+
+
+
+
   constructor(public dialog: MatDialog, private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
-    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService) {
+    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService,private translate:TranslateService) {
   }
 
   ngOnInit(): void {
+
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      // do something
+      console.log(event)
+      this.lang=event.lang
+    });
+
     this.id = this._ActivatedRoute.snapshot.params['id']
     this.getRoomById(this.id);
     this.getAllRoomComments(this.id);
@@ -159,7 +179,9 @@ export class RoomDetailsComponent {
     this._RoomDetailsService.getAllRoomComments(id).subscribe({
       next: (res) => {
         this.commentsResponse = res.data;
-        //console.log(this.commentsResponse);
+        console.log(this.commentsResponse);
+        this.RoomComment= res.data.roomComments
+        console.log(this.RoomComment);
       }
     })
   }
@@ -169,6 +191,8 @@ export class RoomDetailsComponent {
       next: (res) => {
         this.reviewsResponse = res.data;
         // console.log(this.reviewsResponse);
+        this.roomReviews= res.data.roomReviews;
+        console.log(this.roomReviews)
       }
     })
   }
