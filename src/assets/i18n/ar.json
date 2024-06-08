@@ -70,7 +70,14 @@
     "message": "اكتب رسالة",
     "add-comment": "أضف تعليقك",
     "comment": "تعليق",
-    "send": "ارسل"
+    "send": "ارسل",
+    "comments-reviews": "التعليقات والمراجعات",
+    "comments": "التعليقات",
+    "see-all-comments": "رؤية كل التعليقات",
+    "no-comments-yet": "لا توجد تعليقات حتى الآن",
+    "reviews": "المراجعات",
+    "see-all-reviews": "رؤية كل المراجعات",
+    "no-reviews-yet": "لا توجد مراجعات حتى الآن"
   },
 
   "footer": {

@@ -18,6 +18,7 @@ import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -43,16 +44,24 @@ export class RoomDetailsComponent {
   reviewForm!: FormGroup;
   commentForm!: FormGroup;
 
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
 
 
 
 
   constructor(private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
-    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService) {
+    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService,private translate:TranslateService) {
   }
 
   ngOnInit(): void {
+
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      // do something
+      console.log(event)
+      this.lang=event.lang
+    });
+
     this.id = this._ActivatedRoute.snapshot.params['id']
     this.getRoomById(this.id);
     this.getAllRoomComments(this.id);

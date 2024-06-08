@@ -71,7 +71,14 @@
       "message": "Message",
       "add-comment": "Add Your Comment",
       "comment": "Comment",
-      "send": "Send"
+      "send": "Send",
+      "comments-reviews": "Comments & Reviews",
+    "comments": "Comments",
+    "see-all-comments": "See all comments",
+    "no-comments-yet": "No comments yet",
+    "reviews": "Reviews",
+    "see-all-reviews": "See all reviews",
+    "no-reviews-yet": "No Reviews yet"
     },
 
     "footer": {
