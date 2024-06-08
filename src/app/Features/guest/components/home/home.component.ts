@@ -20,6 +20,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IFavoriteResponse } from '../favorite/models/IFavorite';
 import {  Router } from '@angular/router';
 import { IRoomResponse } from 'src/app/Features/Manager/modules/rooms/models/IRoom.model';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -143,11 +144,17 @@ testimonialOptions: OwlOptions = {
 };
 
 constructor(public dialog: MatDialog,private _GuestService:GuestService, private _ToastrService: ToastrService
-  , private _router: Router
+  , private _router: Router,private translate:TranslateService
 ){}
 ngOnInit(): void {
   this.getAllAds()
   this.getAllRooms({})
+
+  this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    // do something
+    console.log(event)
+    this.lang=event.lang
+  });
   
 }
 

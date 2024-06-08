@@ -252,9 +252,9 @@
 
               </div>
             </div>
-            <div class="col-xl-7 ">
+            <div class="col-xl-7 " [class]="lang=='en'?'text-start':'text-end'">
               <h2>{{"home.happy-family"|translate}}</h2>
-              <div class="star-container my-2 mt-4">
+              <div class="star-container my-2 mt-4  " [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
               <h4 class="h4">
@@ -274,9 +274,9 @@
                 <img class="w-100 h-100" src="../../../../../assets/images/family2.jpg" alt="" />
 
               </div>            </div>
-            <div class="col-xl-7 ">
+            <div class="col-xl-7 " [class]="lang=='en'?'text-start':'text-end'">
               <h2>{{"home.fantastic-getaway"|translate}}</h2>
-              <div class="star-container my-2 mt-4">
+              <div class="star-container my-2 mt-4" [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
               <h4 class="h4">
@@ -295,9 +295,9 @@
                 <img class="w-100 h-100" src="../../../../../assets/images/family3.jpg" alt="" />
 
               </div>            </div>
-            <div class="col-xl-7 ">
+            <div class="col-xl-7 "  [class]="lang=='en'?'text-start':'text-end'">
               <h2>{{"home.wonderful-journey"|translate}}</h2>
-              <div class="star-container my-2 mt-4">
+              <div class="star-container my-2 mt-4" [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
               <h4 class="h4">
