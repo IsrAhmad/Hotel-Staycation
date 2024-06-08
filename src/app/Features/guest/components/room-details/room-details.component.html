@@ -135,7 +135,7 @@
                                   <div class="d-flex justify-content-between align-items-center">
                                     <p class="mb-1 text-muted">
                                      {{comment.user.userName}} <span class="small">{{comment.createdAt |date}}</span>
-                                    </p>                
+                                    </p>
                                   </div>
                                   <p class="small mb-0">
                                    {{comment.comment}}
@@ -145,8 +145,8 @@
                             </div>
                           </div>
                           <div class="col-lg-3 col-md-5 my-2 p-0  d-flex justify-content-between align-items-center">
-                            <button (click)="updateComment(comment._id , comment.comment )" class="primary w-50 mx-2">Update</button>
-                            <button (click)="deleteComment( comment._id  ,comment.comment) " class="delete  w-50">Delete</button>
+                            <button (click)="updateComment(comment._id , comment.comment )" class="primary w-50 mx-2">{{ "room-details.update" | translate }}</button>
+                            <button (click)="deleteComment( comment._id  ,comment.comment) " class="delete  w-50">{{ "room-details.delete" | translate }}</button>
                           </div>
                         </div>
                       </div>
@@ -166,7 +166,7 @@
           </mat-expansion-panel-header>
 <!--           <ng-container *ngIf="reviewsResponse.roomReviews.length>0">
             <div class="row d-flex align-items-center"> -->
-          
+
           <ng-container *ngIf="roomReviews.length>0">
             <div class="row ">
 
@@ -188,7 +188,7 @@
                               <div class="d-flex justify-content-between align-items-center">
                                 <p class="mb-1 text-muted">
                                  {{review.user.userName}} <span class="small">{{review.createdAt |date}}</span>
-                                </p>                  
+                                </p>
                               </div>
                               <p class="small mb-2">
                                {{review.review}}
@@ -209,7 +209,7 @@
           </ng-container>
           <ng-container *ngIf="roomReviews.length == 0">
             <p>{{ "room-details.no-reviews-yet" | translate }}</p>
-          </ng-container>  
+          </ng-container>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
