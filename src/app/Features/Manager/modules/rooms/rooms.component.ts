@@ -49,11 +49,8 @@ export class RoomsComponent  implements OnInit{
 
   ngOnInit(): void {
     this.getAllRooms();
-   
-    
-   
-   
   }
+
   sortData(sort: Sort) {
     const data = this.roomData.slice();
     if (!sort.active || sort.direction === '') {
@@ -81,17 +78,12 @@ export class RoomsComponent  implements OnInit{
 
  
   getAllRooms(){
-  
     this._RoomsService.getAllRooms(this.params).subscribe({
      next:(res )=>{
-   
       this.roomData= res.data.rooms;
       this.sortedRooms= this.roomData.slice();
       console.log(this.sortedRooms);
-      this.totalCount =res.data.totalCount;
-    
-
-      
+      this.totalCount =res.data.totalCount;   
 //handel toaster
      }  ,
      error:(err)=>{
@@ -129,8 +121,8 @@ export class RoomsComponent  implements OnInit{
 
   deleteThisItem(id:number,name:string):void{
     this.openDeleteDialog('700ms','350ms',id,name,'Room')
-
   }
+  
   openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:number,itname:string,componentName:string): void {
     const dialo =this.dialog.open(DeleteComponent, {
       width: '500px',
@@ -150,7 +142,6 @@ export class RoomsComponent  implements OnInit{
   }
 
   deleteRoom(id:number):void{
-
     this._RoomsService.deleteRoom(id).subscribe({
       next:res=>{
         console.log(res);
@@ -161,11 +152,8 @@ export class RoomsComponent  implements OnInit{
       },
       complete:()=>{
         this.toastr.success("Deleted succefully")
-
         this.getAllRooms()
       }
     })
-
   }
-
 }
