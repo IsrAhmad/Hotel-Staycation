@@ -1,5 +1,6 @@
 
-import { IRommCommentResponse, IRoomReveiwResponse, IDeleteCommentResponse, IRoomReveiwRequest, IRommCommentData, IRoomReviewData, IRoomComment, RoomReview } from './../../models/room-details';
+import { IRommCommentResponse, IRoomReveiwResponse, IDeleteCommentResponse,
+    IRommCommentData, IRoomReviewData, IRoomComment, RoomReview } from './../../models/room-details';
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule, formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
