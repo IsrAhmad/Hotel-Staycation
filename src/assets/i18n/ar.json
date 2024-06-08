@@ -77,7 +77,10 @@
     "no-comments-yet": "لا توجد تعليقات حتى الآن",
     "reviews": "المراجعات",
     "see-all-reviews": "رؤية كل المراجعات",
-    "no-reviews-yet": "لا توجد مراجعات حتى الآن"
+    "no-reviews-yet": "لا توجد مراجعات حتى الآن",
+    "update-comment": "تحديث تعليقك",
+    "delete" : "حذف",
+    "update" : "تحديث"
   },
 
   "footer": {
