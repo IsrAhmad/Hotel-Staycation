@@ -107,7 +107,6 @@
      <div class="row mt-3 mb-5 ">
     <div class="col-md-12 px-5 py-3 mb-5 ">
       <h5 class="mb-4">{{ "room-details.comments-reviews" | translate }}</h5>
-
       <mat-accordion class="example-headers-align " multi>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -119,10 +118,6 @@
                   <div class="col-md-12">
                     <div class="card mb-3" *ngFor=" let comment of RoomComment">
                       <div class="card-body p-4">
-<!--                         <div class="row  d-flex align-items-center">
-                          <div class="col-lg-9  col-md-7 my-2">
-                            <div class="d-flex flex-start align-items-center">
-                              <img class="rounded-circle shadow-1-strong me-3" -->
                         <div class="row">
                           <div class="col ">
                             <div class="d-flex flex-start align-items-center">
@@ -144,15 +139,14 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-lg-3 col-md-5 my-2 p-0  d-flex justify-content-between align-items-center">
-
+                          
+                          <div *ngIf="comment.user._id === userId"   class="col-lg-3 col-md-5 my-2 p-0  d-flex justify-content-between align-items-center">
                             <button mat-icon-button [matMenuTriggerFor]="menu"
                             class=" position-relative z-3"
                             aria-label="Example icon-button with a menu">
                             <mat-icon>more_horiz</mat-icon>
                           </button>
                           <mat-menu #menu="matMenu" class>
-                           
                             <button (click)="updateComment(comment._id , comment.comment )" class="btn-hover" mat-menu-item>
                               <mat-icon class="text-primary-color  ">edit_square</mat-icon>
                               <span>{{ "room-details.update" | translate }}</span>
@@ -162,9 +156,6 @@
                               <span>{{ "room-details.delete" | translate }}</span>
                             </button>
                           </mat-menu>
-                           
-
-                     
                           </div>
                         </div>
                       </div>
@@ -235,7 +226,7 @@
     <!-- Rate Section -->
     <div class="col-md-12 px-5 py-3 mb-5 rate-card h-auto">
       <div class="row ">
-        <div class="col-md-6 p-3 ">
+        <div class="col-lg-6 p-3 ">
           <form [formGroup]="reviewForm" (ngSubmit)="onAddReview(reviewForm)">
             <div class="" >
               <h3 class="mb-1">{{ "room-details.rate" | translate }}</h3>
@@ -256,7 +247,7 @@
           </form>
         </div>
         <!-- Add Your Comment section -->
-        <div class="col-md-6 p-3 ">
+        <div class="col-lg-6 p-3 ">
           <form [formGroup]="commentForm" (ngSubmit)="onAddComment(commentForm.value)">
             <div class="" >
               <h3 class="mb-1">{{ "room-details.add-comment" | translate }}</h3>

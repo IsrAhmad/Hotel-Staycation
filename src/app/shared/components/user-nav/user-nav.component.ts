@@ -55,11 +55,12 @@ export class UserNavComponent  implements OnInit{
     this._Router.navigateByUrl('/auth/login');
     
   }
+ 
   getUserProfile(id:string){
    
     this._NavbarService.getUserProfile(id).subscribe({
       next:(res)=>{
-       console.log(res);
+      // console.log(res);
        this.currentUser=res
       }
     })
@@ -74,8 +75,8 @@ export class UserNavComponent  implements OnInit{
      });
  
      dialogRef.afterClosed().subscribe(result => {
-     console.log('The dialog was closed');
-     console.log( result);
+     //console.log('The dialog was closed');
+    // console.log( result);
      if(result){
    
      }
@@ -88,10 +89,8 @@ export class UserNavComponent  implements OnInit{
 
   changeLanguage(val:string):void{
     this.translate.setDefaultLang(val);
-  
     this.translate.use(val);
-    this.lang=val
-    
+    this.lang=val;
     localStorage.setItem('lang',this.lang)
   
   }

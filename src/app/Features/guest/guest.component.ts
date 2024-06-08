@@ -11,11 +11,11 @@ export class GuestComponent {
 
 lang:any;
   constructor(private translate: TranslateService) {
-    console.log(this.lang)
+    //console.log(this.lang)
   
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
       // do something
-      console.log(event)
+      //console.log(event)
       this.lang=event.lang
     });
 

@@ -63,16 +63,17 @@
           <div class=" collapse navbar-collapse  " id="navbarNavDropdown">
             <ul class="navbar-nav   " [class]="lang=='en'?'ms-auto':'me-auto'">
               <li class="nav-item">
-                <a class="nav-link mx-1  active" aria-current="page" href="#">{{"user-navbar.home"|translate}}</a>
+                <a class="nav-link mx-1 " routerLink="/guest/home" routerLinkActive="active"  aria-current="page" >{{"user-navbar.home"|translate}}</a>
               </li>
               <li class="nav-item ">
+
                 <a class="nav-link mx-1" routerLink="/guest/explore">{{"user-navbar.explore"|translate}}</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link mx-1" href="#">{{"user-navbar.reviews"|translate}}</a>
+                <a class="nav-link mx-1" >{{"user-navbar.reviews"|translate}}</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link mx-1" href="#">{{"user-navbar.favorites"|translate}}</a>
+                <a class="nav-link mx-1 " routerLink="/guest/favorite" routerLinkActive="active"  >{{"user-navbar.favorites"|translate}}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link ">    

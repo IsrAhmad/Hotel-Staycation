@@ -248,10 +248,14 @@ ngOnInit(): void {
   getAllRooms(data: any) {
     this._GuestService.getAllRooms(data).subscribe({
       next: (res) => {
-        console.log(res);
+       // console.log(res)
+
         this.roomsRes = res;
       },
       error: (err) => {
+        //console.log(err)
+//       }
+//     })
         console.log(err);
       },
     });
@@ -276,8 +280,32 @@ ngOnInit(): void {
   goLogin(): void {
     this._ToastrService.error('First login');
 
-    this._router.navigate(['/auth']);
-  }
+saveRoomInFav(roomId: string) {
+  this._GuestService.saveFavRoom(roomId).subscribe({
+    next: (res) => {
+      this.fav = res;
+      //console.log(this.fav)
+    },
+    error: (err) => {
+      console.log(err)
+      this._ToastrService.error(err.error.message) 
+    },
+    complete: () => {
+      this._ToastrService.success(this.fav.message)
+
+    }
+  })
+}
+
+openFaverioteRooms(){
+  this._router.navigate(['guest/favorite'])
+}
+
+goLogin():void{
+  this._ToastrService.error('First login')
+  this._router.navigate(['/auth'])
+}
+
 
   openAuthDialog() {
     const dialogRef = this.dialog.open(AuthPopupComponent, {width: '35%',});
