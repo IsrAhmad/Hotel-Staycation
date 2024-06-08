@@ -40,7 +40,13 @@
       "off": "Off",
       "happy-family": "Happy Family",
       "testimonial-1": "What a great trip with my family and I should try again next time soon ...",
-      "guest-1": "Angga, Product Designer"
+      "guest-1": "Angga, Product Designer",
+      "fantastic-getaway": "Fantastic Getaway",
+      "testimonial-2": "A fantastic getaway! Looking forward to our next trip ...",
+      "guest-2": "Budi, Software Engineer",
+      "wonderful-journey": "Wonderful Journey",
+      "testimonial-3": "The journey was wonderful and full of surprises. Highly recommend! ...",
+      "guest-3": "Siti, Graphic Designer"
     },
 
     "room-details": {
@@ -85,6 +91,6 @@
       "mail-support": "support@staycation.id",
       "phone": "021 - 2208 - 1996",
       "location": "Staycation, Kemang, Jakarta",
-      "copyright": "Copyright 2019 • All rights reserved • Staycation"
+      "copyright": "Copyright 2024 • All rights reserved • Staycation"
     }
 }

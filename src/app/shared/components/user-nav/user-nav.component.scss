@@ -2,6 +2,9 @@
 @import '../../../../assets/styles/components/button.scss';
 
 .navbar-brand{
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 39px;
     span{
         color: $mat-icon-color;
     }
@@ -10,7 +13,8 @@
     padding: 8px 18px !important;
 }
 .nav-link{
-    font-size: 16px;
+    font-size: 17px;
+    line-height: 25px;
     &:hover{
         color: $mat-icon-color;
     }
@@ -21,6 +25,9 @@ img{
    
     border-radius: 50%;
 }
+.active{
+    color: $mat-icon-color !important;
 
+}
 
 

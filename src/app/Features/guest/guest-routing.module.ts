@@ -10,12 +10,12 @@ const routes: Routes = [
     { path: 'explore',  loadComponent: () => import('../guest/components/explore/explore.component').then(m => m.ExploreComponent)},
     { path: 'favorite',  loadComponent: () => import('../guest/components/favorite/favorite.component').then(m => m.FavoriteComponent)},
     { path: 'room-details/:id',  loadComponent: () => import('../guest/components/room-details/room-details.component').then(m => m.RoomDetailsComponent)},
-  ] },
+
   { path: 'payment', loadChildren: () => import('./modules/payment/payment.module').then(m => m.PaymentModule) },
   {
     path:'profile/:id' , component:ViewUserProfileComponent
   }
-
+] },
 ];
 
 @NgModule({

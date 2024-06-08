@@ -1,27 +1,27 @@
 <!--anormal user-->
 <ng-container *ngIf="!loggedIn">
-    <nav class="navbar navbar-expand-lg  p-3">
+    <nav class="navbar navbar-expand-lg  py-3">
         <div class="container">
-            <a class="navbar-brand ms-5" href="#"><span>Stay</span>cation.</a>
+            <a class="navbar-brand " href="#"><span>Stay</span>cation{{lang=='en'? '.':''}}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         
           <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto  ">
+            <ul class="navbar-nav   " [class]="lang=='en'?'ms-auto':'me-auto'">
               <li class="nav-item  notLoged">
-                <a class="nav-link  active" aria-current="page" href="#">Home</a>
+                <a class="nav-link  active" aria-current="page" href="#">{{"user-navbar.home"|translate}}</a>
               </li>
               <li class="nav-item notLoged">
-                <a class="nav-link " href="#">Explore</a>
+                <a class="nav-link " href="#">{{"user-navbar.explore"|translate}}</a>
               </li>
               
               <li>
                 
-                <button class=" btn primary mb-1 me-3" (click)="register()"> Register</button>
+                <button class=" btn primary mb-1 me-3" (click)="register()"> {{"user-navbar.register"|translate}}</button>
               </li>
               <li>
-                <button class="btn primary me-3 mb-1" (click)="login()"> Login Now</button>
+                <button class="btn primary me-3 mb-1" (click)="login()"> {{"user-navbar.login"|translate}}</button>
               </li>
               <li  class="nav-item">
                 <button
@@ -32,13 +32,12 @@
                 <mat-icon>language</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item >
-                  
-                  <span>Arabic</span>
+                <button mat-menu-item (click)="changeLanguage('ar')">
+                  <span>{{"user-navbar.arabic"|translate}}</span>
                 </button>
-                <button  mat-menu-item  >
-                
-                  <span>English</span>
+
+                <button  mat-menu-item (click)="changeLanguage('en')" >            
+                  <span>{{"user-navbar.english"|translate}}</span>
                 </button>
                
               </mat-menu>
@@ -54,26 +53,26 @@
     <!--logged in -->
 
 <ng-container *ngIf="loggedIn">
-    <nav class="navbar navbar-expand-lg  p-3 ">
+    <nav class="navbar navbar-expand-lg  py-3 ">
         <div class="container">
-            <a class="navbar-brand ms-5" href="#"><span>Stay</span>cation.</a>
+            <a class="navbar-brand " href="#"><span>Stay</span>cation{{lang=='en'? '.':''}}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         
           <div class=" collapse navbar-collapse  " id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto  ">
+            <ul class="navbar-nav   " [class]="lang=='en'?'ms-auto':'me-auto'">
               <li class="nav-item">
-                <a class="nav-link mx-1  active" aria-current="page" href="#">Home</a>
+                <a class="nav-link mx-1  active" aria-current="page" href="#">{{"user-navbar.home"|translate}}</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link " href="#">Explore</a>
+                <a class="nav-link mx-1" href="#">{{"user-navbar.explore"|translate}}</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="#">Reviews</a>
+                <a class="nav-link mx-1" href="#">{{"user-navbar.reviews"|translate}}</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link " href="#">favorites</a>
+                <a class="nav-link mx-1" href="#">{{"user-navbar.favorites"|translate}}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link ">    
@@ -100,26 +99,18 @@
                   <mat-icon>
                     person
                     </mat-icon>
-                  <span>Profile</span>
+                  <span>{{"user-navbar.profile"|translate}}</span>
                 </button>
                 <button  mat-menu-item  (click)="openChangePassDialog()">
                   <mat-icon>edit_square</mat-icon>
-                  <span>Change Password</span>
+                  <span>{{"user-navbar.change-password"|translate}}</span>
                 </button>
                 <button  mat-menu-item  (click)="logout()">
                   <mat-icon>logout</mat-icon>
-                  <span>Logout</span>
+                  <span>{{"user-navbar.logout"|translate}}</span>
                 </button>
-                <button mat-menu-item >
-                  <mat-icon>
-                    language
-                    </mat-icon>
-                  <span>Arabic</span>
-                </button>
-                <button  mat-menu-item  >
-                  <mat-icon>language</mat-icon>
-                  <span>English</span>
-                </button>
+                
+             
               </mat-menu>
               </li>
 
@@ -131,17 +122,14 @@
               >
                 <mat-icon>language</mat-icon>
               </button>
-              <mat-menu #menulang="matMenu">
+              <mat-menu #menulang="matMenu"  >
               
-              
-               
-                <button mat-menu-item >
-                  
-                  <span>Arabic</span>
+                <button mat-menu-item (click)="changeLanguage('ar')">
+                  <span>{{"user-navbar.arabic"|translate}}</span>
                 </button>
-                <button  mat-menu-item  >
-                
-                  <span>English</span>
+
+                <button  mat-menu-item  (click)="changeLanguage('en')">
+                  <span>{{"user-navbar.english"|translate}}</span>
                 </button>
               </mat-menu>
               </li>

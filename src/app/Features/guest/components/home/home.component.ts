@@ -80,7 +80,7 @@ roomsOption: OwlOptions = {
     0: {
       items: 1,
     },
-    400: {
+    576: {
       items: 2,
     },
     740: {
@@ -109,7 +109,7 @@ adsOption: OwlOptions = {
     0: {
       items: 1,
     },
-    400: {
+    576: {
       items: 2,
     },
     740: {
@@ -137,16 +137,7 @@ testimonialOptions: OwlOptions = {
   responsive: {
     0: {
       items: 1,
-    },
-    400: {
-      items: 1,
-    },
-    740: {
-      items: 1,
-    },
-    940: {
-      items: 1,
-    },
+    }
   },
   nav: true,
 };
@@ -181,7 +172,7 @@ capacity: number = 0; // Initial value
     }
   }
 
-  lang: any = localStorage.getItem('lang');
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
   
 
