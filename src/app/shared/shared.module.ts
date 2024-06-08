@@ -29,6 +29,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserNavComponent } from './components/user-nav/user-nav.component';
+import { AuthPopupComponent } from './components/auth-popup/auth-popup.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { UserNavComponent } from './components/user-nav/user-nav.component';
     ChangePassPopupComponent,
     FooterComponent,
     UserNavComponent,
+    AuthPopupComponent,
 
   ],
   imports: [

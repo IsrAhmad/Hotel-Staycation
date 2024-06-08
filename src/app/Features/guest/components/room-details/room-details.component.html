@@ -149,11 +149,11 @@
                           <mat-menu #menu="matMenu" class>
                             <button (click)="updateComment(comment._id , comment.comment )" class="btn-hover" mat-menu-item>
                               <mat-icon class="text-primary-color  ">edit_square</mat-icon>
-                              <span>Edit</span>
+                              <span>{{ "room-details.update" | translate }}</span>
                             </button>
                             <button (click)="deleteComment( comment._id  ,comment.comment) " mat-menu-item class="btn-hover" type="button">
                               <mat-icon class="text-primary-color  ">delete</mat-icon>
-                              <span>Delete</span>
+                              <span>{{ "room-details.delete" | translate }}</span>
                             </button>
                           </mat-menu>
                           </div>

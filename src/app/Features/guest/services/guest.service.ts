@@ -19,6 +19,10 @@ export class GuestService {
   getAllRooms(data: object): Observable<IRoomResponse> {
     return this._HttpClient.get<IRoomResponse>('portal/rooms/available', data)
   }
+  getAllRoomsForExplore(parmasData: any): Observable<IRoomResponse> {
+    return this._HttpClient.get<IRoomResponse>('portal/rooms/available',  {params:parmasData})
+  }
+ 
   getRoomById(id: number): Observable<any> {
     return this._HttpClient.get(`portal/rooms/${id}`)
   }
