@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb " >
             <li class="breadcrumb-item"><a routerLink="/guest/home">{{"room-details.home"|translate}}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{"room-details.room-details"|translate}}</li>
+            <li class="breadcrumb-item active" [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'" aria-current="page">{{"room-details.room-details"|translate}}</li>
           </ol>
         </nav>
       </div>
@@ -112,10 +112,10 @@
             <mat-panel-title>{{ "room-details.comments" | translate }}</mat-panel-title>
             <mat-panel-description>{{ "room-details.see-all-comments" | translate }}<mat-icon>chat</mat-icon></mat-panel-description>
           </mat-expansion-panel-header>
-              <ng-container *ngIf="commentsResponse.roomComments.length >0">
+              <ng-container *ngIf="RoomComment.length >0">
                 <div class="row ">
                   <div class="col-md-12">
-                    <div class="card " *ngFor=" let comment of commentsResponse.roomComments">
+                    <div class="card mb-3" *ngFor=" let comment of RoomComment">
                       <div class="card-body p-4">
                         <div class="row">
                           <div class="col ">
@@ -144,7 +144,7 @@
                   </div>
                 </div>
               </ng-container>
-              <ng-container *ngIf="commentsResponse.roomComments.length == 0">
+              <ng-container *ngIf="RoomComment.length == 0">
                 <p>{{ "room-details.no-comments-yet" | translate }}</p>
               </ng-container>
         </mat-expansion-panel>
@@ -154,10 +154,10 @@
             <mat-panel-description>{{ "room-details.see-all-reviews" | translate }}<mat-icon>reviews</mat-icon></mat-panel-description>
 
           </mat-expansion-panel-header>
-          <ng-container *ngIf="reviewsResponse.roomReviews.length>0">
+          <ng-container *ngIf="roomReviews.length>0">
             <div class="row ">
               <div class="col-md-12 ">
-                <div class="card " *ngFor=" let review of reviewsResponse.roomReviews">
+                <div class="card mb-3" *ngFor=" let review of roomReviews">
                   <div class="card-body p-4 ">
                     <div class="row">
                       <div class="col ">
@@ -190,7 +190,7 @@
               </div>
             </div>
           </ng-container>
-          <ng-container *ngIf="reviewsResponse.roomReviews.length == 0">
+          <ng-container *ngIf="roomReviews.length == 0">
             <p>{{ "room-details.no-reviews-yet" | translate }}</p>
           </ng-container>  
         </mat-expansion-panel>
