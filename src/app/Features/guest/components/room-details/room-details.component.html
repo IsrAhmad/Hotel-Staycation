@@ -1,4 +1,4 @@
-<section class="roomDetails  " *ngIf="roomRes">
+<section class="roomDetails mt-4 " *ngIf="roomRes">
   <div class="container ">
     <div class="row">
       <!--breadcurmb-->
@@ -14,12 +14,8 @@
     <div class="row d-flex align-items-center justify-content-center">
       <div class="col-md-4  text-center">
         <div class="roomNumer">
-          <h4 class="">
-            {{roomRes.roomNumber}}
-          </h4>
-          <p>
-            Bogor, Indonesia
-          </p>
+          <h4 class=""> {{roomRes.roomNumber}}</h4>
+          <p> Bogor, Indonesia </p>
         </div>
       </div>
     </div>
@@ -53,17 +49,30 @@
         </div>
         <div class="p-2">
           <div *ngIf="roomRes.facilities.length>1">
-            <div class="p-2" *ngFor="let item of roomRes.facilities">
-              {{item}}
+            <div class="row ">
+              <div class="col-sm-3 m-1" *ngFor="let item of roomRes.facilities">
+                <div *ngIf="item.name=='Kitchen'"> <i class="fa-solid fa-kitchen-set"></i></div>
+                <div *ngIf="item.name=='Garage'"> <i class="fa-solid fa-square-parking"></i></div>
+                <div *ngIf="item.name=='Xbox'"> <i class="fa-solid fa-box"></i> </div>
+                <div *ngIf="item.name=='Royal suite'"> <i class="fa-solid fa-crown"></i> </div>
+                <div *ngIf="item.name=='Wifi' || item.name=='WIFI' "> <i class="fa-solid fa-wifi"></i></div>
+                <div *ngIf="item.name=='Mini fridge'"> <i class="fa-solid fa-road-bridge"></i> </div>
+                <div *ngIf="item.name=='Sea view'"> <i class="fa-solid fa-water"></i></div>
+                <div *ngIf="item.name=='coffe machine' || item.name=='Coffee maker'"> <i
+                    class="fa-solid fa-mug-hot"></i></div>
+                <div *ngIf="item.name=='Kids area'"> <i class="fa-solid fa-child-reaching"></i> </div>
+                <div *ngIf="item.name=='Pets allowed'"> <i class="fa-solid fa-shield-cat"></i></div>
+                <div *ngIf="item.name=='Lounges'"> <i class="fa-solid fa-dumbbell"></i></div>
+                <div *ngIf="item.name=='Dining & Restaurants'"> <i class="fa-solid fa-utensils"></i></div>
+                <div *ngIf="item.name=='Buffet'"> <i class="fa-solid fa-bowl-rice"></i></div>
+                {{item.name}}
+              </div>
             </div>
           </div>
           <div *ngIf="roomRes.facilities.length==0">
             <h5>No Faccilities For This Room</h5>
           </div>
         </div>
-
-
-
       </div>
       <div class="col-md-6">
         <mat-card class="example-card">
@@ -98,33 +107,39 @@
       </div>
     </div>
     <!-- Rate Section -->
-    <div class="col-md-12 px-5 py-3 rate-card">
+    <div class="col-md-12 px-5 py-3 mb-5 rate-card h-auto">
       <div class="row ">
-        <div class="col-md-6 p-3 h-100">
+        <div class="col-md-6 p-3 ">
           <form [formGroup]="reviewForm" (ngSubmit)="onAddReview(reviewForm)">
-            <div class="" style="height: 10vh!important;">
+            <div class="" >
               <h3 class="mb-1">Rate</h3>
               <div class="d-flex justify-content-start align-items-center  ">
                 <star-rating-control formControlName="rating" [starType]="'svg'" [rating]="rating"
                   [numOfStars]="4"></star-rating-control>
               </div>
             </div>
-            <div class=" " style="height: 36vh!important;">
+            <div class=" " >
               <div class="my-3">
                 <label for="message" class="my-4">Message</label>
                 <textarea formControlName="review" name="message" rows="5" id="message" class="form-control"></textarea>
               </div>
+              <div class="w-100  text-end ">
               <button type="submit" [disabled]="reviewForm.invalid" class="primary w-25 mt-3">Rate</button>
+              </div>
             </div>
           </form>
         </div>
         <!-- Add Your Comment section -->
-        <div class="col-md-6 p-3 h-100">
+        <div class="col-md-6 p-3 ">
           <form [formGroup]="commentForm" (ngSubmit)="onAddComment(commentForm.value)">
-            <div class="" style="height: 10vh!important;">
-              <h3>Add Your Comment</h3>
+            <div class="" >
+              <h3 class="mb-1">Add Your Comment</h3>
+              <div class="d-flex justify-content-start align-items-center  opacity-0">
+                <star-rating-control formControlName="rating" [starType]="'svg'" [rating]="rating"
+                  [numOfStars]="4"></star-rating-control>
+              </div>
             </div>
-            <div class=" " style="height: 36vh!important;">
+            <div class=" " >
               <div class="my-3">
                 <label for="comment" class="my-4">Comment</label>
                 <textarea formControlName="comment" name="message" rows="5" id="message"
