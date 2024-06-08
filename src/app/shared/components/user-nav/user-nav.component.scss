@@ -15,6 +15,7 @@
 .nav-link{
     font-size: 17px;
     line-height: 25px;
+    cursor: pointer;
     &:hover{
         color: $mat-icon-color;
     }

@@ -55,6 +55,9 @@ export class UserNavComponent  implements OnInit{
     this._Router.navigateByUrl('/auth/login');
     
   }
+  openFaverioteRooms(){
+    this._Router.navigate(['/guest/favorite'])
+  }
   getUserProfile(id:string){
    
     this._NavbarService.getUserProfile(id).subscribe({

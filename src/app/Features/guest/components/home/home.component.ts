@@ -232,15 +232,17 @@ saveRoomInFav(roomId: string) {
     },
     error: (err) => {
       console.log(err)
-      this._ToastrService.error(err.error.message)
-
-      
+      this._ToastrService.error(err.error.message) 
     },
     complete: () => {
       this._ToastrService.success(this.fav.message)
 
     }
   })
+}
+
+openFaverioteRooms(){
+  this._router.navigate(['guest/favorite'])
 }
 
 goLogin():void{

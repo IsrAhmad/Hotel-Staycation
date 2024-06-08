@@ -17,3 +17,43 @@ export interface IFavoriteResponse{
     updatedAt: string
   }
   
+
+
+
+  export interface IAllFavRes {
+    success: boolean
+    message: string
+    data: IAllFavResData
+  }
+  
+  export interface IAllFavResData {
+    favoriteRooms: IFavoriteRoom[]
+    totalCount: number
+  }
+  
+  export interface IFavoriteRoom {
+    _id: string
+    rooms: IRoom[]
+    user: IUser
+    createdAt: string
+    updatedAt: string
+  }
+  
+  export interface IRoom {
+    _id: string
+    roomNumber: string
+    price: number
+    capacity: number
+    discount: number
+    facilities: string[]
+    createdBy: string
+    images: string[]
+    createdAt: string
+    updatedAt: string
+  }
+  
+  export interface IUser {
+    _id: string
+    userName: string
+  }
+  
