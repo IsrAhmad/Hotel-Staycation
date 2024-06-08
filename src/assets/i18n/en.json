@@ -78,7 +78,10 @@
     "no-comments-yet": "No comments yet",
     "reviews": "Reviews",
     "see-all-reviews": "See all reviews",
-    "no-reviews-yet": "No Reviews yet"
+    "no-reviews-yet": "No Reviews yet",
+    "update-comment": "Update Your Comment",
+    "delete" : "Delete",
+    "update" : "Update"
     },
 
     "footer": {

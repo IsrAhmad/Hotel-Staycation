@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RoomDetailsService } from 'src/app/Features/guest/services/room-details.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-up-date-comment',
@@ -34,14 +35,14 @@ export class UpDateCommentComponent {
     message: '',
     data: this.commentData
   }
-  
+
   oldComment:string='';
- 
-  constructor(private _ToastrService:ToastrService, private _RoomDetailsService:RoomDetailsService, 
+
+  constructor(private _ToastrService:ToastrService, private _RoomDetailsService:RoomDetailsService,
     public dialogRef: MatDialogRef<UpDateCommentComponent>, @Inject(MAT_DIALOG_DATA) public data: { id: string , comment:string }) {
 
   }
-  
+
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -51,7 +52,7 @@ export class UpDateCommentComponent {
     comment:new FormControl(this.data.comment ,[Validators.required])
   })
 
-  
+
   onUpdateComment(id:string , data:FormGroup){
     this._RoomDetailsService.updateComment(id,data.value).subscribe({
       next:(res:IUpdateCommentResponse)=>{
