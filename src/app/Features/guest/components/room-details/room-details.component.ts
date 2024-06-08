@@ -1,4 +1,4 @@
-import { IRommCommentResponse, IRoomReveiwResponse, IRoomReveiwRequest, IRommCommentData, IRoomReviewData } from './../../models/room-details';
+import { IRommCommentResponse, IRoomReveiwResponse, IRoomReveiwRequest, IRommCommentData, IRoomReviewData, IRoomComment, RoomReview } from './../../models/room-details';
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule, formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -43,7 +43,8 @@ export class RoomDetailsComponent {
   id: string = '';
   reviewForm!: FormGroup;
   commentForm!: FormGroup;
-
+  RoomComment:IRoomComment[]=[];
+  roomReviews:RoomReview[]=[];
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
 
@@ -165,7 +166,9 @@ export class RoomDetailsComponent {
     this._RoomDetailsService.getAllRoomComments(id).subscribe({
       next: (res) => {
         this.commentsResponse = res.data;
-        //console.log(this.commentsResponse);
+        console.log(this.commentsResponse);
+        this.RoomComment= res.data.roomComments
+        console.log(this.RoomComment);
       }
     })
   }
@@ -175,6 +178,8 @@ export class RoomDetailsComponent {
       next: (res) => {
         this.reviewsResponse = res.data;
         // console.log(this.reviewsResponse);
+        this.roomReviews= res.data.roomReviews;
+        console.log(this.roomReviews)
       }
     })
   }

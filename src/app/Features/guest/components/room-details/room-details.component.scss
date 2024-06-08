@@ -116,3 +116,9 @@ color: $secondary-color !important;
   ::ng-deep .rating {
 justify-content: left !important;
   }
+
+  .breadcrumb-item-itedited::before{
+   float: right !important;
+  }
+
+  
