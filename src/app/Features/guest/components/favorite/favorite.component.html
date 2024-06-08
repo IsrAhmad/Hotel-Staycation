@@ -35,10 +35,10 @@
 
 
   <div class="row mb-5">
-    <div class=" col-md-6 col-lg-4 " *ngFor="let item of favourites">
+    <div class=" col-md-6 col-lg-4 " *ngFor="let item of favourites.rooms">
 
         <div  class=" card-sm mt-4 w-100" >
-          <img [src]="item.rooms.images[0]" alt="" class="w-100 imgHeight2 rounded-4 ">
+          <img [src]="item.images[0]" alt="" class="w-100 imgHeight2 rounded-4 ">
           <div class="imag-icon">
             <a *ngIf="!(loginToFav === 'user' )" (click)="goLogin()"
               class=" text-decoration-none text-white"><i class="fa-solid fa-heart fav"></i></a>
@@ -47,7 +47,7 @@
                 class="fa-solid fa-eye eye "></i></a>
           </div>
           <div class="imag-captain">
-            <h6 class=" text-white title">{{item.rooms.roomNumber}}</h6>
+            <h6 class=" text-white title">{{item.roomNumber}}</h6>
             <h5 class=" text-white userName">{{item.user.userName}}</h5>
           </div>
           <div class="imag-price px-5">
