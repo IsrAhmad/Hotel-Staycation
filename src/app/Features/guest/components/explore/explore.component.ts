@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IFavoriteResponse } from '../favorite/models/IFavorite';
 import { PageEvent } from '@angular/material/paginator';
 import { IExplorParms } from '../../models/IExplorParms';
+import { AuthPopupComponent } from 'src/app/shared/components/auth-popup/auth-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-explore',
@@ -46,7 +48,9 @@ export class ExploreComponent  implements OnInit{
   }
   constructor(private translate:TranslateService ,
     private _GuestService:GuestService,
-    private _ToastrService: ToastrService , private _router: Router,private ActivRoute: ActivatedRoute){
+    private _ToastrService: ToastrService , 
+    private _router: Router,private ActivRoute: ActivatedRoute,
+    public dialog: MatDialog,){
 
   }
  
@@ -132,5 +136,8 @@ export class ExploreComponent  implements OnInit{
       this.params.page = e.pageIndex + 1;
       this.params.size = e.pageSize;
       this.getAllRoomForExplore();
+    }
+    openAuthDialog() {
+      const dialogRef = this.dialog.open(AuthPopupComponent, {width: '35%',});
     }
 }
