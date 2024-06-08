@@ -10,15 +10,13 @@ import { DeleteComponent } from 'src/app/shared/components/delete/delete.compone
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NativeDateAdapter } from '@angular/material/core';
+import { NativeDateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { HttpClient } from '@angular/common/http';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
-
 import { GuestService } from '../../services/guest.service';
 import { IAdsResponse } from 'src/app/Features/Manager/modules/ads/models/IAdsResponse';
 import { ToastrService } from 'ngx-toastr';
@@ -43,7 +41,6 @@ import { AuthPopupComponent } from 'src/app/shared/components/auth-popup/auth-po
     MatCardModule,
     MatDatepickerModule,
     SharedModule,
-    MatDialogModule,
     CarouselModule,
   ],
   templateUrl: './home.component.html',
@@ -151,40 +148,35 @@ export class HomeComponent {
         items: 1,
       },
     },
-  nav: true,
-};
+    nav: true,
+  };
 
+  campaignOne: FormGroup;
 
+  constructor(
+    public dialog: MatDialog,
+    private _GuestService: GuestService,
+    private _ToastrService: ToastrService,
+    private _router: Router,
+    private translate: TranslateService,
+    private fb: FormBuilder
+  ) {
+    this.campaignOne = this.fb.group({
+      start: [],
+      end: [],
+    });
+  }
 
-campaignOne: FormGroup;
+  ngOnInit(): void {
+    this.getAllAds();
+    this.getAllRooms({});
 
-
-constructor(public dialog: MatDialog,private _GuestService:GuestService, private _ToastrService: ToastrService
-  , private _router: Router,private translate:TranslateService,private fb: FormBuilder){ 
-
-   this.campaignOne = this.fb.group({
-  start: [],
-  end: []
-});
-}
-
-
-ngOnInit(): void {
-  this.getAllAds()
-  this.getAllRooms({})
-
-  this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-    // do something
-    console.log(event)
-    this.lang=event.lang
-  });
-
-
-  
-}
-
-
- 
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      // do something
+      console.log(event);
+      this.lang = event.lang;
+    });
+  }
 
   capacity: number = 0; // Initial value
   loginToFav: any = localStorage.getItem('role');
@@ -204,17 +196,13 @@ ngOnInit(): void {
       ? localStorage.getItem('lang')!
       : 'en';
 
- 
-
   explore(): void {
-
-   
     const startDate = this.campaignOne.get('start')?.value;
     const endDate = this.campaignOne.get('end')?.value;
     console.log('Start Date:', startDate);
     console.log('End Date:', endDate);
 
-    if (startDate && endDate &&this.capacity) {
+    if (startDate && endDate && this.capacity) {
       const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
       const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
 
@@ -225,13 +213,11 @@ ngOnInit(): void {
         queryParams: {
           startDate: formattedStartDate,
           endDate: formattedEndDate,
-          capacity: this.capacity
-        }
+          capacity: this.capacity,
+        },
       });
-
     }
-  };
-
+  }
 
   getAllAds() {
     this._GuestService.getAllAds().subscribe({
@@ -248,14 +234,10 @@ ngOnInit(): void {
   getAllRooms(data: any) {
     this._GuestService.getAllRooms(data).subscribe({
       next: (res) => {
-       // console.log(res)
-
+        // console.log(res)
         this.roomsRes = res;
       },
       error: (err) => {
-        //console.log(err)
-//       }
-//     })
         console.log(err);
       },
     });
@@ -277,37 +259,16 @@ ngOnInit(): void {
     });
   }
 
+  openFaverioteRooms() {
+    this._router.navigate(['guest/favorite']);
+  }
+
   goLogin(): void {
     this._ToastrService.error('First login');
-
-saveRoomInFav(roomId: string) {
-  this._GuestService.saveFavRoom(roomId).subscribe({
-    next: (res) => {
-      this.fav = res;
-      //console.log(this.fav)
-    },
-    error: (err) => {
-      console.log(err)
-      this._ToastrService.error(err.error.message) 
-    },
-    complete: () => {
-      this._ToastrService.success(this.fav.message)
-
-    }
-  })
-}
-
-openFaverioteRooms(){
-  this._router.navigate(['guest/favorite'])
-}
-
-goLogin():void{
-  this._ToastrService.error('First login')
-  this._router.navigate(['/auth'])
-}
-
+    this._router.navigate(['/auth']);
+  }
 
   openAuthDialog() {
-    const dialogRef = this.dialog.open(AuthPopupComponent, {width: '35%',});
+    const dialogRef = this.dialog.open(AuthPopupComponent, { width: '35%' });
   }
 }
