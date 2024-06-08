@@ -251,6 +251,6 @@ export class HomeComponent {
   }
 
   openAuthDialog() {
-    const dialogRef = this.dialog.open(AuthPopupComponent, {width: '50%',});
+    const dialogRef = this.dialog.open(AuthPopupComponent, {width: '35%',});
   }
 }

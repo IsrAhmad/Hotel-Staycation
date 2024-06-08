@@ -11,18 +11,18 @@
       <a class="popup-brand" href="#"><span>Stay</span>cation</a>
     </div>
 
-    <div class="mb-4">
-      <h1 class="text-secondary-color">You are logged out!</h1>
-      <p>Login <a [routerLink]="[ '/auth/login']" (click)="onNoClick()">here</a></p>
+    <div class="mb-4 text-center py-3 pt-5">
+      <h1 class="text-secondary-color">Action can't be completed, because you are logged out!</h1>
     </div>
 
-    <div class="mb-4">
-      <p class="text-secondary-color">Don't have an account?</p>
-      <p>Register <a [routerLink]="[ '/auth/register']" (click)="onNoClick()">here</a></p>
+    <div class="mb-4  d-flex">
+      <p class="text-secondary-color px-1">Don't have an account?</p>
+      <p class="text-secondary-color"><a [routerLink]="[ '/auth/register']" (click)="onNoClick()">Register here!</a></p>
     </div>
 
-    <div class="btns  mt-4  text-end">
+    <div class="btns  mt-4 d-flex justify-content-between">
       <button (click)="onNoClick()" class="cancel mx-4 " type="button">Cancel</button>
+      <button class="primary" [routerLink]="[ '/auth/login']" (click)="onNoClick()" >Login</button>
     </div>
 
   </div>
