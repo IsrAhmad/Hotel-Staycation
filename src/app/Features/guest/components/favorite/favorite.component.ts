@@ -5,11 +5,51 @@ import { FavoriteService } from './services/favorite.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
+/*
 
+*/
+export interface Root {
+  success: boolean
+  message: string
+  data: Data
+}
+
+export interface Data {
+  favoriteRooms: FavoriteRoom[]
+  totalCount: number
+}
+
+export interface FavoriteRoom {
+  _id: string
+  rooms: Room[]
+  user: User
+  createdAt: string
+  updatedAt: string
+}
+
+export interface Room {
+  _id: string
+  roomNumber: string
+  price: number
+  capacity: number
+  discount: number
+  facilities: string[]
+  createdBy: string
+  images: string[]
+  createdAt: string
+  updatedAt: string
+}
+
+export interface User {
+  _id: string
+  userName: string
+}
 @Component({
   selector: 'app-favorite',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule ,SharedModule],
   templateUrl: './favorite.component.html',
   styleUrls: ['./favorite.component.scss']
 })
@@ -52,18 +92,32 @@ export class FavoriteComponent implements OnInit{
 
   // }
   favList:any;
-  constructor(private _Router:Router, private _ToastrService:ToastrService, private _FavoriteService:FavoriteService){}
+  favourites:any
+
+
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
+  loginToFav: any = localStorage.getItem('role');
+  constructor(private _Router:Router,private translate:TranslateService , 
+    private _ToastrService:ToastrService, private _FavoriteService:FavoriteService){}
 
   ngOnInit(): void {
-    this.onGetAllFav();
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      // do something
+      console.log(event)
+      this.lang=event.lang
+    });
+    this.GetAllFav();
     
   }
 
-  onGetAllFav(){
+  GetAllFav(){
     this._FavoriteService.getAllFavRooms().subscribe({
       next:(res)=>{
         console.log(res);
-        this.favList=res;
+        this.favList=res.data;
+        console.log(this.favList);
+        this.favourites= res.data.favoriteRooms ;
+        console.log(this.favourites);
       },error:(err:HttpErrorResponse)=>{
         console.log(err);
       }
