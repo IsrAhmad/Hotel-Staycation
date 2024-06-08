@@ -1,4 +1,5 @@
-import { IRommCommentResponse, IRoomReveiwResponse, IRoomReveiwRequest, IRommCommentData, IRoomReviewData, IRoomComment, RoomReview } from './../../models/room-details';
+
+import { IRommCommentResponse, IRoomReveiwResponse, IDeleteCommentResponse, IRoomReveiwRequest, IRommCommentData, IRoomReviewData, IRoomComment, RoomReview } from './../../models/room-details';
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule, formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -18,13 +19,17 @@ import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { UpDateCommentComponent } from './components/up-date-comment/up-date-comment.component';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-room-details',
   standalone: true,
-  imports: [StarRatingModule,
+  imports: [StarRatingModule, MatButtonModule, MatDialogModule,
     CommonModule, CarouselModule, MatCardModule, MatNativeDateModule, MatFormFieldModule,
     MatDatepickerModule, SharedModule, MatExpansionModule, MatIconModule, MatButtonModule, MatInputModule],
   providers: [StarRatingConfigService],
@@ -43,6 +48,15 @@ export class RoomDetailsComponent {
   id: string = '';
   reviewForm!: FormGroup;
   commentForm!: FormGroup;
+
+deletRes:IDeleteCommentResponse ={
+    success: false,
+    message: ''
+  };
+
+
+//   constructor( private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
+//     private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService) {
   RoomComment:IRoomComment[]=[];
   roomReviews:RoomReview[]=[];
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
@@ -51,7 +65,7 @@ export class RoomDetailsComponent {
 
 
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
+  constructor(public dialog: MatDialog, private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
     private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService,private translate:TranslateService) {
   }
 
@@ -102,8 +116,6 @@ export class RoomDetailsComponent {
     })
   }
 
-
-
   onAddComment(commentForm: FormGroup) {
     this._RoomDetailsService.AddRoomComment(commentForm).subscribe({
       next: (res: IRommCommentResponse) => {
@@ -112,6 +124,7 @@ export class RoomDetailsComponent {
       error: (err: HttpErrorResponse) => {
         //console.log(err);
         this._ToastrService.error(err.error.message);
+        this.reviewForm.reset();
       },
       complete: () => {
         this._ToastrService.success('Your Comment Added Successfuly ');
@@ -184,7 +197,56 @@ export class RoomDetailsComponent {
     })
   }
 
+  updateComment(id: string ,comment:string) {
+      const dialogRef = this.dialog.open(UpDateCommentComponent, {
+        width: '600px',
+        height: '300px',
+        data: { id: id  , comment:comment},
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.getAllRoomComments(this.id);
+      });
+    
+  }
 
+  deleteComment(commentId:string,commentData:string):void{
+    this.openDeleteDialog('700ms','350ms',commentId ,commentData,'Comment')
+  }
+  
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:string,itname:string,componentName:string): void {
+    const dialo =this.dialog.open(DeleteComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data:{
+        comp:componentName,
+        id:id,
+        name:itname
+      }
+    });
+    dialo.afterClosed().subscribe(res=>{
+      if(res!=null){
+        this.onDeleteComment(id,this.id)
+      }
+    })
+  }
+
+  onDeleteComment(commentId:string,roomId:string) {
+    this._RoomDetailsService.deletComment(commentId,roomId).subscribe({
+      next:(res)=>{
+      //  console.log(res);
+        this.deletRes=res;
+      },error:(err:HttpErrorResponse)=>{
+       // console.log(err);
+        this._ToastrService.error(err.error.message)
+      },complete:()=>{
+        this._ToastrService.success(this.deletRes.message);
+        this.getAllRoomComments(this.id);
+      }
+    })
+  }
 
 
 

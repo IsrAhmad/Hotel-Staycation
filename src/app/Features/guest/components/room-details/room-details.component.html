@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="row d-flex align-items-center justify-content-center">
-      <div class="col-md-4  text-center">
+      <div class="col-lg-4  text-center">
         <div class="roomNumer">
           <h4 class="mb-1 p-1 "> {{roomRes.roomNumber}}</h4>
           <p> Bogor, Indonesia </p>
@@ -38,10 +38,11 @@
           <p>{{"room-details.description-3" | translate}}</p>
 
         </div>
-        <div class="p-2">
+        <div class="">
           <div *ngIf="roomRes.facilities.length>1">
             <div class="row ">
-              <div class="col-sm-3 m-1" *ngFor="let item of roomRes.facilities">
+              <h5>Facilities:</h5>
+              <div class="col-sm-3 m-1 ms-5 " *ngFor="let item of roomRes.facilities">
                 <div *ngIf="item.name=='Kitchen'"> <i class="fa-solid fa-kitchen-set"></i></div>
                 <div *ngIf="item.name=='Garage'"> <i class="fa-solid fa-square-parking"></i></div>
                 <div *ngIf="item.name=='Xbox'"> <i class="fa-solid fa-box"></i> </div>
@@ -67,6 +68,7 @@
             </div>
           </div>
           <div *ngIf="roomRes.facilities.length==0">
+
             <h5>{{"room-details.no-facilities" | translate}}</h5>
           </div>
         </div>
@@ -117,6 +119,10 @@
                   <div class="col-md-12">
                     <div class="card mb-3" *ngFor=" let comment of RoomComment">
                       <div class="card-body p-4">
+<!--                         <div class="row  d-flex align-items-center">
+                          <div class="col-lg-9  col-md-7 my-2">
+                            <div class="d-flex flex-start align-items-center">
+                              <img class="rounded-circle shadow-1-strong me-3" -->
                         <div class="row">
                           <div class="col ">
                             <div class="d-flex flex-start align-items-center">
@@ -138,6 +144,10 @@
                               </div>
                             </div>
                           </div>
+                          <div class="col-lg-3 col-md-5 my-2 p-0  d-flex justify-content-between align-items-center">
+                            <button (click)="updateComment(comment._id , comment.comment )" class="primary w-50 mx-2">Update</button>
+                            <button (click)="deleteComment( comment._id  ,comment.comment) " class="delete  w-50">Delete</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -154,12 +164,19 @@
             <mat-panel-description>{{ "room-details.see-all-reviews" | translate }}<mat-icon>reviews</mat-icon></mat-panel-description>
 
           </mat-expansion-panel-header>
+<!--           <ng-container *ngIf="reviewsResponse.roomReviews.length>0">
+            <div class="row d-flex align-items-center"> -->
+          
           <ng-container *ngIf="roomReviews.length>0">
             <div class="row ">
+
               <div class="col-md-12 ">
                 <div class="card mb-3" *ngFor=" let review of roomReviews">
                   <div class="card-body p-4 ">
                     <div class="row">
+<!--                       <div class="col-md-9  ">
+                        <div class="d-flex flex-start">
+                          <img class="rounded-circle shadow-1-strong me-3" -->
                       <div class="col ">
                         <div class="d-flex flex-start align-items-center">
                           <img class="rounded-circle shadow-1-strong mx-3"
@@ -177,7 +194,7 @@
                                {{review.review}}
                               </p>
                               <div class="">
-                                <star-rating-control [starType]="'svg'"  class="star filled "
+                                <star-rating-control [starType]="'svg'"  class="star filled ms-5"
                                 [numOfStars]="review.rating"></star-rating-control>
                               </div>
                             </div>
@@ -237,7 +254,9 @@
                   class="form-control"></textarea>
               </div>
               <div class="w-100  text-end ">
+<!--                 <button type="submit" [disabled]="commentForm.invalid" class="primary w-25 mt-3 ">Send</button> -->
                 <button type="submit" [disabled]="commentForm.invalid"  class="primary w-25 mt-3 ">{{ "room-details.send" | translate }}</button>
+
               </div>
             </div>
           </form>
