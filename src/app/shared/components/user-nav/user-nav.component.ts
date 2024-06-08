@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/auth/services/auth.service';
 import { IUser, IUserResponse } from '../../models/iUser';
 import { NavbarService } from '../../services/navbar.service';
 import { ChangePassPopupComponent } from '../change-pass-popup/change-pass-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-nav',
@@ -16,12 +17,18 @@ export class UserNavComponent  implements OnInit{
   tokenValue:any;
   userId!:any;
   currentUser:any
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
+
   
+  @Output() selectLanguage: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(  private _AuthService: AuthService, public dialog: MatDialog,
-    private _NavbarService: NavbarService,private _Router:Router){
+    private _NavbarService: NavbarService,private _Router:Router,private translate: TranslateService){
 
   }
   ngOnInit() {
+    this.changeLanguage(this.lang)
+
     this.tokenValue = localStorage.getItem('token');
     this.userId = localStorage.getItem('id');
 
@@ -35,6 +42,8 @@ export class UserNavComponent  implements OnInit{
       }
      
   }
+
+
   logout() {
     this._AuthService.logout();
   }
@@ -74,4 +83,16 @@ export class UserNavComponent  implements OnInit{
  
  
    }
+
+
+
+  changeLanguage(val:string):void{
+    this.translate.setDefaultLang(val);
+  
+    this.translate.use(val);
+    this.lang=val
+    
+    localStorage.setItem('lang',this.lang)
+  
+  }
 }

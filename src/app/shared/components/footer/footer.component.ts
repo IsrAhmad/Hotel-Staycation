@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
+
 
 }
