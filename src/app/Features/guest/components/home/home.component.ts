@@ -16,6 +16,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 import {
   FormGroup,
   FormControl,
@@ -30,6 +32,8 @@ import { IFavoriteResponse } from '../favorite/models/IFavorite';
 import { Router } from '@angular/router';
 import { IRoomResponse } from 'src/app/Features/Manager/modules/rooms/models/IRoom.model';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { format } from 'date-fns';
+
 import { AuthPopupComponent } from 'src/app/shared/components/auth-popup/auth-popup.component';
 
 @Component({
@@ -153,6 +157,63 @@ export class HomeComponent {
         items: 1,
       },
     },
+  },
+  nav: true,
+};
+
+testimonialOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: true,
+  touchDrag: true,
+  pullDrag: false,
+  dots: false,
+  navSpeed: 700,
+  margin: 20,
+  navText: [
+    '<i class="fa-solid fa-caret-left"></i>',
+    '<i class="fa-solid fa-caret-right"></i>',
+  ],
+  responsive: {
+    0: {
+      items: 1,
+    }
+  },
+  nav: true,
+};
+campaignOne: FormGroup;
+
+
+constructor(public dialog: MatDialog,private _GuestService:GuestService, private _ToastrService: ToastrService
+  , private _router: Router,private translate:TranslateService,private fb: FormBuilder){ 
+
+   this.campaignOne = this.fb.group({
+  start: [],
+  end: []
+});
+}
+
+
+ngOnInit(): void {
+  this.getAllAds()
+  this.getAllRooms({})
+
+  this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    // do something
+    console.log(event)
+    this.lang=event.lang
+  });
+
+
+  
+}
+
+
+/*
+campaignOne = new FormGroup({
+  start: new FormControl(new Date(this.year, this.month, 13)),
+  end: new FormControl(new Date(this.year, this.month, 16)),
+});
+*/
     nav: true,
   };
 
@@ -200,6 +261,33 @@ export class HomeComponent {
   BookingForm: FormGroup = new FormGroup({
     startDate: new FormControl(null),
     endDate: new FormControl(null),
+  })
+
+  explore(): void {
+
+   
+   
+    const startDate = this.campaignOne.get('start')?.value;
+    const endDate = this.campaignOne.get('end')?.value;
+    console.log('Start Date:', startDate);
+    console.log('End Date:', endDate);
+
+    if (startDate && endDate &&this.capacity) {
+      const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
+      const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
+
+      console.log('Start Date:', formattedStartDate);
+      console.log('End Date:', formattedEndDate);
+
+      this._router.navigate(['/guest/payment'], {
+        queryParams: {
+          startDate: formattedStartDate,
+          endDate: formattedEndDate,
+          capacity: this.capacity
+        }
+      });
+
+    }
   });
 
   handleForm(data: FormGroup): void {}
