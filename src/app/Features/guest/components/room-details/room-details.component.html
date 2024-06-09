@@ -41,7 +41,7 @@
         <div class="">
           <div *ngIf="roomRes.facilities.length>1">
             <div class="row ">
-              <h5>Facilities:</h5>
+              <h5>{{"room-details.facilities" | translate}}</h5>
               <div class="col-sm-3 m-1 ms-5 " *ngFor="let item of roomRes.facilities">
                 <div *ngIf="item.name=='Kitchen'"> <i class="fa-solid fa-kitchen-set"></i></div>
                 <div *ngIf="item.name=='Garage'"> <i class="fa-solid fa-square-parking"></i></div>
