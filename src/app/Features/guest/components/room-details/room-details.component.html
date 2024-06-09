@@ -82,7 +82,7 @@
           </mat-card-header>
           <mat-card-content class="mt-5">
             <h5>{{ "room-details.pick-date" | translate }}</h5>
-            <mat-form-field class="example-form-field w-100">
+            <mat-form-field class="example-form-field w-100" appearance="outline">
               <mat-label>{{ "room-details.date" | translate }}</mat-label>
               <mat-date-range-input [formGroup]="campaignOne" [rangePicker]="campaignOnePicker"
                 [comparisonStart]="campaignOne.value.start" [comparisonEnd]="campaignOne.value.end">
@@ -97,7 +97,7 @@
               <span class="card-span">{{roomRes.capacity}} {{ "room-details.person" | translate }}</span>
             </p>
             <div class="d-flex align-items-center justify-content-center">
-              <button class="primary">{{ "room-details.continue-booking" | translate }}</button>
+              <button class="primary" routerLink="/guest/payment">{{ "room-details.continue-booking" | translate }}</button>
             </div>
           </mat-card-content>
         </mat-card>
