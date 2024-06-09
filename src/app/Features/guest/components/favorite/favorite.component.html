@@ -4,7 +4,7 @@
         <h3 style="cursor: pointer;" (click)="back()" class="m-0 p-0">Back To Home </h3>
     </div>
     <h1 class="mt-4">All Faveriote Rooms</h1>
-    <div class="row bg-info flex-row " style="flex-direction: row!important;">
+    <div *ngIf="favList" class="row bg-info flex-row " style="flex-direction: row!important;">
         <div class="col-md-4 bg-danger " *ngFor="let room of favList.data.favoriteRooms">
             <div *ngFor="let item of room.rooms" class=" card-sm mt-4 w-100">
                 <img [src]="item.images[0]" alt="" class="w-100 imgHeight2  rounded-4">
@@ -21,13 +21,13 @@
         </div>
     </div>
 
-    <!--pagination-->
-    <!-- <mat-paginator
+    <!-- pagination-->
+    <mat-paginator
     [length]="totalCount"
     [pageSize]="pageSize"
     [pageIndex]="pageIndex"
     [pageSizeOptions]="[5, 10, 25, 100]"
     (page)="changePage($event)"
     aria-label="Select page">
-  </mat-paginator> -->
+  </mat-paginator>
 </div>

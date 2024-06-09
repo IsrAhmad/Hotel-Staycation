@@ -1,57 +1,43 @@
-import { IAllFavRes ,IAllFavResData ,IRoom ,IFavoriteRoom} from './models/IFavorite';
+import { IAllFavRes ,IAllFavResData ,IRoom ,IFavoriteRoom ,IUser} from './models/IFavorite';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavoriteService } from './services/favorite.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-favorite',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule ,SharedModule],
   templateUrl: './favorite.component.html',
   styleUrls: ['./favorite.component.scss']
 })
 export class FavoriteComponent implements OnInit{
-  // favRoom:IFavoriteRoom= {
-  //   _id: '',
-  //   rooms: this.room[],
-  //   user: this.user,
-  //   createdAt: '',
-  //   updatedAt: ''
-  // }
-  
-  // room:IRoom= {
-  //   _id: '',
-  //   roomNumber: '',
-  //   price: 0,
-  //   capacity: 0,
-  //   discount: 0,
-  //   facilities: string[],
-  //   createdBy: '',
-  //   images: string[]
-  //   createdAt: '',
-  //   updatedAt: ''
-  // }
-  
-  // user:IUser= {
-  //   _id: '',
-  //   userName: ''
-  // }
-  
-  // data:IAllFavResData={
-  //   favoriteRooms: IFavoriteRoom[],
-  //   totalCount: 0
+  pageSize = 10;
+  pageIndex = 0;
+  totalCount!:number;
+  room:IRoom[]= [];
+  user:IUser= {
+    _id: '',
+    userName: ''
+  }
+  favRoom:IFavoriteRoom[]=[];
+  imags: string[]=[];
+  facilitis: string[]=[];
+  data:IAllFavResData={
+    favoriteRooms: this.favRoom,
+    totalCount: 0
+  }
+  favList:IAllFavRes={
+    success: false,
+    message: '',
+    data: this.data
+  }
 
-  // }
-  // favLis:IAllFavRes={
-  //   success: false,
-  //   message: '',
-  //   data: this.data
-
-  // }
-  favList:any;
+ 
   constructor(private _Router:Router, private _ToastrService:ToastrService, private _FavoriteService:FavoriteService){}
 
   ngOnInit(): void {
@@ -64,6 +50,8 @@ export class FavoriteComponent implements OnInit{
       next:(res)=>{
         console.log(res);
         this.favList=res;
+        this.totalCount=res.data.favoriteRooms[0].rooms.length;
+        console.log(this.totalCount)
       },error:(err:HttpErrorResponse)=>{
         console.log(err);
       }
@@ -82,10 +70,11 @@ export class FavoriteComponent implements OnInit{
 
   }
 
-      //for paginaton 
-      // changePage(e: PageEvent) {
-      //   this.params.page = e.pageIndex + 1;
-      //   this.params.size = e.pageSize;
-      //   this.getAllRooms();
-      // }
+
+      // for paginaton 
+      changePage(e: PageEvent) {
+        this.pageIndex = e.pageIndex + 1;
+        this.pageSize = e.pageSize;
+        this.onGetAllFav();
+      }
 }
