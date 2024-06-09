@@ -1,4 +1,4 @@
-import { IAllFavRes ,IAllFavResData ,IRoom ,IFavoriteRoom ,IUser} from './models/IFavorite';
+import { IAllFavRes, IAllFavResData, IRoom, IFavoriteRoom, IDeleteFavResRoom, IDeleteFavResData, IUser, IDeleteFavRes } from './models/IFavorite';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavoriteService } from './services/favorite.service';
@@ -7,137 +7,139 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PageEvent } from '@angular/material/paginator';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { MatDialog } from '@angular/material/dialog';
 
-export interface Root {
-  success: boolean
-  message: string
-  data: Data
-}
 
-export interface Data {
-  favoriteRooms: FavoriteRoom[]
-  totalCount: number
-}
 
-export interface FavoriteRoom {
-  _id: string
-  rooms: Room[]
-  user: User
-  createdAt: string
-  updatedAt: string
-}
-
-export interface Room {
-  _id: string
-  roomNumber: string
-  price: number
-  capacity: number
-  discount: number
-  facilities: string[]
-  createdBy: string
-  images: string[]
-  createdAt: string
-  updatedAt: string
-}
-
-export interface User {
-  _id: string
-  userName: string
-}
 @Component({
   selector: 'app-favorite',
   standalone: true,
-  imports: [CommonModule ,SharedModule],
+  imports: [CommonModule, SharedModule],
   templateUrl: './favorite.component.html',
   styleUrls: ['./favorite.component.scss']
 })
-export class FavoriteComponent implements OnInit{
-  // favRoom:IFavoriteRoom= {
-  //   _id: '',
-  //   rooms: this.room[],
-  //   user: this.user,
-  //   createdAt: '',
-  //   updatedAt: ''
-  // }
-  
-  // room:IRoom= {
-  //   _id: '',
-  //   roomNumber: '',
-  //   price: 0,
-  //   capacity: 0,
-  //   discount: 0,
-  //   facilities: string[],
-  //   createdBy: '',
-  //   images: string[]
-  //   createdAt: '',
-  //   updatedAt: ''
-  // }
-  
-  // user:IUser= {
-  //   _id: '',
-  //   userName: ''
-  // }
-  
-  // data:IAllFavResData={
-  //   favoriteRooms: IFavoriteRoom[],
-  //   totalCount: 0
-
-  // }
-  // favLis:IAllFavRes={
-  //   success: false,
-  //   message: '',
-  //   data: this.data
-
-  // }
-  favList:any;
-  favourites:any
-
+export class FavoriteComponent implements OnInit {
+  pageSize = 10;
+  pageIndex = 0;
+  totalCount!: number;
+  room: IRoom[] = [];
+  user: IUser = {
+    _id: '',
+    userName: ''
+  }
+  favRoom: IFavoriteRoom[] = [];
+  imags: string[] = [];
+  facilitis: string[] = [];
+  data: IAllFavResData = {
+    favoriteRooms: this.favRoom,
+    totalCount: 0
+  }
+  favList: IAllFavRes = {
+    success: false,
+    message: '',
+    data: this.data
+  }
+  rooms: string[] = [];
+  iDeleteFavResRoom: IDeleteFavResRoom = {
+    _id: '',
+    rooms: this.rooms,
+    user: '',
+    createdAt: '',
+    updatedAt: ''
+  }
+  iDeleteFavResData: IDeleteFavResData = {
+    favoriteRoom: this.iDeleteFavResRoom
+  }
+  deletRes: IDeleteFavRes = {
+    success: false,
+    message: '',
+    data: this.iDeleteFavResData
+  }
 
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
   loginToFav: any = localStorage.getItem('role');
-  constructor(private _Router:Router,private translate:TranslateService , 
-    private _ToastrService:ToastrService, private _FavoriteService:FavoriteService){}
+  constructor(public dialog: MatDialog, private _Router: Router, private translate: TranslateService,
+    private _ToastrService: ToastrService, private _FavoriteService: FavoriteService) { }
 
   ngOnInit(): void {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       // do something
-      console.log(event)
-      this.lang=event.lang
+      //  console.log(event)
+      this.lang = event.lang;
     });
-    this.GetAllFav();
-    
+    this.getAllFav();
   }
 
-  GetAllFav(){
+  getAllFav() {
     this._FavoriteService.getAllFavRooms().subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.favList=res.data;
-        console.log(this.favList);
-        this.favourites= res.data.favoriteRooms ;
-        console.log(this.favourites);
-      },error:(err:HttpErrorResponse)=>{
-        console.log(err);
+      next: (res) => {
+        // console.log(res);
+        this.favRoom = res.data.favoriteRooms;
+        this.totalCount = res.data.favoriteRooms[0].rooms.length;
+        //console.log(this.totalCount)
+      }, error: (err: HttpErrorResponse) => {
+        //console.log(err);
       }
     })
   }
 
 
-  goLogin():void{
+  goLogin(): void {
     this._ToastrService.error('First login')
     this._Router.navigate(['/auth'])
-  
+
   }
 
-  back(){
+  backToHome() {
     this._Router.navigate(['../'])
 
   }
 
-      //for paginaton 
-      // changePage(e: PageEvent) {
-      //   this.params.page = e.pageIndex + 1;
-      //   this.params.size = e.pageSize;
-      //   this.getAllRooms();
-      // }
+  //for paginaton 
+  changePage(e: PageEvent) {
+    this.pageIndex = e.pageIndex + 1;
+    this.pageSize = e.pageSize;
+    this.getAllFav();
+  }
+
+  openDeleteDailog(roomId: string, roomNumber: string) {
+    this.openDeleteDialog('700ms', '350ms', roomId, roomNumber, 'Room')
+
+  }
+
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: string, itname: string, componentName: string): void {
+    const dialo = this.dialog.open(DeleteComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        comp: componentName,
+        id: id,
+        name: itname
+      }
+    });
+    dialo.afterClosed().subscribe(res => {
+      if (res != null) {
+        this.onDelete(id)
+      }
+    })
+  }
+
+  onDelete(roomId: string) {
+    this._FavoriteService.deleteRoomFav(roomId).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.deletRes = res;
+
+      }, error: (err: HttpErrorResponse) => {
+        console.log(err);
+        this._ToastrService.error(err.error.message)
+      }, complete: () => {
+        this._ToastrService.success(this.deletRes.message);
+        this.getAllFav();
+      }
+    })
+  }
 }

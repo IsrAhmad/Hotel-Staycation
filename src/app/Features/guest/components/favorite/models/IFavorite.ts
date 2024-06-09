@@ -16,10 +16,6 @@ export interface IFavoriteResponse{
     createdAt: string
     updatedAt: string
   }
-  
-
-
-
   export interface IAllFavRes {
     success: boolean
     message: string
@@ -57,3 +53,22 @@ export interface IFavoriteResponse{
     userName: string
   }
   
+
+
+  export interface IDeleteFavRes {
+    success: boolean
+    message: string
+    data: IDeleteFavResData
+  }
+  
+  export interface IDeleteFavResData {
+    favoriteRoom: IDeleteFavResRoom
+  }
+  
+  export interface IDeleteFavResRoom {
+    _id: string
+    rooms: string[]
+    user: string
+    createdAt: string
+    updatedAt: string
+  }

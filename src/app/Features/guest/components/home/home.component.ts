@@ -210,14 +210,12 @@ capacity: number = 0; // Initial value
   getAllRooms(data: any) {
     this._GuestService.getAllRooms(data).subscribe({
       next: (res) => {
-        console.log(res)
+       // console.log(res)
         this.roomsRes = res;
 
       },
       error: (err) => {
-        console.log(err)
-
-
+        //console.log(err)
       }
     })
   }
@@ -228,7 +226,7 @@ saveRoomInFav(roomId: string) {
   this._GuestService.saveFavRoom(roomId).subscribe({
     next: (res) => {
       this.fav = res;
-      console.log(this.fav)
+      //console.log(this.fav)
     },
     error: (err) => {
       console.log(err)
@@ -246,11 +244,8 @@ openFaverioteRooms(){
 }
 
 goLogin():void{
-
   this._ToastrService.error('First login')
-
   this._router.navigate(['/auth'])
-
 }
 
 }

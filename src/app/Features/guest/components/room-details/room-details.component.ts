@@ -1,6 +1,8 @@
 
-import { IRommCommentResponse, IRoomReveiwResponse, IDeleteCommentResponse,
-    IRommCommentData, IRoomReviewData, IRoomComment, RoomReview } from './../../models/room-details';
+import {
+  IRommCommentResponse, IRoomReveiwResponse, IDeleteCommentResponse,
+  IRommCommentData, IRoomReviewData, IRoomComment, RoomReview
+} from './../../models/room-details';
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule, formatDate } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -50,32 +52,22 @@ export class RoomDetailsComponent {
   reviewForm!: FormGroup;
   commentForm!: FormGroup;
 
-deletRes:IDeleteCommentResponse ={
+  deletRes: IDeleteCommentResponse = {
     success: false,
     message: ''
   };
-
-
-//   constructor( private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
-//     private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService) {
-  RoomComment:IRoomComment[]=[];
-  roomReviews:RoomReview[]=[];
+  RoomComment: IRoomComment[] = [];
+  roomReviews: RoomReview[] = [];
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
-
-
-
-
-
   constructor(public dialog: MatDialog, private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
-    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService,private translate:TranslateService) {
+    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService, private translate: TranslateService) {
   }
 
+  userId: any ;
   ngOnInit(): void {
-
+    this.userId = localStorage.getItem('id');
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      // do something
-      console.log(event)
-      this.lang=event.lang
+      this.lang = event.lang
     });
 
     this.id = this._ActivatedRoute.snapshot.params['id']
@@ -116,6 +108,7 @@ deletRes:IDeleteCommentResponse ={
       }
     })
   }
+
 
   onAddComment(commentForm: FormGroup) {
     this._RoomDetailsService.AddRoomComment(commentForm).subscribe({
@@ -164,10 +157,10 @@ deletRes:IDeleteCommentResponse ={
     this._RoomDetailsService.getRoomById(id).subscribe({
       next: (res: any) => {
         this.roomRes = res.data.room
-        console.log(this.roomRes);
+        //console.log(this.roomRes);
       },
       error: (err: HttpErrorResponse) => {
-        console.log(err);
+        // console.log(err);
       }
     })
   }
@@ -180,9 +173,9 @@ deletRes:IDeleteCommentResponse ={
     this._RoomDetailsService.getAllRoomComments(id).subscribe({
       next: (res) => {
         this.commentsResponse = res.data;
-        console.log(this.commentsResponse);
-        this.RoomComment= res.data.roomComments
-        console.log(this.RoomComment);
+        // console.log(this.commentsResponse);
+        this.RoomComment = res.data.roomComments
+        // console.log(this.RoomComment);
       }
     })
   }
@@ -192,57 +185,57 @@ deletRes:IDeleteCommentResponse ={
       next: (res) => {
         this.reviewsResponse = res.data;
         // console.log(this.reviewsResponse);
-        this.roomReviews= res.data.roomReviews;
-        console.log(this.roomReviews)
+        this.roomReviews = res.data.roomReviews;
+        // console.log(this.roomReviews)
       }
     })
   }
 
-  updateComment(id: string ,comment:string) {
-      const dialogRef = this.dialog.open(UpDateCommentComponent, {
-        width: '600px',
-        height: '300px',
-        data: { id: id  , comment:comment},
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        this.getAllRoomComments(this.id);
-      });
-    
+  updateComment(id: string, comment: string) {
+    const dialogRef = this.dialog.open(UpDateCommentComponent, {
+      width: '600px',
+      height: '300px',
+      data: { id: id, comment: comment },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      //console.log('The dialog was closed');
+      this.getAllRoomComments(this.id);
+    });
+
   }
 
-  deleteComment(commentId:string,commentData:string):void{
-    this.openDeleteDialog('700ms','350ms',commentId ,commentData,'Comment')
+  deleteComment(commentId: string, commentData: string): void {
+    this.openDeleteDialog('700ms', '350ms', commentId, commentData, 'Comment')
   }
-  
-  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string,id:string,itname:string,componentName:string): void {
-    const dialo =this.dialog.open(DeleteComponent, {
+
+  openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string, id: string, itname: string, componentName: string): void {
+    const dialo = this.dialog.open(DeleteComponent, {
       width: '500px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data:{
-        comp:componentName,
-        id:id,
-        name:itname
+      data: {
+        comp: componentName,
+        id: id,
+        name: itname
       }
     });
-    dialo.afterClosed().subscribe(res=>{
-      if(res!=null){
-        this.onDeleteComment(id,this.id)
+    dialo.afterClosed().subscribe(res => {
+      if (res != null) {
+        this.onDeleteComment(id, this.id)
       }
     })
   }
 
-  onDeleteComment(commentId:string,roomId:string) {
-    this._RoomDetailsService.deletComment(commentId,roomId).subscribe({
-      next:(res)=>{
-      //  console.log(res);
-        this.deletRes=res;
-      },error:(err:HttpErrorResponse)=>{
-       // console.log(err);
+  onDeleteComment(commentId: string, roomId: string) {
+    this._RoomDetailsService.deletComment(commentId, roomId).subscribe({
+      next: (res) => {
+        //  console.log(res);
+        this.deletRes = res;
+      }, error: (err: HttpErrorResponse) => {
+        // console.log(err);
         this._ToastrService.error(err.error.message)
-      },complete:()=>{
+      }, complete: () => {
         this._ToastrService.success(this.deletRes.message);
         this.getAllRoomComments(this.id);
       }

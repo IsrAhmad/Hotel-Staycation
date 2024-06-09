@@ -1,8 +1,6 @@
 
 <section class="py-5 ">
   <div class="container">
-
-
     <section class="row g-4 align-items-center justify-content-center">
       <div class=" col-lg-6 order-1 order-lg-0  d-flex justify-content-center    flex-column ">
         <h1 class="h1 ">
@@ -28,23 +26,17 @@
                   <input matStartDate placeholder="Start date" formControlName="start">
                   <input matEndDate placeholder="End date" formControlName="end">
                 </mat-date-range-input>
-               
                 <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
                 <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
               </mat-form-field>
-
             </div>
-         
           </div>
-        
-
           <h5 class="">{{"home.capacity"|translate}}</h5>
           <div class="input-group mb-3 w-75 ">
             <div class="input-group-prepend">
               <span class="btn-minus p-3 px-4 input-group-text bg-main border rounded-end-0 bg-danger myPointer cursor-pointer"
                 (click)="decrementValue()" id="basic-addon1"><i class="fa-solid fa-minus text-white"></i></span>
             </div>
-  
             <input type="number" class="py-2 form-control text-center border border-end-0 border-start-0"
               [placeholder]="lang=='en'?'number of persons':'number of persons'" aria-label="Username"
               aria-describedby="basic-addon1" [(ngModel)]="capacity">
@@ -54,18 +46,12 @@
                 (click)="incrementValue()" id="basic-addon1"><i class="fa-solid fa-plus text-white"></i></span>
             </div>
           </div>
-
-
           <div class="w-50 ">
             <button class="primary w-100 mt-3">{{"home.explore"|translate}}</button>
           </div>
-
-
         </div>
       </div>
       <div class=" col-lg-6 order-0 order-lg-1">
-  
-
         <div class="position-relative d-flex justify-content-center w-100  h-100 ">
           <div class="mt-5 imag_home imag_home_border rounded-4 w-75 ms-auto" [class]="lang=='en'?'ms-auto':'me-auto'">
             <div class="imag-img_home w-100 h-100">
@@ -74,31 +60,22 @@
           </div>
         </div>
       </div>
-
-
     </section>
-
-
-
-
-
     <section class="mt-5 py-3">
       <h2 class="h2 ">{{"home.most-popular-ads"|translate}}</h2>
-
-
       <div class="row justify-content-center g-4 ">
         <div class="d-none col-lg-4 d-lg-block ">
           <div *ngFor="let item of userAds.data.ads.slice(0,1)" class="big-card w-100">
             <img [src]="item.room.images[0]" alt="" class="w-100 imgHeight1 rounded-4">
-  
             <div class="imag-icon">
               <a *ngIf="!(loginToFav === 'user' )" (click)="goLogin()"
                 class=" text-decoration-none text-white"><i class="fa-solid fa-heart fav"></i></a>
               <a *ngIf="loginToFav === 'user' " class=" text-decoration-none text-white"
-                (click)="saveRoomInFav(item.room._id)"><i class="fa-solid fa-heart fav"></i></a>
+                (click)="saveRoomInFav(item.room._id)">
+                <i  class="fa-solid fa-heart fav"></i>
+              </a>
               <a class=" text-decoration-none text-white" [routerLink]="[ '/guest/room-details',item.room._id ]"><i
                   class="fa-solid fa-eye eye "></i></a>
-  
             </div>
             <div class="imag-captain">
               <h4 class=" text-white title">{{item.room.roomNumber}}</h4>
@@ -109,7 +86,7 @@
                 {{"home.per-night"|translate}}</p>
             </div>
           </div>
-          <!-- <button class="primary ms-2 mt-3" (click)="openFaverioteRooms()">See Faveriote Rooms</button> -->
+          
         </div>
         <div class=" col-md-6 col-lg-4">
   
@@ -119,7 +96,8 @@
               <a *ngIf="!(loginToFav === 'user' )" (click)="goLogin()"
                 class=" text-decoration-none text-white"><i class="fa-solid fa-heart fav"></i></a>
               <a *ngIf="loginToFav === 'user' " class=" text-decoration-none text-white"
-                (click)="saveRoomInFav(item.room._id)"><i class="fa-solid fa-heart fav"></i></a>
+              (click)="saveRoomInFav(item.room._id)"><i class="fa-solid fa-heart fav"></i></a>
+                <!-- (click)="saveRoomInFav(item.room._id)"><i class="fa-solid fa-heart fav"></i></a> -->
               <a class=" text-decoration-none text-white" [routerLink]="[ '/guest/room-details',item.room._id ]"><i
                   class="fa-solid fa-eye eye "></i></a>
             </div>
@@ -164,13 +142,8 @@
  
     </section>
 
-
-
-
-
     <section class="mt-5 ">
       <h2 class="h2">{{"home.house-with-backyard"|translate}}</h2>
-
       <div class=" slider ">
         <owl-carousel-o [options]="roomsOption"  dir="ltr">
           <ng-container *ngFor="let room of roomsRes.data.rooms">

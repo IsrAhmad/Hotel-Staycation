@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-end mt-3 me-1"><i class="fa-regular fa-circle-xmark fa-2xl text-danger" (click)="_DialogRef.close()"></i></div>
     <div class="d-flex justify-content-center mt-5"><img src="./assets/images/Email.svg" alt=""></div>
     <h2 class="text-center mt-5" >Delete This {{data.comp}}?</h2>
-    <p class="text-center">Are you sure you want to delete this <span class="fw-semibold">{{data.name}}?</span> If you are sure just click on delete it</p>
+    <p class="text-center">Are you sure you want to delete this <span class="fw-semibold">{{data.name}}?</span> If You are sure  just click on delete ?</p>
    <div class="d-flex justify-content-between align-items-center mt-5">
     <button (click)="_DialogRef.close()" class="cancel     rounded-2" >Cancel</button>
     <button class="delete     rounded-2" [mat-dialog-close]="data.id">Delete</button>

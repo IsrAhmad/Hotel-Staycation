@@ -181,10 +181,19 @@ p {
 }
 
 .imag-icon .fav:hover {
-  color: red
+  color: red;
 }
-.imag-icon .eye:hover {
+
+.in-fav{
+  color: red;
+}
+
+.imag-icon .eye:hover  {
   color: $primary-color
+}
+
+.imag-icon .trash:hover {
+  color: red;
 }
 
 .big-card:hover .imag-icon {
@@ -200,9 +209,6 @@ p {
   overflow: hidden;
 }
 
-
-
-
 .card-sm:hover .imag-icon {
   opacity: 1;
   top: 0;
@@ -215,10 +221,7 @@ p {
   overflow: hidden;
   width: 23.75rem;
   height: 25.66rem;
-
   margin: auto;
-
-
 }
 
 .add-button {
@@ -241,6 +244,10 @@ p {
   border-radius: 4px rgb(28, 52, 102) solid !important;
 }
 
+.home-link{
+  cursor: pointer;
+  color: $primary-color
+}
 
 
 @media screen and (max-width:1199px) {
