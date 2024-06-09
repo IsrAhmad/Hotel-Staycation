@@ -4,30 +4,30 @@
         <h3 style="cursor: pointer;" (click)="back()" class="m-0 p-0">Back To Home </h3>
     </div>
     <h1 class="mt-4">All Faveriote Rooms</h1>
-    <div *ngIf="favList" class="row bg-info flex-row " style="flex-direction: row!important;">
-        <div class="col-md-4 bg-danger " *ngFor="let room of favList.data.favoriteRooms">
-            <div *ngFor="let item of room.rooms" class=" card-sm mt-4 w-100">
-                <img [src]="item.images[0]" alt="" class="w-100 imgHeight2  rounded-4">
+    <div class="row mb-5">
+        <div class=" col-md-6 col-lg-4 " *ngFor="let item of favourites.rooms">
+
+            <div class=" card-sm mt-4 w-100">
+                <img [src]="item.images[0]" alt="" class="w-100 imgHeight2 rounded-4 ">
+                <div class="imag-icon">
+                    <a *ngIf="!(loginToFav === 'user' )" (click)="goLogin()" class=" text-decoration-none text-white"><i
+                            class="fa-solid fa-heart fav"></i></a>
+
+                    <a class=" text-decoration-none text-white"
+                        [routerLink]="[ '/guest/room-details',item.rooms._id]"><i class="fa-solid fa-eye eye "></i></a>
+                </div>
                 <div class="imag-captain">
-                    <h4 class=" text-white title">{{item.roomNumber}}</h4>
-                    <!-- <h5 class=" text-white userName">{{item.price}}</h5> -->
+                    <h6 class=" text-white title">{{item.roomNumber}}</h6>
+                    <h5 class=" text-white userName">{{item.user.userName}}</h5>
                 </div>
                 <div class="imag-price px-5">
                     <p class="text-white">$ <span class="h6 text-white fw-bolder">{{item.price}}</span>
+                        {{"home.per-night"|translate}}</p>
                 </div>
             </div>
-
-
         </div>
+        <!-- pagination-->
+        <mat-paginator [length]="totalCount" [pageSize]="pageSize" [pageIndex]="pageIndex"
+            [pageSizeOptions]="[5, 10, 25, 100]" (page)="changePage($event)" aria-label="Select page">
+        </mat-paginator>
     </div>
-
-    <!-- pagination-->
-    <mat-paginator
-    [length]="totalCount"
-    [pageSize]="pageSize"
-    [pageIndex]="pageIndex"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    (page)="changePage($event)"
-    aria-label="Select page">
-  </mat-paginator>
-</div>
