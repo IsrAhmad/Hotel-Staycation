@@ -45,7 +45,9 @@
       "guest-2": "بودي، مهندس برمجيات",
       "wonderful-journey": "رحلة رائعة",
       "testimonial-3": "كانت الرحلة رائعة ومليئة بالمفاجآت. أنصح بها بشدة",
-      "guest-3": "سيتى، مصممة جرافيك"
+      "guest-3": "سيتى، مصممة جرافيك",
+      "enterStartEndDateAndCapacityToaster": "يرجى إدخال تاريخ البدء والانتهاء و عدد الافراد"
+
   },
 
   "room-details": {
@@ -110,5 +112,15 @@
     "cancel": "الغاء",
     "delete": "حذف",
     "question": "؟"
+  },
+
+  "toaster":{
+    "enter-start-end-date-and-capacity": "يرجى إدخال تاريخ البدء والانتهاء و عدد الافراد",
+    "room-added-to-favorites-successfully": "تمت إضافة الغرفة إلى المفضلة بنجاح",
+    "room-is-already-in-your-favorite": "الغرفة موجودة بالفعل في المفضلة لديك",
+    "room-removed-from-favorites-successfully": "تمت إزالة الغرفة من المفضلة بنجاح"
+
   }
+
+
 }

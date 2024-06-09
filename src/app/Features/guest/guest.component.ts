@@ -7,9 +7,8 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   styleUrls: ['./guest.component.scss']
 })
 export class GuestComponent {
-  //lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
-lang:any;
   constructor(private translate: TranslateService) {
     //console.log(this.lang)
   
