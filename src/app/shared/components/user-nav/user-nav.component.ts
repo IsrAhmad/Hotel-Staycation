@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/auth/services/auth.service';
 import { IUser, IUserResponse } from '../../models/iUser';
@@ -6,6 +6,7 @@ import { NavbarService } from '../../services/navbar.service';
 import { ChangePassPopupComponent } from '../change-pass-popup/change-pass-popup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
+import { ThemeService } from 'src/app/Features/guest/services/Theme.service';
 
 @Component({
   selector: 'app-user-nav',
@@ -21,16 +22,19 @@ export class UserNavComponent  implements OnInit{
 
   isDarkMode: boolean = localStorage.getItem('theme') === 'dark';
 
+
   @Output() selectLanguage: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(  private _AuthService: AuthService, public dialog: MatDialog,
     private _NavbarService: NavbarService,private _Router:Router,private translate: TranslateService,
+    private themeService: ThemeService, private renderer: Renderer2
   ){
 
   }
   ngOnInit() {
     this.changeLanguage(this.lang)
     this.applyTheme();
+ 
 
 
     this.tokenValue = localStorage.getItem('token');
@@ -47,10 +51,10 @@ export class UserNavComponent  implements OnInit{
      
   }
 
-
-
+ 
 
   toggleDarkMode() {
+
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
     console.log(this.isDarkMode)
@@ -58,7 +62,14 @@ export class UserNavComponent  implements OnInit{
   }
 
   applyTheme() {
-    document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light');
+    this.renderer.setAttribute(document.documentElement, 'data-theme', this.isDarkMode ? 'dark' : 'light');
+    if (this.isDarkMode) {
+      this.renderer.addClass(document.body, 'dark-theme');
+      this.renderer.removeClass(document.body, 'light-theme');
+    } else {
+      this.renderer.addClass(document.body, 'light-theme');
+      this.renderer.removeClass(document.body, 'dark-theme');
+    }
   }
 
 

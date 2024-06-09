@@ -2,6 +2,7 @@
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 @import 'css-star-rating/scss/star-rating';
 
+
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
 body { 
@@ -80,7 +81,18 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
-// styles.scss
+
+
+
+
+.light-theme {
+  @import '@angular/material/prebuilt-themes/indigo-pink.css';
+}
+
+.dark-theme {
+  @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+}
+
 :root {
   --background-color: #ffffff;
   --text-color: #000000;
@@ -96,7 +108,3 @@ body {
   color: var(--text-color);
 }
 
-
-//@import '@angular/material/prebuilt-themes/indigo-pink.css'
-
-@import '@angular/material/prebuilt-themes/pink-bluegrey.css'

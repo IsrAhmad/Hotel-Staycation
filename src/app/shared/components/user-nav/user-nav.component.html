@@ -45,7 +45,7 @@
               </li>
               
               <li class="nav-item">
-                <mat-slide-toggle [(ngModel)]="isDarkMode" (change)="toggleDarkMode()">
+                <mat-slide-toggle  (change)="toggleDarkMode()">
                   <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_4' }}</mat-icon>
                 </mat-slide-toggle>
               </li>
@@ -59,7 +59,7 @@
 
     <!--logged in -->
 
-<ng-container *ngIf="loggedIn">
+<ng-container *ngIf="loggedIn"  >
     <nav class="navbar navbar-expand-lg  py-3 ">
         <div class="container">
             <a class="navbar-brand " href="#"><span>Stay</span>cation{{lang=='en'? '.':''}}</a>
@@ -143,7 +143,7 @@
               </li>
 
               <li class="nav-item">
-                <mat-slide-toggle [(ngModel)]="isDarkMode" (change)="toggleDarkMode()">
+                <mat-slide-toggle  (change)="toggleDarkMode()">
                   <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_4' }}</mat-icon>
                 </mat-slide-toggle>
               </li>
