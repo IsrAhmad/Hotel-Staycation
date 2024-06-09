@@ -46,11 +46,9 @@
       "guest-2": "Budi, Software Engineer",
       "wonderful-journey": "Wonderful Journey",
       "testimonial-3": "The journey was wonderful and full of surprises. Highly recommend! ...",
-      "guest-3": "Siti, Graphic Designer"
-      
-        
+      "guest-3": "Siti, Graphic Designer",
+      "location": "Bogor, Indonesia"
 
-      
     },
 
     "room-details": {
@@ -88,6 +86,17 @@
     "update" : "Update"
     },
 
+    "explore": {
+      "explore-rooms": "Explore ALL Rooms",
+      "home": "Home",
+      "explore": "Explore"
+    },
+
+    "favorites": {
+      "back-home": "Back To Home",
+      "fav-room": "All Favorite Rooms"
+    },
+
     "footer": {
       "staycation": "Staycation.",
       "stay": "Stay",
@@ -116,15 +125,33 @@
       "delete": "Delete",
       "question": "?"
     } ,
+    "auth-popup":{
+      "action-denied": "Action can't be completed, because you are logged out!",
+      "no-account": "Don't have an account?",
+      "register-here": "Register here!",
+      "cancel": "Cancel",
+      "login": "Login"
+    },
+    "no-data": {
+      "no-result":"No results found",
+      "cannot-find-1":"We couldn't find what you are searching for,",
+      "cannot-find-2":" try searching again"
+    },
+    "not-found": {
+      "oops": "Oops....",
+      "not-found": "Page Not Found",
+      "page-not-found": "This Page doesn’t exist or was removed! We suggest you go back to home.",
+      "back-home": "Back to Home"
+    },
 
     "toaster":{
       "enter-start-end-date-and-capacity": "Please enter start and end date and capacity.",
       "room-added-to-favorites-successfully": "Room added to favorites successfully",
       "room-is-already-in-your-favorite": "Room is already in your favorite",
       "room-removed-from-favorites-successfully": "Room removed from favorites successfully"
-      
 
-      
+
+
     }
 
 
