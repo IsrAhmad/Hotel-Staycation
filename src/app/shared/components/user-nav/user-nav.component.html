@@ -23,6 +23,7 @@
               <li>
                 <button class="btn primary me-3 mb-1" (click)="login()"> {{"user-navbar.login"|translate}}</button>
               </li>
+              
               <li  class="nav-item">
                 <button
                 mat-icon-button
@@ -41,6 +42,12 @@
                 </button>
                
               </mat-menu>
+              </li>
+              
+              <li class="nav-item">
+                <mat-slide-toggle [(ngModel)]="isDarkMode" (change)="toggleDarkMode()">
+                  <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_4' }}</mat-icon>
+                </mat-slide-toggle>
               </li>
              
             </ul>
@@ -133,6 +140,12 @@
                   <span>{{"user-navbar.english"|translate}}</span>
                 </button>
               </mat-menu>
+              </li>
+
+              <li class="nav-item">
+                <mat-slide-toggle [(ngModel)]="isDarkMode" (change)="toggleDarkMode()">
+                  <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_4' }}</mat-icon>
+                </mat-slide-toggle>
               </li>
              
         

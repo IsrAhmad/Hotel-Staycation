@@ -80,3 +80,23 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
+// styles.scss
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme='dark'] {
+  --background-color: #333333;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+
+//@import '@angular/material/prebuilt-themes/indigo-pink.css'
+
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css'

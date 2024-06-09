@@ -19,15 +19,19 @@ export class UserNavComponent  implements OnInit{
   currentUser:any
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
-  
+  isDarkMode: boolean = localStorage.getItem('theme') === 'dark';
+
   @Output() selectLanguage: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(  private _AuthService: AuthService, public dialog: MatDialog,
-    private _NavbarService: NavbarService,private _Router:Router,private translate: TranslateService){
+    private _NavbarService: NavbarService,private _Router:Router,private translate: TranslateService,
+  ){
 
   }
   ngOnInit() {
     this.changeLanguage(this.lang)
+    this.applyTheme();
+
 
     this.tokenValue = localStorage.getItem('token');
     this.userId = localStorage.getItem('id');
@@ -41,6 +45,20 @@ export class UserNavComponent  implements OnInit{
         this.getUserProfile(this.userId)
       }
      
+  }
+
+
+
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+    console.log(this.isDarkMode)
+    this.applyTheme();
+  }
+
+  applyTheme() {
+    document.documentElement.setAttribute('data-theme', this.isDarkMode ? 'dark' : 'light');
   }
 
 

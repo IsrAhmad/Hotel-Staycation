@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserNavComponent } from './components/user-nav/user-nav.component';
 import { AuthPopupComponent } from './components/auth-popup/auth-popup.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -71,6 +72,8 @@ import { AuthPopupComponent } from './components/auth-popup/auth-popup.component
     MatAutocompleteModule,
     TranslateModule,
     MatDatepickerModule,
+    MatSlideToggleModule
+    
 
 
 
