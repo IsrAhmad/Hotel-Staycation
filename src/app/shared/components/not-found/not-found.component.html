@@ -3,16 +3,16 @@
     <div class="row d-flex justify-content-between h-100 align-items-center">
       <div class="col-md-4">
         <div class="content">
-          <h2 class="font-weight-bold">Oops....</h2>
-          <h2 class="page">Page Not Found</h2>
+          <h2 class="font-weight-bold">{{"not-found.oops"|translate}}</h2>
+          <h2 class="page">{{"not-found.not-found"|translate}}</h2>
           <p>
-            This Page doesn’t exist or was removed! We suggest you go back to home.
+            {{"not-found.page-not-found"|translate}}
           </p>
         </div>
 
           <button class="primary w-100 mt-4 p-2" (click)="goHome()">
                 <i class="fa-solid fa-arrow-left-long me-1 "></i>
-                Back to Home
+                {{"not-found.back-home"|translate}}
         </button>
       </div>
 

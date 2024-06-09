@@ -4,12 +4,12 @@
         <!--breadcurmb-->
         <div class="col-md-12">
             <h2 class="text-center">
-                Explore ALL Rooms
+              {{"explore.explore-rooms"|translate}}
             </h2>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb " >
-              <li class="breadcrumb-item"><a routerLink="/guest/home">Home</a></li>
-              <li class="breadcrumb-item active" [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'" aria-current="page">Explore</li>
+              <li class="breadcrumb-item"><a routerLink="/guest/home">{{"explore.home"|translate}}</a></li>
+              <li class="breadcrumb-item active" [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'" aria-current="page">{{"explore.explore"|translate}}</li>
             </ol>
           </nav>
         </div>
@@ -17,7 +17,7 @@
       <ng-container *ngIf="roomsRes.data.rooms .length >0">
         <div class="row mb-5">
             <div class=" col-md-6 col-lg-4 " *ngFor="let item of roomsRes.data.rooms">
-      
+
                 <div  class=" card-sm mt-4 w-100" >
                   <img [src]="item.images[0]" alt="" class="w-100 imgHeight2 rounded-4 ">
                   <div class="imag-icon">
@@ -38,9 +38,9 @@
                   </div>
                 </div>
               </div>
-    
+
                 <!--pagination-->
-            <mat-paginator  
+            <mat-paginator
             [length]="totalCount"
             [pageSize]="size"
             [pageIndex]="page"
@@ -50,7 +50,7 @@
           </mat-paginator>
           </div>
       </ng-container>
-     
+
       </div></section>
 
 <section *ngIf="roomsRes.data.rooms .length ==0">
@@ -58,4 +58,3 @@
 
 </section>
 
-      

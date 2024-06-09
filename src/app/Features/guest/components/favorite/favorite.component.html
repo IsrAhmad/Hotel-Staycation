@@ -1,8 +1,8 @@
 <div class="container p-2">
     <div class="d-flex align-items-center p-0 m-0">
-        <h3 (click)="backToHome()" class="m-0 p-0 home-link">Back To Home </h3>
+        <h3 (click)="backToHome()" class="m-0 p-0 home-link">{{"favorites.back-home"|translate}}</h3>
     </div>
-    <h1 class="mt-4">All Faveriote Rooms</h1>
+    <h1 class="mt-4">{{"favorites.fav-room"|translate}}</h1>
     <div class="row mb-5" *ngIf="favRoom[0].rooms.length>0">
         <div class=" col-md-6 col-lg-4 " *ngFor="let item of favRoom[0].rooms">
             <div class=" card-sm mt-4 w-100">
