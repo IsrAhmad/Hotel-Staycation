@@ -121,12 +121,12 @@ export class ExploreComponent  implements OnInit{
       },
       error: (err) => {
         console.log(err)
-        this._ToastrService.error(err.error.message)
+        this.showErrorToaster('room-is-already-in-your-favorite')
   
         
       },
       complete: () => {
-        this._ToastrService.success(this.fav.message)
+        this.showSuccessToaster('room-added-to-favorites-successfully')
   
       }
     })
@@ -139,5 +139,17 @@ export class ExploreComponent  implements OnInit{
     }
     openAuthDialog() {
       const dialogRef = this.dialog.open(AuthPopupComponent, {width: '35%',});
+    }
+
+    showSuccessToaster(toastEnAr:string) {
+      this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+        this._ToastrService.success(res);
+      });
+    }
+  
+    showErrorToaster(toastEnAr:string) {
+      this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+        this._ToastrService.error(res);
+      });
     }
 }

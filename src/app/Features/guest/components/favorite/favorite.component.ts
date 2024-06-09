@@ -137,9 +137,16 @@ export class FavoriteComponent implements OnInit {
         console.log(err);
         this._ToastrService.error(err.error.message)
       }, complete: () => {
-        this._ToastrService.success(this.deletRes.message);
+        this.showSuccessToaster('room-removed-from-favorites-successfully')
         this.getAllFav();
       }
     })
+  }
+
+
+  showSuccessToaster(toastEnAr:string) {
+    this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+      this._ToastrService.success(res);
+    });
   }
 }

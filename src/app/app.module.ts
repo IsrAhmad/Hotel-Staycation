@@ -47,6 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       useClass:LoadingInterceptor,
       multi:true
     },
+
+    
   ],
   bootstrap: [AppComponent]
 })

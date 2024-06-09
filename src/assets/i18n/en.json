@@ -47,6 +47,10 @@
       "wonderful-journey": "Wonderful Journey",
       "testimonial-3": "The journey was wonderful and full of surprises. Highly recommend! ...",
       "guest-3": "Siti, Graphic Designer"
+      
+        
+
+      
     },
 
     "room-details": {
@@ -111,5 +115,17 @@
       "cancel": "Cancel",
       "delete": "Delete",
       "question": "?"
+    } ,
+
+    "toaster":{
+      "enter-start-end-date-and-capacity": "Please enter start and end date and capacity.",
+      "room-added-to-favorites-successfully": "Room added to favorites successfully",
+      "room-is-already-in-your-favorite": "Room is already in your favorite",
+      "room-removed-from-favorites-successfully": "Room removed from favorites successfully"
+      
+
+      
     }
+
+
 }
