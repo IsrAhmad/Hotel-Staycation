@@ -114,7 +114,7 @@
     "upskilling": "اب سكيلينج",
     "contact-us": "تواصل معنا",
     "name": "الاسم الكامل",
-    "name-required": "الإسم الكامل ضروري",
+    "name-required": "الإسم الكامل مطلوب",
     "email-address": "عنوان البريد الإلكتروني",
     "email.required": "البريد الالكتروني مطلوب",
     "invalid-email": "بريد إلكتروني خاطئ",
@@ -261,7 +261,7 @@
       "password-match":"يجب أن تتطابق كلمات المرور",
       "reset":"إعادة ضبط",
       "forgot-password":"هل نسيت كلمة السر",
-      "hhome-unique":"منازل فريدة مثلك."
+      "home-unique":"منازل فريدة مثلك."
     },
     "change-password": {
       "change-your-password":"غير كلمة المرور الخاصة بك",

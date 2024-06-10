@@ -142,7 +142,7 @@ export class RoomDetailsComponent {
       },
       complete: () => {
         // this._ToastrService.success('Your Review Added Successfuly ');
-        this.showErrorToaster('review-add-success');
+        this.showSuccessToaster('review-add-success');
         this.reviewForm.reset();
         this.getAllRoomReviews(this.id);
       }
@@ -169,7 +169,7 @@ export class RoomDetailsComponent {
       },
       complete: () => {
         // this._ToastrService.success('Your Comment Added Successfuly ');
-        this.showErrorToaster('commment-add-success');
+        this.showSuccessToaster('commment-add-success');
         this.commentForm.reset();
         this.getAllRoomComments(this.id);
       }
