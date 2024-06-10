@@ -13,7 +13,9 @@ h2{
 
 }
 
-
+.breadcrumb-item-itedited::before{
+  float: right !important;
+ }
 .star-container {
   display: flex;
  // justify-content: start;
