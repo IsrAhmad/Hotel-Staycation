@@ -11,13 +11,13 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RoomDetailsService } from '../../services/room-details.service';
 import { ToastrService } from 'ngx-toastr';
 import { StarRatingModule, StarRatingConfigService } from 'angular-star-rating';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,6 +27,11 @@ import { UpDateCommentComponent } from './components/up-date-comment/up-date-com
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { GuestService } from '../../services/guest.service';
+import { IBookingResponse, ICreateBooking } from '../../models/IBookingResponse';
+import { format } from 'date-fns';
+import { AuthPopupComponent } from 'src/app/shared/components/auth-popup/auth-popup.component';
+import { BookingService } from '../../services/Booking.service';
 
 
 @Component({
@@ -40,6 +45,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   styleUrls: ['./room-details.component.scss',]
 })
 export class RoomDetailsComponent {
+
   today = new Date();
   month = this.today.getMonth();
   year = this.today.getFullYear();
@@ -52,15 +58,43 @@ export class RoomDetailsComponent {
   reviewForm!: FormGroup;
   commentForm!: FormGroup;
 
+  loginIn: any = localStorage.getItem('role');
+
   deletRes: IDeleteCommentResponse = {
     success: false,
     message: ''
   };
+
+  bookingResp:IBookingResponse={
+    success:false,
+    message:'',
+    data:{
+      booking:{
+    startDate: '',
+    endDate: '',
+    totalPrice: 0,
+    user: '',
+    room: '',
+    status: '',
+    _id: '',
+      }
+    }
+  }
+
   RoomComment: IRoomComment[] = [];
   roomReviews: RoomReview[] = [];
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
+
+  campaignOne: FormGroup;
+
   constructor(public dialog: MatDialog, private _ActivatedRoute: ActivatedRoute, private _HttpClient: HttpClient,
-    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService, private translate: TranslateService) {
+    private _RoomDetailsService: RoomDetailsService, private _ToastrService: ToastrService, private translate: TranslateService,
+  private _BookingService:BookingService,private _Router:Router,private fb: FormBuilder
+) {
+    this.campaignOne = this.fb.group({
+      start: [new Date(this.year, this.month, 13)],
+      end: [new Date(this.year, this.month, 16)],
+    });
   }
 
   userId: any ;
@@ -86,12 +120,17 @@ export class RoomDetailsComponent {
     })
   }
 
-  campaignOne = new FormGroup({
+/*  campaignOne = new FormGroup({
     start: new FormControl(new Date(this.year, this.month, 13)),
     end: new FormControl(new Date(this.year, this.month, 16)),
-  });
+  });*/
 
   onAddReview(reviewForm: FormGroup) {
+    if(this.loginIn==null){
+
+      this.openAuthDialog()
+    }else{
+
     this._RoomDetailsService.AddRoomreview(reviewForm.value).subscribe({
       next: (res: IRoomReveiwResponse) => {
         // console.log(res);
@@ -108,9 +147,16 @@ export class RoomDetailsComponent {
       }
     })
   }
+  }
 
 
   onAddComment(commentForm: FormGroup) {
+
+    if(this.loginIn==null){
+
+      this.openAuthDialog()
+    }else{
+
     this._RoomDetailsService.AddRoomComment(commentForm).subscribe({
       next: (res: IRommCommentResponse) => {
         // console.log(res);
@@ -126,6 +172,7 @@ export class RoomDetailsComponent {
         this.getAllRoomComments(this.id);
       }
     })
+  }
   }
 
   sliderOptions: OwlOptions = {
@@ -242,7 +289,63 @@ export class RoomDetailsComponent {
     })
   }
 
+  openAuthDialog() {
+    const dialogRef = this.dialog.open(AuthPopupComponent, { width: '35%' });
+  }
 
+  createBooking(price:number):void{
+    if(this.loginIn==null){
+
+this.openAuthDialog()
+    }else{
+    const startDate = this.campaignOne.get('start')?.value;
+    const endDate = this.campaignOne.get('end')?.value;
+    console.log('Start Date:', startDate);
+    console.log('End Date:', endDate);
+
+    if (startDate && endDate && price &&this.id ) {
+      const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
+      const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
+      
+      this.booking({room:this.id,startDate:formattedStartDate,endDate:formattedEndDate,totalPrice:price})
+
+    }else{
+
+      this.showErrorToaster('enter-start-end-date-and-capacity')
+    }
+  
+  }
+
+  }
+   booking(data:ICreateBooking):void{
+    this._BookingService.createBooking(data).subscribe({
+      next: (res) => {
+        //  console.log(res);
+        this.bookingResp = res;
+      }, error: (err: HttpErrorResponse) => {
+        this._ToastrService.error(err.error.message)
+      }, complete: () => {
+        this._ToastrService.success(this.bookingResp.message);
+
+        this._Router.navigate(['/guest/payment',this.bookingResp.data.booking._id])
+
+      }
+    })
+   }
+
+
+
+  showSuccessToaster(toastEnAr:string) {
+    this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+      this._ToastrService.success(res);
+    });
+  }
+
+  showErrorToaster(toastEnAr:string) {
+    this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+      this._ToastrService.error(res);
+    });
+  }
 
 }
 

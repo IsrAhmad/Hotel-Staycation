@@ -1,7 +1,12 @@
-import { GuestService } from './../../services/guest.service';
+
 import { Component, OnInit } from '@angular/core';
+
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { IExplorParms } from '../../models/IExplorParms';
+import { GuestService } from '../../services/guest.service';
+import { BookingService } from '../../services/Booking.service';
+import { IBookingDetailsRes } from '../../models/IBookingResponse';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payment',
@@ -9,54 +14,66 @@ import { IExplorParms } from '../../models/IExplorParms';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
-  startDate: string = '';
-  endDate: string = '';
-  capacity: number = 0;
+ 
+  id:string=''
 
-  constructor(private route: ActivatedRoute,private _GuestService:GuestService) {}
+  bookingResp:IBookingDetailsRes={
+    success:false,
+    message:'',
+    data:{
+      booking:{
+    startDate: '',
+    endDate: '',
+    totalPrice: 0,
+    user: {
+      _id:'',
+      userName:"",
+    },
+    room: {
+      _id:'',
+      roomNumber:''
+    },
+    status: '',
+    _id: '',
+    
+      }
+    }
+  }
 
-  parms:IExplorParms={}
+  constructor(
+     private _formBuilder: FormBuilder ,  
+     private _ActivatedRoute: ActivatedRoute ,
+     private _BookingService:BookingService,
+     private _ToastrService:ToastrService) {}
 
+     PaymentFormGroup = this._formBuilder.group({
+      cardNumber: ['', Validators.required],
+    });
 
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.startDate = params['startDate'];
-      this.endDate = params['endDate'];
-      this.capacity = params['capacity'];
-      console.log('Start Date:', this.startDate);
-      console.log('End Date:', this.endDate);
-      console.log('Capacity:', this.capacity);
-    });
-
-    this.parms={
-      page:1,
-      size:1000,
-      startDate:this.startDate,
-      endDate:this.endDate,
-      capacity:this.capacity
-
-    }
-
-this.getAllRooms(this.parms)
+   
+    this.id = this._ActivatedRoute.snapshot.params['id']
+    this.getBookingById(this.id);
   }
 
-  roomsRes:any;
-  getAllRooms(data: any) {
-    this._GuestService.getAllRooms(data).subscribe({
-      next: (res) => {
-        console.log(res)
-        this.roomsRes = res;
 
-      },
-      error: (err) => {
-        console.log(err)
+  getBookingById(id:string):void{
+
+    this._BookingService.getBookingById(id).subscribe({
+      next: (res) => {
+          console.log(res);
+        this.bookingResp = res;
+      }, error: (err) => {
+        this._ToastrService.error(err.error.message)
+      }, complete: () => {
 
 
       }
     })
   }
 
+ 
 
 
 

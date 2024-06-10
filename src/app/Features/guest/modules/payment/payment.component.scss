@@ -1,0 +1,17 @@
+@import '../../../../../assets/styles/abstracts/variables.scss';
+
+@import '../../../../../assets/styles/components/button.scss';
+
+
+
+h2{
+    color:$primary-color;
+}
+P{
+    color:$main-p;
+    font-size: 1rem;
+}
+h3{
+    color: $secondary-color;
+    font-size: 1.8rem;
+}

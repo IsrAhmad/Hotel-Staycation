@@ -1,1 +1,126 @@
-<p>payment works!</p>
+<div class="container text-center mb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>
+                Payment
+            </h2>
+            <p>
+                Kindly follow the instructions below
+            </p>
+            </div>
+
+            <div class="col-md-12 mb-5">
+                <mat-card>
+                    <div class="p-2 mt-3">
+                      
+                        <mat-stepper labelPosition="bottom" #stepper >
+                            <mat-step >
+                             
+                                <ng-template matStepLabel>Summery</ng-template>
+                                 <h3>
+                                    Order Summary
+                                 </h3>
+                                 <p class="mb-3">
+                                    It can help you manage and service orders before,
+                                   <br> during and after fulfilment.
+                                 </p>
+                                 <div class="row ">
+                                    <div class="col-md-5 m-auto">
+                                        <mat-card class="p-4 mb-3">
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <p class="mb-0">SubTotal</p>
+                                                <p class="mb-0">$ {{bookingResp.data.booking.totalPrice}}</p>
+                                              </div>
+                                              <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <p class="mb-0">Tax</p>
+                                                <p class="mb-0">$0</p>
+                                              </div>
+                                              <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <p class="mb-0">Total</p>
+                                                <p class="mb-0">$ {{bookingResp.data.booking.totalPrice}}</p>
+                                              </div>
+                                         </mat-card>
+                                    </div>
+                                 </div>
+                              
+                                <div>
+                                  <button mat-button matStepperNext class="btn primary m-3">Continue To Book </button>
+                                </div>
+                          
+                            </mat-step>
+                            <mat-step [stepControl]="PaymentFormGroup" >
+                               
+                              <form [formGroup]="PaymentFormGroup">
+                                <ng-template matStepLabel>Card Details </ng-template>
+                                <h3>
+                                    Credit Card Info
+                                 </h3>
+                                 <div>
+                                    <img src="../../../../../assets/images/visa-light.png" alt="" class="me-2">
+                                   
+                                    <img src="../../../../../assets/images/paypal.png" alt="" class="me-2">
+
+                                 </div>
+                                 <div class="row mt-3">
+                                    <div class="col-md-6 m-auto">
+                                        <mat-card class="p-4 mb-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>CARD NUMBER</mat-label>
+                                    <input matInput formControlName="cardNumber" 
+                                    placeholder="Ex. 1 Main St, New York, NY"
+                                           required>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="outline">
+                                    <mat-label>Name On Card</mat-label>
+                                    <input matInput formControlName="cardNumber" 
+                                    placeholder="Your name"
+                                           required>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="outline">
+                                    <mat-label>EXP. DATE</mat-label>
+                                    <input matInput formControlName="cardNumber" 
+                                    placeholder="MM/YY"
+                                           required>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="outline">
+                                    <mat-label>CVV</mat-label>
+                                    <input matInput formControlName="cardNumber" 
+                                    placeholder="965"
+                                           required>
+                                  </mat-form-field>
+                               </mat-card>
+                               </div>
+                               </div>
+                              
+                                <div>
+                                  <button mat-button matStepperPrevious  class="btn cancel" >Back</button>
+                                  <button mat-button matStepperNext class=" btn primary m-3" btn primary m-3>Continue</button>
+                                </div>
+                              </form>
+                            </mat-step>
+                            <mat-step>
+                              <ng-template matStepLabel>Done</ng-template>
+                              <h3>Yay! Completed</h3>
+                              <img src="../../../../../assets/images/payment.png">
+                              <p>
+                                We will inform you via email later
+                              <br>
+                                 once the transaction has been accepted
+                              </p>
+                              <div>
+                                <button mat-button routerLink="/guest/home" class="btn primary m-3">Back To Home</button>
+                                <button mat-button (click)="stepper.reset()" class="btn cancel">Reset</button>
+                              </div>
+                            </mat-step>
+                          </mat-stepper>
+                    </div>
+               
+                  </mat-card>
+            </div>
+          
+        </div>
+    </div>
+
+
+
+  

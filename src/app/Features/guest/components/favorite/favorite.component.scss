@@ -4,7 +4,14 @@
 @import "../../../../../assets/styles/components/button.scss";
 @import "../../../../../assets/styles/components/card.scss";
 
+h2{
+  color: $secondary-color;
+  font-size: 40px !important;
+  font-weight: 600;
+  font-family: 'Poppins' !important;
+  line-height: 1;
 
+}
 
 
 .star-container {
