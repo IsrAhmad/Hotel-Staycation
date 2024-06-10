@@ -268,7 +268,7 @@ export class HomeComponent {
   }
 
   goLogin(): void {
-    this._ToastrService.error('First login');
+    this._ToastrService.error('login-first');
     this._router.navigate(['/auth']);
   }
 
@@ -290,5 +290,5 @@ export class HomeComponent {
     });
   }
 
-  
+
 }

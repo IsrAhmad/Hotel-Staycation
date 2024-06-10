@@ -6,6 +6,8 @@ import { Router, RouterLink } from '@angular/router';
 import { IForgot } from '../../model/IForgot';
 import { ToastrService } from 'ngx-toastr';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-forgot-password',
@@ -23,7 +25,8 @@ export class ForgotPasswordComponent {
   }
 
   constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService,
-    private _Router: Router, private toastr: ToastrService
+    private _Router: Router, private toastr: ToastrService,
+    private translate: TranslateService
   ){}
   fogetForm:FormGroup = this._FormBuilder.group({
     email:['',[Validators.email,Validators.required]]
@@ -39,7 +42,8 @@ export class ForgotPasswordComponent {
         this.showError(err.error.message)
 
       },complete:()=>{
-        this.toastr.success('Please check your email')
+        // this.toastr.success('Please check your email')
+        this.showSuccessToaster('check-mail')
         this._Router.navigate(['/auth/reset']);
 
       }
@@ -48,5 +52,12 @@ export class ForgotPasswordComponent {
 
   showError(mes:string) {
     this.toastr.error( mes);
+  }
+
+
+  showSuccessToaster(toastEnAr:string) {
+    this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+      this.toastr.success(res);
+    });
   }
 }

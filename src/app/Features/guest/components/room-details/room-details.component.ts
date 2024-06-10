@@ -141,7 +141,8 @@ export class RoomDetailsComponent {
         this.reviewForm.reset();
       },
       complete: () => {
-        this._ToastrService.success('Your Review Added Successfuly ');
+        // this._ToastrService.success('Your Review Added Successfuly ');
+        this.showErrorToaster('review-add-success');
         this.reviewForm.reset();
         this.getAllRoomReviews(this.id);
       }
@@ -167,7 +168,8 @@ export class RoomDetailsComponent {
         this.reviewForm.reset();
       },
       complete: () => {
-        this._ToastrService.success('Your Comment Added Successfuly ');
+        // this._ToastrService.success('Your Comment Added Successfuly ');
+        this.showErrorToaster('commment-add-success');
         this.commentForm.reset();
         this.getAllRoomComments(this.id);
       }
@@ -306,14 +308,14 @@ this.openAuthDialog()
     if (startDate && endDate && price &&this.id ) {
       const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
       const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
-      
+
       this.booking({room:this.id,startDate:formattedStartDate,endDate:formattedEndDate,totalPrice:price})
 
     }else{
 
       this.showErrorToaster('enter-start-end-date-and-capacity')
     }
-  
+
   }
 
   }

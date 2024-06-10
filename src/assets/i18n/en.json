@@ -107,6 +107,7 @@
       "phone": "Phone: ",
       "whatsapp": "Open Whatsapp",
       "email": "Email:",
+      "email-2": "Email",
       "send-email": "Send Email",
       "website": "Website: ",
       "upskilling": "Upskilling",
@@ -174,7 +175,18 @@
       "enter-start-end-date-and-capacity": "Please enter start and end date and capacity.",
       "room-added-to-favorites-successfully": "Room added to favorites successfully",
       "room-is-already-in-your-favorite": "Room is already in your favorite",
-      "room-removed-from-favorites-successfully": "Room removed from favorites successfully"
+      "room-removed-from-favorites-successfully": "Room removed from favorites successfully",
+      "review-add-success": "Your review was added successfully",
+      "commment-add-success": "Your comment was added successfully",
+      "login-first": "Login first",
+      "room-remove-from-favorites-success": "Room removed from favorites successfully",
+      "room-already-in-favorites": "Room is already in your favorites",
+      "room-add-favorites-success": "Room added to favorites successfully",
+      "message-sent-success": "Your message was sent successfully",
+      "account-register-success": "Account registered successfully",
+      "account-register-error": "Error in registration",
+      "check-mail": "Please check your email for reset code"
+
     },
 
     "auth": {
