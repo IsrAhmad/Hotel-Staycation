@@ -1,0 +1,99 @@
+<div class="container-fluid  p-5" style="background-color: rgb(235, 238, 241);">
+    <h2 class="text-center ">Contact Form</h2>
+    <div class="row">
+        <div class="col-md-12 card-head my-4">
+            <div class="row px-5">
+
+                <div class="col-md-3 text-center p-1">
+                    <div class="round-icon mx-auto mb-3"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4>Address: <span>198 West 21th Street, Suite 721 New York NY 10016</span> </h4>
+                </div>
+                <div class="col-md-3 text-center p-1">
+                    <div class="round-icon mx-auto mb-3"><i class="fa-solid fa-phone"></i></div>
+                    <h4>Phone:<span><a href="http://wa.me/+20 115932137" target="_blank">Open Whatsapp</a></span> </h4>
+                </div>
+                <div class="col-md-3 text-center p-1 ">
+                    <div class="round-icon mx-auto mb-3"><i class="fa-solid fa-envelope"></i></div>
+                    <h4>Email:<span><a href="mailto:upskilling.eg1@gmail.com"
+                                target="_blank">Send Email</a></span> </h4>
+                </div>
+                <div class="col-md-3 text-center p-1 ">
+                    <div class="round-icon mx-auto mb-3"><i class="fab fa-facebook"></i></div>
+                    <h4>Website: <span><a href="https://www.facebook.com/UpskillingEG" target="_blank">Upskilling</a>
+                        </span> </h4>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-5">
+            <div class="row p-0 bg-light ">
+                <div class="col-lg-6 p-5  ">
+                    <h3 class="m-3">Contact Us</h3>
+                    <form [formGroup]="contactForm" (ngSubmit)="contact(contactForm)">
+                        <div class="row ">
+                            <div class="col-md-6 mb-4">
+                                <label for="">Full Name</label>
+                                <input formControlName="name" class="form-control mt-2 " type="text" name="" id=""
+                                    placeholder="Name">
+                                <div *ngIf="contactForm.get('name')?.errors && contactForm.get('name')?.touched"
+                                    class="d-flex align-items-center mt-1">
+                                    <img src="./assets/images/invalid.png" width="22" height="22" alt="" class="me-1">
+                                    <p *ngIf="contactForm.get('name')?.getError('required')" class="m-0 text-danger ">
+                                        Full Name is required</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4 ">
+                                <label for="">Email Address</label>
+                                <input formControlName="email" class="form-control mt-2 " type="email" name="" id=""
+                                    placeholder="Email">
+                                <div *ngIf="contactForm.get('email')?.errors && contactForm.get('email')?.touched"
+                                    class="d-flex align-items-center mt-1">
+                                    <img src="./assets/images/invalid.png" width="22" height="22" alt="" class="me-1">
+                                    <p *ngIf="contactForm.get('email')?.getError('required')" class="m-0 text-danger ">
+                                        Email is required</p>
+                                    <p *ngIf="contactForm.get('email')?.getError('email')" class="m-0 text-danger">
+                                        Invalid email</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <label for="">Subject</label>
+                                <input formControlName="subject" class="form-control mt-2 " type="text" name=""
+                                    id="" placeholder="Subject">
+                                <div *ngIf="contactForm.get('subject')?.errors && contactForm.get('subject')?.touched"
+                                    class="d-flex align-items-center mt-1">
+                                    <img src="./assets/images/invalid.png" width="22" height="22" alt="" class="me-1">
+                                    <p *ngIf="contactForm.get('subject')?.getError('required')" class="m-0 text-danger ">
+                                        Subject is required</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <label for="">Message</label>
+                                <textarea formControlName="message" class="form-control mt-2 " name="" id=""
+                                    placeholder="Message" cols="15" rows="3"></textarea>
+                                <div *ngIf="contactForm.get('message')?.errors && contactForm.get('message')?.touched"
+                                    class="d-flex align-items-center mt-1">
+                                    <img src="./assets/images/invalid.png" width="22" height="22" alt="" class="me-1">
+                                    <p *ngIf="contactForm.get('message')?.getError('required')" class="m-0 text-danger ">
+                                        Message is required</p>
+                                </div>
+
+                            </div>
+                            <div class="w-100">
+                                <button type="submit" [disabled]="contactForm.invalid"
+                                    class="primary w-25 ">Send</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                </div>
+                <div class="col-lg-6 img-padding">
+                    <img class="w-100 h-100" src="../../../../../assets/images/contact-us-flatlay.jpg" alt="">
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
