@@ -23,7 +23,7 @@
                         <span class="input-group-text lock" id="basic-addon1">
                             <i class="fa-solid fa-lock fs-5 "></i>
                         </span>
-                        <input formControlName="oldPassword" [type]="hide? 'password':'text'" class="form-control" placeholder="Old Password" aria-label="Username" aria-describedby="basic-addon1">
+                        <input formControlName="oldPassword" [type]="hide? 'password':'text'" class="form-control"  [placeholder]="'auth.change-password.old-password' | translate" aria-label="Username" aria-describedby="basic-addon1">
                         <span>
                             <i (click)="hide=!hide" class="fa-regular  fs-5 pe-3 hide" [class]="hide? 'fa-eye-slash':'fa-eye' "></i>
                         </span>
@@ -44,7 +44,7 @@
                             <span class="input-group-text lock" id="basic-addon1">
                                 <i class="fa-solid fa-lock fs-5 "></i>
                             </span>
-                            <input formControlName="newPassword" [type]="hideNew? 'password':'text'" class="form-control" placeholder="New Password" aria-label="Username" aria-describedby="basic-addon1">
+                            <input formControlName="newPassword" [type]="hideNew? 'password':'text'" class="form-control"  [placeholder]="'auth.change-password.new-password' | translate" aria-label="Username" aria-describedby="basic-addon1">
                             <span>
                                 <i (click)="hideNew=!hideNew" class="fa-regular  fs-5 pe-3 hide" [class]="hideNew? 'fa-eye-slash':'fa-eye' "></i>
                             </span>
@@ -62,7 +62,7 @@
                           <span class="input-group-text lock" id="basic-addon1">
                               <i class="fa-solid fa-lock fs-5"></i>
                           </span>
-                          <input formControlName="confirmPassword" [type]="hideConfirmPass? 'password':'text'" class="form-control" placeholder="Confirm New Password" aria-label="Username" aria-describedby="basic-addon1">
+                          <input formControlName="confirmPassword" [type]="hideConfirmPass? 'password':'text'" class="form-control"  [placeholder]="'auth.change-password.confirm-new-password' | translate" aria-label="Username" aria-describedby="basic-addon1">
                           <span>
                               <i (click)="hideConfirmPass=!hideConfirmPass" class="fa-regular  fs-5 pe-3 hide" [class]="hideConfirmPass? 'fa-eye-slash':'fa-eye' "></i>
                           </span>

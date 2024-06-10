@@ -5,40 +5,49 @@
 
         <div class="d-flex align-items-center  mt-4 " type="button" (click)="goToHomeOrUsers()">
           <i class="fa-solid fa-arrow-left fa-xl text-primary-color"></i>
-          <span class="fs-6 ms-2 text-secondary-color"> {{(isViewUser)? 'View all users': 'Back to home'}}</span>
+          <!-- <span class="fs-6 ms-2 text-secondary-color"> {{(isViewUser)? 'View all users': 'Back to home'}}</span> -->
+          <span class="fs-6 ms-2 text-secondary-color">
+            <ng-container *ngIf="isViewUser; else backHome">
+              {{"profile.view-users" | translate}}
+            </ng-container>
+            <ng-template #backHome>
+              {{"profile.back-home" | translate}}
+            </ng-template>
+          </span>
+
         </div>
         <div class="container vh  d-flex align-items-center">
 
-       
+
     <mat-card class="p-5  rounded-5 bg-light my-5" >
 
-      
-  
+
+
         <div class="row g-4 align-items-center">
           <div class="col-lg-4 d-flex align-items-center justify-content-center ">
               <div >
                 <img class="img-fluid rounded-circle" [src]="userDataRes.data.user.profileImage" alt="">
               </div>
-                
+
             </div>
           <div class="col-lg-8">
-                  
+
                   <div class="row">
                     <div class="col-md-6">
 
                       <div class="title my-4 d-flex  align-items-center" >
-                        <h2 class=" m-0 text-secondary-color h3">User name :</h2>
+                        <h2 class=" m-0 text-secondary-color h3">{{"profile.username"|translate}} </h2>
                         <span class="ms-2 fs-6">
                           {{userDataRes.data.user.userName}}
                         </span>
                       </div>
-                    
-      
+
+
                     </div>
                     <div class="col-md-6">
 
                       <div class="title my-4 d-flex  align-items-center" >
-                        <h2 class=" m-0 text-secondary-color h3">E-mail :</h2>
+                        <h2 class=" m-0 text-secondary-color h3">{{"profile.email"|translate}} </h2>
                         <span class="ms-2 fs-6">
                           {{userDataRes.data.user.email}}
                         </span>
@@ -48,60 +57,59 @@
                     <div class="col-md-6">
 
                       <div class="title my-4 d-flex  align-items-center" >
-                        <h2 class=" m-0 text-secondary-color h3">Country :</h2>
+                        <h2 class=" m-0 text-secondary-color h3">{{"profile.country"|translate}} </h2>
                         <span class="ms-2 fs-6">
                           {{userDataRes.data.user.country}}
                         </span>
                       </div>
 
-      
+
                     </div>
                     <div class="col-md-6">
 
                       <div class="title my-4 d-flex  align-items-center" >
-                        <h2 class=" m-0 text-secondary-color h3">Phone number :</h2>
+                        <h2 class=" m-0 text-secondary-color h3">{{"profile.phone"|translate}} </h2>
                         <span class="ms-2 fs-6">
                           {{userDataRes.data.user.phoneNumber}}
                         </span>
                       </div>
-               
-      
+
+
                     </div>
                     <div class="col-md-6">
 
                       <div class="title my-4 d-flex  align-items-center" >
-                        <h2 class=" m-0 text-secondary-color h3">Join date :</h2>
+                        <h2 class=" m-0 text-secondary-color h3">{{"profile.join-date"|translate}} </h2>
                         <span class="ms-2 fs-6">
                           {{userDataRes.data.user.createdAt | date: 'short'}}
                         </span>
                       </div>
-                
-      
+
+
                     </div>
                     <div class="col-md-6">
 
                       <div class="title my-4 d-flex  align-items-center" >
-                        <h2 class=" m-0 text-secondary-color h3">Role :</h2>
+                        <h2 class=" m-0 text-secondary-color h3">{{"profile.role"|translate}} </h2>
                         <span class="ms-2 fs-6">
                           {{userDataRes.data.user.role}}
                         </span>
                       </div>
-               
-      
+
+
                     </div>
-           
-             
-  
+
+
+
                 </div>
           </div>
-         
+
         </div>
-  
+
     </mat-card>
   </div>
 
   </div>
-  
-  
+
+
       </section>
-      

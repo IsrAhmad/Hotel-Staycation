@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-contact-us',
@@ -9,7 +11,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent {
-  constructor(private _ToastrService:ToastrService ,private _Router:Router){}
+  constructor(private _ToastrService:ToastrService ,private _Router:Router, private translate: TranslateService,
+  ){}
 
   contactForm:FormGroup=new FormGroup({
     name:new FormControl(null,[Validators.required]),
@@ -20,8 +23,21 @@ export class ContactUsComponent {
 
   contact(form:FormGroup){
     if(form.valid){
-      this._ToastrService.success('Your Message Sended Successfuly');
+      // this._ToastrService.success('');
+      this.showSuccessToaster('message-sent-success')
     }
     this._Router.navigate(['/guest/home']);
+  }
+
+  showSuccessToaster(toastEnAr:string) {
+    this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+      this._ToastrService.success(res);
+    });
+  }
+
+  showErrorToaster(toastEnAr:string) {
+    this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+      this._ToastrService.error(res);
+    });
   }
 }

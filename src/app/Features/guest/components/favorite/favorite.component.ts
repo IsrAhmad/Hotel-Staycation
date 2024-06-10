@@ -87,7 +87,7 @@ export class FavoriteComponent implements OnInit {
 
 
   goLogin(): void {
-    this._ToastrService.error('First login')
+    this._ToastrService.error('Login first')
     this._Router.navigate(['/auth'])
 
   }
@@ -97,7 +97,7 @@ export class FavoriteComponent implements OnInit {
 
   }
 
-  //for paginaton 
+  //for paginaton
   changePage(e: PageEvent) {
     this.pageIndex = e.pageIndex + 1;
     this.pageSize = e.pageSize;

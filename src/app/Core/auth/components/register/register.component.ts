@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 import { IRegister } from '../../model/IRegister.model';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -49,7 +50,9 @@ export class RegisterComponent {
 
     constructor(private _AuthService:AuthService,
       private _Router:Router,
-      private toastr:ToastrService){}
+      private _ToastrService: ToastrService,
+      private translate: TranslateService
+    ){}
 
 
     register(userData:FormGroup):void{
@@ -73,11 +76,13 @@ export class RegisterComponent {
         },
         error:(err)=>{
 
-          this.toastr.error(err)
+          // this._ToastrService.error(err)
+          this.showErrorToaster('account-register-error')
         },
         complete:()=>{
-     this.toastr.success('Register completed sucessfully ');
-     this._Router.navigate(['/auth/login'])
+      // this._ToastrService.success('Register completed sucessfully ');
+      this.showSuccessToaster('account-register-success')
+      this._Router.navigate(['/auth/login'])
         }
       })
     }
@@ -113,6 +118,18 @@ export class RegisterComponent {
 
         public fileLeave(event:any){
           console.log(event);
+        }
+
+        showSuccessToaster(toastEnAr:string) {
+          this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+            this._ToastrService.success(res);
+          });
+        }
+
+        showErrorToaster(toastEnAr:string) {
+          this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
+            this._ToastrService.error(res);
+          });
         }
 
 }

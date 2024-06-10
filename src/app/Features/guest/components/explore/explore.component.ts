@@ -8,9 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IFavoriteResponse } from '../favorite/models/IFavorite';
 import { PageEvent } from '@angular/material/paginator';
-import { IExplorParms } from '../../models/IExplorParms';
 import { AuthPopupComponent } from 'src/app/shared/components/auth-popup/auth-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { IExplorParms } from '../../Models/IExplorParms';
 
 @Component({
   selector: 'app-explore',
@@ -30,7 +30,7 @@ export class ExploreComponent  implements OnInit{
       totalCount:0,
       rooms:[]
     }
-  
+
   }
   fav!: IFavoriteResponse ;
   loginToFav: any = localStorage.getItem('role');
@@ -40,7 +40,7 @@ export class ExploreComponent  implements OnInit{
   startDate: string = '';
   endDate: string = '';
   capacity: number = 0;
- 
+
   params:IExplorParms= {
     page :this.page,
     size:this.size
@@ -48,12 +48,12 @@ export class ExploreComponent  implements OnInit{
   }
   constructor(private translate:TranslateService ,
     private _GuestService:GuestService,
-    private _ToastrService: ToastrService , 
+    private _ToastrService: ToastrService ,
     private _router: Router,private ActivRoute: ActivatedRoute,
     public dialog: MatDialog,){
 
   }
- 
+
 
 
   ngOnInit(): void {
@@ -71,7 +71,7 @@ export class ExploreComponent  implements OnInit{
         startDate:this.startDate,
         endDate:this.endDate,
         capacity:this.capacity
-  
+
       }
     }
     this.getAllRoomForExplore();
@@ -92,7 +92,7 @@ export class ExploreComponent  implements OnInit{
   getAllRoomForExplore() {
     this._GuestService.getAllRoomsForExplore(this.params).subscribe({
       next: (res) => {
-       
+
         this.roomsRes = res;
         console.log(this.roomsRes);
         this.totalCount = res.data.totalCount;
@@ -108,10 +108,10 @@ export class ExploreComponent  implements OnInit{
   }
   goLogin():void{
 
-    this._ToastrService.error('First login')
-  
+    this._ToastrService.error('Login first')
+
     this._router.navigate(['/auth'])
-  
+
   }
   saveRoomInFav(roomId: string) {
     this._GuestService.saveFavRoom(roomId).subscribe({
@@ -122,16 +122,16 @@ export class ExploreComponent  implements OnInit{
       error: (err) => {
         console.log(err)
         this.showErrorToaster('room-is-already-in-your-favorite')
-  
-        
+
+
       },
       complete: () => {
         this.showSuccessToaster('room-added-to-favorites-successfully')
-  
+
       }
     })
   }
-     //for paginaton 
+     //for paginaton
      changePage(e: PageEvent) {
       this.params.page = e.pageIndex + 1;
       this.params.size = e.pageSize;
@@ -146,7 +146,7 @@ export class ExploreComponent  implements OnInit{
         this._ToastrService.success(res);
       });
     }
-  
+
     showErrorToaster(toastEnAr:string) {
       this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
         this._ToastrService.error(res);
