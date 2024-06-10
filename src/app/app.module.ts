@@ -25,12 +25,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastrModule.forRoot({
-      closeButton: true,
-      timeOut: 4000,
-      progressBar: true,
-      
-    }),    NgxSpinnerModule.forRoot(),
+    ToastrModule.forRoot(), // ToastrModule added
+    NgxSpinnerModule.forRoot(),
     TranslateModule.forRoot(
       {
         defaultLanguage: 'en',

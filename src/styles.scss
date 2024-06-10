@@ -99,12 +99,45 @@ h1,h2,h3,h4,h5,h6{
 }
 
 [data-theme='dark'] {
-  --background-color: #333333;
+  @import '@angular/material/prebuilt-themes/pink-bluegrey.css' ;
+
+  --background-color: #424242;
   --text-color: #ffffff;
+  body {
+    background-color: #424242;
+    color: #ffffff !important;
+    h4,h3,h2{
+      color: #fff !important;
+    }
+    .text-muted{
+      color: #fff !important;
+    }
+    transition: all 0.2s linear;
+   }
+   button{
+    background: rgb(30, 31, 31) !important;
+    border: rgb(255, 255, 255, .5) solid 1px;
+   }
+   .nav-bar{
+    border: rgb(255, 255, 255, .5) solid 1px;
+    background: #424242c5 !important;
+    color: #fff !important;
+    a{
+      color: #fff !important;
+    }
+    span{
+      color: #ffffff !important;
+    }
+    .dropdown{
+      .btn{
+        background: rgb(30, 31, 31) !important;
+        color: #fff !important;
+      }
+    }
+  }
+
+
 }
 
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
+
 
