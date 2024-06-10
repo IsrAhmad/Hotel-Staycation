@@ -6,7 +6,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb " >
       <li class="breadcrumb-item"><a routerLink="/guest/home">{{"favorites.home"|translate}}</a></li>
-      <li class="breadcrumb-item active">{{"favorites.fav-room"|translate}}</li>
+      <li class="breadcrumb-item active" [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'">{{"favorites.fav-room"|translate}}</li>
     </ol>
   </nav>
     <div class="row mb-5" *ngIf="favRoom[0].rooms.length>0">

@@ -5,6 +5,7 @@ h2{
     color: $secondary-color;
     font-weight: 500;
     line-height: 39px;
+    cursor: pointer;
     &:hover{
         font-size: 26px;
         transition: 0.3ms;
