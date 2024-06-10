@@ -259,7 +259,17 @@
         "password-match":"Passwords must match",
         "change-password":"Change Password"
       }
-    }
+    },
 
+    "profile": {
+      "username": "Username: ",
+      "email": "E-mail: ",
+      "country": "Country: ",
+      "phone": "Phone number: ",
+      "join-date": "Join date: ",
+      "role": "Role: ",
+      "back-home": "Back to Home",
+      "view-users": "View all users"
+    }
 
 }
