@@ -6,7 +6,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        
+
           <div class=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav   " [class]="lang=='en'?'ms-auto':'me-auto'">
               <li class="nav-item  notLoged">
@@ -15,9 +15,9 @@
               <li class="nav-item notLoged">
                 <a class="nav-link "routerLink="/guest/explore">{{"user-navbar.explore"|translate}}</a>
               </li>
-              
+
               <li>
-                
+
                 <button class=" btn primary mb-1 me-3" (click)="register()"> {{"user-navbar.register"|translate}}</button>
               </li>
               <li>
@@ -36,13 +36,13 @@
                   <span>{{"user-navbar.arabic"|translate}}</span>
                 </button>
 
-                <button  mat-menu-item (click)="changeLanguage('en')" >            
+                <button  mat-menu-item (click)="changeLanguage('en')" >
                   <span>{{"user-navbar.english"|translate}}</span>
                 </button>
-               
+
               </mat-menu>
               </li>
-             
+
             </ul>
           </div>
         </div>
@@ -59,7 +59,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        
+
           <div class=" collapse navbar-collapse  " id="navbarNavDropdown">
             <ul class="navbar-nav   " [class]="lang=='en'?'ms-auto':'me-auto'">
               <li class="nav-item">
@@ -73,20 +73,20 @@
               </li>
                 <li class="nav-item ">
                   <!-- {{"user-navbar.reviews"|translate}} -->
-                <a class="nav-link mx-1" routerLink="/guest/contact-us" routerLinkActive="active">Contact Us</a>
+                <a class="nav-link mx-1" routerLink="/guest/contact-us" routerLinkActive="active">{{"user-navbar.contact"|translate}}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link ">    
+                <a class="nav-link ">
                 <img [src]="currentUser?.data.user.profileImage" alt="">
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link ">       {{currentUser?.data.user.userName}}</a>
-           
-                
-                
+
+
+
               </li>
-             
+
               <li  class="nav-item">
                 <button
                 mat-icon-button
@@ -110,8 +110,8 @@
                   <mat-icon>logout</mat-icon>
                   <span>{{"user-navbar.logout"|translate}}</span>
                 </button>
-                
-             
+
+
               </mat-menu>
               </li>
 
@@ -124,7 +124,7 @@
                 <mat-icon>language</mat-icon>
               </button>
               <mat-menu #menulang="matMenu"  >
-              
+
                 <button mat-menu-item (click)="changeLanguage('ar')">
                   <span>{{"user-navbar.arabic"|translate}}</span>
                 </button>
@@ -134,9 +134,9 @@
                 </button>
               </mat-menu>
               </li>
-             
-        
-             
+
+
+
             </ul>
           </div>
         </div>

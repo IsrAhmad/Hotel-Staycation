@@ -13,7 +13,8 @@
     "favorites": "Favorites",
     "profile": "Profile",
     "change-password": "Change Password",
-    "logout": "Logout"
+    "logout": "Logout",
+    "contact": "Contact Us"
   } ,
 
     "home": {
@@ -94,8 +95,32 @@
     },
 
     "favorites": {
+      "home": "Home",
       "back-home": "Back To Home",
       "fav-room": "All Favorite Rooms"
+    },
+
+    "contact": {
+      "contact-form": "Contact Form",
+      "address": "Address:",
+      "address-details": "Giza, Egypt",
+      "phone": "Phone: ",
+      "whatsapp": "Open Whatsapp",
+      "email": "Email:",
+      "send-email": "Send Email",
+      "website": "Website: ",
+      "upskilling": "Upskilling",
+      "contact-us": "Contact Us",
+      "name": "Full Name",
+      "name-required": "Full Name is required",
+      "email-address": "Email Address",
+      "email.required": "Email is required",
+      "invalid-email": "Invalid email",
+      "subject": "Subject",
+      "subject-required": "Subject is required",
+      "message": "Message",
+      "message-required": "Message is required",
+      "send": "Send"
     },
 
     "footer": {
