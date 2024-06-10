@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -10,10 +10,15 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.scss']
 })
-export class ContactUsComponent {
+export class ContactUsComponent implements OnInit {
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
   constructor(private _ToastrService:ToastrService ,private _Router:Router, private translate: TranslateService,
   ){}
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.lang = event.lang
+    });
+  }
 
   contactForm:FormGroup=new FormGroup({
     name:new FormControl(null,[Validators.required]),
