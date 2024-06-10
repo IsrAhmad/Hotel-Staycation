@@ -29,15 +29,15 @@
                                         <mat-card class="p-4 mb-3">
                                             <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <p class="mb-0">SubTotal</p>
-                                                <p class="mb-0">$85.99</p>
+                                                <p class="mb-0">$ {{bookingResp.data.booking.totalPrice}}</p>
                                               </div>
                                               <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <p class="mb-0">Tax</p>
-                                                <p class="mb-0">$85.99</p>
+                                                <p class="mb-0">$0</p>
                                               </div>
                                               <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <p class="mb-0">Total</p>
-                                                <p class="mb-0">$85.99</p>
+                                                <p class="mb-0">$ {{bookingResp.data.booking.totalPrice}}</p>
                                               </div>
                                          </mat-card>
                                     </div>
@@ -108,7 +108,7 @@
                                  once the transaction has been accepted
                               </p>
                               <div>
-                                <button mat-button matStepperPrevious class="btn primary m-3">Back To Home</button>
+                                <button mat-button routerLink="/guest/home" class="btn primary m-3">Back To Home</button>
                                 <button mat-button (click)="stepper.reset()" class="btn cancel">Reset</button>
                               </div>
                             </mat-step>
