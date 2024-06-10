@@ -190,6 +190,7 @@
     },
 
     "auth": {
+      "type-here": "Please type here ...",
       "login": {
         "sign-in":"Sign in",
         "no-account":"If you don’t have an account register",
@@ -269,7 +270,10 @@
         "password-error":"Password must contain uppercase and lowercase letters, numbers, special charcters and must be more than 8 charaters",
         "confirm-password-required":"Confirm Password is required",
         "password-match":"Passwords must match",
-        "change-password":"Change Password"
+        "change-password":"Change Password",
+        "old-password": "Old Password",
+        "new-password": "New Password",
+        "confirm-new-password": "Confirm New Password"
       }
     },
 
