@@ -13,8 +13,10 @@
     "favorites": "المفضلة",
     "profile": "حسابي",
     "change-password": "تغيير كلمة المرور",
-    "logout": "تسجيل خروج"
+    "logout": "تسجيل خروج",
+    "contact": "تواصل معنا"
   } ,
+
   "home": {
     "header": "انسَ ضغوطات العمل، و ابدأ الإجازة التالية",
     "header-1" : "انسَ  ضغوطات العمل،",
@@ -94,8 +96,32 @@
   },
 
   "favorites": {
+    "home": "الرئيسية",
     "back-home": "العودة إلى الصفحة الرئيسية",
     "fav-room": "جميع الغرف المفضلة"
+  },
+
+  "contact": {
+    "contact-form": "نموذج التواصل",
+    "address": "العنوان:",
+    "address-details": "الجيزة, مصر",
+    "phone": "هاتف: ",
+    "whatsapp": "افتح واتس اب",
+    "email": "البريد الإلكتروني: ",
+    "send-email": "ارسل بريد الكتروني",
+    "website": "موقعنا الالكتروني: ",
+    "upskilling": "اب سكيلينج",
+    "contact-us": "تواصل معنا",
+    "name": "الاسم الكامل",
+    "name-required": "الإسم الكامل ضروري",
+    "email-address": "عنوان البريد الإلكتروني",
+    "email.required": "البريد الالكتروني مطلوب",
+    "invalid-email": "بريد إلكتروني خاطئ",
+    "subject": "موضوع",
+    "subject-required": "الموضوع مطلوب",
+    "message": "رسالة",
+    "message-required": "الرسالة مطلوبة",
+    "send": "أرسل"
   },
 
   "footer": {
