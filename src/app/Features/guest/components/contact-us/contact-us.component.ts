@@ -11,6 +11,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent {
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
   constructor(private _ToastrService:ToastrService ,private _Router:Router, private translate: TranslateService,
   ){}
 

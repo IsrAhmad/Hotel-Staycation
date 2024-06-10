@@ -4,6 +4,14 @@
 @import "../../../../../assets/styles/components/button.scss";
 @import "../../../../../assets/styles/components/card.scss";
 
+.breadcrumb-item{
+  text-decoration: none;
+  color: $main-p;
+  cursor: pointer;
+}
+.breadcrumb-item-itedited::before{
+  float: right !important;
+ }
 
 h2{
     color: $secondary-color;
