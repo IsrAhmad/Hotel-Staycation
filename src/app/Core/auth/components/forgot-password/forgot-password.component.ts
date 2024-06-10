@@ -5,11 +5,12 @@ import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { IForgot } from '../../model/IForgot';
 import { ToastrService } from 'ngx-toastr';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-forgot-password',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,RouterLink],
+  imports: [CommonModule,ReactiveFormsModule,RouterLink, SharedModule],
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss']
 })

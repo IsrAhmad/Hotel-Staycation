@@ -8,16 +8,16 @@
         <div class="row m-auto">
           <div>
             <div>
-              <h2>Sign up</h2>
+              <h2>{{"auth.register.sign-up"|translate}}</h2>
               <p class="text-p">
-                If you already have an account register <br />
-                You can
+                {{"auth.register.have-account"|translate}} <br />
+                {{"auth.register.you-can"|translate}}
                 <span
                   type="button"
                   class="text-red-color"
                   routerLink="/auth/login"
                 >
-                  &nbsp;&nbsp;Login here !!</span
+                  &nbsp;&nbsp;{{"auth.register.login"|translate}}</span
                 >
               </p>
             </div>
@@ -83,7 +83,7 @@
                             class="bg-transparent d-flex flex-column align-items-center"
                           >
                             <i class="fa-solid fa-upload fs-4 mb-2"></i>
-                            <span class=" small"> Upload</span>
+                            <span class=" small"> {{"auth.register.upload"|translate}}</span>
                           </button>
                         </div>
                       </ng-template>
@@ -103,7 +103,7 @@
               <!--user Name-->
               <div class="row">
                 <div class="d-flex flex-column">
-                  <label for="userName" class> Username</label>
+                  <label for="userName" class> {{"auth.register.username"|translate}}</label>
                   <div class="input-group">
                     <input
                       formControlName="userName"
@@ -135,7 +135,7 @@
                     *ngIf="registerForm.get('userName')?.getError('required')"
                     class="m-0 text-danger"
                   >
-                    User name is required
+                  {{"auth.register.username-required"|translate}}
                   </p>
                 </div>
               </div>
@@ -144,7 +144,7 @@
                 <div class="col-md-6">
                   <!--phone Number-->
                   <div class="d-flex flex-column">
-                    <label for="phoneNumber"> Phone number</label>
+                    <label for="phoneNumber"> {{"auth.register.phone"|translate}}</label>
                     <div class="input-group">
                       <input
                         formControlName="phoneNumber"
@@ -178,7 +178,7 @@
                       "
                       class="m-0 text-danger"
                     >
-                      Phone number is required
+                    {{"auth.register.phone-required"|translate}}
                     </p>
                     <p
                       *ngIf="
@@ -186,14 +186,14 @@
                       "
                       class="m-0 text-danger"
                     >
-                      Phone number must start with 01 and be 11 digits in total
+                    {{"auth.register.phone-error"|translate}}
                     </p>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <!--country-->
                   <div class="d-flex flex-column">
-                    <label for="country"> Country</label>
+                    <label for="country"> {{"auth.register.country"|translate}}</label>
                     <div class="input-group">
                       <input
                         formControlName="country"
@@ -225,7 +225,7 @@
                       *ngIf="registerForm.get('country')?.getError('required')"
                       class="m-0 text-danger"
                     >
-                      Country is required
+                    {{"auth.register.country-required"|translate}}
                     </p>
                   </div>
                 </div>
@@ -233,7 +233,7 @@
               <!--email-->
               <div class="row">
                 <div class="mt-1 d-flex flex-column">
-                  <label for="email">Email address</label>
+                  <label for="email">{{"auth.register.email"|translate}}</label>
                   <div class="input-group">
                     <input
                       formControlName="email"
@@ -265,13 +265,13 @@
                     *ngIf="registerForm.get('email')?.getError('required')"
                     class="m-0 text-danger"
                   >
-                    Email is required
+                  {{"auth.register.email-required"|translate}}
                   </p>
                   <p
                     *ngIf="registerForm.get('email')?.getError('email')"
                     class="m-0 text-danger"
                   >
-                    Invalid email
+                  {{"auth.register.invalid-email"|translate}}
                   </p>
                 </div>
               </div>
@@ -279,7 +279,7 @@
                 <div class="col-md-12">
                   <!--password-->
                   <div class="d-flex flex-column">
-                    <label for="password">Password</label>
+                    <label for="password">{{"auth.register.password"|translate}}</label>
 
                     <div class="input-group d-flex align-items-center">
                       <input
@@ -319,22 +319,20 @@
                       *ngIf="registerForm.get('password')?.getError('required')"
                       class="text-danger m-0"
                     >
-                      Password is required
+                    {{"auth.register.password-required"|translate}}
                     </p>
                     <p
                       *ngIf="registerForm.get('password')?.getError('pattern')"
                       class="text-danger m-0"
                     >
-                      Password must contain capital,samll
-                      letters,numbers,special charcters and must be greater than
-                      8
+                    {{"auth.register.password-error"|translate}}
                     </p>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <!--confirm Password-->
                   <div class="d-flex flex-column">
-                    <label for="confirmPassword" class>Confirm password</label>
+                    <label for="confirmPassword" class>{{"auth.register.confirm-password"|translate}}</label>
 
                     <div class="input-group d-flex align-items-center">
                       <input
@@ -377,7 +375,7 @@
                             src="./assets/images/invalid.png"
                             width="22"
                             height="22" alt class="mx-2">
-                        *Passwords must match
+                            {{"auth.register.password-match"|translate}}
                   </div>
                 </div>
               </div>
@@ -386,7 +384,7 @@
                 [disabled]="registerForm.invalid || !isImageUploade"
                 class="primary w-100 my-2 "
               >
-                Sign up
+              {{"auth.register.sign-up"|translate}}
               </button>
             </form>
           </div>
@@ -403,8 +401,8 @@
         />
 
         <div class="layer">
-          <h2>Sign up to Roamhome</h2>
-          <p>Homes as unique as you.</p>
+          <h2>{{"auth.register.sign-up-roamhome"|translate}}</h2>
+          <p>{{"auth.register.home-unique"|translate}}</p>
         </div>
       </div>
     </div>

@@ -5,12 +5,13 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ILogIn } from '../../model/ILogin';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, SharedModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -66,7 +67,7 @@ export class LoginComponent {
 
           }
 
-         
+
 
         }
       })

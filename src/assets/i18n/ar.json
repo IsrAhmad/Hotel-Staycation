@@ -150,6 +150,90 @@
     "room-is-already-in-your-favorite": "الغرفة موجودة بالفعل في المفضلة لديك",
     "room-removed-from-favorites-successfully": "تمت إزالة الغرفة من المفضلة بنجاح"
 
+  },
+
+  "auth": {
+    "login": {
+      "sign-in":"تسجيل الدخول",
+      "no-account":"إذا لم يكن لديك حساب سجل",
+      "you-can":"يمكنك",
+      "register-here":"سجل هنا!",
+      "email":"البريد الإلكتروني",
+      "email-required":"البريد الالكتروني مطلوب",
+      "invalid-email":"بريد إلكتروني خاطئ",
+      "password":"كلمة المرور",
+      "password-required":"كلمة المرور مطلوبة",
+      "invalid-password":"كلمة مرور خاطئ",
+      "forgot-password":"هل نسيت كلمة السر؟",
+      "login":"تسجيل الدخول",
+      "sign-in-roamhome":"تسجيل الدخول إلى روم هوم",
+      "home-unique":"منازل فريدة مثلك."
+    },
+    "register": {
+      "sign-up":"اشتراك",
+      "have-account":"إذا كان لديك بالفعل حساب, سجل",
+      "you-can":"يمكنك",
+      "login":"تسجيل الدخول هنا!",
+      "upload":"رفع",
+      "username":"اسم المستخدم",
+      "username-required":"اسم المستخدم مطلوب",
+      "phone":"رقم التليفون",
+      "phone-required":" رقم الهاتف مطلوب",
+      "phone-error":"يجب أن يبدأ رقم الهاتف بالرقم 01 وأن ​​يتكون من 11 رقمًا إجمالاً",
+      "country":"الدولة",
+      "country-required":"الدولة مطلوبة",
+      "email":"البريد الإلكتروني",
+      "email-required":"البريد الالكتروني مطلوب",
+      "invalid-email":"بريد إلكتروني خاطئ",
+      "password":"كلمة المرور",
+      "password-required":"كلمة المرور مطلوبة",
+      "password-error":"يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة وأرقام وأحرف خاصة ويجب أن تكون أكثر من 8 أحرف",
+      "confirm-password":"تأكيد كلمة المرور",
+      "password-match":"يجب أن تتطابق كلمات المرور",
+      "sign-up-roamhome":"قم بالتسجيل في روم هوم",
+      "home-unique":"منازل فريدة مثلك."
+    },
+    "forgot-password": {
+      "forgot-password":"هل نسيت كلمة السر",
+      "have-account":"إذا كان لديك حساب بالفعل، قم بالتسجيل",
+      "you-can":"يمكنك",
+      "login":"تسجيل الدخول هنا!",
+      "email":"البريد الإلكتروني",
+      "email-required":"البريد الالكتروني مطلوب",
+      "invalid-email":"بريد إلكتروني خاطئ",
+      "send-mail":"ارسل بريد",
+      "home-unique":"منازل فريدة مثلك."
+    },
+    "reset-password": {
+      "reset-password":"إعادة تعيين كلمة المرور",
+      "have-account":"إذا كان لديك حساب بالفعل، قم بالتسجيل",
+      "you-can":"يمكنك",
+      "login":"تسجيل الدخول هنا!",
+      "email":"البريد الإلكتروني",
+      "email-required":"البريد الالكتروني مطلوب",
+      "invalid-required":"بريد إلكتروني خاطئ",
+      "otp":"الكود",
+      "code-required":"الكود مطلوب",
+      "code-error":"يجب أن يتكون الرمز من 4 أحرف بالضبط ويحتوي على أحرف وأرقام فقط",
+      "password":"كلمة المرور",
+      "password-required":"كلمة المرور مطلوبة",
+      "password-error":"يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة وأرقام وأحرف خاصة ويجب أن تكون أكثر من 8 أحرف",
+      "confirm-password":"تأكيد كلمة المرور",
+      "password-match":"يجب أن تتطابق كلمات المرور",
+      "reset":"إعادة ضبط",
+      "forgot-password":"هل نسيت كلمة السر",
+      "hhome-unique":"منازل فريدة مثلك."
+    },
+    "change-password": {
+      "change-your-password":"غير كلمة المرور الخاصة بك",
+      "details":"أدخل التفاصيل الخاصة بك أدناه",
+      "password-required":"كلمة المرور مطلوبة",
+      "invalid-password":"كلمة مرور خاطئ",
+      "password-error":"يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة وأرقام وأحرف خاصة ويجب أن تكون أكثر من 8 أحرف",
+      "confirm-password-required":"أدخل التفاصيل الخاصة بك أدناه",
+      "password-match":"يجب أن تتطابق كلمات المرور",
+      "change-password":"تغيير كلمة المرور"
+    }
   }
 
 

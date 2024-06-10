@@ -7,12 +7,13 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 import { IRegister } from '../../model/IRegister.model';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule , ReactiveFormsModule ,RouterLink , NgxFileDropModule],
+  imports: [CommonModule , ReactiveFormsModule ,RouterLink , NgxFileDropModule, SharedModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
