@@ -5,7 +5,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb " >
                   <li class="breadcrumb-item"><a routerLink="/guest/home">{{"room-details.home"|translate}}</a></li>
-                  <li class="breadcrumb-item active mx-1" [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'" aria-current="page">{{"contact.contact-us"|translate}}</li>
+                  <li class="breadcrumb-item active " [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'" aria-current="page">{{"contact.contact-us"|translate}}</li>
                 </ol>
               </nav>
             <div class="row p-0 bg-light ">
@@ -63,7 +63,7 @@
                             </div>
                             <div class="w-100">
                                 <button type="submit" [disabled]="contactForm.invalid"
-                                    class="primary w-25 ">{{"contact.send"|translate}}</button>
+                                    class="primary w-100 ">{{"contact.send"|translate}}</button>
                             </div>
                         </div>
                     </form>

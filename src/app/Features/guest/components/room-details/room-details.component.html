@@ -92,8 +92,7 @@
               <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
               <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
             </mat-form-field>
-            <p>{{ "room-details.you-will-pay" | translate }} <span class="card-span">${{ getDiscountedPrice(roomRes.price, roomRes.discount
-                ,roomRes.capacity) }}</span>  {{ "room-details.per" | translate }}
+            <p>{{ "room-details.you-will-pay" | translate }} <span class="card-span">${{ getDiscountedPrice(roomRes.price, roomRes.discount) }}</span>  {{ "room-details.per" | translate }}
               <span class="card-span">{{roomRes.capacity}} {{ "room-details.person" | translate }}</span>
             </p>
             <div class="d-flex align-items-center justify-content-center">
