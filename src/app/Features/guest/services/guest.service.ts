@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { IAdsResponse } from '../../Manager/modules/ads/models/IAdsResponse';
 import { IRoomResponse } from '../../Manager/modules/rooms/models/IRoom.model';
 import { IFavoriteResponse } from '../components/favorite/models/IFavorite';
+import { IBookingResponse, ICreateBooking } from '../models/IBookingResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,6 @@ export class GuestService {
     return this._HttpClient.delete(`portal/favorite-rooms/${roomId}`, { body: { roomId } });
   }
 
+  
 
 }
