@@ -46,11 +46,9 @@
       "guest-2": "Budi, Software Engineer",
       "wonderful-journey": "Wonderful Journey",
       "testimonial-3": "The journey was wonderful and full of surprises. Highly recommend! ...",
-      "guest-3": "Siti, Graphic Designer"
-      
-        
+      "guest-3": "Siti, Graphic Designer",
+      "location": "Bogor, Indonesia"
 
-      
     },
 
     "room-details": {
@@ -89,6 +87,17 @@
     "update" : "Update"
     },
 
+    "explore": {
+      "explore-rooms": "Explore ALL Rooms",
+      "home": "Home",
+      "explore": "Explore"
+    },
+
+    "favorites": {
+      "back-home": "Back To Home",
+      "fav-room": "All Favorite Rooms"
+    },
+
     "footer": {
       "staycation": "Staycation.",
       "stay": "Stay",
@@ -117,15 +126,114 @@
       "delete": "Delete",
       "question": "?"
     } ,
+    "auth-popup":{
+      "action-denied": "Action can't be completed, because you are logged out!",
+      "no-account": "Don't have an account?",
+      "register-here": "Register here!",
+      "cancel": "Cancel",
+      "login": "Login"
+    },
+    "no-data": {
+      "no-result":"No results found",
+      "cannot-find-1":"We couldn't find what you are searching for,",
+      "cannot-find-2":" try searching again"
+    },
+    "not-found": {
+      "oops": "Oops....",
+      "not-found": "Page Not Found",
+      "page-not-found": "This Page doesn’t exist or was removed! We suggest you go back to home.",
+      "back-home": "Back to Home"
+    },
 
     "toaster":{
       "enter-start-end-date-and-capacity": "Please enter start and end date and capacity.",
       "room-added-to-favorites-successfully": "Room added to favorites successfully",
       "room-is-already-in-your-favorite": "Room is already in your favorite",
       "room-removed-from-favorites-successfully": "Room removed from favorites successfully"
-      
+    },
 
-      
+    "auth": {
+      "login": {
+        "sign-in":"Sign in",
+        "no-account":"If you don’t have an account register",
+        "you-can":"You can",
+        "register-here":"Register here!",
+        "email":"Email Address",
+        "email-required":"Email is required",
+        "invalid-email":"Invalid email",
+        "password":"Password",
+        "password-required":"Password is required",
+        "invalid-password":"Invalid password",
+        "forgot-password":"Forgot Password?",
+        "login":"Login",
+        "sign-in-roamhome":"Sign in to Roamhome",
+        "home-unique":"Homes as unique as you."
+      },
+      "register": {
+        "sign-up":"Sign up",
+        "have-account":"If you already have an account register",
+        "you-can":"You can",
+        "login":"Login here!",
+        "upload":"Upload",
+        "username":"Username",
+        "username-required":"Username is required",
+        "phone":"Phone number",
+        "phone-required":" Phone number is required",
+        "phone-error":"Phone number must start with 01 and be 11 digits in total",
+        "country":"Country",
+        "country-required":"Country is required",
+        "email":"Email address",
+        "email-required":"Email is required",
+        "invalid-email":"Invalid email",
+        "password":"Password",
+        "password-required":"Password is required",
+        "password-error":"Password must contain uppercase and lowercase letters, numbers, special charcters and must be more than 8 charaters",
+        "confirm-password":"Confirm password",
+        "password-match":"Passwords must match",
+        "sign-up-roamhome":"Sign up to Roamhome",
+        "home-unique":"Homes as unique as you."
+      },
+      "forgot-password": {
+        "forgot-password":"Forgot Password",
+        "have-account":"If you already have an account, register",
+        "you-can":"You can",
+        "login":"Login here!",
+        "email":"Email Address",
+        "email-required":"Email is required",
+        "invalid-email":"Invalid email",
+        "send-mail":"Send mail",
+        "home-unique":"Homes as unique as you."
+      },
+      "reset-password": {
+        "reset-password":"Reset Password",
+        "have-account":"If you already have an account register",
+        "you-can":"You can",
+        "login":"Login here!",
+        "email":"Email",
+        "email-required":"Email is required",
+        "invalid-required":"Invalid email",
+        "otp":"OTP",
+        "code-required":"Code is required",
+        "code-error":"Code must be exactly 4 characters long and contain only letters and numbers",
+        "password":"Password",
+        "password-required":"Password is required",
+        "password-error":"Password must contain uppercase and lowercase letters, numbers, special charcters and must be more than 8 charaters",
+        "confirm-password":"Confirm Password",
+        "password-match":"Passwords must match",
+        "reset":"Reset",
+        "forgot-password":"Forgot Password",
+        "home-unique":"Homes as unique as you."
+      },
+      "change-password": {
+        "change-your-password":"Change Your Password",
+        "details":"Enter your details below",
+        "password-required":"Password is required",
+        "invalid-password":"Invalid Password",
+        "password-error":"Password must contain uppercase and lowercase letters, numbers, special charcters and must be more than 8 charaters",
+        "confirm-password-required":"Confirm Password is required",
+        "password-match":"Passwords must match",
+        "change-password":"Change Password"
+      }
     }
 
 

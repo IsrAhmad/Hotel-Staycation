@@ -1,11 +1,12 @@
 <div class="container p-2">
+
     <h2 class="text-center">
-        All Favourite Rooms
+        {{"favorites.back-home"|translate}}
     </h2>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb " >
       <li class="breadcrumb-item"><a routerLink="/guest/home">Home</a></li>
-      <li class="breadcrumb-item active">Favourite</li>
+      <li class="breadcrumb-item active">{{"favorites.fav-room"|translate}}</li>
     </ol>
   </nav>
     <div class="row mb-5" *ngIf="favRoom[0].rooms.length>0">

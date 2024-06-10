@@ -7,12 +7,13 @@ import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { IResetRequest, IResetResponse } from '../../model/reset-password';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule, RouterLink],
+  imports: [CommonModule,ReactiveFormsModule, RouterLink, SharedModule],
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss']
 })
