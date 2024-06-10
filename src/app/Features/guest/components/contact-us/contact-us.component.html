@@ -1,33 +1,15 @@
-<div class="container-fluid  p-5" style="background-color: rgb(235, 238, 241);">
-    <h2 class="text-center ">{{"contact.contact-form"|translate}}</h2>
+<div class="container-fluid  p-5" >
+    <h2 class="text-center ">{{"contact.contact-us"|translate}}</h2>
     <div class="row">
-        <div class="col-md-12 card-head my-4">
-            <div class="row px-5">
-
-                <div class="col-md-3 text-center p-1">
-                    <div class="round-icon mx-auto mb-3"><i class="fa-solid fa-location-dot"></i></div>
-                    <h4>{{"contact.address"|translate}} <span>{{"contact.address-details"|translate}}</span> </h4>
-                </div>
-                <div class="col-md-3 text-center p-1">
-                    <div class="round-icon mx-auto mb-3"><i class="fa-solid fa-phone"></i></div>
-                    <h4>{{"contact.phone"|translate}}<span><a href="http://wa.me/+20 115932137" target="_blank">{{"contact.whatsapp"|translate}}</a></span> </h4>
-                </div>
-                <div class="col-md-3 text-center p-1 ">
-                    <div class="round-icon mx-auto mb-3"><i class="fa-solid fa-envelope"></i></div>
-                    <h4>{{"contact.email"|translate}} <span><a href="mailto:upskilling.eg1@gmail.com"
-                                target="_blank">{{"contact.send-email"|translate}}</a></span> </h4>
-                </div>
-                <div class="col-md-3 text-center p-1 ">
-                    <div class="round-icon mx-auto mb-3"><i class="fab fa-facebook"></i></div>
-                    <h4>{{"contact.website"|translate}} <span><a href="https://www.facebook.com/UpskillingEG" target="_blank">{{"contact.upskilling"|translate}}</a>
-                        </span> </h4>
-                </div>
-            </div>
-        </div>
         <div class="card-body p-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb " >
+                  <li class="breadcrumb-item"><a routerLink="/guest/home">{{"room-details.home"|translate}}</a></li>
+                  <li class="breadcrumb-item active mx-1" [class]="lang=='en'?'breadcrumb-item':'breadcrumb-item-itedited'" aria-current="page">{{"contact.contact-us"|translate}}</li>
+                </ol>
+              </nav>
             <div class="row p-0 bg-light ">
                 <div class="col-lg-6 p-5  ">
-                    <h3 class="m-3">{{"contact.contact-us"|translate}}</h3>
                     <form [formGroup]="contactForm" (ngSubmit)="contact(contactForm)">
                         <div class="row ">
                             <div class="col-md-6 mb-4">
