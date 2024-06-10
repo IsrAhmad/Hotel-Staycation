@@ -10,7 +10,7 @@ import { IFavoriteResponse } from '../favorite/models/IFavorite';
 import { PageEvent } from '@angular/material/paginator';
 import { AuthPopupComponent } from 'src/app/shared/components/auth-popup/auth-popup.component';
 import { MatDialog } from '@angular/material/dialog';
-import { IExplorParms } from '../../Models/IExplorParms';
+import { IExplorParms } from '../../models/IExplorParms';
 
 @Component({
   selector: 'app-explore',
