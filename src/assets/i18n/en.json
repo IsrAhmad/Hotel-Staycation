@@ -97,7 +97,8 @@
     "favorites": {
       "home": "Home",
       "back-home": "Back To Home",
-      "fav-room": "All Favorite Rooms"
+      "fav-room": "All Favorite Rooms",
+      "your-favorites": "Your Favorites"
     },
 
     "contact": {
@@ -185,7 +186,11 @@
       "message-sent-success": "Your message was sent successfully",
       "account-register-success": "Account registered successfully",
       "account-register-error": "Error in registration",
-      "check-mail": "Please check your email for reset code"
+      "check-mail": "Please check your email for reset code",
+      "review-add-error": "An error occured while posting review",
+      "comment-add-error": "An error occured while posting comment",
+      "comment-delete-error": "An error occured while deleting comment",
+      "booking-error": "An error occured while booking"
 
     },
 
