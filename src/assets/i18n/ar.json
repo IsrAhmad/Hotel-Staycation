@@ -261,7 +261,7 @@
       "password-match":"يجب أن تتطابق كلمات المرور",
       "reset":"إعادة ضبط",
       "forgot-password":"هل نسيت كلمة السر",
-      "hhome-unique":"منازل فريدة مثلك."
+      "home-unique":"منازل فريدة مثلك."
     },
     "change-password": {
       "change-your-password":"غير كلمة المرور الخاصة بك",
