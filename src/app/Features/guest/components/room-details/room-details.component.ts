@@ -137,7 +137,8 @@ export class RoomDetailsComponent {
       },
       error: (err: HttpErrorResponse) => {
         //  console.log(err);
-        this._ToastrService.error(err.error.message);
+        // this._ToastrService.error(err.error.message);
+        this.showErrorToaster('review-add-error');
         this.reviewForm.reset();
       },
       complete: () => {
@@ -164,7 +165,9 @@ export class RoomDetailsComponent {
       },
       error: (err: HttpErrorResponse) => {
         //console.log(err);
-        this._ToastrService.error(err.error.message);
+        // this._ToastrService.error(err.error.message);
+
+        this.showErrorToaster('comment-add-error');
         this.reviewForm.reset();
       },
       complete: () => {
@@ -283,9 +286,11 @@ export class RoomDetailsComponent {
         this.deletRes = res;
       }, error: (err: HttpErrorResponse) => {
         // console.log(err);
-        this._ToastrService.error(err.error.message)
+        // this._ToastrService.error(err.error.message)
+        this.showErrorToaster('comment-delete-error');
       }, complete: () => {
         this._ToastrService.success(this.deletRes.message);
+        this.showSuccessToaster('enter-start-end-date-and-capacity');
         this.getAllRoomComments(this.id);
       }
     })
@@ -325,9 +330,11 @@ this.openAuthDialog()
         //  console.log(res);
         this.bookingResp = res;
       }, error: (err: HttpErrorResponse) => {
-        this._ToastrService.error(err.error.message)
+        // this._ToastrService.error(err.error.message)
+        this.showErrorToaster('booking-error');
       }, complete: () => {
-        this._ToastrService.success(this.bookingResp.message);
+        // this._ToastrService.success(this.bookingResp.message);
+        this.showSuccessToaster('enter-start-end-date-and-capacity');
 
         this._Router.navigate(['/guest/payment',this.bookingResp.data.booking._id])
 
