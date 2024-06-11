@@ -96,7 +96,7 @@
               <span class="card-span">{{roomRes.capacity}} {{ "room-details.person" | translate }}</span>
             </p>
             <div class="d-flex align-items-center justify-content-center">
-              <button class="primary" (click)="createBooking(roomRes.price)">{{ "room-details.continue-booking" | translate }}</button>
+              <button class="primary" (click)="createBooking( getDiscountedPrice(roomRes.price, roomRes.discount) )">{{ "room-details.continue-booking" | translate }}</button>
             </div>
           </mat-card-content>
         </mat-card>

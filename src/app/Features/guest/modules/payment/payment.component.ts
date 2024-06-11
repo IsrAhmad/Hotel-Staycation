@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GuestService } from '../../services/guest.service';
 import { BookingService } from '../../services/Booking.service';
 import { IBookingDetailsRes } from '../../models/IBookingResponse';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
 import {
   StripeCardComponent,
   StripeCardNumberComponent,
@@ -83,13 +83,13 @@ export class PaymentComponent implements OnInit {
         this._ToastrService.error(err.error.message)
       }, complete: () => {
 
-
       }
     })
+
   }
 
 
-
+ 
 
 
 
@@ -126,7 +126,9 @@ export class PaymentComponent implements OnInit {
   stripe = injectStripe(this.StripePublicKey);
   token:string='';
 
-  createToken() {
+
+  createTokenThenPay() {
+    console.log('createeeeeeee')
     const name = ('yasmin');
     this.stripe
       .createToken(this.cardElement.element, { name })
@@ -135,12 +137,29 @@ export class PaymentComponent implements OnInit {
           // Use the token
           this.token=result.token.id
           console.log(this.token)
+          this.pay(this.token)
         } else if (result.error) {
           // Error creating the token
+          console.log('errrrrrrrrrrrrrrrr')
+
         }
       });
   }
   
+
+  pay(token:string):void{
+
+    this._BookingService.payBooking(this.id,token).subscribe({
+      next: (res) => {
+          console.log(res);
+      }, error: (err) => {
+        this._ToastrService.error(err.error.message)
+      }, complete: () => {
+
+      }
+    })
+
+  }
 
  
 
