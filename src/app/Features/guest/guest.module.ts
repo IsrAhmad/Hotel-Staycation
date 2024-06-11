@@ -6,6 +6,8 @@ import { GuestComponent } from './guest.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UpDateCommentComponent } from './components/room-details/components/up-date-comment/up-date-comment.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { PaymentComponent } from './modules/payment/payment.component';
 
 
 
@@ -14,12 +16,14 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
   declarations: [
     GuestComponent,
     UpDateCommentComponent,
-    ContactUsComponent
+    ContactUsComponent,
   ],
   imports: [
     CommonModule,
     GuestRoutingModule,
-    SharedModule
+    SharedModule,
+  //  NgxStripeModule
+
   ]
 })
 export class GuestModule { }

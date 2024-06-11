@@ -6,6 +6,7 @@ import { PaymentComponent } from './payment.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatCardModule} from '@angular/material/card';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import {MatCardModule} from '@angular/material/card';
     PaymentRoutingModule ,
     SharedModule,
     MatStepperModule,
-    MatCardModule
+    MatCardModule,
+    NgxStripeModule.forRoot('pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8')
+
   ]
 })
 export class PaymentModule { }
