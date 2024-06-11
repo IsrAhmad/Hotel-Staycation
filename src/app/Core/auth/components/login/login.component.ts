@@ -37,7 +37,7 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/)]) // the password contains at least 1 digit, 1 lowercase letter, 1 uppercase letter, 1 special character, and is at least 6 characters long.
   })
 
-  constructor(private _AuthService: AuthService, private _Router: Router, private toastr: ToastrService) { }
+  constructor(public _AuthService: AuthService, private _Router: Router, private toastr: ToastrService) { }
 
 
   login(data: FormGroup): void {
@@ -77,5 +77,22 @@ export class LoginComponent {
     this.toastr.error(mes);
   }
 
+  signInWithGoogle(): void {
+    this._AuthService.signInWithGoogle();
+  }
+
+  signInWithFacebook(): void {
+    this._AuthService.signInWithFacebook();
+  }
+
+  signOut(): void {
+    this._AuthService.logout();
+  }
+
+  navigateToDashboard(): void {
+    if (this._AuthService.isAuthenticated()) {
+      this._Router.navigate(['guest/home']);
+    }
+  }
 
 }

@@ -10,6 +10,9 @@ import { IForgot } from '../model/IForgot';
 import { IRegister } from '../model/IRegister.model';
 import { Router } from '@angular/router';
 import { IUserResponse } from 'src/app/shared/models/iUser';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
+
 
 interface IChangePassword{
   oldPassword:string,
@@ -27,8 +30,13 @@ export interface IChangePassRes {
 })
 export class AuthService {
   role: string | null = null;
+  // private user: SocialUser | null = null;
+  private user: SocialUser | null = null;
 
-  constructor(private _HttpClient:HttpClient, private _Router:Router) {
+  constructor(private _HttpClient:HttpClient, private _Router:Router, private authService: SocialAuthService) {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+    });
     if (localStorage.getItem('token') !== null) {
       this.getRole();
     }
@@ -75,9 +83,74 @@ export class AuthService {
   getUserProfile(id: string): Observable<IUserResponse> {
     return this._HttpClient.get<IUserResponse>(`admin/users/${id}`);
   }
-  
+
   changePassword(data:IChangePassword): Observable<IChangePassRes> {
     return this._HttpClient.post<IChangePassRes>(`admin/users/change-password`,data);
+  }
+
+  getUser(): SocialUser | null {
+    return this.user;
+  }
+
+  // signInWithGoogle(): void {
+  //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
+  //     this._HttpClient
+  //       .post('portal/users/auth/google', { token: user.idToken })
+  //       .subscribe(
+  //         (response) => {
+  //           // Handle response from backend
+  //           console.log(response);
+  //           // Optionally store token in local storage
+  //         },
+  //         (error) => {
+  //           console.error('Google sign-in error:', error);
+  //         }
+  //       );
+  //   }).catch((error) => {
+  //     console.error('Google sign-in error:', error);
+  //   });
+  // }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
+      this._HttpClient
+        .post('portal/users/auth/google', { token: user.idToken })
+        .subscribe({
+          next: (response) => {
+            // Handle response from backend
+            console.log(response);
+            // Optionally store token in local storage
+          },
+          error: (error) => {
+            console.error('Google sign-in error:', error);
+          }
+        });
+    }).catch((error) => {
+      console.error('Google sign-in error:', error);
+    });
+  }
+
+  signInWithFacebook(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((user) => {
+      this._HttpClient
+        .post('portal/users/auth/facebook', { token: user.authToken })
+        .subscribe(
+          (response) => {
+            // Handle response from backend
+            console.log(response);
+            // Optionally store token in local storage
+          },
+          (error) => {
+            console.error('Facebook sign-in error:', error);
+          }
+        );
+    }).catch((error) => {
+      console.error('Facebook sign-in error:', error);
+    });
+  }
+
+  isAuthenticated(): boolean {
+    return this.user != null;
   }
 
   }

@@ -64,6 +64,15 @@
 
 
                     </form>
+                    <div *ngIf="!_AuthService.isAuthenticated()">
+                      <button (click)="signInWithGoogle()">Sign in with Google</button>
+                      <button (click)="signInWithFacebook()">Sign in with Facebook</button>
+                    </div>
+                    <div *ngIf="_AuthService.isAuthenticated()">
+                      <h2>Welcome {{ _AuthService.getUser()?.name }}</h2>
+                      <button (click)="signOut()">Sign out</button>
+                    </div>
+
 
                 </div>
 
