@@ -120,10 +120,6 @@ export class RoomDetailsComponent {
     })
   }
 
-/*  campaignOne = new FormGroup({
-    start: new FormControl(new Date(this.year, this.month, 13)),
-    end: new FormControl(new Date(this.year, this.month, 16)),
-  });*/
 
   onAddReview(reviewForm: FormGroup) {
     if(this.loginIn==null){
@@ -214,8 +210,8 @@ export class RoomDetailsComponent {
     })
   }
 
-  getDiscountedPrice(price: number, discount: number, capicity: number): number {
-    return (price - discount) * capicity;
+  getDiscountedPrice(price: number, discount: number): number {
+    return (price - discount) ;
   }
 
   getAllRoomComments(id: string) {
@@ -302,8 +298,8 @@ this.openAuthDialog()
     }else{
     const startDate = this.campaignOne.get('start')?.value;
     const endDate = this.campaignOne.get('end')?.value;
-    console.log('Start Date:', startDate);
-    console.log('End Date:', endDate);
+   // console.log('Start Date:', startDate);
+    //console.log('End Date:', endDate);
 
     if (startDate && endDate && price &&this.id ) {
       const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
