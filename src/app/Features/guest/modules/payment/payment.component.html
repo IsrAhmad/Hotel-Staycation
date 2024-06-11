@@ -16,7 +16,7 @@
                         <mat-stepper labelPosition="bottom" #stepper >
                             <mat-step >
                              
-                                <ng-template matStepLabel>Summery</ng-template>
+                                <ng-template matStepLabel>Step 1</ng-template>
                                <h3>
                                     Order Summary
                                  </h3>
@@ -53,54 +53,18 @@
                                 <div>
                                   <button mat-button matStepperNext class="btn primary m-3">Continue To Book </button>
                                 </div> 
-                                <!--
-
-                                <div class="container ">
-
-                                  <div class="text-center">
-                                      <h3>Payment</h3>
-                                      <p class="text-muted">Kindly follow the instructions below</p>
-                                  </div>
-              
-                                  <div class="row  g-4 mt-5">
-                                      <div class="col-lg-6 text-start">
-                                        <mat-card class="p-4 mb-3">
-
-                                        
-                                          <p>RoomNumber: {{bookingResp.data.booking.room.roomNumber}}</p>
-                                          <p>Guest: {{bookingResp.data.booking.user.userName}}</p>
-                                          <p>Start Date: {{bookingResp.data.booking.startDate|date:'dd-MM-yyyy'}}</p>
-                                          <p>End Date: {{bookingResp.data.booking.endDate|date:'dd-MM-yyyy'}}</p>
-                                          <p>Total Price: ${{bookingResp.data.booking.totalPrice}}</p>
-                                        </mat-card>
-
-              
-                                      </div>
-                                      <div class="col-lg-6">
-                                          <div class="">
-                                            <mat-card class="p-4 mb-3">
-
-                                              <ngx-stripe-elements [stripe]="stripe" [elementsOptions]="elementsOptions">
-                                                  <ngx-stripe-card class="text-secondryColor shadow-lg" [options]="cardOptions" />
-                                              </ngx-stripe-elements>
-                                          
-                                              <button mat-button matStepperNext class="btn primary my-5 mx-auto "
-                                                  type="submit" (click)="createToken()">
-                                                  NEXT
-                                              </button>
-                                            </mat-card>
-
-                                          </div>
-                                      </div>
-                                  </div>
-              
-                              </div>  -->
-
-                          
+                              
                             </mat-step>
                             <mat-step [stepControl]="PaymentFormGroup" >
+                              <ng-template matStepLabel >Step 2 </ng-template>
                                
-                                <ng-template matStepLabel>Card Details </ng-template>
+                                
+                              
+                                 
+                                 
+
+                                <ng-container *ngIf="!isBookingDone">
+                                 
                                 <h3>
                                     Credit Card Info
                                  </h3>
@@ -110,89 +74,50 @@
                                     <img src="../../../../../assets/images/paypal.png" alt="" class="me-2">
 
                                  </div>
-                                 <!--- 
-                                 <div class="row mt-3">
-                                    <div class="col-md-6 m-auto">
-                                        <mat-card class="p-4 mb-3">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>CARD NUMBER</mat-label>
-                                    <input matInput formControlName="cardNumber" 
-                                    placeholder="Ex. 1 Main St, New York, NY"
-                                           required>
-                                  </mat-form-field>
-                                  <mat-form-field appearance="outline">
-                                    <mat-label>Name On Card</mat-label>
-                                    <input matInput formControlName="cardNumber" 
-                                    placeholder="Your name"
-                                           required>
-                                  </mat-form-field>
-                                  <mat-form-field appearance="outline">
-                                    <mat-label>EXP. DATE</mat-label>
-                                    <input matInput formControlName="cardNumber" 
-                                    placeholder="MM/YY"
-                                           required>
-                                  </mat-form-field>
-                                  <mat-form-field appearance="outline">
-                                    <mat-label>CVV</mat-label>
-                                    <input matInput formControlName="cardNumber" 
-                                    placeholder="965"
-                                           required>
-                                  </mat-form-field>
-                               </mat-card>
+                               
+                                <div [formGroup]="checkoutForm" >
+
+                                  <div  class="row mt-3">
+                                   <div class="col-md-6 m-auto">
+                                     <mat-card class="p-4 mb-3">
+   
+                                       <mat-form-field appearance="outline" >
+                                         <mat-label>Name</mat-label>
+                                         <input matInput formControlName="name"  
+                                         
+                                         placeholder="Enter your name"
+                                                required>
+                                       </mat-form-field>
+   
+                                       <mat-form-field appearance="outline">
+                                         <mat-label>Email</mat-label>
+                                         <input matInput formControlName="email"  type="email"
+                                         placeholder="Enter your email" 
+                                                required>
+                                       </mat-form-field>
+                                   
+   
+                                       <div class="custom-stripe-element"  >
+   
+                                     <ngx-stripe-elements appearance="outline"
+                                       [stripe]="stripe" 
+                                       [elementsOptions]="elementsOptions"
+                                     >
+                                     <ngx-stripe-card [options]="cardOptions" appearance="outline" ></ngx-stripe-card>
+                                   </ngx-stripe-elements>
+                                 </div>
+                               
+                             
+                                 </mat-card>
+                                 <button mat-button matStepperPrevious  class="btn cancel" >Back</button>
+                                 <button mat-button  class=" btn primary m-3" type="submit" (click)="createTokenThenPay()">Continue</button>
                                </div>
-                               </div>  -->
-                               <div [formGroup]="checkoutForm">
-
-                               <div  class="row mt-3">
-                                <div class="col-md-6 m-auto">
-                                  <mat-card class="p-4 mb-3">
-
-                                    <mat-form-field appearance="outline">
-                                      <mat-label>Name</mat-label>
-                                      <input matInput formControlName="name" 
-                                      placeholder="Enter your name"
-                                             required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline">
-                                      <mat-label>Email</mat-label>
-                                      <input matInput formControlName="email"  type="email"
-                                      placeholder="Enter your email"
-                                             required>
-                                    </mat-form-field>
-                                
-
-                                    <div class="custom-stripe-element">
-
-                                  <ngx-stripe-elements appearance="outline"
-                                    [stripe]="stripe"
-                                    [elementsOptions]="elementsOptions"
-                                  >
-                                  <ngx-stripe-card [options]="cardOptions" appearance="outline"></ngx-stripe-card>
-                                </ngx-stripe-elements>
-                              </div>
-
-                              <button mat-button matStepperNext class="btn primary my-5 mx-auto "
-                              type="submit" (click)="createTokenThenPay()">
-                              NEXT
-                          </button>
-
-
-                              </mat-card>
-                            </div>
-
-                            </div>
+   
                                </div>
-                              
-                                <div>
-                                  <button mat-button matStepperPrevious  class="btn cancel" >Back</button>
-                                  <button mat-button matStepperNext class=" btn primary m-3" type="submit" (click)="createTokenThenPay()">Continue</button>
-                                </div>
-                            </mat-step>
-
-                            
-                            <mat-step>
-                              <ng-template matStepLabel>Done</ng-template>
+                                  </div>
+                              </ng-container>
+                              <ng-container   *ngIf="isBookingDone" >  
+                             
                               <h3>Yay! Completed</h3>
                               <img src="../../../../../assets/images/payment.png">
                               <p>
@@ -200,11 +125,16 @@
                               <br>
                                  once the transaction has been accepted
                               </p>
-                              <div>
-                                <button mat-button routerLink="/guest/home" class="btn primary m-3">Back To Home</button>
-                                <button mat-button (click)="stepper.reset()" class="btn cancel">Reset</button>
-                              </div>
-                            </mat-step>
+                              <button mat-button routerLink="/guest/home" class="btn primary m-3">Back To Home</button>
+
+                                  </ng-container>
+                                 
+                                  <ng-container *ngIf="!isBookingDone"
+                                  >
+                                
+                                </ng-container>
+                                
+                              </mat-step>
                           </mat-stepper>
                     </div>
                
@@ -217,24 +147,4 @@
 
 
   
-<!--- 
-    <section class="m-5">
-      <h2>Card Example</h2>
-      <div [formGroup]="checkoutForm">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <input matInput placeholder="name" formControlName="name" />
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <input matInput placeholder="Email" type="email" formControlName="email" />
-        </mat-form-field>
-        <ngx-stripe-elements
-          [stripe]="stripe"
-          [elementsOptions]="elementsOptions"
-        >
-          <ngx-stripe-card [options]="cardOptions" />
-        </ngx-stripe-elements>
-      </div>
-      <button type="submit" (click)="createToken()">
-        CREATE TOKEN
-      </button>
-    </section>-->
+\

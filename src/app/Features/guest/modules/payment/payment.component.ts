@@ -52,7 +52,7 @@ export class PaymentComponent implements OnInit {
   yourOwnAPI: any;
   stripeTest: any;
   card: any;
-
+  isBookingDone:boolean = false
   constructor(
      private _formBuilder: FormBuilder ,  
      private _ActivatedRoute: ActivatedRoute ,
@@ -152,6 +152,8 @@ export class PaymentComponent implements OnInit {
     this._BookingService.payBooking(this.id,token).subscribe({
       next: (res) => {
           console.log(res);
+        this.isBookingDone = res.success;
+        this._ToastrService.success('Your Booking has Completed sucessfully  click done to finish')
       }, error: (err) => {
         this._ToastrService.error(err.error.message)
       }, complete: () => {
