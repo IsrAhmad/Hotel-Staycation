@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators  ,ReactiveFormsModule, AbstractControl} from '@angular/forms';
 import { NgxFileDropEntry, NgxFileDropModule } from 'ngx-file-drop';
@@ -9,6 +9,7 @@ import { IRegister } from '../../model/IRegister.model';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent  implements OnInit {
   registeredUser! :IRegister;
   public files: NgxFileDropEntry[] = [];
 
@@ -48,13 +49,39 @@ export class RegisterComponent {
   }
   )
 
+
+  socialUser!: SocialUser;
+  isLoggedin?: boolean;
     constructor(private _AuthService:AuthService,
       private _Router:Router,
       private _ToastrService: ToastrService,
-      private translate: TranslateService
+      private translate: TranslateService ,
+      private socialAuthService: SocialAuthService
     ){}
+  ngOnInit(): void {
+     // @ts-ignore
+  google.accounts.id.initialize({
+    client_id: "1045968381605-ndjalei8aabir5ngf3b930v5q06fm2mt.apps.googleusercontent.com",
+    callback: this.handleCredentialResponse.bind(this),
+    auto_select: false,
+    cancel_on_tap_outside: true,
 
+  });
+  // @ts-ignore
+  google.accounts.id.renderButton(
+  // @ts-ignore
+  document.getElementById("google-button"),
+    { theme: "outline", size: "large", width: "100%" }
+  );
+  // @ts-ignore
+  google.accounts.id.prompt((notification: PromptMomentNotification) => {});
+  }
+  async handleCredentialResponse(response: any) {
+    // Here will be your response from Google.
+    console.log(response);
+  }
 
+   
     register(userData:FormGroup):void{
      //as we need to send image
      let newUserData = new FormData();
