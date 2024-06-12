@@ -11,6 +11,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './Core/interceptors/loading.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
+
+
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -18,7 +23,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       closeButton: true,
       timeOut: 4000,
       progressBar: true,
-      
+
     }),    NgxSpinnerModule.forRoot(),
     TranslateModule.forRoot(
       {
@@ -41,7 +47,9 @@ export function HttpLoaderFactory(http: HttpClient) {
             deps: [HttpClient]
         }
     }
-    )
+    ),
+    SocialLoginModule,
+
 
   ],
   providers: [
@@ -51,8 +59,27 @@ export function HttpLoaderFactory(http: HttpClient) {
       useClass:LoadingInterceptor,
       multi:true
     },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('1031847626138-ds9qc8klgjchtrgsdkhaf351kgnlb9rn.apps.googleusercontent.com')
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('734526147774543')
+          }
+        ],
+        onError: (err) => {
+          console.error('Error in social login:', err);
+        }
+      } as SocialAuthServiceConfig,
+    }
 
-    
+
   ],
   bootstrap: [AppComponent]
 })

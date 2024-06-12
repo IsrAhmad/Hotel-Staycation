@@ -6,12 +6,13 @@ import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ILogIn } from '../../model/ILogin';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, SharedModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, SharedModule,GoogleSigninButtonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -37,7 +38,28 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/)]) // the password contains at least 1 digit, 1 lowercase letter, 1 uppercase letter, 1 special character, and is at least 6 characters long.
   })
 
-  constructor(private _AuthService: AuthService, private _Router: Router, private toastr: ToastrService) { }
+  constructor(public _AuthService: AuthService, private _Router: Router, private toastr: ToastrService,
+    private socialAuthService: SocialAuthService
+  ) { 
+    this.socialAuthService.authState.subscribe((user:SocialUser) => {
+      if (user) {
+        console.log('User logged in:', user);
+        console.log('Access token:', user.idToken);
+
+        this._AuthService.loginGoogle(user.idToken).subscribe({
+          next: (response) => {
+
+            console.log(response)
+          },
+          error: (err) => {
+  
+            console.log(err)
+          },
+        })
+      }
+          
+    });
+  }
 
 
   login(data: FormGroup): void {
@@ -76,6 +98,43 @@ export class LoginComponent {
   showError(mes: string) {
     this.toastr.error(mes);
   }
+  accessToken = '';
 
+  getAccessToken(): void {
+    console.log(this.accessToken)
+    this.socialAuthService.getAccessToken(GoogleLoginProvider.PROVIDER_ID).then(accessToken => this.accessToken = accessToken) ;
+    console.log(this.accessToken)
+
+  }
+
+ 
+
+  
+
+  signInWithFB(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
+      console.log('Facebook sign in successful');
+    }).catch(err => {
+      console.error('Error during Facebook sign in:', err);
+    });
+  }
+
+  signInWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
+      console.log('Google sign in successful');
+    }).catch(err => {
+      console.error('Error during Google sign in:', err);
+    });
+  }
+
+  signOut(): void {
+    this._AuthService.logout();
+  }
+
+  navigateToDashboard(): void {
+    if (this._AuthService.isAuthenticated()) {
+      this._Router.navigate(['guest/home']);
+    }
+  }
 
 }
