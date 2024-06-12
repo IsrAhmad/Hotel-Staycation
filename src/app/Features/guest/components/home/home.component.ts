@@ -162,8 +162,8 @@ export class HomeComponent {
     private fb: FormBuilder
   ) {
     this.campaignOne = this.fb.group({
-      start: [new Date(this.year, this.month, 13)],
-      end: [new Date(this.year, this.month, 16)],
+      start: [],
+      end: [],
     });
   }
 

@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserNavComponent } from './components/user-nav/user-nav.component';
 import { AuthPopupComponent } from './components/auth-popup/auth-popup.component';
+import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { AuthPopupComponent } from './components/auth-popup/auth-popup.component
     FooterComponent,
     UserNavComponent,
     AuthPopupComponent,
+    DarkModeComponent,
 
   ],
   imports: [
