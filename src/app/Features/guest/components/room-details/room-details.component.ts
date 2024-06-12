@@ -93,8 +93,8 @@ export class RoomDetailsComponent {
   private _BookingService:BookingService,private _Router:Router,private fb: FormBuilder
 ) {
     this.campaignOne = this.fb.group({
-      start: [new Date(this.year, this.month, 13)],
-      end: [new Date(this.year, this.month, 16)],
+      start: [],
+      end: [],
     });
   }
 
@@ -332,8 +332,8 @@ this.openAuthDialog()
         // this._ToastrService.error(err.error.message)
         this.showErrorToaster('booking-error');
       }, complete: () => {
-        // this._ToastrService.success(this.bookingResp.message);
-        this.showSuccessToaster('enter-start-end-date-and-capacity');
+        this.showSuccessToaster('booking-created-successfully');
+
 
         this._Router.navigate(['/guest/payment',this.bookingResp.data.booking._id])
 

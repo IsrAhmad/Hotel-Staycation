@@ -191,7 +191,10 @@
     "review-add-error": "حدث خطأ أثناء نشر التقييم",
     "comment-add-error": "حدث خطأ أثناء نشر التعليق",
     "comment-delete-error": "حدث خطأ أثناء حذف التعليق",
-    "booking-error": "حدث خطأ أثناء الحجز"
+    "booking-error": "حدث خطأ أثناء الحجز",
+    "booking-created-successfully": "تم الحجز بنجاح"
+
+
 
   },
 

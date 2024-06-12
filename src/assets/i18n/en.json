@@ -190,7 +190,10 @@
       "review-add-error": "An error occured while posting review",
       "comment-add-error": "An error occured while posting comment",
       "comment-delete-error": "An error occured while deleting comment",
-      "booking-error": "An error occured while booking"
+      "booking-error": "An error occured while booking",
+      
+      "booking-created-successfully": "booking created successfully"
+
 
     },
 
