@@ -111,6 +111,7 @@ export class AuthService {
   //   });
   // }
 
+  /*
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
       this._HttpClient
@@ -147,10 +148,16 @@ export class AuthService {
     }).catch((error) => {
       console.error('Facebook sign-in error:', error);
     });
-  }
+  }*/
 
   isAuthenticated(): boolean {
     return this.user != null;
+  }
+
+  loginGoogle(token:string):Observable<any>{
+    return this._HttpClient.post('portal/users/auth/google',{
+      accessToken:token
+    })
   }
 
   }

@@ -15,6 +15,7 @@ import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-s
 import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -65,13 +66,16 @@ export function HttpLoaderFactory(http: HttpClient) {
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('663830818988-lhcdfkvb5449g9ap9lr00n3ur0pitiaj.apps.googleusercontent.com')
+            provider: new GoogleLoginProvider('1031847626138-ds9qc8klgjchtrgsdkhaf351kgnlb9rn.apps.googleusercontent.com')
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('YOUR_FACEBOOK_APP_ID')
+            provider: new FacebookLoginProvider('734526147774543')
           }
-        ]
+        ],
+        onError: (err) => {
+          console.error('Error in social login:', err);
+        }
       } as SocialAuthServiceConfig,
     }
 
