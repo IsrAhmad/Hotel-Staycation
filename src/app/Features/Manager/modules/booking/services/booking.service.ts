@@ -27,6 +27,11 @@ export class BookingService {
   deleteBooking(id:number):Observable<IDelete>{
     return this._HttpClient.delete<IDelete>(`admin/booking/${id}`)
   }
+  
+
+  pay(id:string,token:string):Observable<IDelete>{
+    return this._HttpClient.post<IDelete>(`/portal/booking/${id}pay/`,token)
+  }
 
 
 }

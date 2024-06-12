@@ -18,4 +18,11 @@ getBookingById(id:string): Observable<IBookingDetailsRes> {
   return this._HttpClient.get<IBookingDetailsRes>(`portal/booking/${id}`, );
 }
 
+payBooking(id:string,tokenPay:string): Observable<IBookingDetailsRes> {
+  return this._HttpClient.post<IBookingDetailsRes>(`portal/booking/${id}/pay`, 
+    {
+    token:tokenPay
+  });
+}
+
 }

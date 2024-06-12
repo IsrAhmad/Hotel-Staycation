@@ -57,6 +57,7 @@ export class RoomDetailsComponent {
   id: string = '';
   reviewForm!: FormGroup;
   commentForm!: FormGroup;
+  numberOfNights:number=0
 
   loginIn: any = localStorage.getItem('role');
 
@@ -303,14 +304,16 @@ this.openAuthDialog()
     }else{
     const startDate = this.campaignOne.get('start')?.value;
     const endDate = this.campaignOne.get('end')?.value;
-   // console.log('Start Date:', startDate);
-    //console.log('End Date:', endDate);
+
 
     if (startDate && endDate && price &&this.id ) {
       const formattedStartDate = format(new Date(startDate), 'yyyy-MM-dd');
       const formattedEndDate = format(new Date(endDate), 'yyyy-MM-dd');
 
-      this.booking({room:this.id,startDate:formattedStartDate,endDate:formattedEndDate,totalPrice:price})
+      console.log('Start Date:', formattedStartDate);
+      console.log('End Date:', formattedStartDate);
+      this.calculateDays(formattedStartDate,formattedEndDate)
+      this.booking({room:this.id,startDate:formattedStartDate,endDate:formattedEndDate,totalPrice:price*this.numberOfNights})
 
     }else{
 
@@ -338,6 +341,19 @@ this.openAuthDialog()
     })
    }
 
+   calculateDays(startDateStr: string, endDateStr: string): void {
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+
+    // Calculate the time difference in milliseconds
+    const timeDifference = endDate.getTime() - startDate.getTime();
+
+    // Convert the time difference from milliseconds to days
+    const daysDifference = timeDifference / (1000 * 3600 * 24);
+
+     console.log(daysDifference);
+     this.numberOfNights=daysDifference
+  }
 
 
   showSuccessToaster(toastEnAr:string) {
