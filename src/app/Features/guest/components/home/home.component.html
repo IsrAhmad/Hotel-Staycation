@@ -3,7 +3,7 @@
   <div class="container">
     <section class="row g-4 align-items-center justify-content-center">
       <div class=" col-lg-6 order-1 order-lg-0  d-flex justify-content-center    flex-column ">
-        <h1 class="h1 ">
+        <h1 class="h1 header">
           {{"home.header-1"|translate}}<br />
           {{"home.header-2"|translate}}
         </h1>
@@ -12,10 +12,10 @@
           {{"home.description-2"|translate}}
         </p>
         <div class="">
-          <h3 class="h3">{{"home.start-booking"|translate}}</h3>
+          <h3 class="h3 ">{{"home.start-booking"|translate}}</h3>
           <div class="">
             <div class="">
-              <h5>{{"home.pick-date"|translate}}</h5>
+              <h5 class="header">{{"home.pick-date"|translate}}</h5>
               <mat-form-field class="example-form-field w-75" appearance="outline">
                 <mat-label>{{"home.date"|translate}}</mat-label>
                 <mat-date-range-input
@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <h5 class="">{{"home.capacity"|translate}}</h5>
+          <h5 class="header">{{"home.capacity"|translate}}</h5>
           <div class="input-group mb-3 w-75 ">
             <div class="input-group-prepend">
               <span class="btn-minus p-3 px-4 input-group-text bg-main border rounded-end-0 bg-danger myPointer cursor-pointer"
@@ -172,8 +172,8 @@
                   </div>
                 </div>
                 <div class="" >
-                  <h4 class="mt-2 h3  text-secondary-color">{{room.roomNumber}}</h4>
-                  <h5 class=" p-0 m-0 text-main-p">{{"home.location"|translate}}</h5>
+                  <h4 class="mt-2 h4  text-secondary-color header">{{room.roomNumber}}</h4>
+                  <h5 class=" p-0 m-0 text-main-p fs-6">{{"home.location"|translate}}</h5>
                 </div>
             </ng-template>
           </ng-container>
@@ -207,8 +207,8 @@
                   </div>
                 </div>
                 <div class="">
-                  <h4 class="mt-2 h3  text-secondary-color">{{ad.room.roomNumber}}</h4>
-                  <h5 class=" p-0 m-0 text-main-p">{{"home.location"|translate}}</h5>
+                  <h4 class="mt-2 h4  text-secondary-color header">{{ad.room.roomNumber}}</h4>
+                  <h5 class=" p-0 m-0 text-main-p fs-6">{{"home.location"|translate}}</h5>
                 </div>
             </ng-template>
           </ng-container>
@@ -218,7 +218,7 @@
 
 
 
-    <section class="mt-5">
+    <section class="mt-5 pt-5">
       <div class=" slider">
 
       <owl-carousel-o [options]="testimonialOptions" dir="ltr">
@@ -233,7 +233,7 @@
               </div>
             </div>
             <div class="col-xl-7 " [class]="lang=='en'?'text-start':'text-end'">
-              <h2>{{"home.happy-family"|translate}}</h2>
+              <h2 class="h4">{{"home.happy-family"|translate}}</h2>
               <div class="star-container my-2 mt-4  " [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
@@ -255,7 +255,7 @@
 
               </div>            </div>
             <div class="col-xl-7 " [class]="lang=='en'?'text-start':'text-end'">
-              <h2>{{"home.fantastic-getaway"|translate}}</h2>
+              <h2 class="h4">{{"home.fantastic-getaway"|translate}}</h2>
               <div class="star-container my-2 mt-4" [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
@@ -276,7 +276,7 @@
 
               </div>            </div>
             <div class="col-xl-7 "  [class]="lang=='en'?'text-start':'text-end'">
-              <h2>{{"home.wonderful-journey"|translate}}</h2>
+              <h2 class="h4">{{"home.wonderful-journey"|translate}}</h2>
               <div class="star-container my-2 mt-4" [class]="lang=='en'?'justify-content-start':'justify-content-end'">
                 <i *ngFor="let star of stars" class="fa-solid fa-star"></i>
               </div>
