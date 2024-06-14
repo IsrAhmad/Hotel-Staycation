@@ -107,8 +107,8 @@
     <div class="col-md-12 px-5 py-3 mb-5 ">
       <h5 class="mb-4">{{ "room-details.comments-reviews" | translate }}</h5>
       <mat-accordion class="example-headers-align " multi>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
+        <mat-expansion-panel >
+          <mat-expansion-panel-header  (click)="preventExpansion($event)">
             <mat-panel-title>{{ "room-details.comments" | translate }}</mat-panel-title>
             <mat-panel-description>{{ "room-details.see-all-comments" | translate }}<mat-icon>chat</mat-icon></mat-panel-description>
           </mat-expansion-panel-header>
@@ -167,7 +167,7 @@
               </ng-container>
         </mat-expansion-panel>
         <mat-expansion-panel>
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header  (click)="preventExpansion($event)">
             <mat-panel-title>{{ "room-details.reviews" | translate }}</mat-panel-title>
             <mat-panel-description>{{ "room-details.see-all-reviews" | translate }}<mat-icon>reviews</mat-icon></mat-panel-description>
 

@@ -1,6 +1,6 @@
 
 
-<section class="change-pass p-4">
+<section class="change-pass p-4" [dir]="lang=='en'? 'ltr':'rtl'"  [class]="lang=='ar' ?'lang-ar':''">
 
     <div class="d-flex justify-content-end mt-3 me-1"><i class="fa-regular fa-circle-xmark fa-2xl text-danger" (click)="onNoClick()"></i></div>
 

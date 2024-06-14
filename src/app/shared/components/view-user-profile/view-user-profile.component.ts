@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/auth/services/auth.service';
 import { IUserResponse } from '../../models/iUser';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-view-user-profile',
@@ -33,11 +34,17 @@ export class ViewUserProfileComponent implements OnInit{
        }
     }
   }
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
-  constructor(private _AuthService:AuthService,    private _ActivatedRoute: ActivatedRoute ,private _Router:Router ){}
+
+  constructor(private _AuthService:AuthService,    private _ActivatedRoute: ActivatedRoute ,private _Router:Router , private translate: TranslateService){}
 
 
   ngOnInit(): void {
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.lang = event.lang
+    });
+
     this.userId = this._ActivatedRoute.snapshot.params['id'];
     this.viewUser = this._ActivatedRoute.snapshot.params['viewUser'];
     if(this.viewUser){

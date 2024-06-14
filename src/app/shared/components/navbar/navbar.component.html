@@ -16,8 +16,8 @@
     </div>
     <div class="col-md-5 col-sm-6 d-flex justify-content-center position-relative z-index-100">
       <div class="d-flex flex-row gap-3 ">
-        <img
-          class="avatar"
+        <img  [routerLink]="['/manager/profile',currentUser?._id]"
+          class="avatar  cursor-pointer"
           [src]="currentUser?.profileImage ? currentUser?.profileImage : defaultImg"
         />
 

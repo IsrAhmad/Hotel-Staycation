@@ -221,8 +221,8 @@
         "you-can":"You can",
         "login":"Login here!",
         "upload":"Upload",
-        "username":"Username",
-        "username-required":"Username is required",
+        "username":"User name",
+        "username-required":"User name is required",
         "phone":"Phone number",
         "phone-required":" Phone number is required",
         "phone-error":"Phone number must start with 01 and be 11 digits in total",
@@ -286,13 +286,13 @@
     },
 
     "profile": {
-      "username": "Username: ",
+      "username": "User name: ",
       "email": "E-mail: ",
       "country": "Country: ",
       "phone": "Phone number: ",
       "join-date": "Join date: ",
       "role": "Role: ",
-      "back-home": "Back to Home",
+      "back-home": "Home",
       "view-users": "View all users"
     }
 

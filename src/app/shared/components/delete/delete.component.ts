@@ -8,6 +8,17 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   styleUrls: ['./delete.component.scss']
 })
 export class DeleteComponent {
+  lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
 
-  constructor (public _DialogRef:DialogRef,@Inject(DIALOG_DATA) public data: {comp:string,id:number,name:string}){}
+
+  constructor (    private translate: TranslateService,
+    public _DialogRef:DialogRef,@Inject(DIALOG_DATA) public data: {comp:string,id:number,name:string}){
+
+  translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    // do something
+    //console.log(event)
+    this.lang=event.lang
+  });
+
+}
 }

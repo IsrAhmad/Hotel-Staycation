@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormControlOptions } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Core/auth/services/auth.service';
@@ -16,12 +17,23 @@ export class ChangePassPopupComponent {
     public dialogRef: MatDialogRef<ChangePassPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private toastr:ToastrService,
-    private _AuthService:AuthService
-    ) {}
+    private _AuthService:AuthService,
+    private translate: TranslateService
+    ) {
+      translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        // do something
+        //console.log(event)
+        this.lang=event.lang
+      });
+    }
     
     onNoClick(): void {
     this.dialogRef.close();
     }
+
+    lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
+
+
 
 
 

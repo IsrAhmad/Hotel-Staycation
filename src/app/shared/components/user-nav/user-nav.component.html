@@ -81,7 +81,7 @@
                 <a class="nav-link mx-1" routerLink="/guest/contact-us" routerLinkActive="active">{{"user-navbar.contact"|translate}}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link ">
+                <a class="nav-link " [routerLink]="['/guest/profile',currentUser?.data.user._id]">
                 <img [src]="currentUser?.data.user.profileImage" alt="">
                 </a>
               </li>

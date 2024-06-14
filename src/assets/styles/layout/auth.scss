@@ -101,6 +101,23 @@
                 border-radius: 15px;
             }
             }
+
+            .change-image{
+                position: absolute;
+                top: 50%;
+                right:45%;
+                transform: translate(-50%, -50%);
+    
+                border-radius: 5px;
+                color: transparent;
+                background-color:  transparent !important;
+                
+                button{
+                    background-color:  transparent;
+                    padding: 15px 10px;
+                    border-radius: 15px;
+                }
+                }
     
     }
 
