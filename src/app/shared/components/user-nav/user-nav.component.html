@@ -86,7 +86,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link ">       {{currentUser?.data.user.userName}}</a>
+                <a class="nav-link "  [routerLink]="['/guest/profile',currentUser?.data.user._id]">       {{currentUser?.data.user.userName}}</a>
 
 
 
