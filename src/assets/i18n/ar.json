@@ -126,6 +126,48 @@
     "send": "أرسل"
   },
 
+  "booking": {
+      "search-room": "البحث عن طريق رقم الغرفة",
+      "room-number": "رقم الغرفة",
+      "price": "السعر",
+      "start-date": "تاريخ البدء",
+      "end-date": "تاريخ الانتهاء",
+      "guest": "الضيف",
+      "actions": "الافعال",
+      "view": "اظهار",
+      "delete": "حذف",
+      "username": "اسم المستخدم",
+      "status": "حالة الحجز",
+      "total-price": "السعر الإجمالي",
+      "cancel": "إلغاء"
+    },
+
+    "payment": {
+      "payment": "المدفوعات",
+      "follow-instructions": "يرجى اتباع التعليمات أدناه",
+      "step-1": "الخطوة 1",
+      "step-2": "الخطوة 2",
+      "summary": "ملخص الطلب",
+      "description-1": "يمكنك إدارة وعرض الطلبات من قبل،",
+      "description-2": "وأثناء وبعد التنفيذ.",
+      "room-number": "رقم الغرفة",
+      "start-date": "تاريخ البدء",
+      "end-date": "تاريخ الانتهاء",
+      "total-price": "السعر الإجمالي",
+      "continue-book": "الاستمرار في الحجز",
+      "credit-card-info": "معلومات بطاقة الائتمان",
+      "name": "الاسم",
+      "continue": "اكمل",
+      "email": "البريد الإلكتروني",
+      "back": "العودة",
+      "completed": "تم الحجز بنجاح!",
+      "done-description-1": "سنخبرك عبر البريد الإلكتروني لاحقًا",
+      "done-description-2": "بمجرد قبول المعاملة",
+      "back-home": "العودة إلى الصفحة الرئيسية",
+      "enter-name": "أدخل أسمك",
+      "enter-email": "أدخل بريدك الإلكتروني"
+    },
+
   "footer": {
     "staycation": "ستايكاشن",
     "stay": "ستاي",
