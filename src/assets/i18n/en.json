@@ -125,6 +125,48 @@
       "send": "Send"
     },
 
+    "booking": {
+      "search-room": "Search by room number",
+      "room-number": "Room number",
+      "price": "Price",
+      "start-date": "Start date",
+      "end-date": "End date",
+      "guest": "Guest",
+      "actions": "Actions",
+      "view": "View",
+      "delete": "Delete",
+      "username": "Username",
+      "status": "Status",
+      "total-price": "Total price",
+      "cancel": "Cancel"
+    },
+
+    "payment": {
+      "payment": "Payment",
+      "follow-instructions": "Kindly follow the instructions below",
+      "step-1": "Step 1",
+      "step-2": "Step 2",
+      "summary": "Order Summary",
+      "description-1": "It can help you manage and view orders before,",
+      "description-2": "during, and after fulfilment.",
+      "room-number": "Room number",
+      "start-date": "Start date",
+      "end-date": "End date",
+      "total-price": "Total price",
+      "continue-book": "Continue To Book",
+      "credit-card-info": "Credit card info",
+      "name": "Name",
+      "email": "Email",
+      "back": "Back",
+      "continue": "Continue",
+      "completed": "Yay! Completed",
+      "done-description-1": "We will inform you via email later",
+      "done-description-2": "once the transaction has been accepted",
+      "back-home": "Back To Home",
+      "enter-name": "Enter your name",
+      "enter-email": "Enter your email"
+    },
+
     "footer": {
       "staycation": "Staycation.",
       "stay": "Stay",
@@ -191,7 +233,7 @@
       "comment-add-error": "An error occured while posting comment",
       "comment-delete-error": "An error occured while deleting comment",
       "booking-error": "An error occured while booking",
-      
+
       "booking-created-successfully": "booking created successfully"
 
 
