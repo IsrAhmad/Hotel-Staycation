@@ -1,5 +1,5 @@
 <section class="auth">
-  <div class="row g-4 vh-100">
+  <div class="row g-4 min-vh-100 ">
     <div class="col-md-6 ">
       <div class="d-flex flex-column align-items-start scroll">
         <h1 class="text-primary-color m-0">
@@ -39,7 +39,7 @@
 
                 <div class="profile-image">
                     <ng-container *ngIf="isImageUploade">
-                      <div class="to-change-image">
+                      <div class="change-image">
                         <ngx-file-drop
                           dropZoneClassName=""
                           [multiple]="false"
@@ -392,7 +392,7 @@
       </div>
     </div>
 
-    <div class="col-md-6 fullImage min-vh-100">
+    <div class="col-md-6 fullImage min-vh-100 ">
       <div class="photo py-3">
         <img
           src="../../../../../assets/images/register.png"

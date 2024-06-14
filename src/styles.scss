@@ -41,14 +41,17 @@ $booking-pro-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { 
     margin: 0;
-    font-family: "Poppins", sans-serif !important;
+    font-family: "Poppins", sans-serif ;
 
 }
 a{
     text-decoration: none;
 }
-h1,h2,h3,h4,h5,h6{
-    font-family: "Poppins", sans-serif !important;
+
+
+.lang-ar{
+  font-family: "Cairo", sans-serif !important;
+
 
 }
 
@@ -113,7 +116,6 @@ h1,h2,h3,h4,h5,h6{
 .slider .owl-prev:hover {
   background-color: #3252dfb7 !important;
 }
-
 
 
 
@@ -238,4 +240,11 @@ body.light-mode {
 
   background-color: #dfe6e9;
   color: #424242;
+  mat-paginator{
+    background: #DFE6E9 !important;
+ 
+    
+  
+  }
+  
 }

@@ -294,7 +294,7 @@ export class RoomDetailsComponent {
   }
 
   openAuthDialog() {
-    const dialogRef = this.dialog.open(AuthPopupComponent, { width: '35%' });
+    const dialogRef = this.dialog.open(AuthPopupComponent, { width: '31.25rem' });
   }
 
   createBooking(price:number):void{
@@ -366,6 +366,22 @@ this.openAuthDialog()
     this.translate.get('toaster.'+toastEnAr).subscribe((res: string) => {
       this._ToastrService.error(res);
     });
+  }
+
+
+  showAuthDiaLogoutUser():void{
+    if(this.loginIn==null){
+    this.openAuthDialog()
+
+    }
+  }
+
+
+  preventExpansion(event: Event) {
+    if (this.loginIn == null) {
+      event.stopPropagation();
+      this.openAuthDialog();
+    }
   }
 
 }
