@@ -12,7 +12,9 @@ import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonModule, S
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, SharedModule,GoogleSigninButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, SharedModule,
+    //GoogleSigninButtonModule
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -39,26 +41,26 @@ export class LoginComponent {
   })
 
   constructor(public _AuthService: AuthService, private _Router: Router, private toastr: ToastrService,
-    private socialAuthService: SocialAuthService
+    //private socialAuthService: SocialAuthService
   ) { 
-    this.socialAuthService.authState.subscribe((user:SocialUser) => {
-      if (user) {
-        console.log('User logged in:', user);
-        console.log('Access token:', user.idToken);
+    // this.socialAuthService.authState.subscribe((user:SocialUser) => {
+    //   if (user) {
+    //     console.log('User logged in:', user);
+    //     console.log('Access token:', user.idToken);
 
-        this._AuthService.loginGoogle(user.idToken).subscribe({
-          next: (response) => {
+    //     this._AuthService.loginGoogle(user.idToken).subscribe({
+    //       next: (response) => {
 
-            console.log(response)
-          },
-          error: (err) => {
+    //         console.log(response)
+    //       },
+    //       error: (err) => {
   
-            console.log(err)
-          },
-        })
-      }
+    //         console.log(err)
+    //       },
+    //     })
+    //   }
           
-    });
+    // });
   }
 
 
@@ -102,7 +104,7 @@ export class LoginComponent {
 
   getAccessToken(): void {
     console.log(this.accessToken)
-    this.socialAuthService.getAccessToken(GoogleLoginProvider.PROVIDER_ID).then(accessToken => this.accessToken = accessToken) ;
+    //this.socialAuthService.getAccessToken(GoogleLoginProvider.PROVIDER_ID).then(accessToken => this.accessToken = accessToken) ;
     console.log(this.accessToken)
 
   }
@@ -111,21 +113,21 @@ export class LoginComponent {
 
   
 
-  signInWithFB(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
-      console.log('Facebook sign in successful');
-    }).catch(err => {
-      console.error('Error during Facebook sign in:', err);
-    });
-  }
+  // signInWithFB(): void {
+  //   this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
+  //     console.log('Facebook sign in successful');
+  //   }).catch(err => {
+  //     console.error('Error during Facebook sign in:', err);
+  //   });
+  // }
 
-  signInWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
-      console.log('Google sign in successful');
-    }).catch(err => {
-      console.error('Error during Google sign in:', err);
-    });
-  }
+  // signInWithGoogle(): void {
+  //   this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
+  //     console.log('Google sign in successful');
+  //   }).catch(err => {
+  //     console.error('Error during Google sign in:', err);
+  //   });
+  // }
 
   signOut(): void {
     this._AuthService.logout();

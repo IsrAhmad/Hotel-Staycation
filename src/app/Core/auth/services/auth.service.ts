@@ -33,10 +33,12 @@ export class AuthService {
   // private user: SocialUser | null = null;
   private user: SocialUser | null = null;
 
-  constructor(private _HttpClient:HttpClient, private _Router:Router, private authService: SocialAuthService) {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-    });
+  constructor(private _HttpClient:HttpClient, private _Router:Router, 
+    //private authService: SocialAuthService
+    ) {
+    // this.authService.authState.subscribe((user) => {
+    //   this.user = user;
+    // });
     if (localStorage.getItem('token') !== null) {
       this.getRole();
     }
