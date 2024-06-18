@@ -6,7 +6,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import {MatTableModule} from '@angular/material/table';
-import { SharedTableComponent } from './components/shared-table/shared-table.component';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
@@ -36,7 +35,7 @@ import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
 @NgModule({
   declarations: [
     SharedComponent,
-    SharedTableComponent,
+   
     SharedHeaderComponent,
 
     SidebarComponent,
@@ -83,7 +82,7 @@ import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
     MatButtonModule,
     MatTableModule,
     SharedHeaderComponent,
-    SharedTableComponent,
+
      RouterModule ,
      SidebarComponent,
      MatDialogModule,
