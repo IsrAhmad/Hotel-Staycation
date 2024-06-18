@@ -30,16 +30,7 @@ export class UsersComponent implements OnInit {
 
   users: IUser[] = []
   sortedUsers:IUser[]=[];
-  allUsersData: IGetAllUsersData = {
-    users: this.users,
-    totalCount: 0
-  }
 
-  allUsers: IGetAllUsersResponse = {
-    success: false,
-    message: '',
-    data: this.allUsersData
-  }
 
   constructor(private _Router: Router, private _UsersService: UsersService) { }
   ngOnInit(): void {
@@ -53,7 +44,7 @@ export class UsersComponent implements OnInit {
         this.users= res.data.users;
         
         this.sortedUsers = this.users.slice();
-        console.log(this.allUsersData);
+       
        
         this.totalCount =res.data.totalCount;   
        // this.users=res.data.users
