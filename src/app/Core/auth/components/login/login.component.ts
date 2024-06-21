@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ILogIn } from '../../model/ILogin';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+// import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 
 @Component({
@@ -42,7 +42,7 @@ export class LoginComponent {
 
   constructor(public _AuthService: AuthService, private _Router: Router, private toastr: ToastrService,
     //private socialAuthService: SocialAuthService
-  ) { 
+  ) {
     // this.socialAuthService.authState.subscribe((user:SocialUser) => {
     //   if (user) {
     //     console.log('User logged in:', user);
@@ -54,12 +54,12 @@ export class LoginComponent {
     //         console.log(response)
     //       },
     //       error: (err) => {
-  
+
     //         console.log(err)
     //       },
     //     })
     //   }
-          
+
     // });
   }
 
@@ -109,9 +109,9 @@ export class LoginComponent {
 
   }
 
- 
 
-  
+
+
 
   // signInWithFB(): void {
   //   this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(() => {
@@ -133,10 +133,10 @@ export class LoginComponent {
     this._AuthService.logout();
   }
 
-  navigateToDashboard(): void {
-    if (this._AuthService.isAuthenticated()) {
-      this._Router.navigate(['guest/home']);
-    }
-  }
+  // navigateToDashboard(): void {
+  //   if (this._AuthService.isAuthenticated()) {
+  //     this._Router.navigate(['guest/home']);
+  //   }
+  // }
 
 }
