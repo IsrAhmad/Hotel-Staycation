@@ -1,13 +1,13 @@
 {
   "name": "booking-pro",
   "version": "0.0.0",
-"scripts": {
-  "ng": "ng",
-  "start": "ng serve",
-  "build": "npm install --legacy-peer-deps && ng build",
-  "watch": "ng build --watch --configuration development",
-  "test": "ng test"
-},
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "npm install --legacy-peer-deps && ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.0.0",
@@ -25,7 +25,6 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "@rxweb/reactive-form-validators": "^13.0.1",
     "@stripe/stripe-js": "^3.5.0",
-    "angular-dark-mode": "^3.1.0",
     "angular-star-rating": "^7.0.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
