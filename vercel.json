@@ -1,17 +1,18 @@
 {
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    },
-    "commands": [
-      {
-        "command": "npm install --legacy-peer-deps",
-        "name": "Install Dependencies"
-      },
-      {
-        "command": "npm run build",
-        "name": "Build Application"
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
       }
-    ]
-  }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
