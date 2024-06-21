@@ -9,6 +9,7 @@ import { DeleteComponent } from 'src/app/shared/components/delete/delete.compone
 import { AddEditeViewFacilitiesComponent } from 'src/app/Features/Manager/modules/facilities/components/add-edite-view-facilities/add-edite-view-facilities.component';
 import { IParams } from '../rooms/models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 
 interface EditEvent {
   id: number;
@@ -34,18 +35,13 @@ export class FacilitiesComponent implements OnInit {
     updatedAt: ''
   }
   // data:any;
+     //for header
+  btnText :string = 'Add new facility' ;
+  headerText:string ='Facilities Table Details' ;
+  headerPargraph:string ='You can check all details';
+  displayedColumns: string[] = ['Name','Created by'  
+    ,'Created at','Updated at', 'Actions'];
 
-  // data: IData = {
-  //   facilities: this.facilities[],
-  //   totalCount: 10
-  // }
-  tableHeaders: string[] = [
-    'Name',
-    'Created by',
-    'Created at',
-    'Updated at',
-    'Actions',
-  ];
   totalCount!: number;
   pageSize = 10;
   pageIndex = 0;
@@ -55,9 +51,9 @@ export class FacilitiesComponent implements OnInit {
 
   }
 
-  facilitiesData: any;
-  data: any;
-  facilitiesdta:any;
+  facilitiesData: IFacility[]=[];
+  sortedFacilities:IFacility[] =[];
+
 
 
   constructor(private _FacilitiesService: FacilitiesService,
@@ -82,11 +78,7 @@ export class FacilitiesComponent implements OnInit {
     }
   }
 
-  //   constructor(private _FacilitiesService: FacilitiesService,
-  //      private toastr: ToastrService ,
-  //      private _Router:Router,
-
-  // private dialog: MatDialog) { }
+ 
 
   ngOnInit(): void {
     this.getAllFaclities();
@@ -97,7 +89,9 @@ export class FacilitiesComponent implements OnInit {
       next: (res: IFacilitiesResponse) => {
       //  console.log(res)
         this.facilitiesData = res.data.facilities;
-        this.facilitiesdta=res.data;
+        //this.facilitiesdta=res.data;
+        console.log(this.facilitiesData);
+        this.sortedFacilities= this.facilitiesData.slice();
         //console.log(this.facilitiesData);
         this.totalCount = res.data.totalCount;
         // console.log(this.totalCount)
@@ -109,6 +103,30 @@ export class FacilitiesComponent implements OnInit {
       }
     })
   }
+  //sort data 
+  sortData(sort: Sort) {
+    const data = this.facilitiesData.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedFacilities = data;
+      return;
+    }
+    this.sortedFacilities = data.sort((a, b) => {
+     const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'createdAt':
+          return this.compare(a.createdAt, b.createdAt, isAsc);
+        case 'updatedAt':
+          return this.compare(a.updatedAt, b.updatedAt, isAsc);
+     
+        default:
+          return 0;
+      }
+    });
+  }
+   compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
   //for paginaton
   changePage(e: PageEvent) {
     this.params.page = e.pageIndex + 1;
@@ -116,11 +134,11 @@ export class FacilitiesComponent implements OnInit {
     this.getAllFaclities();
   }
 
-  editOrView(event: EditEvent, editOrNotType: boolean) {
-    console.log(event)
+  editOrView(id:number ,name:string, editOrNotType: boolean) {
+    
 
     const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
-      data: { id: event.id, edit: editOrNotType, name: event.name },
+      data: { id:id, edit: editOrNotType, name: name },
       width: '25%'
 
     });
@@ -132,9 +150,9 @@ export class FacilitiesComponent implements OnInit {
         //edit here
         //api edit
         if (editOrNotType) {
-          this.editFaility(event.id, result)
+          this.editFaility(id, result)
         } else {
-          this.openDeleteDialog('700ms', '350ms', event.id, event.name, 'Facility')
+          this.openDeleteDialog('700ms', '350ms',id, name, 'Facility')
 
         }
       }
@@ -204,49 +222,6 @@ export class FacilitiesComponent implements OnInit {
     })
   }
 
-  /*
-  openAddOrEditOrViewFacDialog(facilityId?:string,editOrNotType?:boolean): void {
-    if(facilityId){
-    //edit or view
-    console.log('editttOrView')
-
-    const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
-    data: {id:facilityId, edit:editOrNotType,name:''},
-    // width: '25%' // width here
-
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    console.log( result);
-    if(result){
-    //edit here
-    //api edit
-    console.log('edit api')
-    }
-    });
-    }else{
-    //add
-    console.log('add')
-    const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
-    data:{name:''},
-    // width: '25%' // width here
-
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    console.log( result);
-    if(result){
-    //add api
-    console.log('add api')
-
-    }
-    });}
-
-    }*/
-
-
   editFaility(id: number, name: string): void {
 
     this._FacilitiesService.editFacility(id, name).subscribe({
@@ -288,8 +263,8 @@ export class FacilitiesComponent implements OnInit {
 
   filtetByName(searchValue: HTMLInputElement) {
     if (searchValue) {
-      this.facilitiesData = this.facilitiesData.filter((p: IFacility) => p.name.includes(searchValue.value));
-      this.totalCount = this.facilitiesdta.totalCount
+      this.sortedFacilities = this.sortedFacilities.filter(p => p.name.includes(searchValue.value));
+      this.totalCount =this.sortedFacilities.length
     }
   }
 

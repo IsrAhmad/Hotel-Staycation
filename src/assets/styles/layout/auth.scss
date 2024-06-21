@@ -61,9 +61,9 @@
     
     }
    
-    .photo{
-        height: 100vh;
-    }
+    // .photo{
+    //     height: 100vh;
+    // }
     .scroll{
         overflow-y: hidden;
        
@@ -141,6 +141,6 @@
     @media screen and (max-width:768px) {
 
         .fullImage{
-            display: none;
+            display: none !important;
         }
     }

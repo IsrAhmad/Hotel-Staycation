@@ -1,46 +1,10 @@
-@import '../../../../../assets/styles/abstracts/text-color.scss';
-@import '../../../../../assets/styles/components/button.scss';
-@import '../../../../../assets/styles/components/inputs.scss';
+@import '../../../../../assets/styles/components/table.scss';
 
-.text-primary-color {
-  color: #203FC7 !important;
+.fa{
+    cursor: pointer;
 }
 
-table {
-  border-radius: 20px;
-  background-color: #fff;
-
-
-  th,
-  td {
-    text-align: center;
-    vertical-align: middle !important;
-    color: #3A3A3D;
-  }
-  thead ,tr,th,td{
-    border-style: none;
-  }
- 
-}
-
-.heder-left-redius{
-  border-top-left-radius:20px;border-bottom-left-radius: 20px;
-}
-
-.heder-right-redius{
-  border-top-right-radius:20px;border-bottom-right-radius: 20px;
-}
-
-
-.table-secondary {
-  background-color: #E2E5EB;
-}
-
-::ng-deep .matMenu {
-  background-color: #fff !important;
-  border-radius: 1.2rem !important;
-}
-
-::ng-deep .btn-hover:hover {
-  background-color: rgb(240, 238, 238) !important;
+::ng-deep .mat-sort-header-arrow {
+   
+    opacity: unset !important;
 }

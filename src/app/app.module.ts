@@ -11,8 +11,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './Core/interceptors/loading.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
+// import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+// import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 
 
@@ -48,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }
     }
     ),
-    SocialLoginModule,
+    //SocialLoginModule,
 
 
   ],
@@ -59,25 +59,25 @@ export function HttpLoaderFactory(http: HttpClient) {
       useClass:LoadingInterceptor,
       multi:true
     },
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('1031847626138-ds9qc8klgjchtrgsdkhaf351kgnlb9rn.apps.googleusercontent.com')
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('734526147774543')
-          }
-        ],
-        onError: (err) => {
-          console.error('Error in social login:', err);
-        }
-      } as SocialAuthServiceConfig,
-    }
+    // {
+    //   provide: 'SocialAuthServiceConfig',
+    //   useValue: {
+    //     autoLogin: false,
+    //     providers: [
+    //       {
+    //         id: GoogleLoginProvider.PROVIDER_ID,
+    //         provider: new GoogleLoginProvider('1031847626138-ds9qc8klgjchtrgsdkhaf351kgnlb9rn.apps.googleusercontent.com')
+    //       },
+    //       {
+    //         id: FacebookLoginProvider.PROVIDER_ID,
+    //         provider: new FacebookLoginProvider('734526147774543')
+    //       }
+    //     ],
+    //     onError: (err) => {
+    //       console.error('Error in social login:', err);
+    //     }
+    //   } as SocialAuthServiceConfig,
+    // }
 
 
   ],
