@@ -24,6 +24,7 @@ export class RoomsComponent  implements OnInit{
   addRoomLink:string =''
   facilityChanaged:string ='';
   //
+  staticImg:string='../../../../../assets/images/staticimg.jpg'
   listOfFacilities :any;
 
   displayedColumns: string[] = ['Room number','Images'  
