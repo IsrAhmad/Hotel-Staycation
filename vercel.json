@@ -2,6 +2,16 @@
   "build": {
     "env": {
       "NODE_ENV": "production"
-    }
+    },
+    "commands": [
+      {
+        "command": "npm install --legacy-peer-deps",
+        "name": "Install Dependencies"
+      },
+      {
+        "command": "npm run build",
+        "name": "Build Application"
+      }
+    ]
   }
 }
