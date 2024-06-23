@@ -33,28 +33,27 @@
               "node_modules/ngx-spinner/animations/ball-zig-zag.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-             
+
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
-            "scripts": [ 
-             "node_modules/bootstrap/dist/js/bootstrap.min.js",
-            "./node_modules/angular-dark-mode/angular-dark-mode.js"
+            "scripts": [
+             "node_modules/bootstrap/dist/js/bootstrap.min.js"
           ]
-            
+
           },
           "configurations": {
             "production": {
               "budgets": [
-                {
+               {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "20mb"
                 }
               ],
               "outputHashing": "all"

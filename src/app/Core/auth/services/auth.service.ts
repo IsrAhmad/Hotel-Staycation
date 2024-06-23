@@ -10,8 +10,8 @@ import { IForgot } from '../model/IForgot';
 import { IRegister } from '../model/IRegister.model';
 import { Router } from '@angular/router';
 import { IUserResponse } from 'src/app/shared/models/iUser';
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
+// import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+// import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 
 interface IChangePassword{
@@ -31,9 +31,9 @@ export interface IChangePassRes {
 export class AuthService {
   role: string | null = null;
   // private user: SocialUser | null = null;
-  private user: SocialUser | null = null;
+  // private user: SocialUser | null = null;
 
-  constructor(private _HttpClient:HttpClient, private _Router:Router, 
+  constructor(private _HttpClient:HttpClient, private _Router:Router,
     //private authService: SocialAuthService
     ) {
     // this.authService.authState.subscribe((user) => {
@@ -90,9 +90,9 @@ export class AuthService {
     return this._HttpClient.post<IChangePassRes>(`admin/users/change-password`,data);
   }
 
-  getUser(): SocialUser | null {
-    return this.user;
-  }
+  // getUser(): SocialUser | null {
+  //   return this.user;
+  // }
 
   // signInWithGoogle(): void {
   //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
@@ -152,9 +152,9 @@ export class AuthService {
     });
   }*/
 
-  isAuthenticated(): boolean {
-    return this.user != null;
-  }
+  // isAuthenticated(): boolean {
+  //   return this.user != null;
+  // }
 
   loginGoogle(token:string):Observable<any>{
     return this._HttpClient.post('portal/users/auth/google',{
