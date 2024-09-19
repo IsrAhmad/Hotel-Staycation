@@ -70,8 +70,7 @@
       <div class="row justify-content-center g-4 ">
         <div class="d-none col-lg-4 d-lg-block ">
           <div *ngFor="let item of userAds.data.ads.slice(0,1)" class="big-card w-100">
-            <img [src]="item.room.images[0]" alt="" class="w-100 imgHeight1 rounded-4">
-
+              <img [src]="item.room.images[0]" alt="" class="w-100 imgHeight1 rounded-4">
             <div class="imag-icon">
               <a *ngIf="!(loginToFav === 'user' )" (click)="openAuthDialog()"
                 class=" text-decoration-none text-white"><i class="fa-solid fa-heart fav"></i></a>

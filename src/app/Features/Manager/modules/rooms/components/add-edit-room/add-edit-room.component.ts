@@ -17,7 +17,7 @@ import { Observable, map, forkJoin } from 'rxjs';
   templateUrl: './add-edit-room.component.html',
   styleUrls: ['./add-edit-room.component.scss']
 })
-export class AddEditRoomComponent implements OnInit{
+export class AddEditRoomComponent implements OnInit {
 
   headerName: string = 'Add new room';
 
@@ -27,7 +27,7 @@ export class AddEditRoomComponent implements OnInit{
     private _ToastrService: ToastrService,
     private _Router: Router,
     private _ActivatedRoute: ActivatedRoute,
-  ) {}
+  ) { }
 
   roomRes: IRoomRes = {
     success: false,
@@ -94,9 +94,9 @@ export class AddEditRoomComponent implements OnInit{
     nav: false
   };
 
-  files: any ;
+  files: any;
   existingImages: any;
-  newFiles: File[]=[];
+  newFiles: File[] = [];
 
   ngOnInit(): void {
     this.roomID = this._ActivatedRoute.snapshot.params['id'];
@@ -119,14 +119,13 @@ export class AddEditRoomComponent implements OnInit{
     this._RoomsService.getRoomById(id).subscribe({
       next: (res) => {
         this.roomRes = res;
-       
+
         this.convertUrlsToFiles(this.roomRes.data.room.images);
 
-     //   this.newFiles=this.fetchImage(this.roomRes.data.room.images[0])
+        //   this.newFiles=this.fetchImage(this.roomRes.data.room.images[0])
 
 
       },
-      error: (err) => { },
       complete: () => {
         this.addEditRoomForm.patchValue({
           roomNumber: this.roomRes.data.room.roomNumber,
@@ -145,18 +144,6 @@ export class AddEditRoomComponent implements OnInit{
     return blob;
   };
 
- /* async convertUrlsToFiles(urls: string[]) {
-    const filePromises = urls.map(url =>
-      fetch(url)
-        .then(res => res.blob())
-        .then(blob => new File([blob], url.substring(url.lastIndexOf('/') + 1)))
-    );
-    this.existingImages = await Promise.all(filePromises);
-   //    this.newFiles = await Promise.all(filePromises);
-
-
-   // debugger
-  }*/
   async convertUrlsToFiles(urls: string[]) {
     const filePromises = urls.map(async (url) => {
       const response = await fetch(url);
@@ -170,19 +157,17 @@ export class AddEditRoomComponent implements OnInit{
     this.existingImages = await Promise.all(filePromises);
   }
 
- getFileNameFromUrl(url: string): string {
+  getFileNameFromUrl(url: string): string {
     return url.split('/').pop() || '';
   }
 
   onSelect(event: any) {
-    console.log(event);
     this.newFiles.push(...event.addedFiles);
   }
 
 
   onRemove(event: any, isExisting: boolean) {
-    console.log(event);
-   if (isExisting) {
+    if (isExisting) {
       this.existingImages.splice(this.existingImages.indexOf(event), 1);
     } else {
       this.newFiles.splice(this.newFiles.indexOf(event), 1);
@@ -204,35 +189,19 @@ export class AddEditRoomComponent implements OnInit{
           myData.append(key, this.addEditRoomForm.get(key)?.value);
         }
       });
-  //  debugger
-
-    console.log(this.existingImages)
-    console.log("newFiles")
-
-    console.log(this.newFiles)
-
-    if (this.roomID) {
-     this.existingImages.forEach((file :any )=> {
-      myData.append('imgs', file, file.name);
-    });
 
 
+      if (this.roomID) {
+        this.existingImages.forEach((file: any) => {
+          myData.append('imgs', file, file.name);
+        });
+      }
 
-  }
-
-
-   
-      this.newFiles.forEach((file:any) => {
+      this.newFiles.forEach((file: any) => {
         myData.append('imgs', file, file.name);
       });
 
-      
-    
 
-    console.log(myData.getAll('imgs'))
-
-      // Send existing images URLs as a JSON array string
-     // myData.append('existingImages', JSON.stringify(this.roomRes.data.room.images));
 
       if (this.roomID) {
         this.editRoomApi(this.roomID, myData);
@@ -248,7 +217,6 @@ export class AddEditRoomComponent implements OnInit{
         this.roomRes = response;
       },
       error: (err) => {
-        console.log(err);
         this._ToastrService.error(err.error.message);
       },
       complete: () => {
@@ -264,7 +232,6 @@ export class AddEditRoomComponent implements OnInit{
         this.roomRes = response;
       },
       error: (err) => {
-        console.log(err);
         this._ToastrService.error(err.error.message);
       },
       complete: () => {
@@ -278,15 +245,9 @@ export class AddEditRoomComponent implements OnInit{
     this._FacilitiesService.getAllFacilities({ page: 1, size: 100 }).subscribe({
       next: (res) => {
         this.faciliyRes = res;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => { }
-    });
+      },  });
   }
 
-  //&&this.files.length>0
 
 
 }

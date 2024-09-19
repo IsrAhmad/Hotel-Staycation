@@ -95,13 +95,8 @@ export class BookingComponent {
       next: (res: any) => {
         this.bookingData = res.data.booking;
         this.sortedBookings = this.bookingData.slice();
-        console.log(this.sortedBookings);
         this.totalCount = res.data.totalCount;
-
-        console.log(res.data);
-      },
-      error: (err) => {},
-      complete: () => {},
+      }
     });
   }
   changePage(e: PageEvent) {
@@ -124,50 +119,38 @@ export class BookingComponent {
   }
 
 
-  deleteThisItem(id:number,name:string):void{
-    this.openDeleteDialog(id,name,'Booking')
-
-    
-    
-
-
+  deleteThisItem(id: number, name: string): void {
+    this.openDeleteDialog(id, name, 'Booking')
   }
 
-
-
-    // DELETE_DIALOG
-    openDeleteDialog(id:number,itname:string,componentName:string): void {
-      const dialo =this.dialog.open(DeleteComponent, {
-        width: '31.25rem',
-        data:{
-          comp:componentName,
-          id:id,
-          name:itname
-        }
-      });
-      dialo.afterClosed().subscribe(res=>{
-        if(res!=null){
-          this.deleteBooking(res)
-        }
-      })
-    }
-    // DELETE_FUNCTION
-    deleteBooking(id:number){
-      this._BookingService.deleteBooking(id).subscribe({
-        next:res=>{
-          console.log(res);
-        },
-        error:err=>{
-          console.log(err);
-          this.toastr.error(err.error.message)
-        },
-        complete:()=>{
-          this.toastr.success("Deleted succefully")
-
-          this.getAllBookings()
-        }
-      })
-    }
+  // DELETE_DIALOG
+  openDeleteDialog(id: number, itname: string, componentName: string): void {
+    const dialo = this.dialog.open(DeleteComponent, {
+      width: '31.25rem',
+      data: {
+        comp: componentName,
+        id: id,
+        name: itname
+      }
+    });
+    dialo.afterClosed().subscribe(res => {
+      if (res != null) {
+        this.deleteBooking(res)
+      }
+    })
+  }
+  // DELETE_FUNCTION
+  deleteBooking(id: number) {
+    this._BookingService.deleteBooking(id).subscribe({
+      error: err => {
+        this.toastr.error(err.error.message)
+      },
+      complete: () => {
+        this.toastr.success("Deleted succefully");
+        this.getAllBookings()
+      }
+    })
+  }
 
 
 

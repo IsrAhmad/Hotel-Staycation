@@ -21,53 +21,42 @@ export interface IAds {
   templateUrl: './ads.component.html',
   styleUrls: ['./ads.component.scss']
 })
-export class AdsComponent implements OnInit{
-
-
+export class AdsComponent implements OnInit {
   //for header
-  btnText :string = 'Add new ads' ;
-  headerText:string ='Ads Table Details' ;
-  headerPargraph:string ='You can check all details';
-  
-  //
-  listOfFacilities :any;
-
-  displayedColumns: string[] = ['Room number', 'Price','Discount', 'Capacity', 'Is active' ,'Created by' , 'Actions'];
-
-  AdsDataRes:IAdsResponse={
-    success:false,
-    message:'',
-    data:{
-      totalCount:0,
-      ads:[]
+  btnText: string = 'Add new ads';
+  headerText: string = 'Ads Table Details';
+  headerPargraph: string = 'You can check all details';
+  listOfFacilities: any;
+  displayedColumns: string[] = ['Room number', 'Price', 'Discount', 'Capacity', 'Is active', 'Created by', 'Actions'];
+  AdsDataRes: IAdsResponse = {
+    success: false,
+    message: '',
+    data: {
+      totalCount: 0,
+      ads: []
     }
   }
-  
- search!:string;
+
+  search!: string;
   pageSize = 10;
   pageIndex = 0;
-  totalCount!:number;
- 
-   params:IParams= {
-    page :this.pageIndex,
-    size:this.pageSize
+  totalCount!: number;
+  params: IParams = {
+    page: this.pageIndex,
+    size: this.pageSize
+}
+  sortedAds: Ad[] = [];
+  roomData: IRoom[] = []
 
-  }
-
-  sortedAds:Ad[] =[];
-
-  constructor(private _AdsService:AdsService ,private toastr: ToastrService,public dialog: MatDialog, private _RoomsService:RoomsService
-  ){}
+  constructor(private _AdsService: AdsService, private toastr: ToastrService, public dialog: MatDialog, private _RoomsService: RoomsService
+  ) { }
 
   ngOnInit(): void {
     this.getAllAds();
     this.getAllRooms();
-
-    
-   
   }
 
-  
+
   sortData(sort: Sort) {
     const data = this.AdsDataRes.data.ads.slice();
     if (!sort.active || sort.direction === '') {
@@ -79,47 +68,39 @@ export class AdsComponent implements OnInit{
       switch (sort.active) {
         case 'discount':
           return this.compare(a.room.discount, b.room.discount, isAsc);
-          case 'price':
-            return this.compare(a.room.price, b.room.price, isAsc);
-          case 'capacity':
-            return this.compare(a.room.capacity, b.room.capacity, isAsc);
-  
+        case 'price':
+          return this.compare(a.room.price, b.room.price, isAsc);
+        case 'capacity':
+          return this.compare(a.room.capacity, b.room.capacity, isAsc);
+
         default:
           return 0;
       }
     });
   }
-   compare(a: number | string, b: number | string, isAsc: boolean) {
+  compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
 
- 
-  getAllAds(){
-  
+
+  getAllAds() {
+
     this._AdsService.getAllAds(this.params).subscribe({
-     next:(res )=>{
-   
-      this.AdsDataRes= res;
-
-
-     }  ,
-     error:(err)=>{
-
-      this.toastr.error(err.error.message)
-       
-     },
-     complete:()=>{
-
-      this.sortedAds= this.AdsDataRes.data.ads.slice();
-      console.log(this.sortedAds);
-      this.totalCount =this.AdsDataRes.data.totalCount;
-          console.log(this.totalCount)
-     }    
+      next: (res) => {
+        this.AdsDataRes = res;
+      },
+      error: (err) => {
+        this.toastr.error(err.error.message)
+      },
+      complete: () => {
+        this.sortedAds = this.AdsDataRes.data.ads.slice();
+        this.totalCount = this.AdsDataRes.data.totalCount;
+      }
     })
 
   }
-     //for paginaton 
+  //for paginaton 
   changePage(e: PageEvent) {
     this.params.page = e.pageIndex + 1;
     this.params.size = e.pageSize;
@@ -127,161 +108,114 @@ export class AdsComponent implements OnInit{
   }
 
   resetSearcgInput() {
-    this. search= '';
+    this.search = '';
     this.getAllAds();
   }
-  filtetByRoomNumber(searchValue :HTMLInputElement){
+  filtetByRoomNumber(searchValue: HTMLInputElement) {
     if (searchValue) {
       this.sortedAds = this.sortedAds.filter(p => p.room.roomNumber.includes(searchValue.value));
-      this.totalCount =this.sortedAds.length
+      this.totalCount = this.sortedAds.length
     }
   }
 
 
+  // DELETE_DIALOG
+  openDeleteDialog(id: number, itname: string, componentName: string): void {
+    const dialo = this.dialog.open(DeleteComponent, {
+      width: '31.25rem',
+      data: {
+        comp: componentName,
+        id: id,
+        name: itname
+      }
+    });
+    dialo.afterClosed().subscribe(res => {
+      if (res != null) {
+        this.deleteAds(res)
+      }
+    })
+  }
+  // DELETE_FUNCTION
+  deleteAds(id: number) {
+    this._AdsService.deleteAds(id).subscribe({
+      error: err => {
+        this.toastr.error(err.error.message)
+      },
+      complete: () => {
+        this.toastr.success("Deleted succefully")
+        this.getAllAds()
+      }
+    })
+  }
 
-    // DELETE_DIALOG
-    openDeleteDialog(id:number,itname:string,componentName:string): void {
-      const dialo =this.dialog.open(DeleteComponent, {
-        width: '31.25rem',
-        data:{
-          comp:componentName,
-          id:id,
-          name:itname
+
+  openUpdateViewDialog(adID: number, roomNum: string, isActiveUpdated: boolean, updatedDiscount: string, editType: boolean): void {
+    const dialogRef = this.dialog.open(UpdateViewAdsComponent, {
+      data: { id: adID, isActive: isActiveUpdated, discount: updatedDiscount, roomNumber: roomNum, isEdit: editType },
+      width: '25%'
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (editType) {
+          //edit Api
+          this.updateAdsItem(adID, { isActive: result.isActive, discount: result.discount })
+        } else {
+          //view
+          this.openDeleteDialog(adID, roomNum, 'Ads')
         }
-      });
-      dialo.afterClosed().subscribe(res=>{
-        if(res!=null){
-          this.deleteAds(res)
-        }
-      })
-    }
-    // DELETE_FUNCTION
-    deleteAds(id:number){
-      this._AdsService.deleteAds(id).subscribe({
-        next:res=>{
-          console.log(res);
-        },
-        error:err=>{
-          console.log(err);
-          this.toastr.error(err.error.message)
-        },
-        complete:()=>{
-          this.toastr.success("Deleted succefully")
-
-          this.getAllAds()
-        }
-      })
-    }
+      }
+    });
 
 
-    openUpdateViewDialog(adID: number ,roomNum:string,isActiveUpdated:boolean,updatedDiscount:string ,editType:boolean ): void {
-   
-      const dialogRef = this.dialog.open(UpdateViewAdsComponent, {
-        data: {id:adID,isActive:isActiveUpdated ,discount:updatedDiscount  ,roomNumber:roomNum,isEdit:editType},
-        width: '25%'
-   
-       });
-   
-       dialogRef.afterClosed().subscribe(result => {
-       console.log('The dialog was closed');
-       if(result){
-    
-       console.log( result);
+  }
 
-       if(editType){
-        //edit Api
-        this.updateAdsItem(adID,{isActive:result.isActive,discount:result.discount})
-       }else{
-        //view
-         this.openDeleteDialog(adID,roomNum,'Ads')
-   
-       }
-       }
-       });
-   
-   
-     }
-
-     updateAdsItem(id: number, data:IAds) {
-
-
-      this._AdsService.updateADItem(id,data ).subscribe({
-        next: (res) => {
-          console.log(res)
-        }, error: (err) => {
-          this.toastr.error(err.error.message)
-
-    
-        }, complete: () => {
-          this.toastr.success("Updated succefully")
-
-          this.getAllAds();
-        }
-      });
-    }
+  updateAdsItem(id: number, data: IAds) {
+    this._AdsService.updateADItem(id, data).subscribe({
+      error: (err) => {
+        this.toastr.error(err.error.message)
+      }, complete: () => {
+        this.toastr.success("Updated succefully")
+        this.getAllAds();
+      }
+    });
+  }
 
 
 
-    openAddDialog(): void {
-   console.log()
-      const dialogRef = this.dialog.open(AddAdsPopupComponent, {
-        data: {roomData :this.roomData,isActive:'' ,discount:''  ,room:''},
-        width: '25%'
-   
-       });
-   
-       dialogRef.afterClosed().subscribe(result => {
-       console.log('The dialog was closed');
-       if(result){
-    
-       console.log( result);
-       this.AddAdsItem({room:result.room,discount:result.discount,isActive:result.isActive})
+  openAddDialog(): void {
+    const dialogRef = this.dialog.open(AddAdsPopupComponent, {
+      data: { roomData: this.roomData, isActive: '', discount: '', room: '' },
+      width: '25%'
+    });
 
-       }
-       });
-   
-   
-     }
-     
-     AddAdsItem(data:IAds) {
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.AddAdsItem({ room: result.room, discount: result.discount, isActive: result.isActive })
+      }
+    });
+  }
 
-
-      this._AdsService.addADItem(data ).subscribe({
-        next: (res) => {
-          console.log(res)
-        }, error: (err) => {
-          this.toastr.error(err.error.message)
-
-    
-        }, complete: () => {
-          this.toastr.success("Added succefully")
-
-          this.getAllAds();
-        }
-      });
-    }
-
-  
-    roomData:IRoom[]=[]
+  AddAdsItem(data: IAds) {
+    this._AdsService.addADItem(data).subscribe({
+      error: (err) => {
+        this.toastr.error(err.error.message)
+      }, complete: () => {
+        this.toastr.success("Added succefully")
+        this.getAllAds();
+      }
+    });
+  }
 
 
-    getAllRooms(){
-  
-      this._RoomsService.getAllRooms({page:1,size:1000}).subscribe({
-       next:(res )=>{
-     
-        this.roomData= res.data.rooms;
-   
-         }  ,
-       error:(err)=>{
-         
-       },
-       complete:()=>{
-  
-       }    
-      })
-  
-    }
+  getAllRooms() {
+    this._RoomsService.getAllRooms({ page: 1, size: 1000 }).subscribe({
+      next: (res) => {
+        this.roomData = res.data.rooms;
+      }
+    })
+  }
 
 
 }

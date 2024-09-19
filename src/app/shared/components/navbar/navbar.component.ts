@@ -38,14 +38,7 @@ export class NavbarComponent {
     this._NavbarService.currentUser(this.userName, this.email, this.profileImage, this._id).subscribe({
       next: (res: IUserResponse) => {
         this.currentUser = res.data.user;
-        console.log('Full Response:', res);
-      },
-      error: (err: IUserResponse) => {
-        console.error('Error fetching user data:', err);
-      },
-      complete: () => {
-        console.log('User data fetch complete');
-      },
+      }
     });
   }
 
@@ -54,22 +47,11 @@ export class NavbarComponent {
   }
 
   openChangePassDialog() {
-    let oldPassword=''
+    let oldPassword = ''
     const dialogRef = this.dialog.open(ChangePassPopupComponent, {
-     data: {oldPassword:'',newPassword:'',confirmPassword:''},
+      data: { oldPassword: '', newPassword: '', confirmPassword: '' },
       width: '50%'
- 
-     });
- 
-     dialogRef.afterClosed().subscribe(result => {
-     console.log('The dialog was closed');
-     console.log( result);
-     if(result){
-   
-     }
-     });
- 
- 
-   }
+    });
+  }
 
 }

@@ -1,12 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { IAddAdminResponse } from './../../models/users';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { NgxFileDropEntry, NgxFileDropModule } from 'ngx-file-drop';
+import { NgxFileDropEntry} from 'ngx-file-drop';
 
 @Component({
   selector: 'app-add-admin',
@@ -56,10 +55,7 @@ export class AddAdminComponent implements OnInit {
 
     if (userData.valid&&this.isImageUploade) {
       this._UsersService.addAdmin(newUserData).subscribe({
-        next: (res: IAddAdminResponse) => {
-          console.log(res);
-        }, error: (err: HttpErrorResponse) => {
-          console.log(err);
+       error: (err: HttpErrorResponse) => {
           this.toastr.error(err.error.message);
         }, complete: () => {
           this.toastr.success('Add New Admin Completed Sucessfully');
@@ -78,7 +74,6 @@ export class AddAdminComponent implements OnInit {
       const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
       fileEntry.file((file: File) => {
         // Here you can access the real file
-        console.log(droppedFile.relativePath, file);
         this.imgUrl = URL.createObjectURL(file)
         this.userProfileImg = file;
         this.isImageUploade = true

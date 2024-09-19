@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RoomsService } from './services/rooms.service';
 import { IParams, IRoom, IRoomData } from './models/IRoom.model';
 import { PageEvent } from '@angular/material/paginator';
-import { FacilitiesService } from '../facilities/services/facilities.service';
-import { IFacility } from '../facilities/models/facilities';
 import { Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
@@ -82,15 +80,7 @@ export class RoomsComponent  implements OnInit{
      next:(res )=>{
       this.roomData= res.data.rooms;
       this.sortedRooms= this.roomData.slice();
-      console.log(this.sortedRooms);
       this.totalCount =res.data.totalCount;   
-//handel toaster
-     }  ,
-     error:(err)=>{
-       
-     },
-     complete:()=>{
-
      }    
     })
 
@@ -143,11 +133,7 @@ export class RoomsComponent  implements OnInit{
 
   deleteRoom(id:number):void{
     this._RoomsService.deleteRoom(id).subscribe({
-      next:res=>{
-        console.log(res);
-      },
       error:err=>{
-        console.log(err);
         this.toastr.error(err.error.message)
       },
       complete:()=>{

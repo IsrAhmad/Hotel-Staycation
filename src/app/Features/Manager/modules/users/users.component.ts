@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
@@ -19,8 +18,8 @@ export class UsersComponent implements OnInit {
   pageSize = 10;
   pageIndex = 0;
   totalCount!: number;
-  displayedColumns: string[] = ['Username','Email'  
-    ,'Phone number','Role', 'Created at'  , 'Actions'];
+  displayedColumns: string[] = ['Username', 'Email'
+    , 'Phone number', 'Role', 'Created at', 'Actions'];
 
 
   parm: IGetAllUsersRequest = {
@@ -29,7 +28,7 @@ export class UsersComponent implements OnInit {
   }
 
   users: IUser[] = []
-  sortedUsers:IUser[]=[];
+  sortedUsers: IUser[] = [];
 
 
   constructor(private _Router: Router, private _UsersService: UsersService) { }
@@ -40,17 +39,9 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     this._UsersService.getAllUsers(this.parm).subscribe({
       next: (res: IGetAllUsersResponse) => {
-       
-        this.users= res.data.users;
-        
+        this.users = res.data.users;
         this.sortedUsers = this.users.slice();
-       
-       
-        this.totalCount =res.data.totalCount;   
-       // this.users=res.data.users
-        //console.log(res);
-      }, error: (err: HttpErrorResponse) => {
-       // console.log(err);
+        this.totalCount = res.data.totalCount;
       }
     })
   }
@@ -69,9 +60,8 @@ export class UsersComponent implements OnInit {
 
   filtetByUserName(searchValue: HTMLInputElement) {
     if (searchValue) {
-
       this.sortedUsers = this.sortedUsers.filter(p => p.userName.includes(searchValue.value));
-      this.totalCount =this.sortedUsers.length
+      this.totalCount = this.sortedUsers.length
     }
   }
 
@@ -79,13 +69,10 @@ export class UsersComponent implements OnInit {
     this._Router.navigate(['/manager/users/addAdmin']);
   }
 
-  veiwItem(id:string){
-    //redirect to  veiw user component
-
-    this._Router.navigate(['/manager/profile',id,'viewUser']);
-
-
+  veiwItem(id: string) {
+    this._Router.navigate(['/manager/profile', id, 'viewUser']);
   }
+
   sortData(sort: Sort) {
     const data = this.users.slice();
     if (!sort.active || sort.direction === '') {
@@ -97,13 +84,12 @@ export class UsersComponent implements OnInit {
       switch (sort.active) {
         case 'createdAt':
           return this.compare(a.createdAt, b.createdAt, isAsc);
-       
         default:
           return 0;
       }
     });
   }
-   compare(a: number | string, b: number | string, isAsc: boolean) {
+  compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 

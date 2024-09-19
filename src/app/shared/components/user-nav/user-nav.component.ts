@@ -31,9 +31,6 @@ export class UserNavComponent  implements OnInit{
 
     this.tokenValue = localStorage.getItem('token');
     this.userId = localStorage.getItem('id');
-
-
-      console.log(this.tokenValue);
       if(this.tokenValue != null){
        this.loggedIn =  true; 
       }

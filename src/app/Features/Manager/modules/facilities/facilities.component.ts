@@ -34,13 +34,12 @@ export class FacilitiesComponent implements OnInit {
     createdAt: '',
     updatedAt: ''
   }
-  // data:any;
-     //for header
-  btnText :string = 'Add new facility' ;
-  headerText:string ='Facilities Table Details' ;
-  headerPargraph:string ='You can check all details';
-  displayedColumns: string[] = ['Name','Created by'  
-    ,'Created at','Updated at', 'Actions'];
+
+  btnText: string = 'Add new facility';
+  headerText: string = 'Facilities Table Details';
+  headerPargraph: string = 'You can check all details';
+  displayedColumns: string[] = ['Name', 'Created by'
+    , 'Created at', 'Updated at', 'Actions'];
 
   totalCount!: number;
   pageSize = 10;
@@ -51,8 +50,8 @@ export class FacilitiesComponent implements OnInit {
 
   }
 
-  facilitiesData: IFacility[]=[];
-  sortedFacilities:IFacility[] =[];
+  facilitiesData: IFacility[] = [];
+  sortedFacilities: IFacility[] = [];
 
 
 
@@ -78,7 +77,7 @@ export class FacilitiesComponent implements OnInit {
     }
   }
 
- 
+
 
   ngOnInit(): void {
     this.getAllFaclities();
@@ -87,19 +86,9 @@ export class FacilitiesComponent implements OnInit {
   getAllFaclities() {
     this._FacilitiesService.getAllFacilities(this.params).subscribe({
       next: (res: IFacilitiesResponse) => {
-      //  console.log(res)
         this.facilitiesData = res.data.facilities;
-        //this.facilitiesdta=res.data;
-        console.log(this.facilitiesData);
-        this.sortedFacilities= this.facilitiesData.slice();
-        //console.log(this.facilitiesData);
+        this.sortedFacilities = this.facilitiesData.slice();
         this.totalCount = res.data.totalCount;
-        // console.log(this.totalCount)
-      }, error: (err: HttpErrorResponse) => {
-        // console.log(err)
-
-      }, complete: () => {
-
       }
     })
   }
@@ -111,19 +100,19 @@ export class FacilitiesComponent implements OnInit {
       return;
     }
     this.sortedFacilities = data.sort((a, b) => {
-     const isAsc = sort.direction === 'asc';
+      const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'createdAt':
           return this.compare(a.createdAt, b.createdAt, isAsc);
         case 'updatedAt':
           return this.compare(a.updatedAt, b.updatedAt, isAsc);
-     
+
         default:
           return 0;
       }
     });
   }
-   compare(a: number | string, b: number | string, isAsc: boolean) {
+  compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
@@ -134,26 +123,19 @@ export class FacilitiesComponent implements OnInit {
     this.getAllFaclities();
   }
 
-  editOrView(id:number ,name:string, editOrNotType: boolean) {
-    
-
+  editOrView(id: number, name: string, editOrNotType: boolean) {
     const dialogRef = this.dialog.open(AddEditeViewFacilitiesComponent, {
-      data: { id:id, edit: editOrNotType, name: name },
+      data: { id: id, edit: editOrNotType, name: name },
       width: '25%'
 
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
       if (result) {
-        //edit here
-        //api edit
         if (editOrNotType) {
           this.editFaility(id, result)
         } else {
-          this.openDeleteDialog('700ms', '350ms',id, name, 'Facility')
-
+          this.openDeleteDialog('700ms', '350ms', id, name, 'Facility')
         }
       }
     });
@@ -161,7 +143,6 @@ export class FacilitiesComponent implements OnInit {
 
   }
   willBeDeleted(event: any) {
-    console.log(event);
     this.openDeleteDialog('700ms', '350ms', event.id, event.name, 'Facility')
   }
 
@@ -174,14 +155,8 @@ export class FacilitiesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
-      //console.log( result);
       if (result) {
-        //add api
-        //console.log('add api')
-        // console.log( result.name);
         this.addFaility(result)
-
       }
     });
 
@@ -207,35 +182,25 @@ export class FacilitiesComponent implements OnInit {
   // DELETE_FUNCTION
   deleteFacility(id: number) {
     this._FacilitiesService.deleteFacility(id).subscribe({
-      next: res => {
-        console.log(res);
-      },
       error: err => {
-        console.log(err);
         this.toastr.error(err.error.message)
       },
       complete: () => {
         this.toastr.success("Deleted succefully")
-
         this.getAllFaclities()
       }
     })
   }
 
   editFaility(id: number, name: string): void {
-
     this._FacilitiesService.editFacility(id, name).subscribe({
       next: (res) => {
-        // console.log(res);
         this.editAddFacRes = res;
       }, error: (err) => {
-        // console.log(err)
         this.toastr.error(err.error.message)
-
       }, complete: () => {
         this.getAllFaclities()
         this.toastr.success(this.editAddFacRes.message)
-
       }
     })
   }
@@ -243,10 +208,8 @@ export class FacilitiesComponent implements OnInit {
   addFaility(name: number): void {
     this._FacilitiesService.addFacility(name).subscribe({
       next: (res) => {
-        //console.log(res);
         this.editAddFacRes = res;
       }, error: (err) => {
-        //console.log(err)
         this.toastr.error(err.error.message)
       }, complete: () => {
         this.getAllFaclities()
@@ -264,7 +227,7 @@ export class FacilitiesComponent implements OnInit {
   filtetByName(searchValue: HTMLInputElement) {
     if (searchValue) {
       this.sortedFacilities = this.sortedFacilities.filter(p => p.name.includes(searchValue.value));
-      this.totalCount =this.sortedFacilities.length
+      this.totalCount = this.sortedFacilities.length
     }
   }
 

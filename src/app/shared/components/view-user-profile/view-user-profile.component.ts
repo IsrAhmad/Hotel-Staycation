@@ -35,11 +35,7 @@ export class ViewUserProfileComponent implements OnInit{
     }
   }
   lang: string = localStorage.getItem('lang') !== null ? localStorage.getItem('lang')! : 'en';
-
-
   constructor(private _AuthService:AuthService,    private _ActivatedRoute: ActivatedRoute ,private _Router:Router , private translate: TranslateService){}
-
-
   ngOnInit(): void {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.lang = event.lang
@@ -48,33 +44,22 @@ export class ViewUserProfileComponent implements OnInit{
     this.userId = this._ActivatedRoute.snapshot.params['id'];
     this.viewUser = this._ActivatedRoute.snapshot.params['viewUser'];
     if(this.viewUser){
-      //from users page
       this.isViewUser=true
     }
-
     this.getCurrentUser()
-
-    
   }
 
   getCurrentUser():void{
-
     this._AuthService.getUserProfile(this.userId).subscribe({
       next: (res) => {
         this.userDataRes = res
       },
-      error(err) { },
       complete: () => {
-    
-  
       },
     })
-
-
   }
 
   goToHomeOrUsers():void{
-
     if(this.viewUser){
       //from users page
       this._Router.navigate(['/manager/users'])
@@ -85,16 +70,10 @@ export class ViewUserProfileComponent implements OnInit{
   }
 
   navigateToAdminOrUser():void{
-
     if(localStorage.getItem('role')=='admin'){
       this._Router.navigate(['/manager/home'])
     }else{
       this._Router.navigate(['/guest/home'])
-
-
     }
-
   }
-
-
 }

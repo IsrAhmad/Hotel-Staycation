@@ -9,6 +9,7 @@ import { IRegister } from '../../model/IRegister.model';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -70,17 +71,10 @@ export class RegisterComponent {
       if(userData.valid&&this.isImageUploade){
 
       this._AuthService.register(newUserData).subscribe({
-        next:(response)=>{
-         console.log(response)
-
-        },
-        error:(err)=>{
-
-          // this._ToastrService.error(err)
-          this.showErrorToaster('account-register-error')
+        error:(err:HttpErrorResponse)=>{
+          this.showErrorToaster(err.error.message)
         },
         complete:()=>{
-      // this._ToastrService.success('Register completed sucessfully ');
       this.showSuccessToaster('account-register-success')
       this._Router.navigate(['/auth/login'])
         }
@@ -93,14 +87,11 @@ export class RegisterComponent {
         }
 
         public dropped(files: NgxFileDropEntry[]) {
-
         const  droppedFile = files[0];
-
             // Is it a file?
             if (droppedFile.fileEntry.isFile) {
               const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
               fileEntry.file((file: File) => {
-
                 // Here you can access the real file
                 console.log(droppedFile.relativePath, file);
                 this.imgUrl= URL.createObjectURL(file)
@@ -113,11 +104,11 @@ export class RegisterComponent {
         }
 
         public fileOver(event:any){
-          console.log(event);
+          // console.log(event);
         }
 
         public fileLeave(event:any){
-          console.log(event);
+          // console.log(event);
         }
 
         showSuccessToaster(toastEnAr:string) {
